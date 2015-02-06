@@ -15,7 +15,6 @@ $column-inside-height: $column-height*.912;
 
 body {
   margin: 0;
-  font-family: 'Proxima Nova';
 }
 .col {
   @include box-sizing(border-box);
