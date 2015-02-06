@@ -1,0 +1,70 @@
+@import "susy";
+$susy: (
+  columns: 12,
+  gutters: 1/3,
+  gutter-position: split,
+  global-box-sizing: border-box
+);
+
+// CONSTANTS
+@include establish-baseline();
+
+// VARIABLES
+$column-height: 15em;
+$column-inside-height: $column-height*.912;
+
+body {
+  margin: 0;
+  font-family: 'Proxima Nova';
+}
+.col {
+  @include box-sizing(border-box);
+  min-height: $column-height;
+  margin-bottom: gutter()*2;
+  .col {
+    margin-top: .5em;
+    min-height: $column-inside-height;
+    padding: 0 gutter()*2;
+    position: relative;
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100-(gutter()*8);
+    }
+    .middle {
+      position: absolute;
+      top: 50%;
+      margin-top: -2.15em;
+      width: 99%;
+      margin-left: -1%;
+    }
+    .top {
+      position: absolute;
+      top: 0;
+      width: 100-(gutter()*8);
+    }
+  }
+  .centered {
+    float: none;
+    display: table;
+    margin: .5em auto 0 auto;
+    text-align: center;
+  }
+  .right {
+    @extend .centered;
+    margin: .5em gutter() 0 auto;
+    text-align: right;
+  }
+}
+.four {
+  @include span(12 of 12);
+}
+.three {
+  @include span(9 of 12);
+}
+.two {
+  @include span(6 of 12);
+}
+.one {
+  @include span(3 of 12);
+}
