@@ -1,0 +1,60 @@
+.no-flexbox .nav-wrapper {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+.no-flexbox .sub {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  position: absolute;
+  z-index: 1;
+  left: 2%;
+  top: 230px;
+}
+.no-flexbox nav {
+  float: none;
+  width: 100%;
+  display: table-row;
+  text-align: center;
+  list-style: none;
+}
+.no-flexbox .nav-sub {
+  float: none;
+  width: 100%;
+  display: table-row;
+  text-align: left;
+  list-style: none;
+  position: absolute;
+  left: 0;
+}
+.no-flexbox nav .nav-item,
+.no-flexbox .nav-sub-item {
+  float: none;
+  display: table-cell;
+  margin: 0;
+  max-width: 25%;
+}
+.no-flexbox .nav-sub-item {
+  width: 15%;
+  a {
+    outline: 0;
+  }
+}
+.no-flexbox .nav-user {
+  display: table;
+}
+.no-flexbox .dropdown {
+  float: none;
+  display: table-cell;
+}
+.no-flexbox dt a {
+  max-width: 25em;
+  min-width: 20em;
+  width: 20em;
+  padding-top: 4px;
+}

@@ -1,0 +1,22 @@
+$root: '../';
+@font-face {
+  font-family: 'proxima_nova_rg';
+  src: url($root +'/fonts/proximanova-reg-webfont.eot?#iefix') format('embedded-opentype'),
+  url($root +'/fonts/proximanova-reg-webfont.woff') format('woff'),
+  url($root +'/fonts/proximanova-reg-webfont.ttf')  format('truetype'),
+  url($root +'/fonts/proximanova-reg-webfont.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'proxima_nova_sb';
+  src: url($root +'/fonts/proximanova-sbold-webfont.eot?#iefix') format('embedded-opentype'),
+  url($root +'/fonts/proximanova-sbold-webfont.woff') format('woff'),
+  url($root +'/fonts/proximanova-sbold-webfont.ttf')  format('truetype'),
+  url($root +'/fonts/proximanova-sbold-webfont.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'proxima_nova_th';
+  src: url($root +'/fonts/proximanova-thin-webfont.eot?#iefix') format('embedded-opentype'),
+  url($root +'/fonts/proximanova-thin-webfont.woff') format('woff'),
+  url($root +'/fonts/proximanova-thin-webfont.ttf')  format('truetype'),
+  url($root +'/fonts/proximanova-thin-webfont.svg#svgFontName') format('svg');
+}

@@ -1,0 +1,69 @@
+html, body {
+  overflow-x: hidden;
+}
+body {
+  @include font();
+  background: url(../img/nav/background.jpg);
+  background-size: cover;
+}
+
+.container {
+  max-width: 90em;
+  @media screen and (max-width: $screen-mobile) {
+    width: 100%;
+  }
+  margin: 0 auto;
+  background: $base-white;
+}
+a {
+  text-decoration: none;
+  color: $base-text;
+  @include transition(.2s all);
+  &:hover {
+    color: $base-green;
+  }
+}
+header {
+  background: $base-white;
+  margin: 0;
+  width: 100%;
+  height: 54px;
+  position: relative;
+}
+header .logo {
+  width: 60px;
+  height: 54px;
+  overflow: hidden;
+  background: url(https://analytics.freespee.com/images/logo_generic_large_alpha.png) 0 0;
+  margin: 0 2em;
+  display: inline-block;
+}
+header .topnav ul {
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  margin: 1em 0;
+  li {
+    display: inline;
+    height: 100%;
+    a {
+      font-size: .9em;
+      @include font(semi);
+      @include letter-spacing(1px);
+      margin: 0 1.5em 0 1em;
+    }
+    &:last-child:after {
+      content: '';
+      display: inline-block;
+      right: -2em;
+      top: -.3em;
+      position: absolute;
+      height: 2em;
+      width: 1px;
+      background: #ccc;
+    }
+  }
+}

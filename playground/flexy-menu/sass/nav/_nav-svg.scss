@@ -1,0 +1,162 @@
+.nav-item label img, .nav-item label svg {
+  width: 40px;
+  display: block;
+  margin: 65px auto 0 auto;
+  @include transition(.2s all);
+  @include translateZ(0);
+  @media screen and (max-width: $screen-mobile) {
+    width: 30px;
+    display: inline-block;
+    margin: 5px 15px -7.5px -35px;
+  }
+}
+.nav-item label svg {
+  path, circle, rect, text, line {
+    @include transition(.2s all);
+  }
+}
+.nav-item label:hover, .nav-item>input:checked ~ label {
+  background: $base-white;
+  color: $base-green;
+  svg {
+    width: 45px;
+    margin: 62.5px auto -2.5px auto;
+  }
+  @media screen and (max-width: $screen-mobile) {
+    background: $base-green;
+    color: $base-white;
+    svg {
+      width: 30px;
+      margin: 5px 15px -7.5px -35px;
+    }
+  }
+  svg path {
+    fill: $base-green;
+    stroke: $base-green;
+  }
+  svg circle {
+    stroke: $base-white;
+  }
+  svg text {
+    fill: $base-green;
+  }
+}
+.nav-item label[for="nav-reports"]:hover, .nav-item>input:checked ~ label[for="nav-reports"] {
+  svg rect {
+    stroke: $base-green;
+  }
+  svg line {
+    stroke: $base-green;
+  }
+  svg path {
+    fill: none;
+  }
+}
+.nav-item label[for="nav-dashboard"]:hover, .nav-item>input:checked ~ label[for="nav-dashboard"],
+.nav-item label[for="nav-start"]:hover, .nav-item>input:checked ~ label[for="nav-start"] {
+  svg g rect {
+    stroke: $base-green;
+  }
+  svg > rect {
+    fill: $base-green;
+  }
+  svg line {
+    stroke: $base-green;
+  }
+}
+.nav-item label[for="nav-settings"]:hover, .nav-item>input:checked ~ label[for="nav-settings"] {
+  svg g g:last-child{
+    path {
+      fill: none;
+    }
+    circle {
+      stroke: $base-green;
+    }
+  }
+}
+.nav-item label[for="nav-campaigns"]:hover, .nav-item>input:checked ~ label[for="nav-campaigns"] {
+  svg {
+    circle {
+      stroke: $base-green;
+    }
+  }
+}
+.nav-item label[for="nav-inbox"] {
+  svg {
+    g {
+      @include translateX(-7px);
+    }
+  }
+}
+
+@media screen and (max-width: $screen-mobile) {
+  .nav-item label, .nav-item label:hover, .nav-item>input:checked ~ label {
+    svg g rect {
+      stroke: $base-white;
+    }
+    svg > rect {
+      fill: none;
+    }
+    svg line {
+      stroke: $base-white;
+    }
+    svg rect {
+      stroke: $base-white;
+    }
+    svg line {
+      stroke: $base-white;
+    }
+    svg path {
+      fill: $base-white;
+      stroke: $base-white;
+    }
+    svg circle {
+      stroke: $base-white;
+    }
+    svg text {
+      fill: $base-white;
+    }
+  }
+  .nav-item label[for="nav-support"], .nav-item label[for="nav-support"]:hover, .nav-item>input:checked ~ label[for="nav-support"] {
+    svg g g path {
+      stroke: none;
+    }
+    svg rect {
+      stroke: none;
+    }
+  }
+  .nav-item label[for="nav-settings"], .nav-item label[for="nav-settings"]:hover, .nav-item>input:checked ~ label[for="nav-settings"] {
+    svg g g:last-child{
+      path {
+        fill: none;
+        stroke: $base-white;
+      }
+      circle {
+        stroke: $base-white;
+      }
+    }
+  }
+  .nav-item label[for="nav-reports"], .nav-item label[for="nav-reports"]:hover, .nav-item>input:checked ~ label[for="nav-reports"] {
+    svg rect {
+      stroke: $base-white;
+    }
+    svg line {
+      stroke: $base-white;
+    }
+    svg path {
+      fill: none;
+    }
+  }
+  .nav-item label[for="nav-dashboard"], .nav-item label[for="nav-dashboard"]:hover, .nav-item>input:checked ~ label[for="nav-dashboard"],
+  .nav-item label[for="nav-start"], .nav-item label[for="nav-start"]:hover, .nav-item>input:checked ~ label[for="nav-start"] {
+    svg g rect {
+      stroke: $base-white;
+    }
+    svg > rect {
+      fill: $base-white;
+    }
+    svg line {
+      stroke: $base-white;
+    }
+  }
+}

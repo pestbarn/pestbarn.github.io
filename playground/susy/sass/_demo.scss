@@ -1,0 +1,12 @@
+$grid-background-baseline-color: rgba(0,0,0,0.1);
+@mixin demo-container {
+  background: rgba(white,.7);
+  box-shadow: 1px 0 0 #ccc, -1px 0 0 #ccc;
+  padding: $base-line-height*4-1 0;
+}
+@mixin demo-col {
+  box-shadow: 0 0 1px #bbb;
+}
+@mixin demo-col-col {
+  box-shadow: 0 0 1px #ccc;
+}
