@@ -11,7 +11,7 @@ header:before {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 20vh;
+  bottom: 0;
   left: 0;
   background: url('../images/background.jpg');
   background-size: cover;
@@ -23,6 +23,7 @@ header:before {
 header {
   height: 80vh;
   width: 100%;
+  position: relative;
 }
 section {
   height: 100vh;
@@ -31,16 +32,17 @@ section {
 }
 h1 {
   font-family: 'Engagement';
-  position: relative;
-  top: 66vh;
+  position: absolute;
+  bottom: -35px;
   cursor: default;
   text-align: center;
   color: #fff;
   margin: 0 auto;
   font-size: 8em;
   line-height: 1;
+  width: 100%;
   @media screen and (max-width: 768px) {
-    top: 71vh;
+    bottom: -23px;
     font-size: 5em;
   }
 }
