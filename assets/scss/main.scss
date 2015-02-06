@@ -32,10 +32,15 @@ section {
 h1 {
   font-family: 'Engagement';
   position: relative;
-  top: 76vh;
+  top: 66vh;
   cursor: default;
   text-align: center;
   color: #fff;
   margin: 0 auto;
   font-size: 8em;
+  line-height: 1;
+  @media screen and (max-width: 768px) {
+    top: 71vh;
+    font-size: 5em;
+  }
 }
