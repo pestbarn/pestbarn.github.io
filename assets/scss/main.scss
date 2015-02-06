@@ -1,37 +1,41 @@
+@import url(http://fonts.googleapis.com/css?family=Engagement);
 @import "compass";
 @import "h5bp";
 @import "mixins";
 @import "variables";
 @import "animations";
 @import "grid";
-@import url(http://fonts.googleapis.com/css?family=Molle:400italic);
 
 header:before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
+  bottom: 20vh;
   left: 0;
   background: url('../images/background.jpg');
   background-size: cover;
+  background-attachment: fixed;
   @include animation(background-animation 72s infinite);
   @include filter(hue-rotate(-90deg));
   z-index: -1;
 }
-header, section {
+header {
+  height: 80vh;
+  width: 100%;
+}
+section {
   height: 100vh;
   width: 100%;
   position: relative;
 }
 h1 {
-  font-family: 'Molle';
-  position: absolute;
-  bottom: .05em;
+  font-family: 'Engagement';
+  position: relative;
+  top: 76vh;
+  cursor: default;
   text-align: center;
   color: #fff;
-  width: 80%;
   margin: 0 auto;
-  display: block;
-  font-size: 6em;
+  font-size: 8em;
 }
