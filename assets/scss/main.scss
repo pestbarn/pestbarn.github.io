@@ -7,7 +7,7 @@
 @import "animations";
 @import "grid";
 
-header:before {
+header:before, {
   content: '';
   position: absolute;
   top: 0;
@@ -16,7 +16,6 @@ header:before {
   left: 0;
   background: url('../images/background.jpg');
   background-size: cover;
-  background-attachment: fixed;
   @include animation(background-animation 72s infinite);
   @include filter(hue-rotate(-90deg));
   z-index: -1;
@@ -27,10 +26,32 @@ header {
   position: relative;
 }
 section {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  position: relative;
   font-family: 'Noto Serif';
+}
+section:nth-child(even) {
+  h2 {
+    color: $headline-color;
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(transparent, transparent),
+                url('../images/background.jpg') repeat;
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
+    @include animation(background-animation 72s infinite);
+    @include filter(hue-rotate(-90deg));
+  }
+}
+section:nth-child(odd) {
+  background: url('../images/background.jpg');
+  @include animation(background-animation 72s infinite);
+  @include filter(hue-rotate(-90deg));
+  min-height: 50vh;
+  display: table;
+  h2, h3, p {
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0,0,0,.5);
+  }
 }
 h1 {
   font-family: 'Engagement';
@@ -43,8 +64,20 @@ h1 {
   font-size: 8em;
   line-height: 1;
   width: 100%;
+  z-index: -1;
   @media screen and (max-width: 768px) {
     bottom: -23px;
     font-size: 5em;
+  }
+}
+h2 {
+  font-family: 'Engagement';
+  font-size: 10em;
+  line-height: 1;
+  cursor: default;
+  padding: .2em;
+  @media screen and (max-width: 768px) {
+    font-size: 5em;
+    padding: .3em 0 .2em 0;
   }
 }
