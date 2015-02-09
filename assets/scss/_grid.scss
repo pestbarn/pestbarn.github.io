@@ -45,8 +45,10 @@ section {
   }
   .text-right {
     text-align: right;
-    @media screen and (max-width: 768px) {
-      text-align: left;
+    @media screen and (max-width: $bp-mobile) {
+      &:not(.no-break) {
+        text-align: left;
+      }
     }
   }
 }
@@ -55,7 +57,9 @@ section {
 }
 .one {
   @include span(1 of 2);
-  @media screen and (max-width: 768px) {
-    width: 100%;
+  @media screen and (max-width: $bp-mobile) {
+    &:not(.no-break) {
+      width: 100%;
+    }
   }
 }
