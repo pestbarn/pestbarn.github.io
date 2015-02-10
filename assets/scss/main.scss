@@ -13,22 +13,17 @@ header:before, {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url('../images/background.jpg');
+  background: url($path + 'background.jpg');
   background-size: cover;
   @include color-animation();
   z-index: -1;
 }
 header {
-  height: 80vh;
   width: 100%;
+  height: 80vh;
   position: relative;
-  canvas {
-    opacity: .1;
-    @include filter(grayscale(1) brightness(2));
-    height: 80vh;
-    width: 100%;
-    z-index: -1;
-  }
+  overflow: hidden;
+  @import "cogs";
 }
 section {
   min-height: 50vh;
@@ -36,7 +31,8 @@ section {
 }
 section.bright {
   h2 {
-    color: $headline-color;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
     -webkit-text-fill-color: transparent;
     background: -webkit-linear-gradient(transparent, transparent),
                 url('../images/background.jpg') repeat;
@@ -44,7 +40,7 @@ section.bright {
     -webkit-background-clip: text;
     @include color-animation();
   }
-  h3 {
+  h3, a {
     color: $headline-color;
   }
 }
@@ -52,14 +48,14 @@ section.color {
   background: url('../images/background.jpg');
   background-size: cover;
   @include color-animation();
-  h2, h3, p {
+  h2, h3, p, a {
     color: #fff;
     text-shadow: 0 0 1px rgba(0,0,0,.5);
   }
 }
 section.dark {
   background: $text-color;
-  h2, h3, p {
+  h2, h3, p, a {
     color: #fff;
     text-shadow: 0 0 1px rgba(0,0,0,.5);
   }
@@ -79,6 +75,7 @@ h1 {
   font-size: 10em;
   width: 100%;
   z-index: 0;
+  text-shadow: 0 -1px 2px rgba(0,0,0,.5);
   @media screen and (max-width: $bp-mobile) {
     bottom: -23px;
     font-size: 5em;
@@ -93,8 +90,43 @@ h2 {
     padding: .3em 0 .2em 0;
   }
 }
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+  .experience .left & {
+    font-size: 2.1em;
+    margin: .43em 0 .66em 0;
+  }
+}
+a {
+  text-decoration: none;
+  font-family: 'Noto Sans';
+  @include box-sizing(border-box);
+  @include transition(.2s all);
+  position: relative;
+  display: inline-block;
+  &:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    @include transition(width .5s);
+  }
+  &:hover {
+    border-color: #fff;
+    &:after {
+      width: 100%;
+    }
+  }
+}
 
-ul {
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -123,7 +155,7 @@ ul {
         height: 12px;
         margin: 0 0 0 0;
         border-radius: 50%;
-        background: #fff url('../images/background.jpg');
+        background: #fff url($path + 'background.jpg');
         @include color-animation();
         @include transition(.2s all);
       }

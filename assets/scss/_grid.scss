@@ -43,6 +43,9 @@ section {
   .text-left {
     text-align: left;
   }
+  .text-justify {
+    text-align: justify;
+  }
   .text-right {
     text-align: right;
     @media screen and (max-width: $bp-mobile) {

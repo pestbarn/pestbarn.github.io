@@ -2,3 +2,14 @@
   @include animation(background-animation $duration infinite);
   @include filter(hue-rotate(0deg));
 }
+@mixin topleft() {
+  top: 45%;
+  left: 50%;
+}
+@mixin sqsize($s: 28) {
+  width: $s+vh;
+  height: $s+vh;
+}
+@mixin bgimage() {
+  background: url('../images/background.jpg');
+}
