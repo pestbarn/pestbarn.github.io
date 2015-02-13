@@ -9,9 +9,6 @@ $susy: (
 // CONSTANTS
 @include establish-baseline();
 
-// VARIABLES
-$column-height: 15em;
-
 body {
   margin: 0;
 }
@@ -20,8 +17,7 @@ section {
 }
 .col {
   @include box-sizing(border-box);
-  min-height: $column-height;
-  margin-bottom: gutter()*2;
+  margin-bottom: gutter();
   .centered {
     float: none;
     display: table;
@@ -64,5 +60,11 @@ section {
     &:not(.no-break) {
       width: 100%;
     }
+  }
+}
+.one-half {
+  @include span(2 of 5);
+  @media screen and (max-width: $bp-mobile) {
+    width: 100%;
   }
 }

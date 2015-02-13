@@ -1,0 +1,75 @@
+h1, h2 {
+  font-family: 'Engagement';
+  font-weight: 600;
+  line-height: 1;
+}
+h1 {
+  position: absolute;
+  bottom: -45px;
+  cursor: default;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+  font-size: 10em;
+  width: 100%;
+  z-index: 0;
+  text-shadow: 0 -1px 2px rgba(0,0,0,.5);
+  @media screen and (max-width: $bp-mobile) {
+    bottom: -23px;
+    font-size: 5em;
+  }
+}
+h2 {
+  font-size: 8em;
+  cursor: default;
+  padding: .2em;
+  @media screen and (max-width: $bp-mobile) {
+    font-size: 5em;
+    padding: .3em 0 .2em 0;
+  }
+}
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+  .experience .text-right & {
+    font-size: 3.1em;
+    margin: .13em 0 .66em 0;
+  }
+}
+a {
+  text-decoration: none;
+  font-family: 'Noto Sans';
+  @include box-sizing(border-box);
+  @include transition(.2s all);
+  position: relative;
+  display: inline-block;
+  &:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    @include transition(width .5s);
+  }
+  &:hover {
+    border-color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+  &[href*="//"]:after {
+    font-family: 'FontAwesome';
+    content: "\f08e";
+    display: inline-block;
+    margin-left: .5em;
+    font-size: .8em;
+  }
+}
+acronym {
+  border-bottom: 1px dotted rgba(#f1f1f1,.5);
+}

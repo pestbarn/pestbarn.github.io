@@ -1,4 +1,4 @@
-@mixin color-animation($duration: 144s) {
+@mixin color-animation($duration: 288s) {
   @include animation(background-animation $duration infinite);
   @include filter(hue-rotate(0deg));
 }
