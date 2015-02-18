@@ -62,8 +62,9 @@ ol {
           @include color-animation();
         }
         @include screen(handheld) {
-          background: #fff;
-          border: 1px solid rgba(#ccc,.9);
+          background: #019cd4;
+          border: 2px dashed rgba(#fff,.9);
+          top: 33%;
         }
         @include transition(.2s all);
       }
