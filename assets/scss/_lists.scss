@@ -8,7 +8,9 @@
       transform: rotate(-90deg);
       position: absolute;
       left: -2.34em;
-      top: 2.34em;
+      top: 2.16em;
+      border-right: 1px solid #ccc;
+      padding-right: .5em;
     }
     &.right {
       ol {
