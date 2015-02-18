@@ -1,7 +1,9 @@
 @include screen(phone) {
-  .skills {
+  .skills.left, .skills.right {
     position: relative;
     margin: 0 auto;
+  }
+  .skills {
     h3 {
       transform: rotate(-90deg);
       position: absolute;
@@ -9,9 +11,9 @@
       top: 2.34em;
     }
     &.right {
-      margin-bottom: 1em;
       ol {
         transform: rotateX(180deg);
+        margin-bottom: 1em;
       }
       li {
         transform: rotateX(180deg);
