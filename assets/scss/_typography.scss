@@ -31,9 +31,13 @@ h2 {
 h3 {
   font-size: 1.17em;
   margin: 1em 0;
-  .experience .text-right & {
+  .experience .one-half & {
     font-size: 3.1em;
     margin: .13em 0 .66em 0;
+    @include screen(phone) {
+      font-size: 2.5em;
+      margin-top: 1.13em;
+    }
   }
 }
 a {

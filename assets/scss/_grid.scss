@@ -63,6 +63,9 @@ section {
     &:not(.no-break) {
       width: 100%;
     }
+    &.no-break {
+      padding: 0 3%;
+    }
   }
   @include screen(phone) {
     width: 100%;
