@@ -5,7 +5,7 @@ ol {
   display: inline-block;
   li {
     font-size: 1.1em;
-    @media screen and (max-width: $bp-mobile) {
+    @include screen(handheld) {
       font-size: .9em;
     }
     font-family: 'Noto Sans';

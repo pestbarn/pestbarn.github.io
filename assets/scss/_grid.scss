@@ -44,10 +44,13 @@ section {
   }
   .text-right {
     text-align: right;
-    @media screen and (max-width: $bp-mobile) {
+    @include screen(tablet) {
       &:not(.no-break) {
         text-align: left;
       }
+    }
+    @include screen(phone) {
+      text-align: left;
     }
   }
 }
@@ -56,15 +59,18 @@ section {
 }
 .one {
   @include span(1 of 2);
-  @media screen and (max-width: $bp-mobile) {
+  @include screen(tablet) {
     &:not(.no-break) {
       width: 100%;
     }
   }
+  @include screen(phone) {
+    width: 100%;
+  }
 }
 .one-half {
   @include span(2 of 5);
-  @media screen and (max-width: $bp-mobile) {
+  @include screen(handheld) {
     width: 100%;
     padding-left: 5%;
   }
