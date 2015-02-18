@@ -57,8 +57,14 @@ ol {
         height: 12px;
         margin: 0 0 0 0;
         border-radius: 50%;
-        background: #fff url($path + 'background.jpg');
-        @include color-animation();
+        @include screen(desktop) {
+          background: #fff url($path + 'background.jpg');
+          @include color-animation();
+        }
+        @include screen(handheld) {
+          background: #fff;
+          border: 1px solid rgba(#ccc,.9);
+        }
         @include transition(.2s all);
       }
       .left &:after {
