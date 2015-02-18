@@ -1,8 +1,33 @@
+@include screen(phone) {
+  .skills {
+    position: relative;
+    margin: 0 auto;
+    h3 {
+      transform: rotate(-90deg);
+      position: absolute;
+      left: -2.34em;
+      top: 2.34em;
+    }
+    &.right {
+      ol {
+        transform: rotateX(180deg);
+      }
+      li {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+}
 ol {
   margin: 0;
   padding: 0;
   list-style: none;
   display: inline-block;
+  @include screen(phone) {
+    margin: 0 auto;
+    display: block;
+    width: 14.6em;
+  }
   li {
     font-size: 1.1em;
     @include screen(handheld) {
@@ -33,6 +58,9 @@ ol {
       }
       .left &:after {
         right: 0;
+        @include screen(phone) {
+          left: 0;
+        }
       }
       .right &:before {
         left: 0;
