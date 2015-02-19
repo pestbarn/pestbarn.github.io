@@ -14,6 +14,9 @@ body {
 }
 section {
   @include container();
+  &:after {
+    height: 1px;
+  }
 }
 .col {
   @include box-sizing(border-box);
