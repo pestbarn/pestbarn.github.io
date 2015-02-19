@@ -55,7 +55,7 @@ section.color {
 }
 section.dark {
   background: $text-color;
-  h2, h3, p, a {
+  h2, h3, p, a, i {
     color: #fff;
     text-shadow: 0 0 1px rgba(0,0,0,.5);
   }
