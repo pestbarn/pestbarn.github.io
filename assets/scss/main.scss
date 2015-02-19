@@ -47,6 +47,7 @@ section.bright {
 section.color {
   background: url('../images/background.jpg');
   background-size: cover;
+  background-repeat: repeat-y;
   @include color-animation();
   h2, h3, p, a {
     color: #fff;
