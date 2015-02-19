@@ -1,4 +1,5 @@
 @mixin color-animation($duration: 288s) {
+  // not if mobile
   @include animation(background-animation $duration infinite);
   @include filter(hue-rotate(0deg));
 }
