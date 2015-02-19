@@ -47,7 +47,10 @@ section.bright {
 section.color {
   background: url('../images/background.jpg');
   background-size: cover;
-  background-repeat: repeat-y;
+  @include screen(phone) {
+    background-repeat: repeat;
+    background-size: 100% 100%;
+  }
   @include color-animation();
   h2, h3, p, a {
     color: #fff;
