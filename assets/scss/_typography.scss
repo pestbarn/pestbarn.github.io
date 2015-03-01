@@ -79,6 +79,7 @@ acronym {
 }
 .social {
   position: relative;
+  top: 5em;
   a {
     margin-bottom: 1em;
     &:after, &:before {
@@ -92,12 +93,12 @@ acronym {
     }
   }
 }
-.social i {
+.social a>i {
   font-size: 2em;
   p {
     position: absolute;
     top: -3em;
-    left: -170%;
+    left: -20%;
     font-size: .4em;
     opacity: 0;
     visibility: hidden;
@@ -110,12 +111,17 @@ acronym {
     letter-spacing: .1px;
     font-family: 'Noto Sans';
     transition: .25s all;
+    i {
+      color: #323232;
+      display: inline;
+      text-shadow: none;
+    }
     &:after {
       content: '';
       width: 1em;
       height: 1em;
       top: 0em;
-      left: 50%;
+      left: 15%;
       margin-left: -9px;
       position: absolute;
       z-index: -1;

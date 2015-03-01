@@ -16,7 +16,9 @@ header:before, {
   left: 0;
   background: url($path + 'background.jpg');
   background-size: cover;
-  @include color-animation();
+  @include screen(desktop) {
+    @include color-animation();
+  }
   z-index: -1;
 }
 header {
@@ -38,7 +40,9 @@ section.bright {
                 url('../images/background.jpg') repeat;
     background: -o-linear-gradient(transparent, transparent);
     -webkit-background-clip: text;
-    @include color-animation();
+    @include screen(desktop) {
+      @include color-animation();
+    }
   }
   h3, a {
     color: $headline-color;
@@ -47,7 +51,9 @@ section.bright {
 section.color {
   background: url('../images/background.jpg');
   background-size: cover;
-  @include color-animation();
+  @include screen(desktop) {
+    @include color-animation();
+  }
   h2, h3, p, a {
     color: #fff;
     text-shadow: 0 0 1px rgba(0,0,0,.5);
@@ -55,6 +61,7 @@ section.color {
 }
 section.dark {
   background: $text-color;
+  padding-bottom: 5em;
   h2, h3, p, a, i {
     color: #fff;
     text-shadow: 0 0 1px rgba(0,0,0,.5);
