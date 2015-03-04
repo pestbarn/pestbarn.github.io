@@ -69,3 +69,6 @@ section.dark {
 }
 @import "typography";
 @import "lists";
+@media print {
+  @import "print";
+}

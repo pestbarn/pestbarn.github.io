@@ -104,7 +104,8 @@ textarea {
       text-decoration: underline;
     }
     &[href]:after {
-      content: " (" attr(href) ")";
+      content: " (http:" attr(href) ")" !important;
+      font-family: "Noto Serif", Georgia !important;
     }
   }
   abbr[title]:after {
