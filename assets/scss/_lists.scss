@@ -5,7 +5,7 @@
   }
   .skills {
     h3 {
-      transform: rotate(-90deg);
+      @include transform(rotate(-90deg));
       position: absolute;
       left: -2.34em;
       top: 2.16em;
@@ -14,11 +14,11 @@
     }
     &.right {
       ol {
-        transform: rotateX(180deg);
+        @include transform(rotateX(180deg));
         margin-bottom: 1em;
       }
       li {
-        transform: rotateX(180deg);
+        @include transform(rotateX(180deg));
       }
     }
   }

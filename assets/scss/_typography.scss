@@ -110,7 +110,7 @@ acronym {
     cursor: default;
     letter-spacing: .1px;
     font-family: 'Noto Sans';
-    transition: .25s all;
+    @include transition(.25s all);
     i {
       color: #323232;
       display: inline;
@@ -127,9 +127,9 @@ acronym {
       z-index: -1;
       border-right: 6px solid #fff;
       border-bottom: 6px solid #fff;
-      transform: rotate(45deg);
+      @include transform(rotate(45deg));
       border-radius: 2px;
-      transition: .4s all;
+      @include transition(.4s all);
     }
   }
   &:hover p {
