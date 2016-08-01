@@ -1,83 +1,83 @@
 @import "susy";
 $susy: (
-  columns: 2,
-  gutters: 1/4,
-  gutter-position: inside,
-  global-box-sizing: border-box
+    columns: 2,
+    gutters: 1/4,
+    gutter-position: inside,
+    global-box-sizing: border-box
 );
 
 // CONSTANTS
 @include establish-baseline();
 
 body {
-  margin: 0;
+    margin: 0;
 }
 section {
-  @include container();
-  &:after {
-    height: 1px;
-  }
+    @include container();
+    &:after {
+        height: 1px;
+    }
 }
 .col {
-  @include box-sizing(border-box);
-  margin-bottom: gutter();
-  .centered {
-    float: none;
-    display: table;
-    margin: .5em auto .5em auto;
-    text-align: center;
-  }
-  .left {
-    @extend .centered;
-    float: left;
-    margin: .5em auto 1em 0;
-    text-align: left;
-  }
-  .right {
-    @extend .centered;
-    float: right;
-    margin: .5em 0 1em auto;
-    text-align: right;
-  }
-  .text-left {
-    text-align: left;
-  }
-  .text-justify {
-    text-align: justify;
-  }
-  .text-right {
-    text-align: right;
-    @include screen(tablet) {
-      &:not(.no-break) {
+    @include box-sizing(border-box);
+    margin-bottom: gutter();
+    .centered {
+        float: none;
+        display: table;
+        margin: .5em auto .5em auto;
+        text-align: center;
+    }
+    .left {
+        @extend .centered;
+        float: left;
+        margin: .5em auto 1em 0;
         text-align: left;
-      }
     }
-    @include screen(phone) {
-      text-align: left;
+    .right {
+        @extend .centered;
+        float: right;
+        margin: .5em 0 1em auto;
+        text-align: right;
     }
-  }
+    .text-left {
+        text-align: left;
+    }
+    .text-justify {
+        text-align: justify;
+    }
+    .text-right {
+        text-align: right;
+        @include screen(tablet) {
+            &:not(.no-break) {
+                text-align: left;
+            }
+        }
+        @include screen(phone) {
+            text-align: left;
+        }
+    }
 }
 .two {
-  @include span(2 of 2);
+    @include span(2 of 2);
 }
 .one {
-  @include span(1 of 2);
-  @include screen(tablet) {
-    &:not(.no-break) {
-      width: 100%;
+    @include span(1 of 2);
+    @include screen(tablet) {
+        &:not(.no-break) {
+            width: 100%;
+        }
+        &.no-break {
+            padding: 0 3%;
+        }
     }
-    &.no-break {
-      padding: 0 3%;
+    @include screen(phone) {
+        width: 100%;
     }
-  }
-  @include screen(phone) {
-    width: 100%;
-  }
 }
 .one-half {
-  @include span(2 of 5);
-  @include screen(handheld) {
-    width: 100%;
-    padding-left: 5%;
-  }
+    @include span(2 of 5);
+    @include screen(handheld) {
+        width: 100%;
+        padding-left: 5%;
+    }
 }

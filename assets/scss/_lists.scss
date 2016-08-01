@@ -1,92 +1,92 @@
 @include screen(phone) {
-  .skills.left, .skills.right {
-    position: relative;
-    margin: 0 auto;
-  }
-  .skills {
-    h3 {
-      @include transform(rotate(-90deg));
-      position: absolute;
-      left: -2.34em;
-      top: 2.16em;
-      border-right: 1px solid #ccc;
-      padding-right: .5em;
+    .skills.left, .skills.right {
+        position: relative;
+        margin: 0 auto;
     }
-    &.right {
-      ol {
-        @include transform(rotateX(180deg));
-        margin-bottom: 1em;
-      }
-      li {
-        @include transform(rotateX(180deg));
-      }
+    .skills {
+        h3 {
+            @include transform(rotate(-90deg));
+            position: absolute;
+            left: -2.34em;
+            top: 2.16em;
+            border-right: 1px solid #ccc;
+            padding-right: .5em;
+        }
+        &.right {
+            ol {
+                @include transform(rotateX(180deg));
+                margin-bottom: 1em;
+            }
+            li {
+                @include transform(rotateX(180deg));
+            }
+        }
     }
-  }
 }
 ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: inline-block;
-  @include screen(phone) {
-    margin: 0 auto;
-    display: block;
-    width: 14.6em;
-  }
-  li {
-    font-size: 1.1em;
-    @include screen(handheld) {
-      font-size: .9em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    @include screen(phone) {
+        margin: 0 auto;
+        display: block;
+        width: 14.6em;
     }
-    font-family: 'Noto Sans';
-    line-height: 1.6;
-    display: block;
-    cursor: default;
-    @include transition(.4s all);
-    span {
-      display: inline-block;
-      padding: .5em 1.5em 0;
-      position: relative;
-      .left &:after, .right &:before {
-        content: '';
-        display: inline-block;
-        position: absolute;
-        z-index: -1;
-        top: 50%;
-        width: 12px;
-        height: 12px;
-        margin: 0 0 0 0;
-        border-radius: 50%;
-        @include screen(desktop) {
-          background: #fff url($path + 'background.jpg');
-          @include color-animation();
-        }
+    li {
+        font-size: 1.1em;
         @include screen(handheld) {
-          background: #019cd4;
-          border: 2px dashed rgba(#fff,.9);
-          top: 33%;
+            font-size: .9em;
         }
-        @include transition(.2s all);
-      }
-      .left &:after {
-        right: 0;
-        @include screen(phone) {
-          left: 0;
+        font-family: 'Noto Sans';
+        line-height: 1.6;
+        display: block;
+        cursor: default;
+        @include transition(.4s all);
+        span {
+            display: inline-block;
+            padding: .5em 1.5em 0;
+            position: relative;
+            .left &:after, .right &:before {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                z-index: -1;
+                top: 50%;
+                width: 12px;
+                height: 12px;
+                margin: 0 0 0 0;
+                border-radius: 50%;
+                @include screen(desktop) {
+                    background: #fff url($path + 'background.jpg');
+                    @include color-animation();
+                }
+                @include screen(handheld) {
+                    background: #019cd4;
+                    border: 2px dashed rgba(#fff,.9);
+                    top: 33%;
+                }
+                @include transition(.2s all);
+            }
+            .left &:after {
+                right: 0;
+                @include screen(phone) {
+                    left: 0;
+                }
+            }
+            .right &:before {
+                left: 0;
+            }
         }
-      }
-      .right &:before {
-        left: 0;
-      }
+        &:hover span:after, &:hover span:before {
+            border-radius: 32px;
+            width: 100%;
+            height: 32px;
+            margin-top: -10px;
+        }
+        &:hover {
+            color: #fff;
+        }
     }
-    &:hover span:after, &:hover span:before {
-      border-radius: 32px;
-      width: 100%;
-      height: 32px;
-      margin-top: -10px;
-    }
-    &:hover {
-      color: #fff;
-    }
-  }
 }
 @import "sprite";
