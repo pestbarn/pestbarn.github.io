@@ -1,82 +1,82 @@
 header>div, .nerdy, .intro .one {
-  display: none;
-  visibility: hidden;
+    display: none;
+    visibility: hidden;
 }
 header {
-  overflow: visible;
-  height: auto;
-  h1 {
-    position: static;
-    font-size: 32pt;
-  }
+    overflow: visible;
+    height: auto;
+    h1 {
+        position: static;
+        font-size: 32pt;
+    }
 }
 .col {
-  &.one-half.text-right {
-    text-align: left;
-    margin-bottom: 0;
-  }
-  &.one, &.one-half {
-    width: 100%;
-    padding: 0 5% 0 5%;
-  }
-  &.one-half {
-    line-height: 1;
-  }
-  &.experience {
-    margin-bottom: 3%;
-  }
-  &.one.skills {
-    width: 50%;
-  }
-  &.intro {
-    margin-bottom: 2%;
-  }
+    &.one-half.text-right {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    &.one, &.one-half {
+        width: 100%;
+        padding: 0 5% 0 5%;
+    }
+    &.one-half {
+        line-height: 1;
+    }
+    &.experience {
+        margin-bottom: 3%;
+    }
+    &.one.skills {
+        width: 50%;
+    }
+    &.intro {
+        margin-bottom: 2%;
+    }
 }
 h1, h2, h3 {
-  font-family: "Noto Serif", Georgia;
-  font-weight: 400;
+    font-family: "Noto Serif", Georgia;
+    font-weight: 400;
 }
 h2 {
-  font-size: 18pt;
-  .intro & {
-    font-size: 16pt;
-  }
-  .experience &, .skills & {
-    margin: 5% auto 5% auto !important;
-    border-bottom: 1px solid;
-  }
-  color: #000 !important;
-  text-shadow: none !important;
-  -webkit-text-fill-color: #000 !important;
-  -webkit-background-clip: initial !important;
+    font-size: 18pt;
+    .intro & {
+        font-size: 16pt;
+    }
+    .experience &, .skills & {
+        margin: 5% auto 5% auto !important;
+        border-bottom: 1px solid;
+    }
+    color: #000 !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #000 !important;
+    -webkit-background-clip: initial !important;
 }
 h3 {
-  font-size: 18pt !important;
-  .experience .one-half & {
-    margin: 0;
-  }
-  .experience .one &, .skills & {
-    font-size: 14pt !important;
-  }
+    font-size: 18pt !important;
+    .experience .one-half & {
+        margin: 0;
+    }
+    .experience .one &, .skills & {
+        font-size: 14pt !important;
+    }
 }
 p, a {
-  font-size: 12pt;
-  color: #000 !important;
+    font-size: 12pt;
+    color: #000 !important;
 }
 .skills ol {
-  width: 120%;
-  margin-left: -10%;
+    width: 120%;
+    margin-left: -10%;
 }
 .social {
-  a>i.fa-at {
-    width: 0;
-    overflow: hidden;
-    p {
-      opacity: 1;
-      visibility: visible;
-      font-size: 12pt;
-      top: -5em;
-      left: 80pt;
+    a>i.fa-at {
+        width: 0;
+        overflow: hidden;
+        p {
+            opacity: 1;
+            visibility: visible;
+            font-size: 12pt;
+            top: -5em;
+            left: 80pt;
+        }
     }
-  }
 }

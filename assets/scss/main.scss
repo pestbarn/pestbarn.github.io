@@ -8,67 +8,61 @@
 @import "grid";
 
 header:before, {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: url($path + 'background.jpg');
-  background-size: cover;
-  @include screen(desktop) {
-    @include color-animation();
-  }
-  z-index: -1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url($path + 'background.jpg');
+    background-size: cover;
+    z-index: -1;
 }
 header {
-  width: 100%;
-  height: 80vh;
-  position: relative;
-  overflow: hidden;
-  @import "cogs";
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    @import "cogs";
 }
 section {
-  font-family: 'Noto Serif';
+    font-family: 'Noto Serif';
 }
 section.bright {
-  h2 {
-    color: #f5f5f5;
-    text-shadow: 1px 1px 2px rgba(0,0,0,.1);
-    -webkit-text-fill-color: transparent;
-    background: -webkit-linear-gradient(transparent, transparent),
-                url('../images/background.jpg') repeat;
-    background: -o-linear-gradient(transparent, transparent);
-    -webkit-background-clip: text;
-    @include screen(desktop) {
-      @include color-animation();
+    h2 {
+        color: #f5f5f5;
+        text-shadow: 1px 1px 2px rgba(0,0,0,.1);
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(transparent, transparent),
+        url('../images/background.jpg') repeat;
+        background: -o-linear-gradient(transparent, transparent);
+        -webkit-background-clip: text;
+        @include screen(desktop) {
+            @include color-animation();
+        }
     }
-  }
-  h3, a {
-    color: $headline-color;
-  }
+    h3, a {
+        color: $headline-color;
+    }
 }
 section.color {
-  background: url('../images/background.jpg');
-  background-size: cover;
-  @include screen(desktop) {
-    @include color-animation();
-  }
-  h2, h3, p, a {
-    color: #fff;
-    text-shadow: 0 0 1px rgba(0,0,0,.5);
-  }
+    background: url('../images/background.jpg');
+    background-size: cover;
+    h2, h3, p, a {
+        color: #fff;
+        text-shadow: 0 0 1px rgba(0,0,0,.5);
+    }
 }
 section.dark {
-  background: $text-color;
-  padding-bottom: 5em;
-  h2, h3, p, a, i {
-    color: #fff;
-    text-shadow: 0 0 1px rgba(0,0,0,.5);
-  }
+    background: $text-color;
+    padding-bottom: 5em;
+    h2, h3, p, a, i {
+        color: #fff;
+        text-shadow: 0 0 1px rgba(0,0,0,.5);
+    }
 }
 @import "typography";
 @import "lists";
 @media print {
-  @import "print";
+    @import "print";
 }

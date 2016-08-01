@@ -1,143 +1,162 @@
 h1, h2 {
-  font-family: 'Engagement';
-  font-weight: 600;
-  line-height: 1;
+    font-family: 'Engagement';
+    font-weight: 600;
+    line-height: 1;
 }
 h1 {
-  position: absolute;
-  bottom: -45px;
-  cursor: default;
-  text-align: center;
-  color: #fff;
-  margin: 0 auto;
-  font-size: 10em;
-  width: 100%;
-  z-index: 0;
-  text-shadow: 0 -1px 2px rgba(0,0,0,.5);
-  @include screen(handheld) {
-    bottom: -23px;
-    font-size: 5em;
-  }
+    position: absolute;
+    bottom: -47px;
+    cursor: default;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 10em;
+    width: 100%;
+    z-index: 1;
+    text-shadow: -2px -2px 10px rgba(0,0,0,.1), 2px -2px 10px rgba(0,0,0,.1), 1px -1px 0 rgba(3,169,209,.8), -1px -1px 0 rgba(3,169,209,.8);
+    @include screen(desktop) {
+        @include color-animation();
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        background: url($path + 'background.jpg');
+        width: 100vw;
+        height: 1px;
+        position: relative;
+        top: -47px;
+        z-index: -1;
+        box-shadow: 0 -2px 4px rgba(0,0,0,.2);
+    }
+    @include screen(handheld) {
+        bottom: -25px;
+        font-size: 5em;
+
+        &:after {
+            top: -25px;
+        }
+    }
 }
 h2 {
-  font-size: 8em;
-  cursor: default;
-  padding: .2em;
-  @include screen(handheld) {
-    font-size: 5em;
-    padding: .3em 0 .2em 0;
-  }
+    font-size: 8em;
+    cursor: default;
+    padding: .2em;
+    @include screen(handheld) {
+        font-size: 5em;
+        padding: .3em 0 .2em 0;
+    }
 }
 h3 {
-  font-size: 1.17em;
-  margin: 1em 0;
-  .experience .one-half & {
-    font-size: 3.1em;
-    margin: .13em 0 .66em 0;
-    @include screen(phone) {
-      font-size: 2.5em;
-      margin-top: 1.13em;
+    font-size: 1.17em;
+    margin: 1em 0;
+    .experience .one-half & {
+        font-size: 3.1em;
+        margin: .13em 0 .66em 0;
+        @include screen(phone) {
+            font-size: 2.5em;
+            margin-top: 1.13em;
+        }
     }
-  }
 }
 a {
-  text-decoration: none;
-  font-family: 'Noto Sans';
-  @include box-sizing(border-box);
-  @include transition(.2s all);
-  position: relative;
-  display: inline-block;
-  &:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    border-bottom: 1px solid #fff;
-    color: #fff;
-    @include transition(width .5s);
-  }
-  &:hover {
-    border-color: #fff;
-    &:before {
-      width: 100%;
-    }
-  }
-  &[href*="//"]:after {
-    font-family: 'FontAwesome';
-    content: "\f08e";
+    text-decoration: none;
+    font-family: 'Noto Sans';
+    @include box-sizing(border-box);
+    @include transition(.2s all);
+    position: relative;
     display: inline-block;
-    margin-left: .5em;
-    font-size: .8em;
-  }
-}
-acronym {
-  border-bottom: 1px dotted rgba(#f1f1f1,.5);
-}
-.social {
-  position: relative;
-  top: 5em;
-  a {
-    margin-bottom: 1em;
-    &:after, &:before {
-      display: none;
-    }
-    &:not(:last-child) {
-      margin-right: 1em;
+    &:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        overflow: hidden;
+        padding: 0;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        @include transition(width .5s);
     }
     &:hover {
-      @include filter(drop-shadow(0 0 5px rgba(#fff,.5)));
+        border-color: #fff;
+        &:before {
+            width: 100%;
+        }
     }
-  }
+    &[href*="//"]:after {
+        font-family: 'FontAwesome';
+        content: "\f08e";
+        display: inline-block;
+        margin-left: .5em;
+        font-size: .8em;
+    }
+}
+acronym {
+    border-bottom: 1px dotted rgba(#f1f1f1,.5);
+}
+.social {
+    position: relative;
+    top: 5em;
+    a {
+        margin-bottom: 1em;
+        &:after, &:before {
+            display: none;
+        }
+        &:not(:last-child) {
+            margin-right: 1em;
+        }
+        &:hover {
+            @include filter(drop-shadow(0 0 5px rgba(#fff,.5)));
+        }
+    }
 }
 .social a>i {
-  font-size: 2em;
-  p {
-    position: absolute;
-    top: -3em;
-    left: -20%;
-    font-size: .4em;
-    opacity: 0;
-    visibility: hidden;
-    background: #fff;
-    padding: .5em;
-    color: #323232;
-    border-radius: 5px 5px 10px 10px;
-    text-shadow: none;
-    cursor: default;
-    letter-spacing: .1px;
-    font-family: 'Noto Sans';
-    @include transition(.25s all);
-    i {
-      color: #323232;
-      display: inline;
-      text-shadow: none;
+    font-size: 2em;
+    p {
+        position: absolute;
+        top: -3em;
+        left: -20%;
+        font-size: .4em;
+        opacity: 0;
+        visibility: hidden;
+        background: #fff;
+        padding: .5em;
+        color: #323232;
+        border-radius: 5px 5px 10px 10px;
+        text-shadow: none;
+        cursor: default;
+        letter-spacing: .1px;
+        font-family: 'Noto Sans';
+        @include transition(.25s all);
+        i {
+            color: #323232;
+            display: inline;
+            text-shadow: none;
+        }
+        &:after {
+            content: '';
+            width: 1em;
+            height: 1em;
+            top: 0em;
+            left: 15%;
+            margin-left: -9px;
+            position: absolute;
+            z-index: -1;
+            border-right: 6px solid #fff;
+            border-bottom: 6px solid #fff;
+            @include transform(rotate(45deg));
+            border-radius: 2px;
+            @include transition(.4s all);
+        }
     }
-    &:after {
-      content: '';
-      width: 1em;
-      height: 1em;
-      top: 0em;
-      left: 15%;
-      margin-left: -9px;
-      position: absolute;
-      z-index: -1;
-      border-right: 6px solid #fff;
-      border-bottom: 6px solid #fff;
-      @include transform(rotate(45deg));
-      border-radius: 2px;
-      @include transition(.4s all);
+    &:hover p {
+        opacity: 1;
+        visibility: visible;
+        top: -4em;
+        &:after {
+            top: .65em;
+        }
     }
-  }
-  &:hover p {
-    opacity: 1;
-    visibility: visible;
-    top: -4em;
-    &:after {
-      top: .65em;
-    }
-  }
 }
