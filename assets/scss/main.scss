@@ -17,6 +17,7 @@ header:before, {
     background: url($path + 'background.jpg');
     background-size: cover;
     z-index: -1;
+    @include filter(grayscale(.8) brightness(1.5));
 }
 header {
     width: 100%;
@@ -48,9 +49,10 @@ section.bright {
 section.color {
     background: url('../images/background.jpg');
     background-size: cover;
+    @include filter(grayscale(.8));
     h2, h3, p, a {
         color: #fff;
-        text-shadow: 0 0 1px rgba(0,0,0,.5);
+        text-shadow: 0 1px 3px rgba(0,0,0,.5);
     }
 }
 section.dark {
