@@ -1,7 +1,7 @@
-@mixin color-animation($duration: 288s) {
+@mixin color-animation($duration: 144s) {
     // not if mobile
     @include animation(background-animation $duration infinite);
-    @include filter(hue-rotate(0deg));
+    @include filter(grayscale(.7) hue-rotate(0deg));
 }
 @mixin topleft() {
     top: 45%;

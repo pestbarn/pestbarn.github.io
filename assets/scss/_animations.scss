@@ -1,18 +1,18 @@
 @include keyframes(background-animation) {
     0% {
-        @include filter(hue-rotate(0deg) grayscale(0));
+        @include filter(hue-rotate(0deg) grayscale(.7));
     }
     25% {
-        @include filter(hue-rotate(90deg) grayscale(.5));
+        @include filter(hue-rotate(90deg) grayscale(.7));
     }
     50% {
-        @include filter(hue-rotate(180deg) grayscale(.4));
+        @include filter(hue-rotate(180deg) grayscale(.7));
     }
     75% {
-        @include filter(hue-rotate(270deg) grayscale(.4));
+        @include filter(hue-rotate(270deg) grayscale(.7));
     }
     100% {
-        @include filter(hue-rotate(360deg) grayscale(0));
+        @include filter(hue-rotate(360deg) grayscale(.7));
     }
 }
 @include keyframes(spin) {
