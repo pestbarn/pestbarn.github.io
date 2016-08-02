@@ -45,7 +45,8 @@ $i: 1; $s: 38; $t: -19; $l: -89.3; $z: 2;
 ```
 
 OK, and here's what's happening:
-1. Initiate all variables
+
+* Initiate all variables
    * `$i` is an **i**ncremental 1-index counter
    * `$b` is a "**b**reaking point", returning `true` for the first 6 circles, and `false` for the last 5
    * `$s` is the starting **s**ize
@@ -53,7 +54,7 @@ OK, and here's what's happening:
    * `$t` is the **t**op margin
    * `$l` is the **l**eft margin
    * `$z` is the **z**-index
-2. Run the loop 11 times in total
+* Run the loop 11 times in total
    * Starting from the left, circles will decrease in size and move towards the center
    * Past the center (which is circle number 6 in this case), circles will increase in size and move towards the right edge
 
