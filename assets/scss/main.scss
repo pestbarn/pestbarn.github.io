@@ -17,7 +17,7 @@ header:before, {
     background: url($path + 'background.jpg');
     background-size: cover;
     z-index: -1;
-    @include filter(grayscale(.8) brightness(1.5));
+    @include filter(grayscale(.95) brightness(1.5));
 }
 header {
     width: 100%;

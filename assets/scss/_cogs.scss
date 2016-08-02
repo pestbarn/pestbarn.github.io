@@ -2,60 +2,40 @@
     width: 100%;
     height: 100%;
     div {
-        @include sqsize(30);
-        border: 2px dashed rgba(255,255,255,.4);
+        position: absolute;
+        border: 2px outset rgba(255,255,255,.4);
         border-radius: 50%;
         background: rgba(255,255,255,.1);
         @include background-image(radial-gradient(45% 45%, rgba(255,255,255,.1) 45%, rgba(255,255,255,.2) 80%));
         @include box-shadow(1px 1px 5px rgba(0,0,0,.2));
-        position: absolute;
-        z-index: 6;
         @include topleft();
-        @include transform(rotate(0deg));
-        @include animation(spin 72s infinite alternate ease-in-out);
+        @include animation(spin 12s infinite linear);
         &:nth-child(odd) {
             @include animation-direction(alternate-reverse);
         }
 
-        $i: 6;
-        $s: 38;
-        $t: -19;
-        $l: -90;
-        $z: 2;
-        @while $i > 0 {
+        // generate circles from left to right
+        // i: counter
+        // s: size
+        // t: top margin
+        // l: left margin
+        // z: z-index
+        // b: breaking point
+
+        $i: 1; $s: 38; $t: -19; $l: -89.3; $z: 2;
+        @while $i <= 11 {
             &:nth-child(#{$i}) {
                 @include sqsize($s);
                 margin-top: $t+vh;
                 margin-left: $l+vh;
                 z-index: $z;
             }
-            $i: $i - 1;
-            $s: $s - 2;
-            $t: $t + 1;
-            @if $l == -30 {
-                $l: $l + 16
-            } @else {
-                $l: $l + 15;
-            }
+            $i: $i + 1;
             $z: $z + 1;
-        }
-        $i: 11;
-        $s: 38;
-        $t: -19;
-        $l: 52;
-        $z: 2;
-        @while $i > 6 {
-            &:nth-child(#{$i}) {
-                @include sqsize($s);
-                margin-top: $t+vh;
-                margin-left: $l+vh;
-                z-index: $z;
-            }
-            $i: $i - 1;
-            $s: $s - 2;
-            $t: $t + 1;
-            $l: $l - 13;
-            $z: $z + 1;
+            $b: $i <= 6;
+            $l: if($b, $l + 15, $l + 13);
+            $s: if($b, $s - 2, $s + 2);
+            $t: if($b, $t + 1, $t - 1);
         }
     }
 }
