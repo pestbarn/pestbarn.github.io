@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto';
 @import "compass";
 @import "grids";
 
@@ -16,7 +17,7 @@ $column-inside-height: $column-height*.912;
 body {
   @include baseline-grid-background();
   margin: 0;
-  font-family: 'Proxima Nova';
+  font-family: 'Roboto';
 }
 .container {
   @include container($container-max-width);
