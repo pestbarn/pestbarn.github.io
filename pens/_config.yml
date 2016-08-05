@@ -5,6 +5,7 @@ email: "hello@mattias.pw"
 author: "Mattias Hagberg"
 lang: "en"
 locale: "en_SE"
+repository: pestbarn/pestbarn.github.io
 
 # Jekyll
 paginate: 10
