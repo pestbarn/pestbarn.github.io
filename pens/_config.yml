@@ -15,7 +15,7 @@ timezone: Europe/Stockholm
 paginateLabel: page
 paginate_path: "page/:num"
 permalink: pretty
-baseurl: 
+baseurl: /pens
 
 # Includes
 addthisId: ""
