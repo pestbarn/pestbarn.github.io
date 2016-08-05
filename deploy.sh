@@ -2,17 +2,6 @@
 set -o errexit #abort if any command fails
 me=$(basename "$0")
 
-deploy_directory=pens
-deploy_branch=gh-pages
-
-#if no user identity is already set in the current git environment, use this:
-default_username=deploy.sh
-default_email=XX1011+deploy.sh@gmail.com
-
-#repository to deploy to. must be readable and writable.
-#using https url instead of ssh to avoid issues with host authenticity checks
-repo=https://$GITHUB_TOKEN@github.com/pestbarn.github.io.git
-
 help_message="\
 Usage: $me [-c FILE] [<options>]
 Deploy generated files to a git branch.
@@ -81,7 +70,7 @@ parse_args() {
 	# vars should be declared here, with sane defaults if applicable.
 
 	# Source directory & target branch.
-	deploy_directory=${GIT_DEPLOY_DIR:-dist}
+	deploy_directory=${GIT_DEPLOY_DIR:-pens}
 	deploy_branch=${GIT_DEPLOY_BRANCH:-gh-pages}
 
 	#if no user identity is already set in the current git environment, use this:
