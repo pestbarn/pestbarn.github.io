@@ -8,9 +8,7 @@ locale: "en_SE"
 
 # Jekyll
 paginate: 10
-highlighter: ""
 markdown: kramdown
-gems: [jekyll-paginate]
 timezone: Europe/Stockholm
 paginateLabel: page
 paginate_path: "page/:num"
