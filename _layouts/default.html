@@ -56,8 +56,7 @@ layout: htmlCompressor
 	{% if site.yandex != "" %}<meta name="yandex-verification" content="{{ site.yandex }}">{% endif %}
 	{% if site.google != "" %}<meta name="google-site-verification" content="{{ site.google }}">{% endif %}
 
-	<!-- Favicon & RSS -->
-	<link rel="icon" href="{{ site.baseurl }}/assets/img/favicon.ico">
+	<!-- RSS -->
 	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/rss.xml">
 
 	<!-- CSS & JS files -->
@@ -76,7 +75,7 @@ layout: htmlCompressor
 		<section>
 
 			<!-- Homepage -->
-			<a href="{{ site.baseurl }}"><i class="icon-home"></i></a>
+			<a href="http://www.mattias.pw/projects"><i class="icon-home"></i></a>
 
 			<!-- Site name & description -->
 			<div>
@@ -95,9 +94,6 @@ layout: htmlCompressor
 				</div><!-- .dt -->
 
 			</div><!-- div -->
-
-			<!-- Mail -->
-			<a href="mailto:{{ site.email }}"><i class="icon-envelope-o"></i></a>
 
 		</section><!-- section -->
 
@@ -129,13 +125,9 @@ layout: htmlCompressor
 				<div class="dtc h6">
 
 					<!-- Copyright -->
-					<a href="{{ site.baseurl }}" class="h6">{{ site.name }}</a> &copy; {{ site.time | date: "%Y" }} &bull; {% if site.lang == "tr" %}Tüm hakları saklıdır{% else %}All rights reserved{% endif %}.
+					<a href="{{ site.baseurl }}" class="h6">{{ site.name }}</a>.
 					<br>
-					{% if site.lang == "tr" %}
-						<a href="https://github.com/jekyll/jekyll" class="h6" target="_blank">Jekyll</a> ile <a href="https://github.com/ozgrozer/dasper" class="h6" target="_blank">Dasper</a> teması kullanılarak oluşturulmuştur.
-					{% else %}
-						Proudly published with <a href="https://github.com/jekyll/jekyll" class="h6" target="_blank">Jekyll</a> using <a href="https://github.com/ozgrozer/dasper" class="h6" target="_blank">Dasper</a> theme.
-					{% endif %}
+					Proudly published with <a href="https://github.com/jekyll/jekyll" class="h6" target="_blank">Jekyll</a> using <a href="https://github.com/ozgrozer/dasper" class="h6" target="_blank">Dasper</a> theme.
 
 				</div><!-- .dtc -->
 

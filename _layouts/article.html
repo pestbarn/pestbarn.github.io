@@ -10,27 +10,8 @@ layout: default
 
 	<!-- Article date -->
 	<span class="article__date">
-		{% if site.lang == "tr" %}
-			{% assign m = page.date | date: "%-m" %}
-			{{ page.date | date: "%-d" }} 
-			{% case m %}
-				{% when "1" %}OCAK 
-				{% when "2" %}ŞUBAT 
-				{% when "3" %}MART 
-				{% when "4" %}NİSAN 
-				{% when "5" %}MAYIS 
-				{% when "6" %}HAZİRAN 
-				{% when "7" %}TEMMUZ 
-				{% when "8" %}AĞUSTOS 
-				{% when "9" %}EYLÜL 
-				{% when "10" %}EKİM 
-				{% when "11" %}KASIM 
-				{% when "12" %}ARALIK 
-			{% endcase %}
-			{{ page.date | date: "%Y" }}
-		{% else %}
-			{{ page.date | date_to_long_string | upcase }}
-		{% endif %}
+		{{ page.date | date: "%Y" }}
+		{{ page.date | date_to_long_string | upcase }}
 	</span>
 
 	<!-- Article description -->

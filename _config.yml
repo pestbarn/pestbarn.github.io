@@ -14,12 +14,11 @@ paginateLabel: page
 paginate_path: "page/:num"
 permalink: pretty
 baseurl: 
-includes_dir: ../_includes
 
 # Includes
 addthisId: ""
 disqusUsername: "mattias-pw"
-googleAnalyticsId: ""
+googleAnalyticsId: "UA-33644854-1"
 
 # Search engine verifications
 bing: ""
