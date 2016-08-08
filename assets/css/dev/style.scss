@@ -389,7 +389,7 @@ main {
 						left: -$containerPadding-largescreen;
 						@include vendor2(width, calc(100% + #{$containerPadding-largescreen * 2}));
 					}
-					/* Widescreen */
+				/* Widescreen */
 					@media(min-width:$widescreen-min) {
 						left: -$containerPadding-widescreen;
 						@include vendor2(width, calc(100% + #{$containerPadding-widescreen * 2}));
@@ -418,12 +418,22 @@ main {
 			/* Article title */
 			.h1 {
 
-				border-bottom: none;
+				border-left: 6px solid $linkBorderColor;
 				display: inline-block;
+				border-bottom: 0;
+				padding-left: 6px;
+				margin-left: -10px;
+				transition: .2s all;
 
 				/* .h1:hover */
 				&:hover {
-					color: lighten($titleTextColor, 20%);
+					color: lighten($titleTextColor, 5%);
+					border-left-color: #57c9ef;
+				}
+				&.no-hover:hover {
+					color: $titleTextColor;
+					border-left-color: $linkBorderColor;
+					cursor: default;
 				}/* &:hover */
 
 			}/* .h1 */
@@ -453,6 +463,30 @@ main {
 				}
 
 			}/* h* */
+
+			.post-category {
+				margin-top: .3em !important;
+
+				a {
+					background: #fff;
+					color: #333;
+					padding: 4px 6px;
+					border: 0;
+					box-shadow: 0 3px 0 $linkBorderColor;
+
+					&:hover {
+						transition: .2s all;
+						box-shadow: 0 3px 0 #57c9ef;
+						color: #333;
+					}
+
+					&[href*="pens"] {
+						background: #fff url(https://blog.codepen.io/wp-content/uploads/2012/06/Button-Black-Large.png) no-repeat 3px;
+						background-size: 22px 22px;
+						padding: 4px 6px 4px 28px;
+					}
+				}
+			}
 
 			/* Blockquotes */
 			blockquote {
@@ -599,6 +633,7 @@ main {
 			a {
 
 				border-bottom: 4px solid $linkBorderColor;
+				color: adjust-color($linkBorderColor, $saturation: -20%, $lightness: -20%);
 
 				/* a:hover, a:active */
 				&:hover, &:active {

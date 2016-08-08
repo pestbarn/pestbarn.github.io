@@ -3,20 +3,35 @@ layout: default
 ---
 
 <!-- Article -->
-<article{% if site.addthisId == "" && site.disqusUsername == "" %} class="noBorder"{% endif %}>
+<article>
 
 	<!-- Article title -->
-	<h1>{{ page.title }}</h1>
+	<h1 class="h1 no-hover">{{ page.title }}</h1>
+	<div class="post-category">
+		<a href="/projects/category/#{{ page.category | slugify }}">
+			{{ page.category | capitalize }}
+		</a>
+	</div>
 
 	<!-- Article date -->
 	<span class="article__date">
-		{{ page.date | date: "%Y" }}
 		{{ page.date | date_to_long_string | upcase }}
 	</span>
 
 	<!-- Article description -->
 	<section>{{ page.content }}</section>
+	{% if page.category == "Pens" %}
+	<section>
+		<p>{{ page.description }}</p>
+	</section>
+	{% endif %}
 
+	<div class="tags">
+		Tags:
+    		{% for tag in page.tags %}
+    			<a href="/projects/tag/#{{ tag | slugify }}">{{ tag }}</a>
+    		{% endfor %}
+	</div>
 </article><!-- article -->
 
 <!-- If addthisId declared -->

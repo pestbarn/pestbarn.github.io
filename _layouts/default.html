@@ -7,8 +7,8 @@ layout: htmlCompressor
 <head>
 
 	<!-- SEO -->
-	<title>{% if page.title %}{{ page.title }}{% elsif site.name %}{{ site.name }}{% endif %}</title>
-	<meta name="description" content="{% if page.title %}{{ page.content | strip_html | slice: 0, 150 }}{% elsif site.description %}{{ site.description }}{% endif %}">
+	<title>{% if page.title %}{{ page.title }} - {{ site.name }}{% elsif site.name %}{{ site.name }}{% endif %}</title>
+	<meta name="description" content="{% if page.description %}{{ page.description }}{% elsif page.title %}{{ page.content | strip_html | slice: 0, 150 }}{% endif %}">
 
 	<!-- Meta for robots -->
 	<meta charset="UTF-8">
@@ -20,7 +20,6 @@ layout: htmlCompressor
 
 	<!-- Google+ -->
 	<meta itemprop="name" content="{% if page.title %}{{ page.title }}{% elsif site.name %}{{ site.name }}{% endif %}">
-	<meta itemprop="description" content="{% if page.title %}{{ page.content | strip_html | slice: 0, 150 }}{% elsif site.description %}{{ site.description }}{% endif %}">
 
 	<!-- Open Graph(Facebook, Pinterest) -->
 	<meta property="og:type" content="website">
@@ -151,6 +150,7 @@ layout: htmlCompressor
 		</script><!-- script -->
 
 	{% endif %}
+	<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 </body>
 </html>

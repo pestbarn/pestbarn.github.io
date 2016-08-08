@@ -1,0 +1,69 @@
+---
+layout:   default
+title:    Category
+description: Posts sorted by category
+---
+{% comment%}
+Here we generate all the categories.
+{% endcomment%}
+
+{% assign rawcats = "" %}
+{% for post in site.posts %}
+{% assign tcats = post.category | join:'|' | append:'|' %}
+{% assign rawcats = rawcats | append:tcats %}
+{% endfor %}
+
+{% assign rawcats = rawcats | split:'|' | sort %}
+
+{% assign cats = "" %}
+
+{% for cat in rawcats %}
+{% if cat != "" %}
+
+{% if cats == "" %}
+{% assign cats = cat | split:'|' %}
+{% endif %}
+
+{% unless cats contains cat %}
+{% assign cats = cats | join:'|' | append:'|' | append:cat | split:'|' %}
+{% endunless %}
+{% endif %}
+{% endfor %}
+<article>
+	<h1 class="page-title">
+                Posts by {{ page.title }}
+        </h1>
+
+	<div class="posts">
+		<p>
+		{% for ct in cats %}
+			<a href="#{{ ct | slugify }}"> {{ ct }} </a> &nbsp;&nbsp;
+		{% endfor %}
+		</p>
+
+		{% for ct in cats %}
+		<h2 id="{{ ct | slugify }}">{{ ct }}</h2>
+		<ul style="margin-top: 1em;">
+  		{% for post in site.posts %}
+  		{% if post.category contains ct %}
+  			<li style="margin: 0 0 .5em 2em;">
+      				<a href="{{ post.url }}" style="border-bottom: 0;">
+        				{{ post.title }}
+        				<small style="font-size: .7em;">
+						{{ post.date | date_to_string }}
+					</small>
+      				</a>
+      				{% for tag in post.tags %}
+				<a style="font-size: .7em; padding-bottom: .1em; margin-left: .5em; border-bottom-width: 1px;" href="/projects/tag/#{{ tag | slugify }}">
+					({{ tag }})
+				</a>
+      				{% endfor %}
+  			</li>
+  		{% endif %}
+  		{% endfor %}
+		</ul>
+		{% endfor %}
+
+	</div>
+
+</article>
