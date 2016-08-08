@@ -1,3 +1,4 @@
 .sass-cache
-pens/.sass-cache/
-pens/.jekyll-metadata
+_site/
+.sass-cache/
+.jekyll-metadata

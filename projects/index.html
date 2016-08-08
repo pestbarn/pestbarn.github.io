@@ -2,16 +2,7 @@
 layout: default
 ---
 
-<!-- Don't show pagination bar in homepage -->
-{% if paginator.page > 1 %}
-
-	<!-- Include pagination bar -->
-	{% include pagination.html section="top" %}
-
-{% endif %}
-
-<!-- Loop for posts by paginator -->
-{% for post in paginator.posts %}
+{% for post in site.posts %}
 
 	<!-- Article -->
 	<article>
@@ -68,6 +59,3 @@ layout: default
 	</article><!-- article -->
 
 {% endfor %}
-
-<!-- Include pagination bar -->
-{% include pagination.html section="bottom" %}
