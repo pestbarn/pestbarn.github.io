@@ -28,8 +28,6 @@ google: ""
 #Sitemap
 sitemap:
     file: "/sitemap.xml"
-    exclude:
-        - "/404.html"
     include_posts:
         - "/projects"
     change_frequency_name: "daily"
