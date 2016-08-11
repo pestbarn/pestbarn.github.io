@@ -26,7 +26,8 @@ layout: default
 			{% endif %}
 
 		<!-- Article pre description -->
-		<section>{{ post.content | slice: 0, 200 }}</section>
+		{% capture permalink %} <a href="{{ site.baseurl }}{{ post.url }}" style="font-style: italic" title="Continue reading">[...]</a>{% endcapture %}
+		<section>{{ post.content | truncatewords: 30, permalink }}</section>
 
 		<!-- Article date & article continue reading button container -->
 		<div class="article__bottom">
