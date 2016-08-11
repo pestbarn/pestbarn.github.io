@@ -101,6 +101,7 @@ p, a {
         text-decoration: underline;
     }
 }
-.dark .two {
+.dark, .dark .two {
     margin-bottom: 0;
+    padding-bottom: 0;
 }
