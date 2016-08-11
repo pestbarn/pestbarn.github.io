@@ -63,7 +63,7 @@ h2 {
         }
     }
     .experience &, .skills & {
-        margin: 5% auto 5% auto !important;
+        margin: 2% auto !important;
         border-bottom: 1px solid;
     }
     color: #000 !important;
@@ -78,6 +78,7 @@ h3 {
     }
     .experience .one &, .skills & {
         font-size: 14pt !important;
+        margin: 1em 0 0 !important;
     }
 }
 p, a {
