@@ -1,0 +1,52 @@
+input[name="switch"], input[name="switch"] + label {
+    visibility: hidden;
+}
+.lamp {
+    position: relative;
+    margin: 0 auto -10rem;
+    width: .7rem;
+    height: 10rem;
+    @include background-image(linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)));
+    background-repeat: no-repeat;
+    background-size: .15rem 8rem, .4rem .8rem, .7rem 2rem;
+    background-position: 50% 0, .19rem 8rem, 0 8.8rem;
+}
+.lamp:before, .lamp:after {
+    content: '';
+    position: absolute;
+}
+.lamp:before {
+    left: -1.65rem;
+    bottom: -4rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.03);
+    box-shadow: inset 2px -2px 10px rgba(255,255,255,.07);
+    transition: all .15s;
+}
+.gonna-give-light,
+.gonna-give-light:before {
+    position: absolute;
+}
+.gonna-give-light {
+    top: 10.05rem;
+    left: .25rem;
+    width: 0;
+    height: 1.5rem;
+    border-right: .2rem solid rgba(255,255,255,.05);
+}
+.gonna-give-light:before {
+    content:'';
+    top: 1.5rem;
+    left: -.35rem;
+    width: .9rem;
+    height: .9rem;
+    border-radius: 50%;
+    border: .2rem solid rgba(255,255,255,.05);
+    box-shadow: 0 0 50px rgba(255,255,255,0);
+}
+body.shift .lamp:before {
+    background: rgba(255,255,255,1);
+    box-shadow: 0 2px 10px rgba(255,255,255,.8), 0 5px 50px rgba(255,255,255,.8), 0 8px 80px rgba(255,255,255,.6), 0 8px 120px rgba(255,255,255,.6);
+}
