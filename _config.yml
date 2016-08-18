@@ -32,3 +32,6 @@ sitemap:
         - "/projects"
     change_frequency_name: "daily"
     priority_name: "1.00"
+
+haml4gh:
+    source: _posts
