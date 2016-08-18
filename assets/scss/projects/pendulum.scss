@@ -1,0 +1,14 @@
+@import "compass";
+@import "starburst";
+@import "pendulum_lamp";
+@import "pendulum_pendula";
+@import "pendulum_animations";
+
+body {
+	@include starburst(both,15,transparentize(slateblue,.85),darkslateblue);
+	min-height: 100vh;
+}
+
+.shift * {
+    //@include animation-duration(8000ms !important);
+}

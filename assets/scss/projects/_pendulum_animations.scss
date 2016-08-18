@@ -1,0 +1,38 @@
+@include keyframes(reflection) {
+	from {
+		@include transform(rotate(0deg));
+	}
+	to {
+		@include transform(rotate(-90deg));
+	}
+}
+@include keyframes(swing) {
+	from {
+		@include transform(rotate($swing-magnitude));
+		@include filter-gradient(#6a5acd, #9188cc, horizontal);
+	}
+	to {
+		@include transform(rotate(-$swing-magnitude));
+		@include filter-gradient(#9188cc, #6a5acd, horizontal);
+	}
+}
+
+@include keyframes(tracing) {
+	0% {
+		box-shadow: 0 0 2px 0 ghostwhite;
+	}
+	100% {
+		box-shadow: 0 0 0 0 ghostwhite;
+	}
+}
+@include keyframes(pulse) {
+	0% {
+		transform: rotate(-1deg) scaleX(1);
+	}
+	50% {
+		transform: rotate(0deg) scaleX(1.1);
+	}
+	100% {
+	    transform: rotate(1deg) scaleX(1);
+	}
+}

@@ -1,6 +1,4 @@
-require 'compass/import-once/activate'
-# Require any additional compass plugins here.
-
+require 'susy'
 
 http_path = "/"
 css_dir = "assets/css"
@@ -10,5 +8,5 @@ javascripts_dir = "assets/js"
 
 output_style = :compressed # :expanded or :nested or :compact or :compressed
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
 line_comments = false
+disable_warnings = true

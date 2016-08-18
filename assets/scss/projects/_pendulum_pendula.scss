@@ -1,0 +1,73 @@
+$p-radius: 32px;
+$p-max-length: 512;
+
+$section-width: #{$p-max-length}px;
+$section-height: $section-width;
+
+$swing-magnitude: 13deg;
+
+section {
+	width: $section-width;
+	height: $section-height;
+	margin: 0 auto;
+	position: relative;
+}
+
+[class*=pendulum] {
+	position: absolute;
+	bottom: 0;
+	width: $p-radius;
+	height: $p-radius;
+	left: 50%;
+	border-radius: 50%;
+	animation: swing 1s infinite ease-in-out alternate;
+	margin-left: -16px;
+	background: slateblue;
+
+	&:before {
+		content: "";
+		display: block;
+		width: $p-radius;
+		height: $p-radius;
+		top: 0;
+		left: 0;
+		border-radius: 50%;
+		animation: reflection 1s infinite ease-in-out alternate;
+
+		body.shift & {
+			@include background-image(linear-gradient(left bottom, darken(#6a5acd, 2.5%) 50%, lighten(#9188cc, 30%) 100%));
+		}
+	}
+
+	&:after {
+		content: "";
+		display: block;
+		width: 1px;
+		margin-left: 16px;
+		background: transparentize(ghostwhite,.8);
+		animation: tracing 1s infinite ease-in-out alternate;
+		z-index: -1;
+	}
+}
+
+@for $i from 1 through 10 {
+	$length: $p-max-length - 16 * ($i - 1);
+	$G: 9.8;
+	$period: 3.1417 * sqrt(($length/100) / $G);
+	$animation-duration: $period/2;
+
+	.pendulum-#{$i} {
+		bottom: 16px * ($i - 1);
+		transform-origin: center -#{$length}px;
+		animation-duration: #{$animation-duration}s;
+		z-index: -#{$i};
+
+		&:before {
+			animation-duration: #{$animation-duration}s;
+		}
+		&:after {
+			height: #{$length}px;
+			margin-top: calc(-#{$length}px + -#{$p-radius});
+		}
+	}
+}
