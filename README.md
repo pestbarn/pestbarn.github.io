@@ -1,5 +1,5 @@
 ## mattias.pw
-This is where you will find the source code for my online resume, located at [mattias.pw](http://www.mattias.pw). This project is released under the **CC0 1.0 Universal** license - for more information, see the [license file](https://github.com/pestbarn/pestbarn.github.io/blob/master/LICENSE) (not including everything in the `/pens/` folder).
+This is where you will find the source code for my online resume, located at [mattias.pw](http://www.mattias.pw). This project is released under the **CC0 1.0 Universal** license - for more information, see the [license file](https://github.com/pestbarn/pestbarn.github.io/blob/master/LICENSE) (inclusive only of the website itself).
 
 Everything is pretty straight forward. Feel free to have a look in the `/assets/` folder, and if you have any questions, don't hesitate to contact me!
 
