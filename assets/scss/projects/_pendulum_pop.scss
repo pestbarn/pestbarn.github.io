@@ -17,6 +17,11 @@
     background: rgba(255,255,255,.05);
     border-color: transparentize(slateblue,.7) transparentize(lighten(darkslateblue,10%),.7) transparentize(lighten(darkslateblue,10%),.7) transparentize(slateblue,.7);
 
+    body.shift & {
+        border-color: lighten(transparentize(slateblue,.7), 10%) lighten(transparentize(darkslateblue,.7),20%) lighten(transparentize(darkslateblue,.7),20%) lighten(transparentize(slateblue,.7), 10%);
+        @include background(linear-gradient(to bottom, rgba(255,255,255,.1) 0%,rgba(255,255,255,0.05) 30%))
+    }
+
     &:before {
         content: '';
         position: absolute;
