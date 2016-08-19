@@ -3,7 +3,7 @@
     top: 50%; left: 50%;
     width: 300px; height: 120px;
     margin: -60px 0 0 -150px;
-    perspective: 800px;
+    perspective: 300px;
 }
 .popup {
     position: absolute;
@@ -11,7 +11,6 @@
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px 0 20px 0;
-    cursor: pointer;
     transform-style: preserve-3d;
     border: 10px solid;
     background: rgba(255,255,255,.05);
