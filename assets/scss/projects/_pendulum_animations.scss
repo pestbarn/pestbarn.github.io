@@ -1,9 +1,9 @@
 @include keyframes(reflection) {
 	from {
-		@include transform(rotate(0deg));
+		@include transform(rotate(calc(0deg - (#{$swing-magnitude} * 2))));
 	}
 	to {
-		@include transform(rotate(-90deg));
+		@include transform(rotate(calc(-90deg + (#{$swing-magnitude} * 2))));
 	}
 }
 @include keyframes(swing) {
