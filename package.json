@@ -1,0 +1,12 @@
+{
+  "name": "mattias.pw",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "github:pestbarn/pestbarn.github.io",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-jekyll": "^0.4.4"
+  }
+}
