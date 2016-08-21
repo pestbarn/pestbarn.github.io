@@ -15,6 +15,10 @@ paginate_path: "page/:num"
 permalink: pretty
 baseurl: 
 
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
+
 # Includes
 addthisId: ""
 disqusUsername: "mattias-pw"
