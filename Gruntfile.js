@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 		jekyll: {
 			options: {
 				bundleExec: true,
+				serve: true,
 			},
 			dist: {
 				options: {
