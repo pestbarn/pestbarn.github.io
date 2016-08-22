@@ -53,6 +53,25 @@ h2 {
         font-size: 5em;
         padding: .3em 0 .2em 0;
     }
+    a {
+        font-family: inherit;
+
+        &:after {
+            content: "⤴";
+            position: relative;
+            top: 10px;
+            left: -21px;
+            text-shadow: none;
+            font-size: .6em;
+            transform: rotate(30deg);
+            display: inline-block;
+            @include screen(handheld) {
+                top: 6px;
+                left: -15px;
+                font-size: .4em;
+            }
+        }
+    }
 }
 h3 {
     font-size: 1.17em;
