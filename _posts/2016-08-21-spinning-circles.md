@@ -3,7 +3,7 @@ layout: article
 title: "Spinning circle animation in Sass"
 description: "How is the circle animation done on www.mattias.pw? Let's go through it step by step."
 category: Tutorials
-tags: [css,sass]
+tags: [sass,haml]
 ---
 
 ### How is that circle animation done?
