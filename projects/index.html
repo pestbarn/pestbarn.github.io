@@ -3,7 +3,9 @@ layout: default
 ---
 
 {% for post in site.posts %}
-	{% if post.layout == "blank" %} {% continue %} {% endif %}
+	{% comment %}
+		{% if post.layout == "blank" %} {% continue %} {% endif %}
+	{% endcomment %}
 	<!-- Article -->
 	<article>
 
@@ -16,18 +18,32 @@ layout: default
 		</div>
 
 			<!-- If article has a cover photo -->
-			{% if post.coverPhoto %}
+			{% if post.coverPhoto and post.layout != "blank" %}
 
 				<!-- Article image with aspect ratio -->
 				<a href="{{ site.baseurl }}{{ post.url }}" class="ar-container">
-					<span class="ar-content" style="background-image: url({{ post.coverPhoto }});"></span>
+					<span class="ar-content" style="background-image: url(/assets/images/posts/{{ post.coverPhoto }});"></span>
 				</a><!-- .ar-container -->
 
 			{% endif %}
 
-		<!-- Article pre description -->
-		{% capture permalink %} <a href="{{ site.baseurl }}{{ post.url }}" style="font-style: italic" title="Continue reading">[...]</a>{% endcapture %}
-		<section>{{ post.content | truncatewords: 30, permalink }}</section>
+		{% if post.layout == "blank" %}
+			<section>
+				<h3><a href="{{ site.baseurl }}{{ post.url }}">Go to project page ⤇</a></h3>
+			</section>
+			{% if post.coverPhoto %}
+
+				<!-- Article image with aspect ratio -->
+				<a href="{{ site.baseurl }}{{ post.url }}" class="ar-container">
+					<span class="ar-content" style="background-image: url(/assets/images/posts/{{ post.coverPhoto }});"></span>
+				</a><!-- .ar-container -->
+
+			{% endif %}
+		{% else %}
+			<!-- Article pre description -->
+			{% capture permalink %} <a href="{{ site.baseurl }}{{ post.url }}" style="font-style: italic" title="Continue reading">[...]</a>{% endcapture %}
+			<section>{{ post.content | truncatewords: 30, permalink }}</section>
+		{% endif %}
 
 		<!-- Article date & article continue reading button container -->
 		<div class="article__bottom">
