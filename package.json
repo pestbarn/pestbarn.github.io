@@ -10,10 +10,9 @@
   "license": "CC0-1.0",
   "homepage": "https://github.com/pestbarn/pestbarn.github.io#readme",
   "devDependencies": {
-    "autoprefixer": "^6.4.1",
-    "cssnext": "^1.8.4",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.2.0",
+    "postcss-cssnext": "^2.8.0",
     "precss": "^1.4.0"
   }
 }
