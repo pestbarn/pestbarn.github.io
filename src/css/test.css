@@ -1,0 +1,24 @@
+/* Testing autoprefixer */
+ 
+.autoprefixer {
+  display: flex;
+}
+ 
+/* Testing cssnext */
+ 
+.cssnext {
+  background: color(red alpha(-10%));
+}
+ 
+/* Testing precss */
+ 
+.precss {
+  @if 3 < 5 {
+    background: green;
+  }
+  @else {
+    background: blue;
+  }
+}
+
+/* https://webdesign.tutsplus.com/series/postcss-deep-dive--cms-889 */
