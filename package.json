@@ -11,8 +11,11 @@
   "homepage": "https://github.com/pestbarn/pestbarn.github.io#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-haml": "^0.1.6",
     "gulp-postcss": "^6.2.0",
+    "gulp-uglify": "^2.0.0",
     "postcss-cssnext": "^2.8.0",
-    "precss": "^1.4.0"
+    "precss": "^1.4.0",
+    "pump": "^1.0.1"
   }
 }
