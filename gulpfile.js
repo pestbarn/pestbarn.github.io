@@ -9,17 +9,23 @@ var uglify = require('gulp-uglify');
 var pump = require('pump');
 
 var paths = {
-    haml: './src/haml/*.haml',
+    haml: './src/haml/index.haml',
+    haml_partials: './src/haml/partials/*.haml',
     postcss_src: './src/css/*.css',
     postcss_bin: './bin/css/',
     js_src: './src/js/*.js',
     js_bin: './bin/js/'
 };
 
-gulp.task('haml', function () {
-    return gulp.src(paths.haml)
-    .pipe(haml({ext: '.html', compilerOpts: { ugly: false }}))
-    .pipe(gulp.dest('./'));
+gulp.task('haml', function (callback) {
+    pump([
+        gulp.src(paths.haml),
+        haml({ext: '.html'}),
+        gulp.dest('./'),
+        gulp.src(paths.haml_partials),
+        haml({ext: '.html'}),
+        gulp.dest('./bin/partials/'),
+    ], callback);
 });
 
 gulp.task('css', function() {
@@ -36,7 +42,7 @@ gulp.task('css', function() {
         advanced: false,
     }, function(details) {
         console.log(details.name + ': ' +
-        (details.stats.originalSize / 1024).toFixed(2) + ' kB / ' + 
+        (details.stats.originalSize / 1024).toFixed(2) + ' kB / ' +
         (details.stats.minifiedSize / 1024).toFixed(2) + ' kB');
     }))
     .pipe(gulp.dest(paths.postcss_bin));
@@ -46,9 +52,9 @@ gulp.task('js', function(callback){
     pump([
         gulp.src(paths.js_src),
         uglify(),
-        gulp.dest(paths.js_bin)
-    ]),
-    callback
+        gulp.dest(paths.js_bin),
+        ], callback
+    );
 });
 
 gulp.task('watch', function() {

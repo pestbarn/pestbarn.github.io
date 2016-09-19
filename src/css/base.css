@@ -13,9 +13,22 @@ header {
     bottom: 0;
     left: 0;
 
-    img {
+    #logotype {
         max-width: 25vw;
         position: absolute;
-        top: calc(-420px / 5);
+        top: -9vh;
+
+        .cls-1 {
+            fill: $color--primary;
+        }
+        .cls-2 {
+            fill: $color--tertiary;
+        }
+        .cls-3 {
+            fill: $color--bright_text;
+        }
+        .cls-4 {
+            fill: $color--dark_text;
+        }
     }
 }
