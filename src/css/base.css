@@ -1,0 +1,11 @@
+@import "variables.css";
+
+body {
+    background: $color--base;
+}
+
+header {
+    img {
+        max-width: 50vw;
+    }
+}

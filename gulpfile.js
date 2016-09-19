@@ -3,6 +3,8 @@ var haml = require('gulp-haml');
 var postcss = require('gulp-postcss');
 var postcss_cssnext = require('postcss-cssnext');
 var precss = require('precss');
+var clean_css = require('gulp-clean-css');
+var concat_css = require('gulp-concat-css');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
 
@@ -27,6 +29,16 @@ gulp.task('css', function() {
     ];
     return gulp.src(paths.postcss_src)
     .pipe(postcss(processors))
+    .pipe(concat_css('main.css'))
+    .pipe(clean_css({
+        debug: true,
+        restructuring: false,
+        advanced: false,
+    }, function(details) {
+        console.log(details.name + ': ' +
+        (details.stats.originalSize / 1024).toFixed(2) + ' kB / ' + 
+        (details.stats.minifiedSize / 1024).toFixed(2) + ' kB');
+    }))
     .pipe(gulp.dest(paths.postcss_bin));
 });
 
