@@ -18,6 +18,9 @@
     "gulp-uglify": "^2.0.0",
     "postcss-cssnext": "^2.8.0",
     "precss": "^1.4.0",
-    "pump": "^1.0.1"
+    "pump": "^1.0.1",
+    "minimatch": "^3.0.2",
+    "lodash": "^4.0.0",
+    "graceful-fs": "^4.0.0"
   }
 }
