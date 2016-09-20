@@ -1,6 +1,6 @@
 var h,
 HeaderModule = {
-
+    // convert into one object instead of two
     populateHead: {
         url: 'bin/partials/header.html',
         tag: 'header'
