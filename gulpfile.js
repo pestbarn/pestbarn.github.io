@@ -59,6 +59,7 @@ gulp.task('js', function(callback){
 
 gulp.task('watch', function() {
     gulp.watch(paths.haml, ['haml']);
+    gulp.watch(paths.haml_partials, ['haml']);
     gulp.watch(paths.postcss_src, ['css']);
     gulp.watch(paths.js_src, ['js']);
 });
