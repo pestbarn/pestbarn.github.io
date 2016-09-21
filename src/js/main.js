@@ -1,36 +1,32 @@
-var h,
+var params,
 HeaderModule = {
-    // convert into one object instead of two
-    populateHead: {
-        url: 'bin/partials/header.html',
-        tag: 'header'
-    },
 
-    populateNav: {
-        url: 'bin/partials/navigation.html',
-        tag: 'nav'
+    populate: {
+        items: [{
+            url: 'bin/partials/header.html',
+            tag: 'header',
+        }, {
+            url: 'bin/partials/navigation.html',
+            tag: 'nav',
+        }]
     },
 
     init: function() {
-        params = [this.populateHead, this.populateNav];
-        params.forEach(function(request) {
-            url = request.url;
-            tag = request.tag;
-        });
-
-        for (out in params) {
-            this.doRequest(params);
-            console.log(params)
+        params = this.populate.items;
+        for(i = 0, l = params.length; i < l; i++) {
+            var obj = params[i];
+            this.getPartials(obj);
         }
-        //this.doRequest(out);
     },
 
-    doRequest: function(request) {
+    getPartials: function(request) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', request.url, true);
-        xhr.onreadystatechange= function() {
+        var url = request.url,
+            tag = request.tag;
+        xhr.open('GET', url, true);
+        xhr.onload = function() {
             if (this.readyState !== 4 || this.status !== 200) return;
-            var output = document.getElementsByTagName(request.tag);
+            var output = document.getElementsByTagName(tag);
             output[0].innerHTML = this.responseText;
         };
         xhr.send();

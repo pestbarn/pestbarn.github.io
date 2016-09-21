@@ -37,9 +37,7 @@ gulp.task('css', function() {
     .pipe(postcss(processors))
     .pipe(concat_css('main.css'))
     .pipe(clean_css({
-        debug: true,
-        restructuring: false,
-        advanced: false,
+        debug: true
     }, function(details) {
         console.log(details.name + ': ' +
         (details.stats.originalSize / 1024).toFixed(2) + ' kB / ' +
