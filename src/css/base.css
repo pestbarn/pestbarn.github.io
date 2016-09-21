@@ -18,6 +18,8 @@ header {
 
     .cls-1 {
         fill: $color--primary;
+        animation: pulse 3s linear infinite;
+        transform-origin: 50% 50%;
     }
     .cls-2 {
         fill: $color--tertiary;
