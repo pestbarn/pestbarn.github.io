@@ -1,24 +1,26 @@
 @import "variables.css";
 @import "animations.css";
 
-body {
+:root {
     background: $color--secondary;
     margin: 0;
+    font-family: "Anonymous Pro";
+}
+
+h1 {
+    font-family: "Monoton";
 }
 
 header {
     background: $color--base;
-    width: 100vw;
-    box-sizing: border-box;
 }
 
 #logotype {
     max-width: 25vw;
-    margin-top: -9vh;
 
     .cls-1 {
         fill: $color--primary;
-        animation: pulse 3s linear infinite;
+        animation: pulse 9s linear infinite;
         transform-origin: 50% 50%;
     }
     .cls-2 {

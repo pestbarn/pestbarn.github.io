@@ -10,17 +10,20 @@
   "license": "CC0-1.0",
   "homepage": "https://github.com/pestbarn/pestbarn.github.io#readme",
   "devDependencies": {
+    "graceful-fs": "^4.1.6",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat-css": "^2.3.0",
     "gulp-haml": "^0.1.6",
     "gulp-postcss": "^6.2.0",
     "gulp-uglify": "^2.0.0",
+    "lodash": "^4.16.1",
+    "minimatch": "^3.0.3",
+    "normalize.css": "^4.2.0",
     "postcss-cssnext": "^2.8.0",
+    "postcss-font-magician": "^1.4.0",
     "precss": "^1.4.0",
     "pump": "^1.0.1",
-    "minimatch": "^3.0.2",
-    "lodash": "^4.0.0",
-    "graceful-fs": "^4.0.0"
+    "vinyl-fs": "^2.4.3"
   }
 }
