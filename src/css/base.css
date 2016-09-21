@@ -9,6 +9,8 @@
 
 h1 {
     font-family: "Monoton";
+    text-transform: lowercase;
+    font-size: 6em; // fix <--
 }
 
 header {
@@ -20,8 +22,6 @@ header {
 
     .cls-1 {
         fill: $color--primary;
-        animation: pulse 9s linear infinite;
-        transform-origin: 50% 50%;
     }
     .cls-2 {
         fill: $color--tertiary;
@@ -31,5 +31,12 @@ header {
     }
     .cls-4 {
         fill: $color--dark_text;
+    }
+
+    &:hover {
+        .cls-1 {
+            animation: pulse 2s infinite cubic-bezier(.68,-0.55,.26,1.55);
+            transform-origin: 50% 50%;
+        }
     }
 }

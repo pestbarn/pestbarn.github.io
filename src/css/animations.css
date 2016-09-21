@@ -1,15 +1,9 @@
 @keyframes pulse {
-    0% {
+    45% {
         transform: scale(1);
     }
-    40% {
-        transform: scale(1.2);
-    }
-    50% {
-        transform: scale(1.15);
-    }
-    60% {
-        transform: scale(1.2);
+    65% {
+        transform: scale(1.05);
     }
     100% {
         transform: scale(1);

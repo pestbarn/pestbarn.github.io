@@ -42,24 +42,14 @@ textarea {
   resize: vertical;
 }
 @-webkit-keyframes pulse {
-  0% {
+  45% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 
-  40% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-
-  50% {
-    -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-  }
-
-  60% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+  65% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
   }
 
   100% {
@@ -69,24 +59,14 @@ textarea {
 }
 
 @keyframes pulse {
-  0% {
+  45% {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
 
-  40% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-
-  50% {
-    -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-  }
-
-  60% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+  65% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
   }
 
   100% {
@@ -130,20 +110,12 @@ textarea {
 }
 
 @keyframes pulse {
-  0% {
+  45% {
     transform: scale(1);
   }
 
-  40% {
-    transform: scale(1.2);
-  }
-
-  50% {
-    transform: scale(1.15);
-  }
-
-  60% {
-    transform: scale(1.2);
+  65% {
+    transform: scale(1.05);
   }
 
   100% {
@@ -159,6 +131,8 @@ textarea {
 
 h1 {
   font-family: "Monoton";
+  text-transform: lowercase;
+  font-size: 6em 6em;
 }
 
 header {
@@ -171,10 +145,6 @@ header {
 
 #logotype .cls-1 {
   fill: #e63462;
-  -webkit-animation: pulse 9s linear infinite;
-  animation: pulse 9s linear infinite;
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
 }
 
 #logotype .cls-2 {
@@ -182,11 +152,18 @@ header {
 }
 
 #logotype .cls-3 {
-  fill: #f0f0f0;
+  fill: #eef5db;
 }
 
 #logotype .cls-4 {
-  fill: #5b5b5b;
+  fill: #333745;
+}
+
+#logotype:hover .cls-1 {
+  -webkit-animation: pulse 2s infinite cubic-bezier(.68,-0.55,.26,1.55);
+  animation: pulse 2s infinite cubic-bezier(.68,-0.55,.26,1.55);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
 }
 
 @font-face {
