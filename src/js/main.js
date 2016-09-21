@@ -20,15 +20,24 @@ HeaderModule = {
     },
 
     getPartials: function(request) {
+        // show loader
         var xhr = new XMLHttpRequest();
         var url = request.url,
             tag = request.tag;
         xhr.open('GET', url, true);
-        xhr.onload = function() {
-            if (this.readyState !== 4 || this.status !== 200) return;
-            var output = document.getElementsByTagName(tag);
-            output[0].innerHTML = this.responseText;
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // hide loader
+                    var output = document.getElementsByTagName(tag);
+                    output[0].innerHTML = this.responseText;
+                }
+            }
         };
+        xhr.ontimeout = function () {
+            alert("The request for " + url + " timed out.");
+        };
+        xhr.timeout = 1000;
         xhr.send();
     }
 
