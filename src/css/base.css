@@ -8,9 +8,9 @@
 }
 
 h1 {
+    font-size: 6em;
     font-family: "Monoton";
     text-transform: lowercase;
-    font-size: 6em; // fix <--
 }
 
 header {
@@ -21,22 +21,30 @@ header {
     max-width: 25vw;
 
     .cls-1 {
-        fill: $color--primary;
+        fill: $color--primary; /* ∞ */
     }
     .cls-2 {
-        fill: $color--tertiary;
+        fill: $color--tertiary; /* {  } */
     }
     .cls-3 {
-        fill: $color--bright_text;
+        fill: $color--bright_text; /* m:h */
     }
     .cls-4 {
-        fill: $color--dark_text;
+        fill: $color--dark_text; /* m:h shadow */
     }
 
     &:hover {
-        .cls-1 {
-            animation: pulse 2s infinite cubic-bezier(.68,-0.55,.26,1.55);
+        path[class^="cls-"] {
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
             transform-origin: 50% 50%;
+        }
+        .cls-1 {
+            animation: pulse;
+        }
+        .cls-2 {
+            animation: elastic;
         }
     }
 }

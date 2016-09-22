@@ -46,7 +46,7 @@ gulp.task('haml-partials', function() {
 
 gulp.task('css', function() {
     pump([
-        vfs.src([css[0],css[1]]),
+        vfs.src([css[1],css[0]]),
         postcss(processors),
         concat_css('main.css'),
         vfs.dest('./bin/css/')
@@ -55,7 +55,7 @@ gulp.task('css', function() {
 
 gulp.task('minify', ['css'], function(){
     pump([
-        vfs.src([css[0],css[1]]),
+        vfs.src([css[1],css[0]]),
         postcss(processors),
         concat_css('main.min.css'),
         clean_css(),

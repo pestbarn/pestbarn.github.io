@@ -1,171 +1,3 @@
-html {
-  color: #333;
-  font-size: 1em;
-  line-height: 1.4;
-}
-
-::-moz-selection {
-  background: #e63462;
-  text-shadow: none;
-}
-
-::selection {
-  background: #e63462;
-  text-shadow: none;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-textarea {
-  resize: vertical;
-}
-@-webkit-keyframes pulse {
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  65% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  45% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  65% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@font-face {
-  font-family: Monoton;
-  font-style: normal;
-  font-weight: 400;
-  src: local(Monoton),local(Monoton-Regular),url("//fonts.gstatic.com/s/monoton/v6/NyzVhrzTK8yWUz1286Kyzw.eot?#") format("eot"),url("//fonts.gstatic.com/s/monoton/v6/y6oxFxU60dYw9khW6q8jGw.woff2") format("woff2"),url("//fonts.gstatic.com/s/monoton/v6/AKI-lyzyNHXByGHeOcds_w.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Anonymous Pro";
-  font-style: italic;
-  font-weight: 400;
-  src: local("Anonymous Pro Italic"),local(AnonymousPro-Italic),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWIGc2Drk6OF7xzEFRuu1poY.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWC6lQeGIz_eTiUIAmQEHoRI.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWEOc-qcyZDPXUzSso1bA9YE.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Anonymous Pro";
-  font-style: italic;
-  font-weight: 700;
-  src: local("Anonymous Pro Bold Italic"),local(AnonymousPro-BoldItalic),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfONuiocNq7bs0SOFe77jKtE.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfOE-UnHJJqgmO_01JZd6B-Y.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfGLkIvtLOz01sdqGPgcEBM8.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Anonymous Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Anonymous Pro"),local(AnonymousPro),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E3Xp_Gpx0-4m3wAn7HKLs74.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74ExEOS6Aq7hJAAidQNR3rgdU.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Anonymous Pro";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Anonymous Pro Bold"),local(AnonymousPro-Bold),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud30lRvvQrNeWza1BnlT_HW4.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud8GfYvzQ_DwqEC2arHsRzXk.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff") format("woff");
-}
-
-@keyframes pulse {
-  45% {
-    transform: scale(1);
-  }
-
-  65% {
-    transform: scale(1.05);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-:root {
-  background: #eef5db;
-  margin: 0;
-  font-family: "Anonymous Pro";
-}
-
-h1 {
-  font-family: "Monoton";
-  text-transform: lowercase;
-  font-size: 6em 6em;
-}
-
-header {
-  background: #333745;
-}
-
-#logotype {
-  max-width: 25vw;
-}
-
-#logotype .cls-1 {
-  fill: #e63462;
-}
-
-#logotype .cls-2 {
-  fill: #fe5f55;
-}
-
-#logotype .cls-3 {
-  fill: #eef5db;
-}
-
-#logotype .cls-4 {
-  fill: #333745;
-}
-
-#logotype:hover .cls-1 {
-  -webkit-animation: pulse 2s infinite cubic-bezier(.68,-0.55,.26,1.55);
-  animation: pulse 2s infinite cubic-bezier(.68,-0.55,.26,1.55);
-  -webkit-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-}
-
 @font-face {
   font-family: monospace;
   font-style: italic;
@@ -689,4 +521,189 @@ textarea {
   /* 1 */
   font: inherit;
   /* 2 */
+}
+html {
+  color: #333;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+::-moz-selection {
+  background: #e63462;
+  text-shadow: none;
+}
+
+::selection {
+  background: #e63462;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+@-webkit-keyframes pulse {
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  65% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  65% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@font-face {
+  font-family: Monoton;
+  font-style: normal;
+  font-weight: 400;
+  src: local(Monoton),local(Monoton-Regular),url("//fonts.gstatic.com/s/monoton/v6/NyzVhrzTK8yWUz1286Kyzw.eot?#") format("eot"),url("//fonts.gstatic.com/s/monoton/v6/y6oxFxU60dYw9khW6q8jGw.woff2") format("woff2"),url("//fonts.gstatic.com/s/monoton/v6/AKI-lyzyNHXByGHeOcds_w.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Anonymous Pro Italic"),local(AnonymousPro-Italic),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWIGc2Drk6OF7xzEFRuu1poY.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWC6lQeGIz_eTiUIAmQEHoRI.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWEOc-qcyZDPXUzSso1bA9YE.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: italic;
+  font-weight: 700;
+  src: local("Anonymous Pro Bold Italic"),local(AnonymousPro-BoldItalic),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfONuiocNq7bs0SOFe77jKtE.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfOE-UnHJJqgmO_01JZd6B-Y.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfGLkIvtLOz01sdqGPgcEBM8.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Anonymous Pro"),local(AnonymousPro),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E3Xp_Gpx0-4m3wAn7HKLs74.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74ExEOS6Aq7hJAAidQNR3rgdU.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Anonymous Pro Bold"),local(AnonymousPro-Bold),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud30lRvvQrNeWza1BnlT_HW4.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud8GfYvzQ_DwqEC2arHsRzXk.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff") format("woff");
+}
+
+@keyframes pulse {
+  45% {
+    transform: scale(1);
+  }
+
+  65% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+:root {
+  background: #eef5db;
+  margin: 0;
+  font-family: "Anonymous Pro";
+}
+
+h1 {
+  font-size: 6em;
+  font-family: "Monoton";
+  text-transform: lowercase;
+}
+
+header {
+  background: #333745;
+}
+
+#logotype {
+  max-width: 25vw;
+}
+
+#logotype .cls-1 {
+  fill: #e63462;
+  /* ∞ */
+}
+
+#logotype .cls-2 {
+  fill: #fe5f55;
+  /* {  } */
+}
+
+#logotype .cls-3 {
+  fill: #eef5db;
+  /* m:h */
+}
+
+#logotype .cls-4 {
+  fill: #333745;
+  /* m:h shadow */
+}
+
+#logotype:hover path[class^="cls-"] {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
+  animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+#logotype:hover .cls-1 {
+  -webkit-animation: pulse;
+  animation: pulse;
+}
+
+#logotype:hover .cls-2 {
+  -webkit-animation: elastic;
+  animation: elastic;
 }
