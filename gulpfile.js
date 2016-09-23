@@ -7,6 +7,7 @@ var postcss_magician = require('postcss-font-magician');
 var clean_css        = require('gulp-clean-css');
 var concat_css       = require('gulp-concat-css');
 var uglify           = require('gulp-uglify');
+var babel            = require('gulp-babel');
 var pump             = require('pump');
 var vfs              = require('vinyl-fs');
 
@@ -28,47 +29,48 @@ var processors = [
     postcss_magician
 ];
 
-gulp.task('haml', function() {
+gulp.task('haml', function(callback) {
     pump([
         gulp.src(paths.haml),
         haml({ext: '.html'}),
         gulp.dest('./')
-    ]);
+    ], callback);
 });
 
-gulp.task('haml-partials', function() {
+gulp.task('haml-partials', function(callback) {
     pump([
         gulp.src(paths.haml_partials),
         haml({ext: '.html'}),
         gulp.dest('./bin/partials/')
-    ]);
+    ], callback);
 });
 
-gulp.task('css', function() {
+gulp.task('css', function(callback) {
     pump([
         vfs.src([css[1],css[0]]),
         postcss(processors),
         concat_css('main.css'),
         vfs.dest('./bin/css/')
-    ]);
+    ], callback);
 });
 
-gulp.task('minify', ['css'], function(){
+gulp.task('minify', ['css'], function(callback){
     pump([
         vfs.src([css[1],css[0]]),
         postcss(processors),
         concat_css('main.min.css'),
         clean_css(),
         vfs.dest('./bin/css/')
-    ]);
+    ], callback);
 })
 
-gulp.task('js', function(){
+gulp.task('js', function(callback){
     pump([
         gulp.src(paths.js),
+        babel({presets: ['es2015']}),
         uglify(),
-        gulp.dest('./bin/js/'),
-    ]);
+        gulp.dest('./bin/js/')
+    ], callback);
 });
 
 gulp.task('watch', function() {

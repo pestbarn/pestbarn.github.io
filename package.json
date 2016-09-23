@@ -10,8 +10,10 @@
   "license": "CC0-1.0",
   "homepage": "https://github.com/pestbarn/pestbarn.github.io#readme",
   "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
     "graceful-fs": "^4.1.6",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat-css": "^2.3.0",
     "gulp-haml": "^0.1.6",
