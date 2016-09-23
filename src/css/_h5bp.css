@@ -8,6 +8,7 @@ html {
 ::selection {
     background: $color--primary;
     text-shadow: none;
+    color: #fff;
 }
 
 hr {

@@ -531,11 +531,13 @@ html {
 ::-moz-selection {
   background: #e63462;
   text-shadow: none;
+  color: #fff;
 }
 
 ::selection {
   background: #e63462;
   text-shadow: none;
+  color: #fff;
 }
 
 hr {
