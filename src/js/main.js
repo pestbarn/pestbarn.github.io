@@ -2,14 +2,30 @@ var parser = (function() {
 
     const DEBUG = true;
 
+    function addElement(element, text, parent) {
+        var newItem = document.createElement(element);
+        var newContent = document.createTextNode(text);
+        newItem.appendChild(newContent);
+
+        var currentDiv = document.getElementById(parent);
+        document.body.insertBefore(newItem, currentDiv);
+    }
+
     var getPartials, params, i, l, output;
 
-    getPartials = function(request, type) {
+    getPartials = function(obj, type, target) {
         var xhr = new XMLHttpRequest();
-        var url = request.url,
-            tag = request.tag;
-        if (type == 'file') xhr.overrideMimeType('application/json');
-        xhr.open('GET', url, true);
+        var url = obj.url,
+            tag = obj.tag;
+        var file = obj,
+            elId = target;
+        if (type == 'file') {
+            file = obj;
+            xhr.overrideMimeType('application/json');
+            xhr.open('GET', file, true);
+        } else {
+            xhr.open('GET', url, true);
+        }
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
@@ -19,8 +35,18 @@ var parser = (function() {
                             output[0].innerHTML = this.responseText;
                             break;
                         case 'file':
-                            output = document.getElementById(tag);
-                            output[0].innerHTML = this.responseText;
+                            output = document.getElementById(elId);
+                            params = JSON.parse(this.responseText);
+                            for(i = 0, l = params.length; i < l; i++) {
+                                var obj = params[i];
+                                output.innerHTML = obj;
+                                addElement('p', obj.work, output);
+                                addElement('p', obj.title, output);
+                                addElement('p', obj.meta.dateFrom, output);
+                                addElement('p', obj.meta.dateTo, output);
+                                addElement('p', obj.meta.url, output);
+                                addElement('p', obj.description, output);
+                            }
                             break;
                         default:
                             break;
@@ -45,12 +71,11 @@ var parser = (function() {
                 getPartials(obj, 'object');
             }
         },
-        xhrFile: function(file, id) {
-            params = JSON.parse(file);
-            for(i = 0, l = params.length; i < l; i++) {
-                var obj = params[i];
-                getPartials(obj, 'file');
-            }
+        xhrFile: function(url, type, id) {
+            var pUrl = url,
+            pType = type,
+            pId = id;
+            getPartials(pUrl, pType, pId);
         }
     };
 
@@ -78,9 +103,9 @@ var HeaderModule = {
 var SkillsModule = {
 
     init: function() {
-        var file = 'experience.json',
+        var url = './experience.json',
             id = 'skills';
-        parser.xhrFile(file, id);
+        parser.xhrFile(url, 'file', 'skills');
     }
 
 };
