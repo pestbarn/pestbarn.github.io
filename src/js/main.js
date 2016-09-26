@@ -11,11 +11,11 @@ var parser = (function() {
         document.body.insertBefore(newItem, currentDiv);
     }
 
-    var tryParseJSON = function(jsonString, callback) {
+    var tryParseJSON = function(jsonString, target, callback) {
         try {
             var obj = JSON.parse(jsonString);
             if (obj && typeof obj === 'object') {
-                returnObject(obj, fileOutput);
+                returnObject(obj, fileOutput, target);
             }
         }
         catch(e) {
@@ -30,15 +30,22 @@ var parser = (function() {
         }
     }
 
-    function objOutput(obj, target) {
-        var element = document.getElementsByTagName(target).innerHTML;
+    var objOutput = function(obj, target) {
+        var element = document.getElementsByTagName(target);
         var object = obj;
-        element = object;
+        for (const item of element) {
+            item.innerHTML = object;
+        }
     }
 
-    var fileOutput = function(obj) {
-        for (const item of obj.items) {
-            console.dir(item);
+    var fileOutput = function(obj, target) {
+        var element = document.getElementById(target);
+        var object = obj.items;
+        var numItems = object.length;
+        var i = 0;
+        while (i < numItems) {
+            console.log(Object.keys(object[i])); //wat
+            i++;
         }
     }
 
@@ -55,7 +62,7 @@ var parser = (function() {
                 if (xhr.status === 200) {
                     params = this.response;
                     if (isFile) {
-                        tryParseJSON(params, returnObject);
+                        tryParseJSON(params, target, returnObject);
                     } else {
                         returnObject(params, objOutput, target);
                     }
@@ -78,8 +85,8 @@ var parser = (function() {
                 getPartials(item.url, 'object', item.tag);
             }
         },
-        xhrFile: function(object, type) {
-            getPartials(object, 'file');
+        xhrFile: function(object, toEl) {
+            getPartials(object, 'file', toEl);
         }
     };
 
@@ -109,7 +116,7 @@ var SkillsModule = {
     init: function() {
         var url = './experience.json',
             id = 'skills';
-        parser.xhrFile(url);
+        parser.xhrFile(url, id);
     }
 
 };
