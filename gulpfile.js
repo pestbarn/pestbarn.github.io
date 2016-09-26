@@ -16,7 +16,7 @@ var paths = {
     haml_partials:  './src/haml/partials/*.haml',
     js:             './src/js/*.js',
     css: {
-        base: 'src/css/**/*.css',
+        base: 'src/postcss/**/*.postcss',
         normalize: 'node_modules/normalize.css/normalize.css'
     }
 };
