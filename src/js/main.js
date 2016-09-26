@@ -44,7 +44,10 @@ var parser = (function() {
         var numItems = object.length;
         var i = 0;
         while (i < numItems) {
-            console.log(Object.keys(object[i])); //wat
+            addElement('li', object[i], element);
+
+            
+//console.log(Object.keys(object[i])); //wat
             i++;
         }
     }
