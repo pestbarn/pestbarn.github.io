@@ -11,45 +11,53 @@ var parser = (function() {
         document.body.insertBefore(newItem, currentDiv);
     }
 
-    var returnObject = function(response) {
-        var callback = response;
-        if (callback != undefined && callback.hasOwnProperty){
-            console.log(callback);
+    var tryParseJSON = function(jsonString, callback) {
+        try {
+            var obj = JSON.parse(jsonString);
+            if (obj && typeof obj === 'object') {
+                returnObject(obj, fileOutput);
+            }
+        }
+        catch(e) {
+            if (DEBUG) return e;
+            return false;
+        }
+    };
+
+    var returnObject = function(obj, callback, target) {
+        if (obj != undefined && obj.hasOwnProperty){
+            callback(obj, target);
         }
     }
 
-    var getPartials, params, i, l, output;
+    function objOutput(obj, target) {
+        var element = document.getElementsByTagName(target).innerHTML;
+        var object = obj;
+        element = object;
+    }
 
-    getPartials = function(obj, type, target) {
-        var xhr = new XMLHttpRequest();
-        var url = obj.url,
-            tag = obj.tag;
-        var file = obj,
-            elId = target;
-        var isFile = type == 'file' ? true : false;
-        var callback = {};
-        if (isFile) {
-            file = obj;
-            xhr.overrideMimeType('application/json');
-            xhr.open('GET', file, true);
-        } else {
-            xhr.open('GET', url, true);
+    var fileOutput = function(obj) {
+        for (const item of obj.items) {
+            console.dir(item);
         }
+    }
+
+    var params, i, l;
+
+    var getPartials = function(obj, type, target) {
+        var xhr = new XMLHttpRequest();
+        var target = target;
+        var isFile = type == 'file' ? true : false;
+        if (isFile) xhr.overrideMimeType('application/json');
+        xhr.open('GET', obj, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    switch (type) {
-                        case 'object':
-                            output = document.getElementsByTagName(tag);
-                            output[0].innerHTML = this.responseText;
-                            break;
-                        case 'file':
-                            output = document.getElementById(elId);
-                            params = JSON.parse(this.responseText);
-                            returnObject(params);
-                            break;
-                        default:
-                            break;
+                    params = this.response;
+                    if (isFile) {
+                        tryParseJSON(params, returnObject);
+                    } else {
+                        returnObject(params, objOutput, target);
                     }
                 }
             }
@@ -66,16 +74,12 @@ var parser = (function() {
     return {
         xhrObjs: function(object) {
             params = object.items;
-            for(i = 0, l = params.length; i < l; i++) {
-                var obj = params[i];
-                getPartials(obj, 'object');
+            for (const item of params) {
+                getPartials(item.url, 'object', item.tag);
             }
         },
-        xhrFile: function(url, type, id) {
-            var pUrl = url,
-            pType = type,
-            pId = id;
-            returnObject(getPartials(pUrl, pType, pId));
+        xhrFile: function(object, type) {
+            getPartials(object, 'file');
         }
     };
 
@@ -105,7 +109,7 @@ var SkillsModule = {
     init: function() {
         var url = './experience.json',
             id = 'skills';
-        parser.xhrFile(url, 'file', 'skills');
+        parser.xhrFile(url);
     }
 
 };
