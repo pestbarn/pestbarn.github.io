@@ -11,6 +11,13 @@ var parser = (function() {
         document.body.insertBefore(newItem, currentDiv);
     }
 
+    var returnObject = function(response) {
+        var callback = response;
+        if (callback != undefined && callback.hasOwnProperty){
+            console.log(callback);
+        }
+    }
+
     var getPartials, params, i, l, output;
 
     getPartials = function(obj, type, target) {
@@ -19,7 +26,9 @@ var parser = (function() {
             tag = obj.tag;
         var file = obj,
             elId = target;
-        if (type == 'file') {
+        var isFile = type == 'file' ? true : false;
+        var callback = {};
+        if (isFile) {
             file = obj;
             xhr.overrideMimeType('application/json');
             xhr.open('GET', file, true);
@@ -37,16 +46,7 @@ var parser = (function() {
                         case 'file':
                             output = document.getElementById(elId);
                             params = JSON.parse(this.responseText);
-                            for(i = 0, l = params.length; i < l; i++) {
-                                var obj = params[i];
-                                output.innerHTML = obj;
-                                addElement('p', obj.work, output);
-                                addElement('p', obj.title, output);
-                                addElement('p', obj.meta.dateFrom, output);
-                                addElement('p', obj.meta.dateTo, output);
-                                addElement('p', obj.meta.url, output);
-                                addElement('p', obj.description, output);
-                            }
+                            returnObject(params);
                             break;
                         default:
                             break;
@@ -75,7 +75,7 @@ var parser = (function() {
             var pUrl = url,
             pType = type,
             pId = id;
-            getPartials(pUrl, pType, pId);
+            returnObject(getPartials(pUrl, pType, pId));
         }
     };
 
