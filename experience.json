@@ -7,11 +7,7 @@
                 "dateFrom": "2015-06-10",
                 "dateTo": "current",
                 "url": "www.sportamore.se"
-            },
-            "description": [
-                "Sportamore is the largest nordic online retailer of sport equipment. The company's goal has from the start been to offer the broadest portfolio of brands, the deepest range of products, as well as to provide nothing but the absolute best customer experience.",
-                "Being part of the rather small development team consisting mostly of backend engineers, my role is to maintain and proactively develop Sportamore's existing e-commerce platform, as well as the internal warehouse management system, content management system, newsletters, and more. The experience of working at a mid-sized, publicly listed company is very rewarding &mdash; especially since I came here directly from a small startup. Lots of room for learning!"
-            ]
+            }
         },
         {
             "work": "Freespee",
@@ -20,11 +16,7 @@
                 "dateFrom": "2011-01-21",
                 "dateTo": "2015-05-10",
                 "url": "www.freespee.com"
-            },
-            "description": [
-                "Freespee is an ad tech company facilitating algorithmic &amp; programmatic media buying for businesses whose customers want to talk to someone before they buy. Freespee’s <acronym title=\"Software as a Service\">SaaS</acronym> is used to analyze and link back phone calls coming from online and mobile audiences to where on the web they came from.",
-                "Working closely with both backend and frontend engineers, UX designers, as well as the support team and the sales team, my role at Freespee was as educative as it was challenging. Dealing with new engineering challenges every day regarding, among other things, the company website, the product, and the <a href=\"//support.freespee.com\">support platform</a>, all whilst being a part of an expanding startup company, was &mdash; to say the least &mdash; very exciting."
-            ]
+            }
         },
         {
             "work": "I:O:A",
@@ -33,11 +25,7 @@
                 "dateFrom": "2012-09-01",
                 "dateTo": "2016-05-19",
                 "url": ""
-            },
-            "description": [
-                "In my spare time, together with a small crew of only seven people, I partook in the planning, organization, and execution of the independent and non-profit music festival Inbreed Open Air Metal Festival. It took place each year in August, and showed a steadily growing attendee base over the years. As organizer, I was in charge of band booking, and the creation and printing of our official merchandise.",
-                "My role as lead developer and lead graphic designer included the development of the official website, creating and maintaining the brand and logotype, designing t-shirt and poster prints, as well as creating all the graphics for our social media accounts."
-            ]
+            }
         },
         {
             "work": "46elks",
@@ -46,10 +34,7 @@
                 "dateFrom": "2011-05-01",
                 "dateTo": "2011-09-01",
                 "url": "www.46elks.com"
-            },
-            "description": [
-                "Along with the CEO and a freelance designer, I designed and developed the cloud communications platform 46elks’ website and graphical profile. 46elks provides an API for developers to integrate telephony infrastructure into their applications, with which you can do things such as send and receive SMS messages, control incoming phone calls, build IVRs, connect calls and create automated outgoing phone calls."
-            ]
+            }
         },
         {
             "work": "SwedenMetal",
@@ -58,10 +43,7 @@
                 "dateFrom": "2006-05-01",
                 "dateTo": "2012-01-10",
                 "url": ""
-            },
-            "description": [
-                "As a side project through school and during my free time, I joined the heavy metal e-zine SwedenMetal as a developer, website administrator, and article writer. In this role, I developed and managed the entire platform, along with conducting interviews with local and international metal bands, as well as writing articles and reviews for new albums and releases."
-            ]
+            }
         }
     ]
 }

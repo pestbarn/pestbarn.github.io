@@ -5,10 +5,24 @@ var parser = (function() {
     function addElement(element, text, parent) {
         var newItem = document.createElement(element);
         var newContent = document.createTextNode(text);
-        newItem.appendChild(newContent);
+        newItem.appendChild(newContent); console.dir(newItem)
 
-        var currentDiv = document.getElementById(parent);
-        document.body.insertBefore(newItem, currentDiv);
+        var newParent = document.getElementById(parent);
+        document.body.insertBefore(newItem, newParent);
+    }
+
+    function toArray(obj) {
+        const result = [];
+        for (const prop in obj) {
+            const value = obj[prop];
+            if (typeof value === 'object') {
+                result.push(toArray(value));
+            }
+            else {
+                result.push(value);
+            }
+        }
+        return result;
     }
 
     var tryParseJSON = function(jsonString, target, callback) {
@@ -42,13 +56,11 @@ var parser = (function() {
         var element = document.getElementById(target);
         var object = obj.items;
         var numItems = object.length;
-        var i = 0;
-        while (i < numItems) {
-            addElement('li', object[i], element);
-
-            
-//console.log(Object.keys(object[i])); //wat
-            i++;
+        var out = toArray(object);
+        for(let i = 0, l = numItems; i < l; i++) {
+            var span = 'span';
+            //span.className = object[i].work;
+            addElement(span, out[i], 'skills');
         }
     }
 
