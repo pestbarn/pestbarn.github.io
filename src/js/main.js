@@ -2,13 +2,21 @@ var parser = (function() {
 
     const DEBUG = true;
 
-    function addElement(element, text, parent) {
-        var newItem = document.createElement(element);
-        var newContent = document.createTextNode(text);
-        newItem.appendChild(newContent); console.dir(newItem)
+    function buildElement(element, text, parent) {
+        var item = element;
+        var contents = text;
+        var contentFragment = document.createDocumentFragment();
 
-        var newParent = document.getElementById(parent);
-        document.body.insertBefore(newItem, newParent);
+        contents.forEach(function(e) {
+            var li = document.createElement('span');
+            if (typeof e === 'string') e.replace(/[^\,\w\s]/gi, '');
+            li.textContent = e;
+            contentFragment.appendChild(li);
+        });
+
+        item.appendChild(contentFragment);
+        var toEl = parent;
+        toEl.appendChild(item, parent);
     }
 
     function toArray(obj) {
@@ -32,9 +40,9 @@ var parser = (function() {
                 returnObject(obj, fileOutput, target);
             }
         }
-        catch(e) {
-            if (DEBUG) return e;
-            return false;
+        catch(err) {
+            if (DEBUG) throw new Error(err);
+            throw new Error('WTF is this? Hit me up with these details: \n'+ err);
         }
     };
 
@@ -53,18 +61,18 @@ var parser = (function() {
     }
 
     var fileOutput = function(obj, target) {
-        var element = document.getElementById(target);
+        var parent = document.getElementById(target[0]);
         var object = obj.items;
         var numItems = object.length;
         var out = toArray(object);
         for(let i = 0, l = numItems; i < l; i++) {
-            var span = 'span';
-            //span.className = object[i].work;
-            addElement(span, out[i], 'skills');
+            var innerEl = document.createElement(target[1]);
+            var className = out[i][0].toLowerCase().replace(/[^\w\s]/gi, '');
+            innerEl.classList.add(className);
+            console.dir('out[i]: '+ out[i]);
+            buildElement(innerEl, out[i], parent);
         }
     }
-
-    var params, i, l;
 
     var getPartials = function(obj, type, target) {
         var xhr = new XMLHttpRequest();
@@ -75,7 +83,7 @@ var parser = (function() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    params = this.response;
+                    var params = this.response;
                     if (isFile) {
                         tryParseJSON(params, target, returnObject);
                     } else {
@@ -95,7 +103,7 @@ var parser = (function() {
 
     return {
         xhrObjs: function(object) {
-            params = object.items;
+            var params = object.items;
             for (const item of params) {
                 getPartials(item.url, 'object', item.tag);
             }
@@ -130,8 +138,8 @@ var SkillsModule = {
 
     init: function() {
         var url = './experience.json',
-            id = 'skills';
-        parser.xhrFile(url, id);
+            toEl = ['skills','li'];
+        parser.xhrFile(url, toEl);
     }
 
 };
