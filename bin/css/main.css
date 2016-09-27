@@ -600,6 +600,60 @@ textarea {
     transform: scale(1);
   }
 }
+
+@-webkit-keyframes elastic {
+  45% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  55% {
+    -webkit-transform: rotateY(-5deg);
+    transform: rotateY(-5deg);
+  }
+
+  75% {
+    -webkit-transform: rotateY(15deg);
+    transform: rotateY(15deg);
+  }
+
+  85% {
+    -webkit-transform: rotateY(-5deg);
+    transform: rotateY(-5deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+}
+
+@keyframes elastic {
+  45% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  55% {
+    -webkit-transform: rotateY(-5deg);
+    transform: rotateY(-5deg);
+  }
+
+  75% {
+    -webkit-transform: rotateY(15deg);
+    transform: rotateY(15deg);
+  }
+
+  85% {
+    -webkit-transform: rotateY(-5deg);
+    transform: rotateY(-5deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+}
 @font-face {
   font-family: monospace;
   font-style: italic;
@@ -642,6 +696,28 @@ textarea {
   }
 }
 
+@keyframes elastic {
+  45% {
+    transform: rotate(0);
+  }
+
+  55% {
+    transform: rotateY(-5deg);
+  }
+
+  75% {
+    transform: rotateY(15deg);
+  }
+
+  85% {
+    transform: rotateY(-5deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
 :root {
   background: #eef5db;
   margin: 0;
@@ -660,7 +736,7 @@ h1 {
 
 header {
   background: #333745;
-  height: 50vh;
+  height: 100vh;
 }
 
 #logotype {
@@ -672,16 +748,22 @@ header {
 #logotype .cls-1 {
   fill: #e63462;
   /* ∞ */
+  -webkit-animation: pulse;
+  animation: pulse;
 }
 
 #logotype .cls-2 {
   fill: #fe5f55;
   /* {  } */
+  -webkit-animation: elastic;
+  animation: elastic;
 }
 
 #logotype .cls-3 {
   fill: #eef5db;
   /* m:h */
+  -webkit-animation: elastic;
+  animation: elastic;
 }
 
 #logotype .cls-4 {
@@ -689,7 +771,7 @@ header {
   /* m:h shadow */
 }
 
-#logotype:hover path[class^="cls-"] {
+#logotype path[class^="cls-"] {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
@@ -698,14 +780,4 @@ header {
   animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
-}
-
-#logotype:hover .cls-1 {
-  -webkit-animation: pulse;
-  animation: pulse;
-}
-
-#logotype:hover .cls-2 {
-  -webkit-animation: elastic;
-  animation: elastic;
 }

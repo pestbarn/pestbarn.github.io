@@ -69,7 +69,6 @@ var parser = (function() {
             var innerEl = document.createElement(target[1]);
             var className = out[i][0].toLowerCase().replace(/[^\w\s]/gi, '');
             innerEl.classList.add(className);
-            console.dir('out[i]: '+ out[i]);
             buildElement(innerEl, out[i], parent);
         }
     }

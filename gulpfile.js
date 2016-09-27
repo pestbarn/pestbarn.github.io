@@ -6,15 +6,18 @@ var precss           = require('precss');
 var postcss_magician = require('postcss-font-magician');
 var clean_css        = require('gulp-clean-css');
 var concat_css       = require('gulp-concat-css');
+var sourcemaps       = require("gulp-sourcemaps");
 var uglify           = require('gulp-uglify');
 var babel            = require('gulp-babel');
 var pump             = require('pump');
 var vfs              = require('vinyl-fs');
+var runSequence      = require('run-sequence');
+var del              = require('del');
 
 var paths = {
     haml:           './src/haml/index.haml',
     haml_partials:  './src/haml/partials/*.haml',
-    js:             './src/js/*.js',
+    js:             './src/js/main.js',
     css: {
         base: 'src/postcss/**/*.postcss',
         normalize: 'node_modules/normalize.css/normalize.css'
@@ -64,13 +67,25 @@ gulp.task('minify', ['css'], function(callback){
     ], callback);
 })
 
-gulp.task('js', function(callback){
-    pump([
+gulp.task('js-build', function(callback){
+    runSequence('js-clean',
+                'js',
+                callback);
+});
+
+gulp.task('js', function(){
+    return pump([
         gulp.src(paths.js),
+        sourcemaps.init(),
         babel({presets: ['es2015']}),
         uglify(),
+        sourcemaps.write(),
         gulp.dest('./bin/js/')
-    ], callback);
+    ]);
+});
+
+gulp.task('js-clean', function() {
+    return del(['./bin/js/*']);
 });
 
 gulp.task('watch', function() {
@@ -80,4 +95,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.js, ['js']);
 });
 
-gulp.task('default', ['haml', 'haml-partials', 'css', 'minify', 'js']);
+gulp.task('default', ['haml', 'haml-partials', 'css', 'minify', 'js-build']);

@@ -17,7 +17,7 @@ h1 {
 
 header {
     background: $color--base;
-    height: 50vh;
+    height: 100vh;
 }
 
 #logotype {
@@ -27,29 +27,23 @@ header {
 
     .cls-1 {
         fill: $color--primary; /* ∞ */
+        animation: pulse;
     }
     .cls-2 {
         fill: $color--tertiary; /* {  } */
+        animation: elastic;
     }
     .cls-3 {
         fill: $color--bright_text; /* m:h */
+        animation: elastic;
     }
     .cls-4 {
         fill: $color--dark_text; /* m:h shadow */
     }
-
-    &:hover {
-        path[class^="cls-"] {
-            animation-duration: 1.5s;
-            animation-iteration-count: infinite;
-            animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
-            transform-origin: 50% 50%;
-        }
-        .cls-1 {
-            animation: pulse;
-        }
-        .cls-2 {
-            animation: elastic;
-        }
+    path[class^="cls-"] {
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
+        transform-origin: 50% 50%;
     }
 }
