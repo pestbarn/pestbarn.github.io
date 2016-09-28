@@ -9,20 +9,25 @@
         transform: scale(1);
     }
 }
-@keyframes elastic {
+@keyframes flexLeft {
     45% {
-        transform: rotate(0);
+        transform: rotateY(-5deg);
     }
     55% {
-        transform: rotateY(-5deg);
-    }
-    75% {
         transform: rotateY(15deg);
     }
-    85% {
+    65% {
+        transform: rotateY(30deg) translateX(2.5px);
+    }
+}
+@keyframes flexRight {
+    45% {
         transform: rotateY(-5deg);
     }
-    100% {
-        transform: rotate(0);
+    55% {
+        transform: rotateY(15deg);
+    }
+    65% {
+        transform: rotateY(30deg) translateX(-2.5px);
     }
 }

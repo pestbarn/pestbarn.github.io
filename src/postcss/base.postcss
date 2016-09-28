@@ -18,6 +18,7 @@ h1 {
 header {
     background: $color--base;
     height: 100vh;
+    display: none;
 }
 
 #logotype {
@@ -31,11 +32,19 @@ header {
     }
     .cls-2 {
         fill: $color--tertiary; /* {  } */
-        animation: elastic;
+        animation-name: flexLeft;
+        animation-delay: .2s;
+    }
+    #curly--close .cls-2 {
+        animation-name: flexRight;
+    }
+    .cls-3,
+    .cls-4 {
+        animation: pulse;
+        animation-delay: .2s;
     }
     .cls-3 {
         fill: $color--bright_text; /* m:h */
-        animation: elastic;
     }
     .cls-4 {
         fill: $color--dark_text; /* m:h shadow */

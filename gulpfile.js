@@ -17,7 +17,7 @@ var del              = require('del');
 var paths = {
     haml:           './src/haml/index.haml',
     haml_partials:  './src/haml/partials/*.haml',
-    js:             './src/js/main.js',
+    //js:             './src/js/*.js,!./src/js/json/*',
     css: {
         base: 'src/postcss/**/*.postcss',
         normalize: 'node_modules/normalize.css/normalize.css'
@@ -75,7 +75,8 @@ gulp.task('js-build', function(callback){
 
 gulp.task('js', function(){
     return pump([
-        gulp.src(paths.js),
+        //gulp.src(paths.js),
+        gulp.src('./src/js/main.js'),
         sourcemaps.init(),
         babel({presets: ['es2015']}),
         uglify(),
@@ -92,7 +93,8 @@ gulp.task('watch', function() {
     gulp.watch(paths.haml, ['haml']);
     gulp.watch(paths.haml_partials, ['haml-partials']);
     gulp.watch(paths.css.base, [['css'],['minify']]);
-    gulp.watch(paths.js, ['js']);
+    //gulp.watch(paths.js, ['js']);
+    gulp.watch('./src/js/main.js', ['js']);
 });
 
 gulp.task('default', ['haml', 'haml-partials', 'css', 'minify', 'js-build']);

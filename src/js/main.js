@@ -133,10 +133,20 @@ var HeaderModule = {
 
 }
 
+var ExperienceModule = {
+
+    init: function() {
+        var url = 'bin/js/json/experience.json',
+            toEl = ['experience','div'];
+        parser.xhrFile(url, toEl);
+    }
+
+};
+
 var SkillsModule = {
 
     init: function() {
-        var url = './experience.json',
+        var url = 'bin/js/json/skills.json',
             toEl = ['skills','li'];
         parser.xhrFile(url, toEl);
     }
@@ -145,5 +155,6 @@ var SkillsModule = {
 
 document.addEventListener('DOMContentLoaded', function() {
     HeaderModule.init();
+    ExperienceModule.init();
     SkillsModule.init();
 });
