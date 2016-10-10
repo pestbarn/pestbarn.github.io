@@ -13,11 +13,11 @@ var pump             = require('pump');
 var vfs              = require('vinyl-fs');
 var runSequence      = require('run-sequence');
 var del              = require('del');
+var livereload       = require('gulp-livereload');
 
 var paths = {
     haml:           './src/haml/index.haml',
     haml_partials:  './src/haml/partials/*.haml',
-    //js:             './src/js/*.js,!./src/js/json/*',
     css: {
         base: 'src/postcss/**/*.postcss',
         normalize: 'node_modules/normalize.css/normalize.css'
@@ -36,7 +36,8 @@ gulp.task('haml', function(callback) {
     pump([
         gulp.src(paths.haml),
         haml({ext: '.html'}),
-        gulp.dest('./')
+        gulp.dest('./'),
+	livereload()
     ], callback);
 });
 
@@ -44,7 +45,8 @@ gulp.task('haml-partials', function(callback) {
     pump([
         gulp.src(paths.haml_partials),
         haml({ext: '.html'}),
-        gulp.dest('./bin/partials/')
+        gulp.dest('./bin/partials/'),
+	livereload()
     ], callback);
 });
 
@@ -53,7 +55,8 @@ gulp.task('css', function(callback) {
         vfs.src([css[1],css[0]]),
         postcss(processors),
         concat_css('main.css'),
-        vfs.dest('./bin/css/')
+        vfs.dest('./bin/css/'),
+	livereload()
     ], callback);
 });
 
@@ -63,7 +66,8 @@ gulp.task('minify', ['css'], function(callback){
         postcss(processors),
         concat_css('main.min.css'),
         clean_css(),
-        vfs.dest('./bin/css/')
+        vfs.dest('./bin/css/'),
+	livereload()
     ], callback);
 })
 
@@ -75,13 +79,13 @@ gulp.task('js-build', function(callback){
 
 gulp.task('js', function(){
     return pump([
-        //gulp.src(paths.js),
         gulp.src('./src/js/main.js'),
         sourcemaps.init(),
         babel({presets: ['es2015']}),
         uglify(),
         sourcemaps.write(),
-        gulp.dest('./bin/js/')
+        gulp.dest('./bin/js/'),
+	livereload()
     ]);
 });
 
@@ -90,10 +94,10 @@ gulp.task('js-clean', function() {
 });
 
 gulp.task('watch', function() {
+    livereload.listen();
     gulp.watch(paths.haml, ['haml']);
     gulp.watch(paths.haml_partials, ['haml-partials']);
     gulp.watch(paths.css.base, [['css'],['minify']]);
-    //gulp.watch(paths.js, ['js']);
     gulp.watch('./src/js/main.js', ['js']);
 });
 

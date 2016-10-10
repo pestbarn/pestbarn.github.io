@@ -757,7 +757,23 @@ h1 {
 header {
   background: #333745;
   height: 100vh;
-  display: none;
+  position: relative;
+  z-index: 0;
+}
+
+header::before {
+  background: url("/src/img/paper_.5.jpg");
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .45;
+  content: "";
+  z-index: -1;
+  filter: url("data:image/svg+xml;charset=utf-8,<svg xmlns=http://www.w3.org/2000/svg><filter id=filter><feColorMatrix type=matrix color-interpolation-filters=sRGB values=1 0 0 0 0 0 1.01 0 0 0 0 0 1 0 0 0 0 0 1 0 /></filter></svg>#filter");
+  -webkit-filter: saturate(0);
+  filter: saturate(0);
 }
 
 #logotype {

@@ -136,7 +136,7 @@ var HeaderModule = {
 var ExperienceModule = {
 
     init: function() {
-        var url = 'bin/js/json/experience.json',
+        var url = 'src/js/json/experience.json',
             toEl = ['experience','div'];
         parser.xhrFile(url, toEl);
     }
