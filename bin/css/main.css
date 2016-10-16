@@ -567,7 +567,29 @@ fieldset {
 textarea {
   resize: vertical;
 }
+@-webkit-keyframes expand {
+  0% {
+    letter-spacing: -17px;
+    opacity: 0;
+  }
 
+  100% {
+    letter-spacing: 0;
+    opacity: .25;
+  }
+}
+
+@keyframes expand {
+  0% {
+    letter-spacing: -17px;
+    opacity: 0;
+  }
+
+  100% {
+    letter-spacing: 0;
+    opacity: .25;
+  }
+}
 @font-face {
   font-family: monospace;
   font-style: italic;
@@ -596,10 +618,50 @@ textarea {
   src: local("Menlo Bold"),local(Menlo-Bold),local(Monaco),local("Consolas Bold"),local(Consolas-Bold),local("Courier New Bold");
 }
 
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Anonymous Pro Italic"),local(AnonymousPro-Italic),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWIGc2Drk6OF7xzEFRuu1poY.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWC6lQeGIz_eTiUIAmQEHoRI.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWEOc-qcyZDPXUzSso1bA9YE.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: italic;
+  font-weight: 700;
+  src: local("Anonymous Pro Bold Italic"),local(AnonymousPro-BoldItalic),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfONuiocNq7bs0SOFe77jKtE.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfOE-UnHJJqgmO_01JZd6B-Y.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfGLkIvtLOz01sdqGPgcEBM8.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Anonymous Pro"),local(AnonymousPro),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E3Xp_Gpx0-4m3wAn7HKLs74.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74ExEOS6Aq7hJAAidQNR3rgdU.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anonymous Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Anonymous Pro Bold"),local(AnonymousPro-Bold),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud30lRvvQrNeWza1BnlT_HW4.eot?#") format("eot"),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud8GfYvzQ_DwqEC2arHsRzXk.woff2") format("woff2"),url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff") format("woff");
+}
+
+@keyframes expand {
+  0% {
+    letter-spacing: -17px;
+    opacity: 0;
+  }
+
+  100% {
+    letter-spacing: 0;
+    opacity: .25;
+  }
+}
+
 :root {
   background: #eef5db;
   margin: 0;
-  font-family: monospace;
+  font-family: 'Anonymous Pro', monospace;
 }
 
 /* Anonymous Pro */
@@ -655,9 +717,17 @@ header::before {
   /* m:h */
 }
 
-#logotype .cls-4 {
-  fill: none;
-  /* m:h shadow */
+#logotype #pathed {
+  font-size: 1.99em;
+  fill: #eef5db;
+}
+
+/* pathed text */
+
+#logotype #pathed textpath {
+  opacity: .25;
+  -webkit-animation: expand 6s 1;
+  animation: expand 6s 1;
 }
 
 .heart-pulse {

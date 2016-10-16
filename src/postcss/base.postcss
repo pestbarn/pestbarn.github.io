@@ -4,7 +4,7 @@
 :root {
     background: $color--secondary;
     margin: 0;
-    font-family: monospace;
+    font-family: 'Anonymous Pro', monospace;
 }
 /* Anonymous Pro */
 /* Monoton */
@@ -49,8 +49,13 @@ header {
     .cls-3 {
         fill: $color--bright_text; /* m:h */
     }
-    .cls-4 {
-        fill: none; /* m:h shadow */
+    #pathed {
+        font-size: 1.99em;
+        fill: $color--bright_text; /* pathed text */
+        textpath {
+            opacity: .25;
+            animation: expand 6s 1;
+        }
     }
 }
 .heart-pulse {
