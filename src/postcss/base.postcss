@@ -29,9 +29,9 @@ header {
         bottom: 0;
         left: 0;
         opacity: .45;
-	content: "";
+        content: "";
         z-index: -1;
-	filter: saturate(0);
+        filter: saturate(0);
     }
 }
 
@@ -42,31 +42,20 @@ header {
 
     .cls-1 {
         fill: $color--primary; /* ∞ */
-        animation: pulse;
     }
     .cls-2 {
-        fill: $color--tertiary; /* {  } */
-        animation-name: flexLeft;
-        animation-delay: .2s;
-    }
-    #curly--close .cls-2 {
-        animation-name: flexRight;
-    }
-    .cls-3,
-    .cls-4 {
-        animation: pulse;
-        animation-delay: .2s;
+        fill: $color--secondary; /* {  } */
     }
     .cls-3 {
         fill: $color--bright_text; /* m:h */
     }
     .cls-4 {
-        fill: $color--dark_text; /* m:h shadow */
+        fill: none; /* m:h shadow */
     }
-    path[class^="cls-"] {
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
-        transform-origin: 50% 50%;
-    }
+}
+.heart-pulse {
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
+    transform-origin: 50% 50%;
 }
