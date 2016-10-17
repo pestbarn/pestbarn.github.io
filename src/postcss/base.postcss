@@ -46,15 +46,25 @@ header {
     .cls-2 {
         fill: $color--secondary; /* {  } */
     }
-    .cls-3 {
-        fill: $color--bright_text; /* m:h */
-    }
-    #pathed {
-        font-size: 1.99em;
+    .pathed {
+        font-size: 2.65em;
         fill: $color--bright_text; /* pathed text */
         textpath {
-            opacity: .25;
-            animation: expand 6s 1;
+            opacity: 0;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+            font-variant: small-caps;
+            animation: 2s expand 1 forwards;
+            animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+        }
+        &.tr textpath {
+            animation-delay: .6s;
+        }
+        &.bl textpath {
+            animation-delay: 1.8s;
+        }
+        &.br textpath {
+            animation-delay: 2.4s;
         }
     }
 }

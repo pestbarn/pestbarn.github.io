@@ -573,9 +573,14 @@ textarea {
     opacity: 0;
   }
 
+  80% {
+    letter-spacing: -17px;
+    opacity: 0;
+  }
+
   100% {
     letter-spacing: 0;
-    opacity: .25;
+    opacity: 1;
   }
 }
 
@@ -585,9 +590,14 @@ textarea {
     opacity: 0;
   }
 
+  80% {
+    letter-spacing: -17px;
+    opacity: 0;
+  }
+
   100% {
     letter-spacing: 0;
-    opacity: .25;
+    opacity: 1;
   }
 }
 @font-face {
@@ -652,9 +662,14 @@ textarea {
     opacity: 0;
   }
 
+  80% {
+    letter-spacing: -17px;
+    opacity: 0;
+  }
+
   100% {
     letter-spacing: 0;
-    opacity: .25;
+    opacity: 1;
   }
 }
 
@@ -712,22 +727,39 @@ header::before {
   /* {  } */
 }
 
-#logotype .cls-3 {
-  fill: #eef5db;
-  /* m:h */
-}
-
-#logotype #pathed {
-  font-size: 1.99em;
+#logotype .pathed {
+  font-size: 2.65em;
   fill: #eef5db;
 }
 
 /* pathed text */
 
-#logotype #pathed textpath {
-  opacity: .25;
-  -webkit-animation: expand 6s 1;
-  animation: expand 6s 1;
+#logotype .pathed textpath {
+  opacity: 0;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+  -webkit-font-feature-settings: "c2sc";
+  font-feature-settings: "c2sc";
+  font-variant: small-caps;
+  -webkit-animation: 2s expand 1 forwards;
+  animation: 2s expand 1 forwards;
+  -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+  animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+}
+
+#logotype .pathed.tr textpath {
+  -webkit-animation-delay: .6s;
+  animation-delay: .6s;
+}
+
+#logotype .pathed.bl textpath {
+  -webkit-animation-delay: 1.8s;
+  animation-delay: 1.8s;
+}
+
+#logotype .pathed.br textpath {
+  -webkit-animation-delay: 2.4s;
+  animation-delay: 2.4s;
 }
 
 .heart-pulse {

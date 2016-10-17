@@ -146,7 +146,7 @@ var ExperienceModule = {
 var SkillsModule = {
 
     init: function() {
-        var url = 'bin/js/json/skills.json',
+        var url = 'src/js/json/skills.json',
             toEl = ['skills','li'];
         parser.xhrFile(url, toEl);
     }
