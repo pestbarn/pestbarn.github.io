@@ -1,14 +1,49 @@
 @keyframes expand {
-    0% {
-        letter-spacing: -17px;
-        opacity: 0;
-    }
-    80% {
+    0%, 80% {
         letter-spacing: -17px;
         opacity: 0;
     }
     100% {
         letter-spacing: 0;
         opacity: 1;
+    }
+}
+@keyframes star {
+    0%, 80% {
+        letter-spacing: 3px;
+        opacity: 0;
+    }
+    90% {
+        letter-spacing: -3px;
+    }
+    100% {
+        letter-spacing: 0;
+        opacity: 1;
+    }
+}
+@keyframes bounce-open {
+    0%,80% {
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    90% {
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes bounce-close {
+    0%,80% {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+    90% {
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }

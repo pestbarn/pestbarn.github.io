@@ -45,20 +45,47 @@ header {
     }
     .cls-2 {
         fill: $color--secondary; /* {  } */
+        opacity: 0;
+        animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+    }
+    .st0 {
+        fill: none; /* text path */
+    }
+    #curly--open .cls-2 {
+        animation: 1s bounce-open 1 forwards .4s;
+    }
+    #curly--close .cls-2 {
+        animation: 1s bounce-close 1 forwards .4s;
     }
     .pathed {
-        font-size: 2.65em;
+        font-size: 3em;
         fill: $color--bright_text; /* pathed text */
         textpath {
             opacity: 0;
             letter-spacing: 1px;
+            font-weight: 800;
+            white-space: pre;
+            word-spacing: initial;
             text-transform: lowercase;
             font-variant: small-caps;
             animation: 2s expand 1 forwards;
+            text-rendering: optimizeLegibility;
             animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
         }
-        &.tr textpath {
+        &.textstar textpath {
+            font-size: 2em;
+            dominant-baseline: middle;
+            font-weight: 400;
+            animation: 2s star 1 forwards;
+        }
+        &.textleft textpath {
             animation-delay: .6s;
+        }
+        &.textright textpath {
+            font-size: .8em;
+            font-weight: 400;
+            animation-delay: 1.2s;
+            text-rendering: geometricPrecision;
         }
         &.bl textpath {
             animation-delay: 1.8s;
