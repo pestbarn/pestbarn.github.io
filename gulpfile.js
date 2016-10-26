@@ -14,14 +14,16 @@ var vfs              = require('vinyl-fs');
 var runSequence      = require('run-sequence');
 var del              = require('del');
 var livereload       = require('gulp-livereload');
+var jsonmin          = require('gulp-jsonmin');
 
 var paths = {
     haml:           './src/haml/index.haml',
-    haml_partials:  './src/haml/partials/*.haml',
+    haml_partials:  './src/haml/partials/**.haml',
     css: {
-        base: 'src/postcss/**/*.postcss',
-        normalize: 'node_modules/normalize.css/normalize.css'
-    }
+        base:       './src/postcss/**/*.postcss',
+        normalize:  './node_modules/normalize.css/normalize.css'
+    },
+    json:           './src/js/json/*.json'
 };
 
 const css = Object.keys(paths.css).map(key => paths.css[key]);
@@ -34,19 +36,19 @@ var processors = [
 
 gulp.task('haml', function(callback) {
     pump([
-        gulp.src(paths.haml),
+        vfs.src(paths.haml),
         haml({ext: '.html'}),
-        gulp.dest('./'),
-	livereload()
+        vfs.dest('./'),
+        livereload()
     ], callback);
 });
 
 gulp.task('haml-partials', function(callback) {
     pump([
-        gulp.src(paths.haml_partials),
+        vfs.src(paths.haml_partials),
         haml({ext: '.html'}),
-        gulp.dest('./bin/partials/'),
-	livereload()
+        vfs.dest('./bin/partials/'),
+        livereload()
     ], callback);
 });
 
@@ -56,7 +58,7 @@ gulp.task('css', function(callback) {
         postcss(processors),
         concat_css('main.css'),
         vfs.dest('./bin/css/'),
-	livereload()
+        livereload()
     ], callback);
 });
 
@@ -67,25 +69,26 @@ gulp.task('minify', ['css'], function(callback){
         concat_css('main.min.css'),
         clean_css(),
         vfs.dest('./bin/css/'),
-	livereload()
+        livereload()
     ], callback);
 })
 
 gulp.task('js-build', function(callback){
     runSequence('js-clean',
+                'json',
                 'js',
                 callback);
 });
 
 gulp.task('js', function(){
     return pump([
-        gulp.src('./src/js/main.js'),
+        vfs.src('./src/js/main.js'),
         sourcemaps.init(),
         babel({presets: ['es2015']}),
         uglify(),
         sourcemaps.write(),
-        gulp.dest('./bin/js/'),
-	livereload()
+        vfs.dest('./bin/js/'),
+        livereload()
     ]);
 });
 
@@ -93,12 +96,21 @@ gulp.task('js-clean', function() {
     return del(['./bin/js/*']);
 });
 
+gulp.task('json', function () {
+    return pump([
+        vfs.src(paths.json),
+        jsonmin(),
+        vfs.dest('./bin/js/json/')
+    ]);
+});
+
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch(paths.haml, ['haml']);
     gulp.watch(paths.haml_partials, ['haml-partials']);
-    gulp.watch(paths.css.base, [['css'],['minify']]);
+    gulp.watch(paths.css.base, [['css'], ['minify']]);
     gulp.watch('./src/js/main.js', ['js']);
+    gulp.watch('./src/js/json/*', ['json']);
 });
 
 gulp.task('default', ['haml', 'haml-partials', 'css', 'minify', 'js-build']);

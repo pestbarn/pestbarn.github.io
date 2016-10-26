@@ -17,9 +17,16 @@ h1 {
 
 header {
     background: $color--base;
+    width: 100vw;
     height: 100vh;
     position: relative;
     z-index: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    animation: 1s shrink 1 forwards 3s;
+    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
 
     &::before {
         background: url(/src/img/paper_.5.jpg);
@@ -32,13 +39,23 @@ header {
         content: "";
         z-index: -1;
         filter: saturate(0);
+        border-radius: 50px 5px;
+    }
+
+    &.clicked {
+        transform: rotateY(180deg); /* header styles => main styles, make main backside of "card" */
     }
 }
 
 #logotype {
-    max-width: 50vw;
+    max-width: 100%;
+    max-height: 100%;
     margin: 0 auto;
     display: block;
+    top: 0;
+    position: relative;
+    animation: 1s grow 1 forwards 3s;
+    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
 
     .cls-1 {
         fill: $color--primary; /* ∞ */
@@ -76,22 +93,16 @@ header {
             font-size: 2em;
             dominant-baseline: middle;
             font-weight: 400;
-            animation: 2s star 1 forwards;
+            animation: .6s star 1 forwards;
         }
         &.textleft textpath {
-            animation-delay: .6s;
+            animation-delay: .4s;
         }
         &.textright textpath {
             font-size: .8em;
             font-weight: 400;
-            animation-delay: 1.2s;
+            animation-delay: .8s;
             text-rendering: geometricPrecision;
-        }
-        &.bl textpath {
-            animation-delay: 1.8s;
-        }
-        &.br textpath {
-            animation-delay: 2.4s;
         }
     }
 }

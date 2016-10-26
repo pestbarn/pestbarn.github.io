@@ -10,14 +10,9 @@
 }
 @keyframes star {
     0%, 80% {
-        letter-spacing: 3px;
         opacity: 0;
     }
-    90% {
-        letter-spacing: -3px;
-    }
     100% {
-        letter-spacing: 0;
         opacity: 1;
     }
 }
@@ -45,5 +40,35 @@
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+@keyframes grow {
+    0% {
+        max-width: 100%;
+        max-height: 100%;
+        top: 0;
+    }
+    100% {
+        max-width: 130%;
+        max-height: 130%;
+        top: -15%;
+    }
+}
+@keyframes shrink {
+    0% {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0 0 0 0;
+        transform: translate(0, 0);
+    }
+    100% {
+        width: 75vw;
+        height: 75vh;
+        border-radius: 50px 5px;
+        top: 50vh;
+        left: 50vw;
+        box-shadow: 0 0 0 4px $color--primary;
+        border: 1px dotted $color--secondary;
+        transform: translate(-37.5vw, -37.5vh);
     }
 }

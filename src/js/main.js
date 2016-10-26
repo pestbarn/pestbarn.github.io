@@ -1,160 +1,116 @@
-var parser = (function() {
+var Parser = (function() {
 
-    const DEBUG = true;
-
-    function buildElement(element, text, parent) {
-        var item = element;
-        var contents = text;
-        var contentFragment = document.createDocumentFragment();
-
-        contents.forEach(function(e) {
-            var li = document.createElement('span');
-            if (typeof e === 'string') e.replace(/[^\,\w\s]/gi, '');
-            li.textContent = e;
-            contentFragment.appendChild(li);
-        });
-
-        item.appendChild(contentFragment);
-        var toEl = parent;
-        toEl.appendChild(item, parent);
-    }
-
-    function toArray(obj) {
-        const result = [];
-        for (const prop in obj) {
-            const value = obj[prop];
-            if (typeof value === 'object') {
-                result.push(toArray(value));
+    function $http(url){
+        var core = {
+            ajax: function(method, url, args) {
+                var promise = new Promise(function(resolve, reject) {
+                    var client = new XMLHttpRequest();
+                    var uri = url;
+                    client.open(method, uri);
+                    client.send();
+                    client.onload = function () {
+                        if (this.status >= 200 && this.status < 300) {
+                            resolve(this.response);
+                        } else {
+                            reject(this.statusText);
+                        }
+                    };
+                    client.onerror = function () {
+                        reject(this.statusText);
+                    };
+                });
+                return promise;
             }
-            else {
-                result.push(value);
+        };
+        return {
+            'get': function(args) {
+                return core.ajax('GET', url, args);
             }
-        }
-        return result;
-    }
-
-    var tryParseJSON = function(jsonString, target, callback) {
-        try {
-            var obj = JSON.parse(jsonString);
-            if (obj && typeof obj === 'object') {
-                returnObject(obj, fileOutput, target);
-            }
-        }
-        catch(err) {
-            if (DEBUG) throw new Error(err);
-            throw new Error('WTF is this? Hit me up with these details: \n'+ err);
-        }
-    };
-
-    var returnObject = function(obj, callback, target) {
-        if (obj != undefined && obj.hasOwnProperty){
-            callback(obj, target);
-        }
-    }
-
-    var objOutput = function(obj, target) {
-        var element = document.getElementsByTagName(target);
-        var object = obj;
-        for (const item of element) {
-            item.innerHTML = object;
-        }
-    }
-
-    var fileOutput = function(obj, target) {
-        var parent = document.getElementById(target[0]);
-        var object = obj.items;
-        var numItems = object.length;
-        var out = toArray(object);
-        for(let i = 0, l = numItems; i < l; i++) {
-            var innerEl = document.createElement(target[1]);
-            var className = out[i][0].toLowerCase().replace(/[^\w\s]/gi, '');
-            innerEl.classList.add(className);
-            buildElement(innerEl, out[i], parent);
-        }
-    }
-
-    var getPartials = function(obj, type, target) {
-        var xhr = new XMLHttpRequest();
-        var target = target;
-        var isFile = type == 'file' ? true : false;
-        if (isFile) xhr.overrideMimeType('application/json');
-        xhr.open('GET', obj, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var params = this.response;
-                    if (isFile) {
-                        tryParseJSON(params, target, returnObject);
-                    } else {
-                        returnObject(params, objOutput, target);
-                    }
-                }
-            }
-        }
-        if(DEBUG) {
-            xhr.ontimeout = function () {
-                console.log('The request timed out.');
-            };
-            xhr.timeout = 1000;
-        }
-        xhr.send();
+        };
     };
 
     return {
-        xhrObjs: function(object) {
-            var params = object.items;
-            for (const item of params) {
-                getPartials(item.url, 'object', item.tag);
+
+        fetchContent: function() {
+            let partials = new Map([
+                ["header", "bin/partials/header.html"],
+                [".contact", "bin/partials/contact.html"]
+            ]);
+            var files = [
+                'experience'
+            ];
+            for (const part of partials) {
+                fetchFile(part[1], part[0]);
             }
-        },
-        xhrFile: function(object, toEl) {
-            getPartials(object, 'file', toEl);
+            for (const file of files) {
+                fetchFile(file);
+            }
+            function fetchFile(f, e) {
+                var file = e ? f : 'bin/js/json/'+f+'.json';
+                var callback = {
+                    success: function(data) {
+                        var data = e ? data : JSON.parse(data);
+                        if (e) {
+                            Render.getPart(data, e)
+                        } else Render.build(data);
+                    },
+                    error: function(data) {
+                        throw new Error(data);
+                    }
+                };
+                $http(file).get()
+                .then(callback.success)
+                .catch(callback.error);
+            }
         }
+
     };
 
 })();
 
-var HeaderModule = {
+var Render = {
+
+    build: function(data) {
+        var data = data.items;
+        var grid = document.querySelector('.grid');
+
+        for (const n of data) {
+            var title = n.title,
+            uri = n.url,
+            size = n.hasOwnProperty('size') ? n.size : false;
+        }
+    },
+
+    getPart: function(data, e) {
+        if (e.indexOf('.') !== -1) {
+            // e refers to a classname
+            var e = e.substr(1);
+
+            // creating a div with classname e
+            var temp = document.createElement('div');
+            temp.classList.add(e);
+
+            // add data
+            temp.innerHTML = data;
+
+            // append to parent <main>
+            var parent = document.querySelector('main');
+            parent.appendChild(temp);
+        } else {
+            var elem = document.querySelector(e);
+            var temp = document.createElement(e);
+            temp.innerHTML = data;
+
+            document.body.replaceChild(temp, elem);
+        }
+    },
 
     init: function() {
-        var objs = {
-            items: [
-                {
-                    url: 'bin/partials/header.html',
-                    tag: 'header'
-                }, {
-                    url: 'bin/partials/navigation.html',
-                    tag: 'nav'
-                }
-            ]
-        };
-        parser.xhrObjs(objs);
-    }
-
-}
-
-var ExperienceModule = {
-
-    init: function() {
-        var url = 'src/js/json/experience.json',
-            toEl = ['experience','div'];
-        parser.xhrFile(url, toEl);
-    }
-
-};
-
-var SkillsModule = {
-
-    init: function() {
-        var url = 'src/js/json/skills.json',
-            toEl = ['skills','li'];
-        parser.xhrFile(url, toEl);
+        Parser.fetchContent();
     }
 
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    HeaderModule.init();
-    ExperienceModule.init();
-    SkillsModule.init();
+    Render.init();
 });

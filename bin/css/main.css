@@ -593,32 +593,20 @@ textarea {
 
 @-webkit-keyframes star {
   0%, 80% {
-    letter-spacing: 3px;
     opacity: 0;
   }
 
-  90% {
-    letter-spacing: -3px;
-  }
-
   100% {
-    letter-spacing: 0;
     opacity: 1;
   }
 }
 
 @keyframes star {
   0%, 80% {
-    letter-spacing: 3px;
     opacity: 0;
   }
 
-  90% {
-    letter-spacing: -3px;
-  }
-
   100% {
-    letter-spacing: 0;
     opacity: 1;
   }
 }
@@ -698,6 +686,78 @@ textarea {
     transform: translateX(0);
   }
 }
+
+@-webkit-keyframes grow {
+  0% {
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+  }
+
+  100% {
+    max-width: 130%;
+    max-height: 130%;
+    top: -15%;
+  }
+}
+
+@keyframes grow {
+  0% {
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+  }
+
+  100% {
+    max-width: 130%;
+    max-height: 130%;
+    top: -15%;
+  }
+}
+
+@-webkit-keyframes shrink {
+  0% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0 0 0 0;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  100% {
+    width: 75vw;
+    height: 75vh;
+    border-radius: 50px 5px;
+    top: 50vh;
+    left: 50vw;
+    box-shadow: 0 0 0 4px $color--primary;
+    border: 1px dotted $color--secondary;
+    -webkit-transform: translate(-37.5vw, -37.5vh);
+    transform: translate(-37.5vw, -37.5vh);
+  }
+}
+
+@keyframes shrink {
+  0% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0 0 0 0;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  100% {
+    width: 75vw;
+    height: 75vh;
+    border-radius: 50px 5px;
+    top: 50vh;
+    left: 50vw;
+    box-shadow: 0 0 0 4px $color--primary;
+    border: 1px dotted $color--secondary;
+    -webkit-transform: translate(-37.5vw, -37.5vh);
+    transform: translate(-37.5vw, -37.5vh);
+  }
+}
 @font-face {
   font-family: monospace;
   font-style: italic;
@@ -768,16 +828,10 @@ textarea {
 
 @keyframes star {
   0%, 80% {
-    letter-spacing: 3px;
     opacity: 0;
   }
 
-  90% {
-    letter-spacing: -3px;
-  }
-
   100% {
-    letter-spacing: 0;
     opacity: 1;
   }
 }
@@ -814,6 +868,40 @@ textarea {
   }
 }
 
+@keyframes grow {
+  0% {
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+  }
+
+  100% {
+    max-width: 130%;
+    max-height: 130%;
+    top: -15%;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0 0 0 0;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    width: 75vw;
+    height: 75vh;
+    border-radius: 50px 5px;
+    top: 50vh;
+    left: 50vw;
+    box-shadow: 0 0 0 4px #fe5f55;
+    border: 1px dotted #eef5db;
+    transform: translate(-37.5vw, -37.5vh);
+  }
+}
+
 :root {
   background: #eef5db;
   margin: 0;
@@ -832,9 +920,19 @@ h1 {
 
 header {
   background: #333745;
+  width: 100vw;
   height: 100vh;
   position: relative;
   z-index: 0;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-animation: 1s shrink 1 forwards 3s;
+  animation: 1s shrink 1 forwards 3s;
+  -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+  animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
 }
 
 header::before {
@@ -850,12 +948,26 @@ header::before {
   filter: url("data:image/svg+xml;charset=utf-8,<svg xmlns=http://www.w3.org/2000/svg><filter id=filter><feColorMatrix type=matrix color-interpolation-filters=sRGB values=1 0 0 0 0 0 1.01 0 0 0 0 0 1 0 0 0 0 0 1 0 /></filter></svg>#filter");
   -webkit-filter: saturate(0);
   filter: saturate(0);
+  border-radius: 50px 5px;
+}
+
+header.clicked {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  /* header styles => main styles, make main backside of "card" */
 }
 
 #logotype {
-  max-width: 50vw;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
   display: block;
+  top: 0;
+  position: relative;
+  -webkit-animation: 1s grow 1 forwards 3s;
+  animation: 1s grow 1 forwards 3s;
+  -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+  animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
 }
 
 #logotype .cls-1 {
@@ -915,31 +1027,21 @@ header::before {
   font-size: 2em;
   dominant-baseline: middle;
   font-weight: 400;
-  -webkit-animation: 2s star 1 forwards;
-  animation: 2s star 1 forwards;
+  -webkit-animation: .6s star 1 forwards;
+  animation: .6s star 1 forwards;
 }
 
 #logotype .pathed.textleft textpath {
-  -webkit-animation-delay: .6s;
-  animation-delay: .6s;
+  -webkit-animation-delay: .4s;
+  animation-delay: .4s;
 }
 
 #logotype .pathed.textright textpath {
   font-size: .8em;
   font-weight: 400;
-  -webkit-animation-delay: 1.2s;
-  animation-delay: 1.2s;
+  -webkit-animation-delay: .8s;
+  animation-delay: .8s;
   text-rendering: geometricPrecision;
-}
-
-#logotype .pathed.bl textpath {
-  -webkit-animation-delay: 1.8s;
-  animation-delay: 1.8s;
-}
-
-#logotype .pathed.br textpath {
-  -webkit-animation-delay: 2.4s;
-  animation-delay: 2.4s;
 }
 
 .heart-pulse {
