@@ -1,3 +1,11 @@
+var é = function (selector) {
+    return document.querySelector(selector);
+};
+
+var ç = function (selector) {
+    return document.createElement(selector);
+};
+
 var Parser = (function() {
 
     function $http(url){
@@ -70,9 +78,14 @@ var Parser = (function() {
 
 var Render = {
 
+    settings: {
+        createEl: 'div',
+        parentEl: 'main'
+    },
+
     build: function(data) {
         var data = data.items;
-        var grid = document.querySelector('.grid');
+        var parent = é(this.settings.parentEl);
 
         for (const n of data) {
             var title = n.title,
@@ -82,25 +95,37 @@ var Render = {
     },
 
     getPart: function(data, e) {
-        if (e.indexOf('.') !== -1) {
+        if (~e.indexOf('.')) {
+
             // e refers to a classname
             var e = e.substr(1);
 
             // creating a div with classname e
-            var temp = document.createElement('div');
+            var temp = ç(this.settings.createEl);
             temp.classList.add(e);
+
+            // add data and attach click handler
+            temp.innerHTML = data;
+            temp.onclick = Interact.resetClicked;
+
+            // append to parent <main>
+            var parent = é(this.settings.parentEl);
+            parent.appendChild(temp);
+
+        } else {
+
+            // e refers to an existing element
+            var elem = é(e);
+
+            // create the (new) element
+            var temp = ç(e);
 
             // add data
             temp.innerHTML = data;
 
-            // append to parent <main>
-            var parent = document.querySelector('main');
-            parent.appendChild(temp);
-        } else {
-            var elem = document.querySelector(e);
-            var temp = document.createElement(e);
-            temp.innerHTML = data;
+            temp.onclick = Interact.toggleClicked;
 
+            // replace existing element with new
             document.body.replaceChild(temp, elem);
         }
     },
@@ -111,6 +136,27 @@ var Render = {
 
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+var Interact = {
+
+    toggleClicked: function() {
+        var el = this;
+        el.className = el.className ? el.className = '' : el.className = 'clicked';
+    },
+
+    resetClicked: function() {
+        var el = é('.clicked');
+        if (el.length === undefined) {
+            el.removeAttribute('class');
+        } else {
+            for (var i = 0; i < el.length; i++) {
+                var element = el[i];
+                element.removeAttribute('class');
+            }
+        }
+    }
+
+};
+
+window.addEventListener('DOMContentLoaded', function() {
     Render.init();
 });

@@ -2,7 +2,8 @@
 @import "animations.postcss";
 
 :root {
-    background: $color--secondary;
+    background: $color--secondary url(/src/img/paperbright_.5.jpg);
+    background-size: cover;
     margin: 0;
     font-family: 'Anonymous Pro', monospace;
 }
@@ -15,21 +16,35 @@ h1 {
     text-transform: lowercase;
 }
 
-header {
-    background: $color--base;
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+body {
+    transform: translateZ(0);
+}
+
+header, main {
+    width: 85vw;
+    height: 85vh;
+    top: 50vh;
+    left: 50vw;
     z-index: 0;
-    top: 0;
-    left: 0;
+    will-change: transform;
     box-sizing: border-box;
     backface-visibility: hidden;
-    animation: 1s shrink 1 forwards 3s;
+    border: 1px dotted $color--secondary;
+    box-shadow: 0 0 0 4px $color--primary;
     animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+}
+
+header {
+    z-index: 1;
+    position: relative;
+    border-radius: 50px 5px;
+    background: $color--base;
+    transform: translate(-42.5vw, -42.5vh);
+    animation: 4s shrink 1 forwards;
 
     &::before {
         background: url(/src/img/paper_.5.jpg);
+        background-size: cover;
         position: absolute;
         top: 0;
         right: 0;
@@ -43,7 +58,26 @@ header {
     }
 
     &.clicked {
-        transform: rotateY(180deg); /* header styles => main styles, make main backside of "card" */
+        animation: 2s flip 1 forwards;
+    }
+}
+
+header.clicked + main {
+    animation: 2s flip--reverse 1 forwards;
+}
+
+main {
+    display: flex;
+    position: absolute;
+    background: $color--base;
+    border-radius: 50px 5px;
+    transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
+
+    div {
+        flex-grow: 1;
+        color: $color--bright_text;
+        text-align: center;
+        align-self: center;
     }
 }
 
@@ -54,8 +88,9 @@ header {
     display: block;
     top: 0;
     position: relative;
-    animation: 1s grow 1 forwards 3s;
-    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+    will-change: transform;
+    animation: 1.5s grow 1 forwards 4s;
+
 
     .cls-1 {
         fill: $color--primary; /* ∞ */
@@ -94,6 +129,10 @@ header {
             dominant-baseline: middle;
             font-weight: 400;
             animation: .6s star 1 forwards;
+
+            span {
+                cursor: pointer;
+            }
         }
         &.textleft textpath {
             animation-delay: .4s;
