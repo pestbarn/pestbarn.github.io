@@ -71,13 +71,11 @@
         height: 85vh;
         top: 50vh;
         left: 50vw;
-        box-shadow: 0 0 0 4px $color--primary;
-        border: 1px dotted $color--secondary;
     }
-    0%, 49% {
+    0%, 50% {
         z-index: 1;
     }
-    51%, 100% {
+    50%, 100% {
         z-index: 0;
     }
     0%, 75% {
@@ -93,13 +91,11 @@
         height: 85vh;
         top: 50vh;
         left: 50vw;
-        box-shadow: 0 0 0 4px $color--primary;
-        border: 1px dotted $color--secondary;
     }
-    0%, 49% {
+    0%, 50% {
         z-index: 0;
     }
-    51%, 100% {
+    50%, 100% {
         z-index: 1;
     }
     0%, 75% {
@@ -107,5 +103,23 @@
     }
     100% {
         transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
+    }
+}
+@keyframes locate {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    10% {
+        border-color: rgba(255, 255, 255, .3);
+    }
+    30% {
+        border-color: rgba(255, 255, 255, .7);
+    }
+    100% {
+        width: 30px;
+        height: 30px;
+        transform: translate(15px, 15px);
+        border-color: transparent;
     }
 }

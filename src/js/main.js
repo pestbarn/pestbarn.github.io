@@ -88,9 +88,7 @@ var Render = {
         var parent = é(this.settings.parentEl);
 
         for (const n of data) {
-            var title = n.title,
-            uri = n.url,
-            size = n.hasOwnProperty('size') ? n.size : false;
+            // future proofing for outputting JSON content
         }
     },
 
@@ -106,7 +104,7 @@ var Render = {
 
             // add data and attach click handler
             temp.innerHTML = data;
-            temp.onclick = Interact.resetClicked;
+            temp.onclick = Interact.toggleClicked;
 
             // append to parent <main>
             var parent = é(this.settings.parentEl);
@@ -139,8 +137,8 @@ var Render = {
 var Interact = {
 
     toggleClicked: function() {
-        var el = this;
-        el.className = el.className ? el.className = '' : el.className = 'clicked';
+        var el = é('header');
+        el.className == 'clicked' ? el.className = 'reverse' : el.className = 'clicked';
     },
 
     resetClicked: function() {

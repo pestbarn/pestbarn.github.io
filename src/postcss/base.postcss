@@ -7,8 +7,14 @@
     margin: 0;
     font-family: 'Anonymous Pro', monospace;
 }
-/* Anonymous Pro */
-/* Monoton */
+
+a {
+    color: $color--dark_text;
+
+    &:after {
+        content: '»';
+    }
+}
 
 h1 {
     font-size: 6em;
@@ -39,8 +45,15 @@ header {
     position: relative;
     border-radius: 50px 5px;
     background: $color--base;
-    transform: translate(-42.5vw, -42.5vh);
+    transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
     animation: 4s shrink 1 forwards;
+
+    svg g path,
+    svg g .pathed,
+    .locate {
+        transition: .2s all;
+        transition-delay: .8s;
+    }
 
     &::before {
         background: url(/src/img/paper_.5.jpg);
@@ -58,26 +71,75 @@ header {
     }
 
     &.clicked {
-        animation: 2s flip 1 forwards;
-    }
-}
+        animation: 1s flip 1 forwards;
 
-header.clicked + main {
-    animation: 2s flip--reverse 1 forwards;
+        svg g path,
+        svg g .pathed,
+        .locate {
+            fill: transparent !important;
+            visibility: hidden;
+        }
+
+        + main {
+            animation: 1s flip--reverse 1 forwards;
+        }
+    }
+    &.reverse {
+        animation: 1s flip--reverse 1 forwards;
+
+        + main {
+            animation: 1s flip 1 forwards;
+        }
+    }
 }
 
 main {
     display: flex;
     position: absolute;
-    background: $color--base;
+    z-index: 1;
+    background: $color--primary;
     border-radius: 50px 5px;
-    transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
+    border: 9vw double salmon;
+    box-shadow: 0 0 4px 1px $color--base;
+    transform: translate(-42.5vw, -42.5vh) rotateY(180deg);
 
     div {
         flex-grow: 1;
         color: $color--bright_text;
         text-align: center;
         align-self: center;
+
+        p {
+            max-width: 50%;
+            margin: 0 auto 1rem;
+
+            span {
+                background: $color--bright_text;
+                color: $color--primary;
+                box-sizing: border-box;
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 5px;
+                margin: 4px;
+
+                &.primary {
+                    font-weight: 600;
+                    box-shadow: inset 0 0 0 1px $color--bright_text, inset 0 0 0 2px $color--primary;
+                }
+            }
+
+            &:last-child {
+                cursor: default;
+                font-weight: 600;
+                font-size: 1.25em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 568px) {
+    main div p {
+        max-width: 90%;
     }
 }
 
@@ -145,9 +207,19 @@ main {
         }
     }
 }
-.heart-pulse {
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.55);
-    transform-origin: 50% 50%;
+
+@media screen and (max-width: 568px) {
+    #logotype {
+        margin-top: 30%;
+    }
+}
+
+.locate {
+    position: absolute;
+    right: 10%;
+    bottom: 15%;
+    animation: locate 2s infinite ease-out 5s;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    cursor: pointer;
 }
