@@ -2,7 +2,7 @@
 @import "animations.postcss";
 
 :root {
-    background: $color--secondary url(/src/img/paperbright_.5.jpg);
+    background: $color--secondary url(/v2/src/img/paperbright_.5.jpg);
     background-size: cover;
     margin: 0;
     font-family: 'Anonymous Pro', monospace;
@@ -11,7 +11,7 @@
 a {
     color: $color--dark_text;
 
-    &:after {
+    &::after {
         content: '»';
     }
 }
@@ -56,7 +56,7 @@ header {
     }
 
     &::before {
-        background: url(/src/img/paper_.5.jpg);
+        background: url(/v2/src/img/paper_.5.jpg);
         background-size: cover;
         position: absolute;
         top: 0;
@@ -128,7 +128,7 @@ main {
                 }
             }
 
-            &:last-child {
+            &::last-child {
                 cursor: default;
                 font-weight: 600;
                 font-size: 1.25em;

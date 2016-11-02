@@ -1103,7 +1103,7 @@ textarea {
 }
 
 :root {
-  background: #eef5db url("/src/img/paperbright_.5.jpg");
+  background: #eef5db url("/v2/src/img/paperbright_.5.jpg");
   background-size: cover;
   margin: 0;
   font-family: 'Anonymous Pro', monospace;
@@ -1113,7 +1113,7 @@ a {
   color: #333745;
 }
 
-a:after {
+a::after {
   content: '»';
 }
 
@@ -1166,7 +1166,7 @@ header .locate {
 }
 
 header::before {
-  background: url("/src/img/paper_.5.jpg");
+  background: url("/v2/src/img/paper_.5.jpg");
   background-size: cover;
   position: absolute;
   top: 0;
@@ -1230,6 +1230,7 @@ main div {
   color: #eef5db;
   text-align: center;
   -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
 }
 
@@ -1254,7 +1255,7 @@ main div p span.primary {
   box-shadow: inset 0 0 0 1px #eef5db, inset 0 0 0 2px #fe5f55;
 }
 
-main div p:last-child {
+main div p::last-child {
   cursor: default;
   font-weight: 600;
   font-size: 1.25em;
