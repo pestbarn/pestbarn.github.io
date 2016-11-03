@@ -6,6 +6,7 @@
     background-size: cover;
     margin: 0;
     font-family: 'Anonymous Pro', monospace;
+    font-size: 16px;
 }
 
 a {
@@ -172,22 +173,20 @@ main {
         animation: 1s bounce-close 1 forwards .4s;
     }
     .pathed {
-        font-size: 3em;
         fill: $color--bright_text; /* pathed text */
-        textpath {
+
+        textPath {
             opacity: 0;
             letter-spacing: 1px;
             font-weight: 800;
             white-space: pre;
             word-spacing: initial;
-            text-transform: lowercase;
-            font-variant: small-caps;
-            animation: 2s expand 1 forwards;
+            text-transform: uppercase;
+            -webkit-animation: 2s expand 1 forwards;
             text-rendering: optimizeLegibility;
             animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
         }
-        &.textstar textpath {
-            font-size: 2em;
+        &.textstar textPath {
             dominant-baseline: middle;
             font-weight: 400;
             animation: .6s star 1 forwards;
@@ -196,11 +195,10 @@ main {
                 cursor: pointer;
             }
         }
-        &.textleft textpath {
+        &.textleft textPath {
             animation-delay: .4s;
         }
-        &.textright textpath {
-            font-size: .8em;
+        &.textright textPath {
             font-weight: 400;
             animation-delay: .8s;
             text-rendering: geometricPrecision;
