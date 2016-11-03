@@ -33,21 +33,22 @@ header, main {
     top: 50vh;
     left: 50vw;
     z-index: 0;
+    overflow: hidden;
     will-change: transform;
     box-sizing: border-box;
     backface-visibility: hidden;
     border: 1px dotted $color--secondary;
     box-shadow: 0 0 0 4px $color--primary;
-    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
 }
 
 header {
     z-index: 1;
     position: relative;
+    will-change: transform;
     border-radius: 50px 5px;
     background: $color--base;
     transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
-    animation: 4s shrink 1 forwards;
 
     svg g path,
     svg g .pathed,
@@ -152,7 +153,7 @@ main {
     top: 0;
     position: relative;
     will-change: transform;
-    animation: 1.5s grow 1 forwards 4s;
+    animation: 1.5s grow 1 forwards 3s cubic-bezier(.68,-0.55,.26,1.45);
 
 
     .cls-1 {
@@ -206,9 +207,14 @@ main {
     }
 }
 
+@media screen and (max-width: 710px) {
+    #logotype {
+        margin-top: 20vh;
+    }
+}
 @media screen and (max-width: 568px) {
     #logotype {
-        margin-top: 30%;
+        transform: rotate(-90deg) scale(1.2) translate(-12.5vh);
     }
 }
 

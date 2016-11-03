@@ -695,9 +695,9 @@ textarea {
   }
 
   100% {
-    max-width: 130%;
-    max-height: 130%;
-    top: -15%;
+    max-width: 150%;
+    max-height: 150%;
+    top: -25%;
   }
 }
 
@@ -709,35 +709,9 @@ textarea {
   }
 
   100% {
-    max-width: 130%;
-    max-height: 130%;
-    top: -15%;
-  }
-}
-
-@-webkit-keyframes shrink {
-  0%, 95% {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    border-radius: 0 0 0 0;
-    border-color: transparent;
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes shrink {
-  0%, 95% {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    border-radius: 0 0 0 0;
-    border-color: transparent;
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
+    max-width: 150%;
+    max-height: 150%;
+    top: -25%;
   }
 }
 
@@ -1012,21 +986,9 @@ textarea {
   }
 
   100% {
-    max-width: 130%;
-    max-height: 130%;
-    top: -15%;
-  }
-}
-
-@keyframes shrink {
-  0%, 95% {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    border-radius: 0 0 0 0;
-    border-color: transparent;
-    transform: translate(0, 0);
+    max-width: 150%;
+    max-height: 150%;
+    top: -25%;
   }
 }
 
@@ -1136,25 +1098,25 @@ main {
   top: 50vh;
   left: 50vw;
   z-index: 0;
+  overflow: hidden;
   will-change: transform;
   box-sizing: border-box;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border: 1px dotted #eef5db;
   box-shadow: 0 0 0 4px #fe5f55;
-  -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
-  animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+  -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
+  animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
 }
 
 header {
   z-index: 1;
   position: relative;
+  will-change: transform;
   border-radius: 50px 5px;
   background: #333745;
   -webkit-transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
   transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
-  -webkit-animation: 4s shrink 1 forwards;
-  animation: 4s shrink 1 forwards;
 }
 
 header svg g path,
@@ -1276,8 +1238,8 @@ main div p::last-child {
   top: 0;
   position: relative;
   will-change: transform;
-  -webkit-animation: 1.5s grow 1 forwards 4s;
-  animation: 1.5s grow 1 forwards 4s;
+  -webkit-animation: 1.5s grow 1 forwards 3s cubic-bezier(.68,-0.55,.26,1.45);
+  animation: 1.5s grow 1 forwards 3s cubic-bezier(.68,-0.55,.26,1.45);
 }
 
 #logotype .cls-1 {
@@ -1351,9 +1313,16 @@ main div p::last-child {
   text-rendering: geometricPrecision;
 }
 
+@media screen and (max-width: 710px) {
+  #logotype {
+    margin-top: 20vh;
+  }
+}
+
 @media screen and (max-width: 568px) {
   #logotype {
-    margin-top: 30%;
+    -webkit-transform: rotate(-90deg) scale(1.2) translate(-12.5vh);
+    transform: rotate(-90deg) scale(1.2) translate(-12.5vh);
   }
 }
 
