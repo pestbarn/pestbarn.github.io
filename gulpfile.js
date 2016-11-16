@@ -18,7 +18,7 @@ var jsonmin          = require('gulp-jsonmin');
 
 var paths = {
     haml:           './src/haml/index.haml',
-    haml_partials:  './src/haml/partials/**.haml',
+    haml_partials:  './src/haml/partials/*.haml',
     css: {
         base:       './src/postcss/**/*.postcss',
         normalize:  './node_modules/normalize.css/normalize.css'

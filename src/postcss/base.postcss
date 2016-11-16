@@ -2,11 +2,17 @@
 @import "animations.postcss";
 
 :root {
-    background: $color--secondary url(/v2/src/img/paperbright_.5.jpg);
+    background: $color--secondary url(../img/paperbright_.5.jpg);
     background-size: cover;
     margin: 0;
     font-family: 'Anonymous Pro', monospace;
     font-size: 16px;
+}
+
+@media screen and (max-width: 568px) {
+    :root {
+        background-size: 100vmax;
+    }
 }
 
 a {
@@ -40,6 +46,27 @@ header, main {
     border: 1px dotted $color--secondary;
     box-shadow: 0 0 0 4px $color--primary;
     animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
+}
+
+aside {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    right: 0;
+    background: $color--primary;
+    color: $color--dark_text;
+    box-shadow: 0 0 0 4px $color--base;
+
+    p {
+        text-align: center;
+    }
+    a, time {
+        margin-left: 1ex;
+
+        &::after {
+            content: '';
+        }
+    }
 }
 
 header {
@@ -100,7 +127,7 @@ main {
     position: absolute;
     z-index: 1;
     background: $color--primary;
-    border-radius: 50px 5px;
+    border-radius: 5px 50px;
     border: 9vw double salmon;
     box-shadow: 0 0 4px 1px $color--base;
     transform: translate(-42.5vw, -42.5vh) rotateY(180deg);

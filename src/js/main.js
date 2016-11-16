@@ -42,7 +42,8 @@ var Parser = (function() {
         fetchContent: function() {
             let partials = new Map([
                 ["header", "bin/partials/header.html"],
-                [".contact", "bin/partials/contact.html"]
+                [".contact", "bin/partials/contact.html"],
+                ["aside", "bin/partials/aside.html"]
             ]);
             var files = [
                 'experience'
@@ -125,6 +126,7 @@ var Render = {
 
             // replace existing element with new
             document.body.replaceChild(temp, elem);
+            if(~e.indexOf('aside')) Age.calc();
         }
     },
 
@@ -151,6 +153,25 @@ var Interact = {
                 element.removeAttribute('class');
             }
         }
+    }
+
+};
+
+var Age = {
+
+    calc: function() {
+        var el = é('time');
+        var time = el.getAttribute('datetime');
+
+        var today = new Date();
+        var now = [today.getFullYear(), today.getMonth()+1, today.getDate()];
+        var birth = [time.slice(0,4), time.slice(5,7), time.slice(8,10)];
+
+        now = now.join('');
+        birth = birth.join('');
+
+        var age = (now - birth).toString().slice(0,2);;
+        el.innerHTML = age + ',';
     }
 
 };

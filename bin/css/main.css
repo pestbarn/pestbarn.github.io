@@ -1068,11 +1068,17 @@ textarea {
 }
 
 :root {
-  background: #eef5db url("/v2/src/img/paperbright_.5.jpg");
+  background: #eef5db url("../../src/img/paperbright_.5.jpg");
   background-size: cover;
   margin: 0;
   font-family: 'Anonymous Pro', monospace;
   font-size: 16px;
+}
+
+@media screen and (max-width: 568px) {
+  :root {
+    background-size: 100vmax;
+  }
 }
 
 a {
@@ -1110,6 +1116,30 @@ main {
   box-shadow: 0 0 0 4px #fe5f55;
   -webkit-animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
   animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
+}
+
+aside {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  right: 0;
+  background: #fe5f55;
+  color: #333745;
+  box-shadow: 0 0 0 4px #333745;
+}
+
+aside p {
+  text-align: center;
+}
+
+aside a,
+aside time {
+  margin-left: 1ex;
+}
+
+aside a::after,
+aside time::after {
+  content: '';
 }
 
 header {
@@ -1182,7 +1212,7 @@ main {
   position: absolute;
   z-index: 1;
   background: #fe5f55;
-  border-radius: 50px 5px;
+  border-radius: 5px 50px;
   border: 9vw double salmon;
   box-shadow: 0 0 4px 1px #333745;
   -webkit-transform: translate(-42.5vw, -42.5vh) rotateY(180deg);
