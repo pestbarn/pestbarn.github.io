@@ -1068,7 +1068,7 @@ textarea {
 }
 
 :root {
-  background: #eef5db url("../../src/img/paperbright_.5.jpg");
+  background: #eef5db url("/v2/src/img/paperbright_.5.jpg");
   background-size: cover;
   margin: 0;
   font-family: 'Anonymous Pro', monospace;
