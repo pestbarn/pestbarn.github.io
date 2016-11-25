@@ -1,5 +1,5 @@
 var gulp             = require('gulp');
-var haml             = require('gulp-haml');
+var haml             = require('gulp-ruby-haml');
 var postcss          = require('gulp-postcss');
 var postcss_cssnext  = require('postcss-cssnext');
 var precss           = require('precss');
@@ -26,6 +26,12 @@ var paths = {
     json:           './src/js/json/*.json'
 };
 
+var hamlOpts = {
+    trace: true,
+    doubleQuote: true,
+    unixNewlines: true
+};
+
 const css = Object.keys(paths.css).map(key => paths.css[key]);
 
 var processors = [
@@ -37,7 +43,7 @@ var processors = [
 gulp.task('haml', function(callback) {
     pump([
         vfs.src(paths.haml),
-        haml({ext: '.html'}),
+        haml(hamlOpts),
         vfs.dest('./'),
         livereload()
     ], callback);
@@ -46,7 +52,7 @@ gulp.task('haml', function(callback) {
 gulp.task('haml-partials', function(callback) {
     pump([
         vfs.src(paths.haml_partials),
-        haml({ext: '.html'}),
+        haml(hamlOpts),
         vfs.dest('./bin/partials/'),
         livereload()
     ], callback);

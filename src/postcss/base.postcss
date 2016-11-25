@@ -54,14 +54,17 @@ aside {
     left: 0;
     right: 0;
     background: $color--primary;
-    color: $color--dark_text;
+    color: $color--bright_text;
     box-shadow: 0 0 0 4px $color--base;
+    display: flex;
+    align-items: center;
 
     p {
-        text-align: center;
+        text-align: right;
+        flex: 1;
     }
     a, time {
-        margin-left: 1ex;
+        color: $color--bright_text;
 
         &::after {
             content: '';
@@ -149,7 +152,7 @@ main {
                 display: inline-block;
                 padding: 4px 8px;
                 border-radius: 5px;
-                margin: 4px;
+                margin: 4px 0;
 
                 &.primary {
                     font-weight: 600;
@@ -203,7 +206,7 @@ main {
     .pathed {
         fill: $color--bright_text; /* pathed text */
 
-        textPath {
+        textpath {
             opacity: 0;
             letter-spacing: 1px;
             font-weight: 800;
@@ -214,7 +217,7 @@ main {
             text-rendering: optimizeLegibility;
             animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
         }
-        &.textstar textPath {
+        &.textstar textpath {
             dominant-baseline: middle;
             font-weight: 400;
             animation: .6s star 1 forwards;
@@ -223,10 +226,10 @@ main {
                 cursor: pointer;
             }
         }
-        &.textleft textPath {
+        &.textleft textpath {
             animation-delay: .4s;
         }
-        &.textright textPath {
+        &.textright textpath {
             font-weight: 400;
             animation-delay: .8s;
             text-rendering: geometricPrecision;
@@ -237,6 +240,18 @@ main {
 @media screen and (max-width: 710px) {
     #logotype {
         margin-top: 20vh;
+    }
+    aside {
+        flex-direction: column;
+
+        img {
+            display: none;
+        }
+
+        p {
+            letter-spacing: 1px;
+            text-align: center;
+        }
     }
 }
 @media screen and (max-width: 568px) {
