@@ -1,3 +1,5 @@
+@import "variables.postcss";
+
 @keyframes expand {
     0%, 80% {
         letter-spacing: -17px;
@@ -113,3 +115,33 @@
         border-color: transparent;
     }
 }
+
+/* PENDULUM (WIP)
+
+@keyframes reflection {
+    0% {
+        transform: rotate(0deg - ($(swing-magnitude) * 2));
+    }
+    100% {
+        transform: rotate(-90deg + ($(swing-magnitude) * 2));
+    }
+}
+@keyframes swing {
+    0% {
+        transform: rotate($swing-magnitude));
+        background-image: linear-gradient(to right top, #6a5acd 50%, #9188cc 100%);
+    }
+    100% {
+        transform: rotate(-$(swing-magnitude));
+        background-image: linear-gradient(to right top, #9188cc 50%, #6a5acd 100%);
+    }
+}
+@keyframes tracing {
+    0% {
+        box-shadow: 0 0 2px 0 ghostwhite;
+    }
+    100% {
+        box-shadow: 0 0 0 0 ghostwhite;
+    }
+}
+*/

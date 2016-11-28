@@ -12,6 +12,7 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.16.0",
     "del": "^2.2.2",
+    "eslint": "^3.11.0",
     "graceful-fs": "^4.1.11",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -26,6 +27,7 @@
     "lodash": "^4.17.2",
     "minimatch": "^3.0.3",
     "normalize.css": "^4.2.0",
+    "postcss-automath": "^1.0.1",
     "postcss-cssnext": "^2.8.0",
     "postcss-font-magician": "^1.4.0",
     "precss": "^1.4.0",

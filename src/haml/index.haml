@@ -1,14 +1,14 @@
 !!! 5
-%html{ lang: "en" }
+%html{ lang: 'en' }
     %head
-        %meta{ charset: "utf-8" }
-        %meta{ "http-equiv" => "x-ua-compatible", content: "ie=edge" }
+        %meta{ charset: 'utf-8' }
+        %meta{ 'http-equiv' => 'x-ua-compatible', content: 'ie=edge' }
         %title Mattias Hagberg ∞ Frontend Developer
-        %meta{ name: "description",
-        content: "Resume of 27 year old frontend developer from Sweden" }
-        %meta{ name: "viewport",
-        content: "width=device-width, initial-scale=1" }
-        %link{ rel: "stylesheet", href: "bin/css/main.min.css" }
+        %meta{ name: 'description',
+        content: 'Resume of 27 year old frontend developer from Sweden' }
+        %meta{ name: 'viewport',
+        content: 'width=device-width, initial-scale=1' }
+        %link{ rel: 'stylesheet', href: 'bin/css/main.min.css' }
     %body
 
         %header
@@ -17,9 +17,16 @@
 
         %aside
 
-        %script{ src: "bin/js/main.js" }
+        %section
+            - @pendula = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            .pendula
+                - @pendula.each do |i|
+                    %div{ class: "pendulum-#{i}" }
+            .experience
+
+        %script{ src: 'bin/js/main.js' }
         :javascript
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
             ga('create','UA-33644854-1','auto');ga('send','pageview')
-        %script{ src: "//google-analytics.com/analytics.js", async: true,
+        %script{ src: '//google-analytics.com/analytics.js', async: true,
         defer: true }

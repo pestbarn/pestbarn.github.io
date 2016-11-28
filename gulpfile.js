@@ -6,7 +6,7 @@ var precss           = require('precss');
 var postcss_magician = require('postcss-font-magician');
 var clean_css        = require('gulp-clean-css');
 var concat_css       = require('gulp-concat-css');
-var sourcemaps       = require("gulp-sourcemaps");
+var sourcemaps       = require('gulp-sourcemaps');
 var uglify           = require('gulp-uglify');
 var babel            = require('gulp-babel');
 var pump             = require('pump');
@@ -15,6 +15,7 @@ var runSequence      = require('run-sequence');
 var del              = require('del');
 var livereload       = require('gulp-livereload');
 var jsonmin          = require('gulp-jsonmin');
+var automath         = require('postcss-automath');
 
 var paths = {
     haml:           './src/haml/index.haml',
@@ -37,7 +38,8 @@ const css = Object.keys(paths.css).map(key => paths.css[key]);
 var processors = [
     postcss_cssnext,
     precss,
-    postcss_magician
+    postcss_magician,
+    automath
 ];
 
 gulp.task('haml', function(callback) {
@@ -77,7 +79,7 @@ gulp.task('minify', ['css'], function(callback){
         vfs.dest('./bin/css/'),
         livereload()
     ], callback);
-})
+});
 
 gulp.task('js-build', function(callback){
     runSequence('js-clean',
