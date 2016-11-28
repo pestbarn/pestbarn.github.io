@@ -176,11 +176,57 @@ aside {
 }
 
 body > section {
-    display: none;
+    display: flex;
     margin-top: 16vh;
 
     > div {
         flex-basis: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .experience {
+        display: none;
+    }
+}
+
+.pendula {
+    position: relative;
+    z-index: -1;
+    top: -1vw;
+
+    div {
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid $color--tertiary;
+        backface-visibility: hidden;
+        animation: swing 1s infinite ease-in-out alternate;
+
+        &::after {
+            content: '';
+            border-radius: 50%;
+            width: .4em;
+            height: .4em;
+            background: $color--tertiary;
+            display: block;
+            position: relative;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+
+    $init: 0;
+    @for $i from 1 through 10 {
+        $inc: 2;
+
+        .pendulum-$(i) {
+            width: $(init) + $(inc)*1vw;
+            height: $(init) + $(inc)*1vw;
+            top: -($(init) + $(inc) - $(i) - 1vw);
+        }
+        $init: $init + $inc;
     }
 }
 
@@ -277,68 +323,4 @@ body > section {
     border-radius: 50%;
     border: 1px solid transparent;
     cursor: pointer;
-}
-
-.pendula {
-    position: relative;
-}
-
-[class*=pendulum] {
-	position: absolute;
-	bottom: 0;
-	width: $penduli-radius;
-	height: $penduli-radius;
-	left: 50%;
-	border-radius: 50%;
-	animation: swing 1s infinite ease-in-out alternate;
-	margin-left: -16px;
-	background: slateblue;
-
-	&:before {
-		content: "";
-		display: block;
-		width: $penduli-radius;
-		height: $penduli-radius;
-		top: 0;
-		left: 0;
-		border-radius: 50%;
-		animation: reflection 1s infinite ease-in-out alternate;
-
-		body > section > .pendula:hover & {
-			background-image: linear-gradient(to bottom, #6a5acd 50%, #9188cc 100%);
-		}
-	}
-
-	&:after {
-		content: "";
-		display: block;
-		width: 1px;
-		margin-left: 16px;
-		background: rgba(255,255,255,.8);
-		animation: tracing 1s infinite ease-in-out alternate;
-		z-index: -1;
-	}
-}
-
-@for $i from 1 through 10 {
-	$length: $penduli-max-length - 16 * ($i - 1);
-	$G: 9.8;
-	$period: pi() * sqrt(( $(length) / 100 ) / $G);
-	$animation-duration: $period / 20;
-
-	.pendulum-$(i) {
-		bottom: 16px * ($i - 1);
-		transform-origin: center -$(length)*1px;
-		animation-duration: $(animation-duration)s;
-		z-index: -$(i);
-
-		&:before {
-			animation-duration: $(animation-duration)s;
-		}
-		&:after {
-			height: 512px;
-			margin-top: -$(length)*1px;
-            margin-top: abs(-$(length) + -32)*1px;
-		}
-	}
 }
