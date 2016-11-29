@@ -178,6 +178,8 @@ aside {
 body > section {
     display: flex;
     margin-top: 16vh;
+    overflow-x: hidden;
+    min-height: 65vh;
 
     > div {
         flex-basis: 50vw;
@@ -225,6 +227,7 @@ body > section {
             width: $(init) + $(inc)*1vw;
             height: $(init) + $(inc)*1vw;
             top: -($(init) + $(inc) - $(i) - 1vw);
+            animation-duration: $(i) / 100 + 1s;
         }
         $init: $init + $inc;
     }

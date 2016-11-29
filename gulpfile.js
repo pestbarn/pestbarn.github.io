@@ -116,9 +116,9 @@ gulp.task('watch', function() {
     livereload.listen();
     gulp.watch(paths.haml, ['haml']);
     gulp.watch(paths.haml_partials, ['haml-partials']);
-    gulp.watch(paths.css.base, [['css'], ['minify']]);
+    gulp.watch(paths.css.base, ['minify']);
     gulp.watch('./src/js/main.js', ['js']);
     gulp.watch('./src/js/json/*', ['json']);
 });
 
-gulp.task('default', ['haml', 'haml-partials', 'css', 'minify', 'js-build']);
+gulp.task('default', ['haml', 'haml-partials', 'minify', 'js-build']);
