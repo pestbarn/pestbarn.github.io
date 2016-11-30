@@ -1,0 +1,40 @@
+@import "variables.postcss";
+html {
+    color: #333;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::selection {
+    background: $color--primary;
+    text-shadow: none;
+    color: #fff;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
