@@ -1354,7 +1354,8 @@ body > section .experience {
 .pendula div {
   position: absolute;
   border-radius: 50%;
-  border: 3px solid #e63462;
+  box-shadow: 0 0 1px 2px #e63462,
+                    inset 0 0 1px 1px #e63462;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-animation: swing 1s infinite ease-in-out alternate;
