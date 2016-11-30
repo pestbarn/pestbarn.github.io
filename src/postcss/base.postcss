@@ -2,7 +2,7 @@
 @import "animations.postcss";
 
 :root {
-    background: $color--secondary url(/v2/src/img/paperbright_.5.jpg);
+    background: $color--secondary url(../img/paperbright_.5.jpg);
     background-size: cover;
     margin: 0;
     font-family: 'Anonymous Pro', monospace;
@@ -12,6 +12,7 @@
 @media screen and (max-width: 568px) {
     :root {
         background-size: 100vmax;
+        background-repeat: no-repeat;
     }
 }
 
@@ -38,7 +39,6 @@ header, main {
     height: 85vh;
     top: 50vh;
     left: 50vw;
-    z-index: 0;
     overflow: hidden;
     will-change: transform;
     box-sizing: border-box;
@@ -64,7 +64,7 @@ header {
     }
 
     &::before {
-        background: url(/v2/src/img/paper_.5.jpg);
+        background: url(../img/paper_.5.jpg);
         background-size: cover;
         position: absolute;
         top: 0;
@@ -110,6 +110,16 @@ main {
     border: 9vw double salmon;
     box-shadow: 0 0 4px 1px $color--base;
     transform: translate(-42.5vw, -42.5vh) rotateY(180deg);
+
+    header:not(.clicked) + & .locate {
+        fill: transparent !important;
+        visibility: hidden;
+    }
+
+    .locate {
+        transition: .2s all;
+        transition-delay: .8s;
+    }
 
     div {
         flex-grow: 1;
@@ -179,7 +189,7 @@ body > section {
     display: flex;
     margin-top: 16vh;
     overflow-x: hidden;
-    min-height: 65vh;
+    min-height: 65vmin;
 
     > div {
         flex-basis: 50vw;
@@ -189,14 +199,46 @@ body > section {
         align-items: center;
     }
     .experience {
-        display: none;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 1em 1em 2em;
+
+            li {
+                -webkit-font-smoothing: antialiased;
+                font-weight: 600;
+                font-variant: small-caps;
+            }
+        }
+
+        h2 {
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+        h3 {
+            margin: -.25em 0 .25em;
+            text-transform: lowercase;
+        }
+        time {
+            margin: 0 .75em 0 0;
+            text-transform: uppercase;
+        }
+        span {
+            margin: 0 .75em 0 0;
+        }
+        a {
+            float: right;
+            text-transform: lowercase;
+        }
+
     }
 }
 
 .pendula {
     position: relative;
     z-index: -1;
-    top: -1vw;
+    top: -1vmax;
 
     div {
         position: absolute;
@@ -225,12 +267,29 @@ body > section {
         $inc: 2;
 
         .pendulum-$(i) {
-            width: $(init) + $(inc)*1vw;
-            height: $(init) + $(inc)*1vw;
-            top: -($(init) + $(inc) - $(i) - 1vw);
+            width: $(init) + $(inc)*1em;
+            height: $(init) + $(inc)*1em;
+            top: -($(init) + $(inc) - $(i) - 1vmax);
             animation-duration: $(i) / 100 + 1s;
         }
         $init: $init + $inc;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    body > section {
+        flex-direction: column;
+        margin-top: 14vh;
+        min-height: 100vmax;
+
+        >div {
+            flex-basis: 40vw;
+        }
+    }
+    @for $i from 8 through 10 {
+        .pendulum-$(i) {
+            display: none;
+        }
     }
 }
 

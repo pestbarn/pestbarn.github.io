@@ -103,6 +103,7 @@ var Render = {
                 build('h2', n.title),
                 build('h3', n.position),
                 build('time', n.dateFrom),
+                build('span', '—'),
                 build('time', n.dateTo),
                 n.url && build('a', n.url, 1)
             ];
@@ -165,19 +166,10 @@ var Render = {
 var Interact = {
 
     toggleClicked: function() {
-        var el = é('header');
-        el.className == 'clicked' ? el.className = 'reverse' : el.className = 'clicked';
-    },
-
-    resetClicked: function() {
-        var el = é('.clicked');
-        if (el.length === undefined) {
-            el.removeAttribute('class');
-        } else {
-            for (var i = 0; i < el.length; i++) {
-                var element = el[i];
-                element.removeAttribute('class');
-            }
+        var clicked = this.nodeName;
+        if(clicked == 'HEADER'||this.classList == 'contact'){
+            var el = é('header');
+            el.className == 'clicked' ? el.className = 'reverse' : el.className = 'clicked';
         }
     }
 
