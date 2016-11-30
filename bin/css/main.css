@@ -1509,7 +1509,7 @@ body > section .experience a {
     -ms-flex-direction: column;
     flex-direction: column;
     margin-top: 14vh;
-    min-height: 100vmax;
+    overflow: visible;
   }
 
   body > section >div {
