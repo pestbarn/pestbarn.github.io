@@ -182,7 +182,7 @@ var Age = {
         var time = el.getAttribute('datetime');
 
         var today = new Date();
-        var now = [today.getFullYear(), today.getMonth()+1, today.getDate()];
+        var now = [today.getFullYear(), today.getMonth()+1, ('0' + today.getDate()).slice(-2)];
         var birth = [time.slice(0,4), time.slice(5,7), time.slice(8,10)];
 
         now = now.join('');
