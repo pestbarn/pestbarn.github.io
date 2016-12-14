@@ -71,6 +71,26 @@ var Parser = (function() {
                 .then(callback.success)
                 .catch(callback.error);
             }
+        },
+        fetchGigs: function () {
+            // FOR THE /gigs/ PAGE ONLY
+            let gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
+
+            var callback = {
+                success: function(data) {
+                    var cells = JSON.parse(data);
+                    var title = cells.feed.entry;
+                    for (let t in title) {
+                        if (t > 0) console.log(title[t].gsx$headline.$t, title[t].gsx$text.$t, title[t].gsx$startdate.$t);
+                    }
+                },
+                error: function(data) {
+                    throw new Error(data);
+                }
+            };
+            $http(gigs).get()
+            .then(callback.success)
+            .catch(callback.error);
         }
 
     };
@@ -158,7 +178,8 @@ var Render = {
     },
 
     init: function() {
-        Parser.fetchContent();
+        if (Request.isIndex()) Parser.fetchContent();
+        if (Request.isPage('/gigs/')) Parser.fetchGigs();
     }
 
 };
@@ -190,6 +211,22 @@ var Age = {
 
         var age = (now - birth).toString().slice(0,2);
         el.innerHTML = age + ',';
+    }
+
+};
+
+var Request = {
+
+    isIndex: function() {
+        if (document.location.pathname == '/') {
+            return true;
+        }
+    },
+
+    isPage: function(url) {
+        if (document.location.pathname == url) {
+            return true;
+        }
     }
 
 };
