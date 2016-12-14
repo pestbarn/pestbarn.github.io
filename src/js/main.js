@@ -80,8 +80,23 @@ var Parser = (function() {
                 success: function(data) {
                     var cells = JSON.parse(data);
                     var title = cells.feed.entry;
+                    var updated = cells.feed.updated.$t;
+                    updated = `Last updated: ${updated.substr(0,10)}`;
+                    é('.mdl-spinner').remove();
+                    é('#scroll-tab-1 .mdl-tooltip').innerHTML = updated;
+                    var sort = document.getElementById('giglist');
+
                     for (let t in title) {
-                        if (t > 0) console.log(title[t].gsx$headline.$t, title[t].gsx$text.$t, title[t].gsx$startdate.$t);
+                        if (t > 0) Gigs.gigList(title[t].gsx$headline.$t,
+                                                title[t].gsx$text.$t,
+                                                title[t].gsx$startdate.$t);
+                        if (t == title.length-1){
+                            sorttable.makeSortable(sort);
+                            var options = {
+                                valueNames: ['gig-name', 'gig-location', 'gig-date']
+                            };
+                            var userList = new List('attended-gigs', options);
+                        }
                     }
                 },
                 error: function(data) {
@@ -227,6 +242,28 @@ var Request = {
         if (document.location.pathname == url) {
             return true;
         }
+    }
+
+};
+
+var Gigs = {
+    // NOT USED ON MAIN PAGE
+
+    gigList: function(name, location, date) {
+        var frag = document.createDocumentFragment();
+        var list = é('#giglist tbody');
+        var gig = `<td class="mdl-data-table__cell--non-numeric gig-name">
+                ${name}
+            </td>
+            <td class="mdl-data-table__cell--non-numeric gig-location">
+                ${location}
+            </td>
+            <td class="gig-date">${date}</td>`;
+
+        var tr = ç('tr');
+        tr.innerHTML = gig;
+        frag.appendChild(tr);
+        list.appendChild(frag);
     }
 
 };
