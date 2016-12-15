@@ -1,0 +1,10 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+#giglist {
+    min-width: 700px;
+}
+.mdl-spinner {
+    width: 24px;
+    height: 24px;
+}

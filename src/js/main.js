@@ -5,6 +5,8 @@ var é = function (selector) {
 var ç = function (selector) {
     return document.createElement(selector);
 };
+/* global sorttable, List */
+/* for silencing eslint a bit */
 
 var Parser = (function() {
 
@@ -71,6 +73,79 @@ var Parser = (function() {
                 .then(callback.success)
                 .catch(callback.error);
             }
+        },
+        fetchGigs: function () {
+            let gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
+
+            var callback = {
+                success: function(data) {
+                    var cells = JSON.parse(data);
+                    var title = cells.feed.entry;
+                    var updated = cells.feed.updated.$t;
+                    updated = `Last updated: ${updated.substr(0,10)}`;
+                    é('#attended-gigs .mdl-spinner').remove();
+                    é('#gigs .mdl-tooltip').innerHTML = updated;
+                    var sort = document.getElementById('giglist');
+
+                    for (let t in title) {
+                        if (t > 0) Tables.gigList(title[t].gsx$headline.$t,
+                                                title[t].gsx$text.$t,
+                                                title[t].gsx$startdate.$t);
+                        if (t == title.length-1){
+                            sorttable.makeSortable(sort);
+                            var options = {
+                                valueNames: ['gig-name', 'gig-location', 'gig-date']
+                            };
+                            new List('attended-gigs', options);
+                        }
+                    }
+                },
+                error: function(data) {
+                    throw new Error(data);
+                }
+            };
+            $http(gigs).get()
+            .then(callback.success)
+            .catch(callback.error);
+        },
+        fetchBeer: function() {
+            let beer = '//spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json';
+
+            var callback = {
+                success: function(data) {
+                    var cells = JSON.parse(data);
+                    var title = cells.feed.entry;
+                    var updated = cells.feed.updated.$t;
+                    updated = `Last updated: ${updated.substr(0,10)}`;
+                    é('#untappd-stats .mdl-spinner').remove();
+                    é('#beers .mdl-tooltip').innerHTML = updated;
+                    var sort = document.getElementById('beerlist');
+
+                    for (let t in title) {
+                        var dateTrim = title[t].gsx$createdat.$t;
+                        dateTrim = dateTrim.substr(0,10);
+                        if (t > 0) Tables.beerList(title[t].gsx$breweryname.$t,
+                                                title[t].gsx$beername.$t,
+                                                title[t].gsx$beertype.$t,
+                                                title[t].gsx$beerabv.$t,
+                                                title[t].gsx$ratingscore.$t,
+                                                dateTrim);
+                        if (t == title.length-1){
+                            sorttable.makeSortable(sort);
+                            var options = {
+                                valueNames: ['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
+                            };
+                            new List('untappd-stats', options);
+                        }
+                    }
+                },
+                error: function(data) {
+                    throw new Error(data);
+                }
+            };
+            $http(beer).get()
+            .then(callback.success)
+            .catch(callback.error);
         }
 
     };
@@ -158,7 +233,19 @@ var Render = {
     },
 
     init: function() {
-        Parser.fetchContent();
+        if (Request.isIndex()) Parser.fetchContent();
+        if (Request.isPage('/stats/')){
+            Parser.fetchGigs();
+            Parser.fetchBeer();
+
+            var hash = document.location.hash;
+            if (hash) {
+                let relLink = é('a[href="'+ hash +'"]');
+                window.addEventListener('load', function() {
+                    relLink.click();
+                });
+            }
+        }
     }
 
 };
@@ -190,6 +277,67 @@ var Age = {
 
         var age = (now - birth).toString().slice(0,2);
         el.innerHTML = age + ',';
+    }
+
+};
+
+var Request = {
+
+    isIndex: function() {
+        if (document.location.pathname == '/') {
+            return true;
+        }
+    },
+
+    isPage: function(url) {
+        if (document.location.pathname == url) {
+            return true;
+        }
+    }
+
+};
+
+var Tables = {
+    // NOT USED ON MAIN PAGE
+
+    gigList: function(name, location, date) {
+        var frag = document.createDocumentFragment();
+        var list = é('#giglist tbody');
+        var gig = `<td class="mdl-data-table__cell--non-numeric gig-name">
+                ${name}
+            </td>
+            <td class="mdl-data-table__cell--non-numeric gig-location">
+                ${location}
+            </td>
+            <td class="gig-date">${date}</td>`;
+
+        var tr = ç('tr');
+        tr.innerHTML = gig;
+        frag.appendChild(tr);
+        list.appendChild(frag);
+    },
+
+    beerList: function(brewery, bName, bType, bAbv, bRating, bDate) {
+        var frag = document.createDocumentFragment();
+        var list = é('#beerlist tbody');
+        //['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
+        var brew = `<td class="mdl-data-table__cell--non-numeric brewery">
+                ${brewery}
+            </td>
+            <td class="mdl-data-table__cell--non-numeric beer-name">
+                ${bName}
+            </td>
+            <td class="mdl-data-table__cell--non-numeric beer-type">
+                ${bType}
+            </td>
+            <td class="beer-abv">${bAbv}</td>
+            <td class="beer-rating">${bRating}</td>
+            <td class="beer-date">${bDate}</td>`;
+
+        var tr = ç('tr');
+        tr.innerHTML = brew;
+        frag.appendChild(tr);
+        list.appendChild(frag);
     }
 
 };
