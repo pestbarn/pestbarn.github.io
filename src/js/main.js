@@ -5,6 +5,8 @@ var é = function (selector) {
 var ç = function (selector) {
     return document.createElement(selector);
 };
+/* global sorttable, List */
+/* for silencing eslint a bit */
 
 var Parser = (function() {
 
@@ -73,7 +75,6 @@ var Parser = (function() {
             }
         },
         fetchGigs: function () {
-            // FOR THE /gigs/ PAGE ONLY
             let gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
 
             var callback = {
@@ -95,8 +96,7 @@ var Parser = (function() {
                             var options = {
                                 valueNames: ['gig-name', 'gig-location', 'gig-date']
                             };
-                            var userList = new List('attended-gigs', options);
-                            userList;
+                            new List('attended-gigs', options);
                         }
                     }
                 },
@@ -135,8 +135,7 @@ var Parser = (function() {
                             var options = {
                                 valueNames: ['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
                             };
-                            var userList = new List('untappd-stats', options);
-                            userList;
+                            new List('untappd-stats', options);
                         }
                     }
                 },
@@ -235,7 +234,18 @@ var Render = {
 
     init: function() {
         if (Request.isIndex()) Parser.fetchContent();
-        if (Request.isPage('/stats/')) Parser.fetchGigs(); Parser.fetchBeer();
+        if (Request.isPage('/stats/')){
+            Parser.fetchGigs();
+            Parser.fetchBeer();
+
+            var hash = document.location.hash;
+            if (hash) {
+                let relLink = é('a[href="'+ hash +'"]');
+                window.addEventListener('load', function() {
+                    relLink.click();
+                });
+            }
+        }
     }
 
 };
