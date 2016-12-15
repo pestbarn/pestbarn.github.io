@@ -1,18 +1,13 @@
-var é = function (selector) {
-    return document.querySelector(selector);
-};
+var é = selector => document.querySelector(selector);
+var ç = selector => document.createElement(selector);
 
-var ç = function (selector) {
-    return document.createElement(selector);
-};
 /* global sorttable, List */
-/* for silencing eslint a bit */
 
-var Parser = (function() {
+var Parser = (() => {
 
     function $http(url){
         var core = {
-            ajax: function(method, url) {
+            ajax: (method, url) => {
                 var promise = new Promise(function(resolve, reject) {
                     var client = new XMLHttpRequest();
                     var uri = url;
@@ -33,7 +28,7 @@ var Parser = (function() {
             }
         };
         return {
-            'get': function() {
+            'get': () => {
                 return core.ajax('GET', url);
             }
         };
@@ -41,7 +36,7 @@ var Parser = (function() {
 
     return {
 
-        fetchContent: function() {
+        fetchContent: () => {
             let partials = new Map([
                 ['header', 'bin/partials/header.html'],
                 ['.contact', 'bin/partials/contact.html'],
@@ -59,13 +54,13 @@ var Parser = (function() {
             function fetchFile(f, e) {
                 var file = e ? f : 'bin/js/json/'+f+'.json';
                 var callback = {
-                    success: function(data) {
+                    success: data => {
                         data = e ? data : JSON.parse(data);
                         if (e) {
                             Render.getPart(data, e);
                         } else Render.buildList(data, f);
                     },
-                    error: function(data) {
+                    error: data => {
                         throw new Error(data);
                     }
                 };
@@ -74,11 +69,11 @@ var Parser = (function() {
                 .catch(callback.error);
             }
         },
-        fetchGigs: function () {
+        fetchGigs: () => {
             let gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
 
             var callback = {
-                success: function(data) {
+                success: data => {
                     var cells = JSON.parse(data);
                     var title = cells.feed.entry;
                     var updated = cells.feed.updated.$t;
@@ -91,7 +86,7 @@ var Parser = (function() {
                         if (t > 0) Tables.gigList(title[t].gsx$headline.$t,
                                                 title[t].gsx$text.$t,
                                                 title[t].gsx$startdate.$t);
-                        if (t == title.length-1){
+                        if (t == title.length-1) {
                             sorttable.makeSortable(sort);
                             var options = {
                                 valueNames: ['gig-name', 'gig-location', 'gig-date']
@@ -100,7 +95,7 @@ var Parser = (function() {
                         }
                     }
                 },
-                error: function(data) {
+                error: data => {
                     throw new Error(data);
                 }
             };
@@ -108,11 +103,11 @@ var Parser = (function() {
             .then(callback.success)
             .catch(callback.error);
         },
-        fetchBeer: function() {
+        fetchBeer: () => {
             let beer = '//spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json';
 
             var callback = {
-                success: function(data) {
+                success: data => {
                     var cells = JSON.parse(data);
                     var title = cells.feed.entry;
                     var updated = cells.feed.updated.$t;
@@ -139,7 +134,7 @@ var Parser = (function() {
                         }
                     }
                 },
-                error: function(data) {
+                error: data => {
                     throw new Error(data);
                 }
             };
@@ -159,7 +154,7 @@ var Render = {
         parentEl: 'main'
     },
 
-    buildList: function(data, f) {
+    buildList: (data, f) => {
         data = data.items;
         var parent = é('.'+ f);
         var ul = ç('ul');
@@ -195,14 +190,14 @@ var Render = {
         parent.appendChild(ul);
     },
 
-    getPart: function(data, e) {
+    getPart: (data, e) => {
         if (~e.indexOf('.')) {
 
             // e refers to a classname
             e = e.substr(1);
 
             // creating a div with classname e
-            var temp = ç(this.settings.createEl);
+            var temp = ç(Render.settings.createEl);
             temp.classList.add(e);
 
             // add data and attach click handler
@@ -210,7 +205,7 @@ var Render = {
             temp.onclick = Interact.toggleClicked;
 
             // append to parent <main>
-            var parent = é(this.settings.parentEl);
+            var parent = é(Render.settings.parentEl);
             parent.appendChild(temp);
 
         } else {
@@ -232,7 +227,7 @@ var Render = {
         }
     },
 
-    init: function() {
+    init: () => {
         if (Request.isIndex()) Parser.fetchContent();
         if (Request.isPage('/stats/')){
             Parser.fetchGigs();
@@ -241,7 +236,7 @@ var Render = {
             var hash = document.location.hash;
             if (hash) {
                 let relLink = é('a[href="'+ hash +'"]');
-                window.addEventListener('load', function() {
+                window.addEventListener('load', () => {
                     relLink.click();
                 });
             }
@@ -252,7 +247,7 @@ var Render = {
 
 var Interact = {
 
-    toggleClicked: function() {
+    toggleClicked: () => {
         var clicked = this.nodeName;
         if(clicked == 'HEADER'||this.classList == 'contact'){
             var el = é('header');
@@ -264,13 +259,21 @@ var Interact = {
 
 var Age = {
 
-    calc: function() {
+    calc: () => {
         var el = é('time');
         var time = el.getAttribute('datetime');
 
         var today = new Date();
-        var now = [today.getFullYear(), today.getMonth()+1, ('0' + today.getDate()).slice(-2)];
-        var birth = [time.slice(0,4), time.slice(5,7), time.slice(8,10)];
+        var now = [
+            today.getFullYear(),
+            today.getMonth()+1,
+            ('0' + today.getDate()).slice(-2)
+        ];
+        var birth = [
+            time.slice(0,4),
+            time.slice(5,7),
+            time.slice(8,10)
+        ];
 
         now = now.join('');
         birth = birth.join('');
@@ -283,13 +286,13 @@ var Age = {
 
 var Request = {
 
-    isIndex: function() {
+    isIndex: () => {
         if (document.location.pathname == '/') {
             return true;
         }
     },
 
-    isPage: function(url) {
+    isPage: (url) => {
         if (document.location.pathname == url) {
             return true;
         }
@@ -300,7 +303,7 @@ var Request = {
 var Tables = {
     // NOT USED ON MAIN PAGE
 
-    gigList: function(name, location, date) {
+    gigList: (name, location, date) => {
         var frag = document.createDocumentFragment();
         var list = é('#giglist tbody');
         var gig = `<td class="mdl-data-table__cell--non-numeric gig-name">
@@ -317,10 +320,10 @@ var Tables = {
         list.appendChild(frag);
     },
 
-    beerList: function(brewery, bName, bType, bAbv, bRating, bDate) {
+    beerList: (brewery, bName, bType, bAbv, bRating, bDate) => {
         var frag = document.createDocumentFragment();
         var list = é('#beerlist tbody');
-        //['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
+
         var brew = `<td class="mdl-data-table__cell--non-numeric brewery">
                 ${brewery}
             </td>
@@ -342,6 +345,6 @@ var Tables = {
 
 };
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
     Render.init();
 });
