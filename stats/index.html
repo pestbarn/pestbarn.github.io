@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
-    <title>Mattias Hagberg ∞ Attended gigs</title>
+    <title>Mattias Hagberg ∞ Stats of life</title>
     <meta content="" name="description">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//code.getmdl.io/1.2.1/material.indigo-lime.min.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" href="gigs.css">
+    <link rel="stylesheet" href="stats.css">
 </head>
 <body>
 
@@ -18,12 +18,12 @@
         <header class="mdl-layout__header">
 
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Title</span>
+                <span class="mdl-layout-title">Stats of life</span>
             </div>
 
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-                <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
-                <a href="#scroll-tab-2" class="mdl-layout__tab">Tab 2</a>
+                <a href="#gigs" class="mdl-layout__tab is-active">Attended gigs</a>
+                <a href="#beers" class="mdl-layout__tab">Beer list</a>
                 <a href="#scroll-tab-3" class="mdl-layout__tab">Tab 3</a>
                 <a href="#scroll-tab-4" class="mdl-layout__tab">Tab 4</a>
                 <a href="#scroll-tab-5" class="mdl-layout__tab">Tab 5</a>
@@ -33,15 +33,15 @@
         </header>
 
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Title</span>
+            <span class="mdl-layout-title">Stats of life</span>
 
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="../">Back to mattias.pw</a>
             </nav>
         </div>
 
         <main class="mdl-layout__content">
-            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+            <section class="mdl-layout__tab-panel is-active" id="gigs">
                 <div class="page-content mdl-grid">
                     <div class="mdl-cell" id="attended-gigs">
                         <h1 class="mdl-typography--headline">
@@ -73,8 +73,39 @@
                 </div>
             </section>
 
-            <section class="mdl-layout__tab-panel" id="scroll-tab-2">
-                <div class="page-content"><!-- Your content goes here --></div>
+            <section class="mdl-layout__tab-panel" id="beers">
+                <div class="page-content mdl-grid">
+                    <div class="mdl-cell" id="untappd-stats">
+                        <h1 class="mdl-typography--headline">
+                            Untappd stats
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-beers">
+                                    <i class="material-icons">search</i>
+                                </label>
+
+                                <div class="mdl-textfield__expandable-holder">
+                                    <input class="mdl-textfield__input search" type="text" name="sample" id="search-beers">
+                                </div>
+                            </div>
+                            <div class="mdl-spinner mdl-js-spinner is-active"></div>
+                        </h1>
+                        <div class="mdl-tooltip" for="search-beers"></div>
+                        <table class="mdl-data-table mdl-js-data-table" id="beerlist">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric sorttable_alpha">Brewery</th>
+                                    <th class="mdl-data-table__cell--non-numeric sorttable_alpha">Beer name</th>
+                                    <th class="mdl-data-table__cell--non-numeric sorttable_alpha">Beer type</th>
+                                    <th>ABV</th>
+                                    <th class="sorttable_numeric">Rating</th>
+                                    <th>Checkin date</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="list"/>
+                        </table>
+                    </div>
+                </div>
             </section>
 
             <section class="mdl-layout__tab-panel" id="scroll-tab-3">
