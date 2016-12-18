@@ -522,8 +522,6 @@ textarea {
   font: inherit;
   /* 2 */
 }
-/* PENDULUM */
-
 html {
   color: #333;
   font-size: 1em;
@@ -569,8 +567,6 @@ fieldset {
 textarea {
   resize: vertical;
 }
-/* PENDULUM */
-
 @-webkit-keyframes expand {
   0%, 80% {
     letter-spacing: -17px;
@@ -930,33 +926,29 @@ textarea {
   font-family: "Anonymous Pro";
   font-style: italic;
   font-weight: 400;
-  src: local("Anonymous Pro Italic"), local(AnonymousPro-Italic), url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWIGc2Drk6OF7xzEFRuu1poY.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWC6lQeGIz_eTiUIAmQEHoRI.woff2") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v8/q0u6LFHwttnT_69euiDbWEOc-qcyZDPXUzSso1bA9YE.woff") format("woff");
+  src: local("Anonymous Pro Italic"), local(AnonymousPro-Italic), url("//fonts.gstatic.com/s/anonymouspro/v9/q0u6LFHwttnT_69euiDbWIGc2Drk6OF7xzEFRuu1poY.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v9/q0u6LFHwttnT_69euiDbWEOc-qcyZDPXUzSso1bA9YE.woff") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v9/q0u6LFHwttnT_69euiDbWEOc-qcyZDPXUzSso1bA9YE.woff") format("woff");
 }
 
 @font-face {
   font-family: "Anonymous Pro";
   font-style: italic;
   font-weight: 700;
-  src: local("Anonymous Pro Bold Italic"), local(AnonymousPro-BoldItalic), url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfONuiocNq7bs0SOFe77jKtE.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfOE-UnHJJqgmO_01JZd6B-Y.woff2") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v8/_fVr_XGln-cetWSUc-JpfGLkIvtLOz01sdqGPgcEBM8.woff") format("woff");
+  src: local("Anonymous Pro Bold Italic"), local(AnonymousPro-BoldItalic), url("//fonts.gstatic.com/s/anonymouspro/v9/_fVr_XGln-cetWSUc-JpfONuiocNq7bs0SOFe77jKtE.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v9/_fVr_XGln-cetWSUc-JpfGLkIvtLOz01sdqGPgcEBM8.woff") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v9/_fVr_XGln-cetWSUc-JpfGLkIvtLOz01sdqGPgcEBM8.woff") format("woff");
 }
 
 @font-face {
   font-family: "Anonymous Pro";
   font-style: normal;
   font-weight: 400;
-  src: local("Anonymous Pro"), local(AnonymousPro), url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E3Xp_Gpx0-4m3wAn7HKLs74.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74ExEOS6Aq7hJAAidQNR3rgdU.woff2") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff") format("woff");
+  src: local("Anonymous Pro"), local(AnonymousPro), url("//fonts.gstatic.com/s/anonymouspro/v9/Zhfjj_gat3waL4JSju74E3Xp_Gpx0-4m3wAn7HKLs74.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v9/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v9/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff") format("woff");
 }
 
 @font-face {
   font-family: "Anonymous Pro";
   font-style: normal;
   font-weight: 700;
-  src: local("Anonymous Pro Bold"), local(AnonymousPro-Bold), url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud30lRvvQrNeWza1BnlT_HW4.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud8GfYvzQ_DwqEC2arHsRzXk.woff2") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff") format("woff");
+  src: local("Anonymous Pro Bold"), local(AnonymousPro-Bold), url("//fonts.gstatic.com/s/anonymouspro/v9/WDf5lZYgdmmKhO8E1AQud30lRvvQrNeWza1BnlT_HW4.eot?#") format("eot"), url("//fonts.gstatic.com/s/anonymouspro/v9/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff") format("woff2"), url("//fonts.gstatic.com/s/anonymouspro/v9/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff") format("woff");
 }
-
-/* PENDULUM */
-
-/* PENDULUM */
 
 @keyframes expand {
   0%, 80% {
@@ -1652,4 +1644,3 @@ body > section .experience a {
   border: 1px solid transparent;
   cursor: pointer;
 }
-/* PENDULUM */
