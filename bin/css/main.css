@@ -1273,7 +1273,7 @@ main div p span.primary {
   box-shadow: inset 0 0 0 1px #eef5db, inset 0 0 0 2px #fe5f55;
 }
 
-main div p::last-child {
+main div p:last-child {
   cursor: default;
   font-weight: 600;
   font-size: 1.25em;
@@ -1393,7 +1393,7 @@ body > section .experience a {
   position: absolute;
   border-radius: 50%;
   box-shadow: 0 0 1px 2px #e63462,
-                    inset 0 0 1px 1px #e63462;
+            inset 0 0 1px 1px #e63462;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-animation: swing 1s infinite ease-in-out alternate;
@@ -1504,7 +1504,7 @@ body > section .experience a {
     overflow: visible;
   }
 
-  body > section >div {
+  body > section > div {
     -ms-flex-preferred-size: 40vw;
     flex-basis: 40vw;
   }
