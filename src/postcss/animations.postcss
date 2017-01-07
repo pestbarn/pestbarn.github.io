@@ -1,113 +1,149 @@
 @import "variables.postcss";
 
 @keyframes expand {
-    0%, 80% {
+    0%,
+    80% {
         letter-spacing: -17px;
         opacity: 0;
     }
+
     100% {
         letter-spacing: 0;
         opacity: 1;
     }
 }
+
 @keyframes star {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
         fill: $color--secondary;
     }
 }
+
 @keyframes bounce-open {
-    0%,80% {
+    0%,
+    80% {
         opacity: 0;
         transform: translateX(150px);
     }
+
     90% {
         transform: translateX(-10px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
     }
 }
+
 @keyframes bounce-close {
-    0%,80% {
+    0%,
+    80% {
         opacity: 0;
         transform: translateX(-150px);
     }
+
     90% {
         transform: translateX(10px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
     }
 }
+
 @keyframes grow {
     0% {
         max-width: 100%;
         max-height: 100%;
         top: 0;
     }
-    100% {
+
+    100% {
         max-width: 150%;
         max-height: 150%;
         top: -25%;
     }
 }
+
 @keyframes flip {
-    0%, 100% {
+    0%,
+    100% {
         width: 85vw;
         height: 85vh;
         top: 50vh;
         left: 50vw;
     }
-    0%, 50% {
+
+    0%,
+    50% {
         z-index: 1;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         z-index: 0;
     }
-    0%, 75% {
+
+    0%,
+    75% {
         transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
     }
+
     100% {
         transform: translate(-42.5vw, -42.5vh) rotateY(180deg);
     }
 }
+
 @keyframes flip--reverse {
-    0%, 100% {
+    0%,
+    100% {
         width: 85vw;
         height: 85vh;
         top: 50vh;
         left: 50vw;
     }
-    0%, 50% {
+
+    0%,
+    50% {
         z-index: 0;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         z-index: 1;
     }
-    0%, 75% {
+
+    0%,
+    75% {
         transform: translate(-42.5vw, -42.5vh) rotateY(180deg);
     }
+
     100% {
         transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
     }
 }
+
 @keyframes locate {
     0% {
         width: 0;
         height: 0;
     }
+
     10% {
         border-color: rgba(255, 255, 255, .3);
     }
+
     30% {
         border-color: rgba(255, 255, 255, .7);
     }
+
     100% {
         width: 30px;
         height: 30px;
@@ -115,10 +151,12 @@
         border-color: transparent;
     }
 }
+
 @keyframes swing {
     0% {
         transform: rotate(70deg);
     }
+
     100% {
         transform: rotate(-70deg);
     }

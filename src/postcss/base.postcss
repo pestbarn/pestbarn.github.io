@@ -34,7 +34,8 @@ body {
     transform: translateZ(0);
 }
 
-header, main {
+header,
+main {
     width: 85vw;
     height: 85vh;
     top: 50vh;
@@ -45,7 +46,7 @@ header, main {
     backface-visibility: hidden;
     border: 1px dotted $color--secondary;
     box-shadow: 0 0 0 4px $color--primary;
-    animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45) !important;
+    animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45) !important;
 }
 
 header {
@@ -92,6 +93,7 @@ header {
             animation: 1s flip--reverse 1 forwards;
         }
     }
+
     &.reverse {
         animation: 1s flip--reverse 1 forwards;
 
@@ -146,7 +148,7 @@ main {
                 }
             }
 
-            &::last-child {
+            &:last-child {
                 cursor: default;
                 font-weight: 600;
                 font-size: 1.25em;
@@ -176,7 +178,9 @@ aside {
         text-align: right;
         flex: 1;
     }
-    a, time {
+
+    a,
+    time {
         color: $color--bright_text;
 
         &::after {
@@ -198,8 +202,8 @@ body > section {
         justify-content: flex-start;
         align-items: center;
     }
-    .experience {
 
+    .experience {
         ul {
             list-style: none;
             padding: 0;
@@ -216,22 +220,25 @@ body > section {
             margin-bottom: 0;
             text-transform: uppercase;
         }
+
         h3 {
             margin: -.25em 0 .25em;
             text-transform: lowercase;
         }
+
         time {
             margin: 0 .75em 0 0;
             text-transform: uppercase;
         }
+
         span {
             margin: 0 .75em 0 0;
         }
+
         a {
             float: right;
             text-transform: lowercase;
         }
-
     }
 }
 
@@ -243,8 +250,9 @@ body > section {
     div {
         position: absolute;
         border-radius: 50%;
-        box-shadow: 0 0 1px 2px $color--tertiary,
-                    inset 0 0 1px 1px $color--tertiary;
+        box-shadow:
+            0 0 1px 2px $color--tertiary,
+            inset 0 0 1px 1px $color--tertiary;
         backface-visibility: hidden;
         animation: swing 1s infinite ease-in-out alternate;
 
@@ -258,11 +266,12 @@ body > section {
             position: relative;
             top: 100%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
         }
     }
 
     $init: 0;
+
     @for $i from 1 through 10 {
         $inc: 2;
 
@@ -282,10 +291,11 @@ body > section {
         margin-top: 14vh;
         overflow: visible;
 
-        >div {
+        > div {
             flex-basis: 40vw;
         }
     }
+
     @for $i from 8 through 10 {
         .pendulum-$(i) {
             display: none;
@@ -301,26 +311,30 @@ body > section {
     top: 0;
     position: relative;
     will-change: transform;
-    animation: 1.5s grow 1 forwards 3s cubic-bezier(.68,-0.55,.26,1.45);
-
+    animation: 1.5s grow 1 forwards 3s cubic-bezier(.68, -.55, .26, 1.45);
 
     .cls-1 {
         fill: $color--primary; /* ∞ */
     }
+
     .cls-2 {
         fill: $color--secondary; /* {  } */
         opacity: 0;
-        animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+        animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45);
     }
+
     .st0 {
         fill: none; /* text path */
     }
+
     #curly--open .cls-2 {
         animation: 1s bounce-open 1 forwards .4s;
     }
+
     #curly--close .cls-2 {
         animation: 1s bounce-close 1 forwards .4s;
     }
+
     .pathed {
         fill: $color--bright_text; /* pathed text */
 
@@ -333,8 +347,9 @@ body > section {
             text-transform: uppercase;
             -webkit-animation: 2s expand 1 forwards;
             text-rendering: optimizeLegibility;
-            animation-timing-function: cubic-bezier(.68,-0.55,.26,1.45);
+            animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45);
         }
+
         &.textstar textpath {
             dominant-baseline: middle;
             font-weight: 400;
@@ -344,9 +359,11 @@ body > section {
                 cursor: pointer;
             }
         }
+
         &.textleft textpath {
             animation-delay: .4s;
         }
+
         &.textright textpath {
             font-weight: 400;
             animation-delay: .8s;
@@ -359,6 +376,7 @@ body > section {
     #logotype {
         margin-top: 20vh;
     }
+
     aside {
         flex-direction: column;
 
@@ -372,6 +390,7 @@ body > section {
         }
     }
 }
+
 @media screen and (max-width: 568px) {
     #logotype {
         transform: rotate(-90deg) scale(1.2) translate(-12.5vh);
