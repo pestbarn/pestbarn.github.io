@@ -373,8 +373,10 @@ const Pizazz = {
     check: () => {
         let n = navigator.userAgent;
         // yeah yeah, shouldn't use browser sniffing, but whatever...
+        const browser = (n.indexOf('Firefox') != -1 || n.indexOf('Safari') != -1);
+        const chrome = n.indexOf('Chrome') != -1;
 
-        if(n.indexOf('Firefox') != -1 || n.indexOf('Safari')){
+        if (browser && !chrome) {
             let svgReplace = ç('img');
             const imageReplacement = 'src/img/logotype.svg';
             svgReplace.setAttribute('src', imageReplacement);
