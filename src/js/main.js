@@ -70,7 +70,7 @@ const Parser = (() => {
             }
         },
         fetchGigs: () => {
-            let gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
+            const gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
 
             const callback = {
                 success: data => {
@@ -83,9 +83,14 @@ const Parser = (() => {
                     const sort = document.getElementById('giglist');
 
                     for (let t in title) {
-                        if (t > 0) Tables.gigList(title[t].gsx$headline.$t,
-                                                title[t].gsx$text.$t,
-                                                title[t].gsx$startdate.$t);
+                        let [name, location, date] = [
+                            title[t].gsx$headline.$t,
+                            title[t].gsx$text.$t,
+                            title[t].gsx$startdate.$t
+                        ];
+
+                        if (t > 0) Tables.gigList(name, location, date);
+
                         if (t == title.length-1) {
                             sorttable.makeSortable(sort);
                             const options = {
@@ -104,7 +109,7 @@ const Parser = (() => {
             .catch(callback.error);
         },
         fetchBeer: () => {
-            let beer = '//spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json';
+            const beer = '//spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json';
 
             const callback = {
                 success: data => {
@@ -117,14 +122,30 @@ const Parser = (() => {
                     const sort = document.getElementById('beerlist');
 
                     for (let t in title) {
-                        let dateTrim = title[t].gsx$createdat.$t;
-                        dateTrim = dateTrim.substr(0,10);
-                        if (t > 0) Tables.beerList(title[t].gsx$breweryname.$t,
-                                                title[t].gsx$beername.$t,
-                                                title[t].gsx$beertype.$t,
-                                                title[t].gsx$beerabv.$t,
-                                                title[t].gsx$ratingscore.$t,
-                                                dateTrim);
+                        let [
+                            brewery,
+                            bName,
+                            bType,
+                            bAbv,
+                            bRating,
+                            dateTrim
+                        ] = [
+                            title[t].gsx$breweryname.$t,
+                            title[t].gsx$beername.$t,
+                            title[t].gsx$beertype.$t,
+                            title[t].gsx$beerabv.$t,
+                            title[t].gsx$ratingscore.$t,
+                            title[t].gsx$createdat.$t.substr(0,10)
+                        ];
+
+                        if (t > 0) Tables.beerList(
+                            brewery,
+                            bName,
+                            bType,
+                            bAbv,
+                            bRating,
+                            dateTrim
+                        );
                         if (t == title.length-1){
                             sorttable.makeSortable(sort);
                             const options = {
