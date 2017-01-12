@@ -64,6 +64,15 @@ header {
         transition-delay: .8s;
     }
 
+    img {
+        /* fallback from svg */
+        width: 70%;
+        transform: translate(-50%, -50%);
+        position: relative;
+        left: 50%;
+        top: 50%;
+    }
+
     &::before {
         background: url(../img/paper_.5.jpg);
         background-size: cover;
@@ -271,17 +280,22 @@ body > section {
     }
 
     $init: 0;
+    $left: 0;
+    $center: 50%;
 
     @for $i from 1 through 10 {
         $inc: 2;
+        $cen: 0;
 
         .pendulum-$(i) {
             width: $(init) + $(inc)*1em;
             height: $(init) + $(inc)*1em;
             top: -($(init) + $(inc) - $(i) - 1vmax);
+            left: calc($(center) - $(i)em);
             animation-duration: $(i) / 100 + 1s;
         }
         $init: $init + $inc;
+        $left: $left+1;
     }
 }
 
@@ -337,6 +351,7 @@ body > section {
 
     .pathed {
         fill: $color--bright_text; /* pathed text */
+        white-space: pre;
 
         textpath {
             opacity: 0;
@@ -345,7 +360,7 @@ body > section {
             white-space: pre;
             word-spacing: initial;
             text-transform: uppercase;
-            -webkit-animation: 2s expand 1 forwards;
+            animation: 2s expand 1 forwards;
             text-rendering: optimizeLegibility;
             animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45);
         }

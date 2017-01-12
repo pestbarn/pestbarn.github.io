@@ -1,16 +1,16 @@
-var é = selector => document.querySelector(selector);
-var ç = selector => document.createElement(selector);
+const é = selector => document.querySelector(selector);
+const ç = selector => document.createElement(selector);
 
 /* global sorttable, List */
 
-var Parser = (() => {
+const Parser = (() => {
 
     function $http(url){
-        var core = {
+        const core = {
             ajax: (method, url) => {
-                var promise = new Promise(function(resolve, reject) {
-                    var client = new XMLHttpRequest();
-                    var uri = url;
+                const promise = new Promise(function(resolve, reject) {
+                    const client = new XMLHttpRequest();
+                    const uri = url;
                     client.open(method, uri);
                     client.send();
                     client.onload = function () {
@@ -52,8 +52,8 @@ var Parser = (() => {
                 fetchFile(file);
             }
             function fetchFile(f, e) {
-                var file = e ? f : 'bin/js/json/'+f+'.json';
-                var callback = {
+                let file = e ? f : 'bin/js/json/'+f+'.json';
+                const callback = {
                     success: data => {
                         data = e ? data : JSON.parse(data);
                         if (e) {
@@ -72,15 +72,15 @@ var Parser = (() => {
         fetchGigs: () => {
             let gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
 
-            var callback = {
+            const callback = {
                 success: data => {
-                    var cells = JSON.parse(data);
-                    var title = cells.feed.entry;
-                    var updated = cells.feed.updated.$t;
+                    const cells = JSON.parse(data);
+                    const title = cells.feed.entry;
+                    let updated = cells.feed.updated.$t;
                     updated = `Last updated: ${updated.substr(0,10)}`;
                     é('#attended-gigs .mdl-spinner').remove();
                     é('#gigs .mdl-tooltip').innerHTML = updated;
-                    var sort = document.getElementById('giglist');
+                    const sort = document.getElementById('giglist');
 
                     for (let t in title) {
                         if (t > 0) Tables.gigList(title[t].gsx$headline.$t,
@@ -88,7 +88,7 @@ var Parser = (() => {
                                                 title[t].gsx$startdate.$t);
                         if (t == title.length-1) {
                             sorttable.makeSortable(sort);
-                            var options = {
+                            const options = {
                                 valueNames: ['gig-name', 'gig-location', 'gig-date']
                             };
                             new List('attended-gigs', options);
@@ -106,18 +106,18 @@ var Parser = (() => {
         fetchBeer: () => {
             let beer = '//spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json';
 
-            var callback = {
+            const callback = {
                 success: data => {
-                    var cells = JSON.parse(data);
-                    var title = cells.feed.entry;
-                    var updated = cells.feed.updated.$t;
+                    const cells = JSON.parse(data);
+                    const title = cells.feed.entry;
+                    let updated = cells.feed.updated.$t;
                     updated = `Last updated: ${updated.substr(0,10)}`;
                     é('#untappd-stats .mdl-spinner').remove();
                     é('#beers .mdl-tooltip').innerHTML = updated;
-                    var sort = document.getElementById('beerlist');
+                    const sort = document.getElementById('beerlist');
 
                     for (let t in title) {
-                        var dateTrim = title[t].gsx$createdat.$t;
+                        let dateTrim = title[t].gsx$createdat.$t;
                         dateTrim = dateTrim.substr(0,10);
                         if (t > 0) Tables.beerList(title[t].gsx$breweryname.$t,
                                                 title[t].gsx$beername.$t,
@@ -127,7 +127,7 @@ var Parser = (() => {
                                                 dateTrim);
                         if (t == title.length-1){
                             sorttable.makeSortable(sort);
-                            var options = {
+                            const options = {
                                 valueNames: ['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
                             };
                             new List('untappd-stats', options);
@@ -147,7 +147,7 @@ var Parser = (() => {
 
 })();
 
-var Render = {
+const Render = {
 
     settings: {
         createEl: 'div',
@@ -156,8 +156,8 @@ var Render = {
 
     buildList: (data, f) => {
         data = data.items;
-        var parent = é('.'+ f);
-        var ul = ç('ul');
+        const parent = é('.'+ f);
+        const ul = ç('ul');
 
         function build(element, content, attr) {
             element = ç(element);
@@ -167,9 +167,9 @@ var Render = {
         }
 
         for (const n of data) {
-            var li = ç('li');
+            const li = ç('li');
 
-            var temp = [
+            let temp = [
                 build('h2', n.title),
                 build('h3', n.position),
                 build('time', n.dateFrom),
@@ -178,8 +178,8 @@ var Render = {
                 n.url && build('a', n.url, 1)
             ];
 
-            var docFrag = document.createDocumentFragment();
-            for(var i = 0; i < temp.length; i++) {
+            const docFrag = document.createDocumentFragment();
+            for(let i = 0; i < temp.length; i++) {
                 temp[i] && docFrag.appendChild(temp[i]);
             }
 
@@ -197,7 +197,7 @@ var Render = {
             e = e.substr(1);
 
             // creating a div with classname e
-            var temp = ç(Render.settings.createEl);
+            let temp = ç(Render.settings.createEl);
             temp.classList.add(e);
 
             // add data and attach click handler
@@ -205,16 +205,16 @@ var Render = {
             temp.onclick = Interact.toggleClicked;
 
             // append to parent <main>
-            var parent = é(Render.settings.parentEl);
+            const parent = é(Render.settings.parentEl);
             parent.appendChild(temp);
 
         } else {
 
             // e refers to an existing element
-            var elem = é(e);
+            const elem = é(e);
 
             // create the (new) element
-            temp = ç(e);
+            let temp = ç(e);
 
             // add data
             temp.innerHTML = data;
@@ -223,6 +223,7 @@ var Render = {
 
             // replace existing element with new
             document.body.replaceChild(temp, elem);
+            if(~e.indexOf('header')) Pizazz.check();
             if(~e.indexOf('aside')) Age.calc();
         }
     },
@@ -233,7 +234,7 @@ var Render = {
             Parser.fetchGigs();
             Parser.fetchBeer();
 
-            var hash = document.location.hash;
+            const hash = document.location.hash;
             if (hash) {
                 let relLink = é('a[href="'+ hash +'"]');
                 window.addEventListener('load', () => {
@@ -245,31 +246,33 @@ var Render = {
 
 };
 
-var Interact = {
+const Interact = {
 
-    toggleClicked: () => {
-        var clicked = this.nodeName;
-        if(clicked == 'HEADER'||this.classList == 'contact'){
-            var el = é('header');
+    toggleClicked: (e) => {
+        const parent = e.target.parentElement.nodeName;
+        const div = e.target.classList;
+        if(parent == 'HEADER' || parent == 'MAIN' || div == 'locate'){
+            const el = é('header');
             el.className == 'clicked' ? el.className = 'reverse' : el.className = 'clicked';
         }
     }
 
 };
 
-var Age = {
+const Age = {
 
     calc: () => {
-        var el = é('time');
-        var time = el.getAttribute('datetime');
+        const el = é('time');
+        const time = el.getAttribute('datetime');
+        const today = new Date();
+        const month = today.getMonth()+1 <= 9 ? ''+today.getMonth()+1 : today.getMonth()+1;
 
-        var today = new Date();
-        var now = [
+        let now = [
             today.getFullYear(),
-            today.getMonth()+1,
-            ('0' + today.getDate()).slice(-2)
+            month,
+            parseInt(('0' + today.getDate()).slice(-2))
         ];
-        var birth = [
+        let birth = [
             time.slice(0,4),
             time.slice(5,7),
             time.slice(8,10)
@@ -278,13 +281,13 @@ var Age = {
         now = now.join('');
         birth = birth.join('');
 
-        var age = (now - birth).toString().slice(0,2);
+        const age = (now - birth).toString().slice(0,2);
         el.innerHTML = age + ',';
     }
 
 };
 
-var Request = {
+const Request = {
 
     isIndex: () => {
         if (document.location.pathname == '/') {
@@ -300,13 +303,13 @@ var Request = {
 
 };
 
-var Tables = {
+const Tables = {
     // NOT USED ON MAIN PAGE
 
     gigList: (name, location, date) => {
-        var frag = document.createDocumentFragment();
-        var list = é('#giglist tbody');
-        var gig = `<td class="mdl-data-table__cell--non-numeric gig-name">
+        const frag = document.createDocumentFragment();
+        const list = é('#giglist tbody');
+        let gig = `<td class="mdl-data-table__cell--non-numeric gig-name">
                 ${name}
             </td>
             <td class="mdl-data-table__cell--non-numeric gig-location">
@@ -314,17 +317,16 @@ var Tables = {
             </td>
             <td class="gig-date">${date}</td>`;
 
-        var tr = ç('tr');
+        const tr = ç('tr');
         tr.innerHTML = gig;
         frag.appendChild(tr);
         list.appendChild(frag);
     },
 
     beerList: (brewery, bName, bType, bAbv, bRating, bDate) => {
-        var frag = document.createDocumentFragment();
-        var list = é('#beerlist tbody');
-
-        var brew = `<td class="mdl-data-table__cell--non-numeric brewery">
+        const frag = document.createDocumentFragment();
+        const list = é('#beerlist tbody');
+        let brew = `<td class="mdl-data-table__cell--non-numeric brewery">
                 ${brewery}
             </td>
             <td class="mdl-data-table__cell--non-numeric beer-name">
@@ -337,12 +339,31 @@ var Tables = {
             <td class="beer-rating">${bRating}</td>
             <td class="beer-date">${bDate}</td>`;
 
-        var tr = ç('tr');
+        const tr = ç('tr');
         tr.innerHTML = brew;
         frag.appendChild(tr);
         list.appendChild(frag);
     }
 
+};
+
+const Pizazz = {
+    // fallbacks for visual goodies
+    check: () => {
+        let n = navigator.userAgent;
+        // yeah yeah, shouldn't use browser sniffing, but whatever...
+
+        if(n.indexOf('Firefox') != -1 || n.indexOf('Safari')){
+            let svgReplace = ç('img');
+            const imageReplacement = 'src/img/logotype.svg';
+            svgReplace.setAttribute('src', imageReplacement);
+
+            const svg = document.getElementById('logotype');
+            const header = é('header');
+
+            header.replaceChild(svgReplace, svg);
+        }
+    }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
