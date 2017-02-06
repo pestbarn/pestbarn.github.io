@@ -1,10 +1,15 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .mdl-spinner {
     width: 24px;
     height: 24px;
+}
+
+h1,
+h2 {
+    font-family: 'Open Sans', sans-serif;
 }
 
 @media only screen and (max-width: 760px),
