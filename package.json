@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "build": "webpack -p",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "watch": "webpack --progress --watch"
   },
   "repository": {
     "type": "git",
@@ -45,7 +46,7 @@
     "react-inlinesvg": "^0.5.5",
     "react-router": "^3.0.2",
     "resolve-url-loader": "^2.0.0",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.4.1"
   },
   "babel": {
     "presets": [

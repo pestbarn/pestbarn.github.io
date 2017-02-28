@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Header, Logo, Contact, Aside, Experience, Pendulum, ExperienceList } from './';
+import { Header, Experience } from '../containers/';
+import { Logo, Contact, Aside, Pendulum, ExperienceList } from './';
 
 class Root extends Component {
     constructor(props) {

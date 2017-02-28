@@ -1,5 +1,5 @@
 import React from 'react';
-import Locator from './Locator';
+import Locator from '../components/Locator';
 
 const Header = props => {
     return (
