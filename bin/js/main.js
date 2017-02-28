@@ -12599,13 +12599,47 @@ var ExperienceList = function (_React$Component) {
                 _react2.default.createElement(
                     'ul',
                     null,
-                    _react2.default.createElement(ExperienceListItem, { title: 'Magic by iStone', position: 'Frontend developer', dateFrom: '2017/03', dateTo: '(current)', url: 'magicbyistone.se' }),
-                    _react2.default.createElement(ExperienceListItem, { title: 'Sportamore', position: 'Frontend developer', dateFrom: '2015/06', dateTo: '2017/03', url: 'sportamore.se' }),
-                    _react2.default.createElement(ExperienceListItem, { title: 'Rockbladet', position: 'Writer, photographer', dateFrom: '2014/12', dateTo: '(current)', url: 'rockbladet.se' }),
-                    _react2.default.createElement(ExperienceListItem, { title: 'I:O:A', position: 'Festival organizer, developer, graphic designer', dateFrom: '2012/09', dateTo: '2016/05', url: 'bit.ly/I-O-A' }),
-                    _react2.default.createElement(ExperienceListItem, { title: '46elks', position: 'Frontend developer & designer', dateFrom: '2011/05', dateTo: '2011/09', url: '46elks.com' }),
-                    _react2.default.createElement(ExperienceListItem, { title: 'Freespee', position: 'Frontend developer & designer', dateFrom: '2011/01', dateTo: '2015/05', url: 'freespee.com' }),
-                    _react2.default.createElement(ExperienceListItem, { title: 'SwedenMetal', position: 'Webmaster, developer, writer', dateFrom: '2005/05', dateTo: '2010/01' })
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: 'Magic by iStone',
+                        position: 'Frontend developer',
+                        dateFrom: '2017/03',
+                        dateTo: '(current)',
+                        url: 'magicbyistone.se' }),
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: 'Sportamore',
+                        position: 'Frontend developer',
+                        dateFrom: '2015/06',
+                        dateTo: '2017/03',
+                        url: 'sportamore.se' }),
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: 'Rockbladet',
+                        position: 'Writer, photographer',
+                        dateFrom: '2014/12',
+                        dateTo: '(current)',
+                        url: 'rockbladet.se' }),
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: 'I:O:A',
+                        position: 'Festival organizer, developer, graphic designer',
+                        dateFrom: '2012/09',
+                        dateTo: '2016/05',
+                        url: 'bit.ly/I-O-A' }),
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: '46elks',
+                        position: 'Frontend developer & designer',
+                        dateFrom: '2011/05',
+                        dateTo: '2011/09',
+                        url: '46elks.com' }),
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: 'Freespee',
+                        position: 'Frontend developer & designer',
+                        dateFrom: '2011/01',
+                        dateTo: '2015/05',
+                        url: 'freespee.com' }),
+                    _react2.default.createElement(ExperienceListItem, {
+                        title: 'SwedenMetal',
+                        position: 'Webmaster, developer, writer',
+                        dateFrom: '2005/05',
+                        dateTo: '2010/01' })
                 )
             );
         }
