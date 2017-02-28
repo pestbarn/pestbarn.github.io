@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, hashHistory } from 'react-router';
 
-import { Root } from '../components';
+import { Root, StatsGigs, StatsBeer } from '../components';
 import { StatsContainer } from '../containers';
 
 class Routes extends Component {
@@ -13,8 +13,8 @@ class Routes extends Component {
             <Router history={hashHistory}>
                 <Route path="/" component={Root} />
                 <Route path="/stats" header="Stats of Life" component={StatsContainer}>
-                    <Route path="/stats/gigs" subHeader="Attended Gigs" component={StatsContainer} />
-                    <Route path="/stats/beer" subHeader="Beer List" component={StatsContainer} />
+                    <Route path="/stats/gigs" subHeader="Attended Gigs" component={StatsGigs} />
+                    <Route path="/stats/beer" subHeader="Beer List" component={StatsBeer} />
                 </Route>
             </Router>
         );

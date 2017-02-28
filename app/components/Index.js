@@ -5,6 +5,9 @@ import Locator from './Locator';
 import Logo from './Logo';
 import Pendulum from './Pendulum';
 import Root from './Root';
+import Stats from './Stats';
+import StatsBeer from './StatsBeer';
+import StatsGigs from './StatsGigs';
 
 export {
     Aside,
@@ -13,5 +16,8 @@ export {
     Locator,
     Logo,
     Pendulum,
-    Root
+    Root,
+    Stats,
+    StatsBeer,
+    StatsGigs
 };

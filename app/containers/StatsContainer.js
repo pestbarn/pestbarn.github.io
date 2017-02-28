@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Stats } from '../components';
+import { Stats, StatsGigs } from '../components';
+require('css-loader?importLoaders=1!resolve-url-loader!../../stats/stats.css');
 
 class StatsContainer extends Component {
     constructor(props) {
@@ -7,21 +8,16 @@ class StatsContainer extends Component {
         this.state = {
             isLoading: true,
         };
-        this.handleInitiateBattle = this.handleInitiateBattle.bind(this);
     }
 
     render() {
         return (
             <Stats
-                isLoading={this.state.isLoading}
-                onInitiateBattle={this.handleInitiateBattle}
-                playersInfo={this.state.playersInfo} />
+                isLoading={this.state.isLoading}>
+                <StatsGigs />
+            </Stats>
         );
     }
 }
-
-StatsContainer.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};
 
 export default StatsContainer;

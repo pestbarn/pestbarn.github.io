@@ -1,4 +1,4 @@
-body {
+.mdl-layout {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -7,9 +7,13 @@ body {
     height: 24px;
 }
 
-h1,
-h2 {
+.mdl-layout h1,
+.mdl-layout h2 {
     font-family: 'Open Sans', sans-serif;
+}
+
+.mdl-layout a::after {
+    content: '';
 }
 
 @media only screen and (max-width: 760px),
