@@ -9,7 +9,7 @@ class Root extends Component {
     render() {
         return (
             <div className="root-container">
-                <Header>
+                <Header locator={true}>
                     <Logo />
                 </Header>
                 <Contact />

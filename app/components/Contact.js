@@ -1,9 +1,9 @@
 import React from 'react';
-import { Main } from '../containers/DefaultContainer';
+import { Main } from '../containers/';
 
 const Contact = () => {
     return (
-        <Main>
+        <Main locator={true}>
             <div>
                 <p>
                     <strong>Skills:</strong>

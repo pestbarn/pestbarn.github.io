@@ -4197,7 +4197,7 @@ var routes = oneOfType([route, arrayOf(route)]);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Root = exports.Pendulum = exports.Logo = exports.ExperienceList = exports.Contact = exports.Aside = undefined;
+exports.Root = exports.Pendulum = exports.Logo = exports.Locator = exports.ExperienceList = exports.Contact = exports.Aside = undefined;
 
 var _Aside = __webpack_require__(119);
 
@@ -4210,6 +4210,10 @@ var _Contact2 = _interopRequireDefault(_Contact);
 var _ExperienceList = __webpack_require__(122);
 
 var _ExperienceList2 = _interopRequireDefault(_ExperienceList);
+
+var _Locator = __webpack_require__(73);
+
+var _Locator2 = _interopRequireDefault(_Locator);
 
 var _Logo = __webpack_require__(123);
 
@@ -4228,6 +4232,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.Aside = _Aside2.default;
 exports.Contact = _Contact2.default;
 exports.ExperienceList = _ExperienceList2.default;
+exports.Locator = _Locator2.default;
 exports.Logo = _Logo2.default;
 exports.Pendulum = _Pendulum2.default;
 exports.Root = _Root2.default;
@@ -12371,14 +12376,14 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _DefaultContainer = __webpack_require__(266);
+var _containers = __webpack_require__(75);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Contact = function Contact() {
     return _react2.default.createElement(
-        _DefaultContainer.Main,
-        null,
+        _containers.Main,
+        { locator: true },
         _react2.default.createElement(
             'div',
             null,
@@ -12758,7 +12763,7 @@ var Root = function (_Component) {
                 { className: 'root-container' },
                 _react2.default.createElement(
                     _containers.Header,
-                    null,
+                    { locator: true },
                     _react2.default.createElement(_.Logo, null)
                 ),
                 _react2.default.createElement(_.Contact, null),
@@ -12824,10 +12829,12 @@ var Routes = function (_Component) {
             return _react2.default.createElement(
                 _reactRouter.Router,
                 { history: _reactRouter.hashHistory },
+                _react2.default.createElement(_reactRouter.Route, { path: '/', component: _components.Root }),
                 _react2.default.createElement(
                     _reactRouter.Route,
-                    { path: '/', component: _components.Root },
-                    _react2.default.createElement(_reactRouter.Route, { path: 'stats', header: 'Stats of Life', component: _containers.StatsContainer })
+                    { path: '/stats', header: 'Stats of Life', component: _containers.StatsContainer },
+                    _react2.default.createElement(_reactRouter.Route, { path: '/stats/gigs', subHeader: 'Attended Gigs', component: _containers.StatsContainer }),
+                    _react2.default.createElement(_reactRouter.Route, { path: '/stats/beer', subHeader: 'Beer List', component: _containers.StatsContainer })
                 )
             );
         }
@@ -12875,29 +12882,13 @@ var StatsContainer = function (_Component) {
         var _this = _possibleConstructorReturn(this, (StatsContainer.__proto__ || Object.getPrototypeOf(StatsContainer)).call(this, props));
 
         _this.state = {
-            isLoading: true,
-            playersInfo: []
+            isLoading: true
         };
         _this.handleInitiateBattle = _this.handleInitiateBattle.bind(_this);
         return _this;
     }
 
     _createClass(StatsContainer, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var query = this.props.location.query;
-        }
-    }, {
-        key: 'handleInitiateBattle',
-        value: function handleInitiateBattle() {
-            this.context.router.push({
-                pathname: '/results',
-                state: {
-                    playersInfo: this.state.playersInfo
-                }
-            });
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(_components.Stats, {
@@ -28458,9 +28449,7 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Locator = __webpack_require__(73);
-
-var _Locator2 = _interopRequireDefault(_Locator);
+var _components = __webpack_require__(34);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28477,7 +28466,7 @@ var Header = function Header(props) {
         'header',
         null,
         props.children,
-        props.locator === true && _react2.default.createElement(_Locator2.default, null)
+        props.locator === true && _react2.default.createElement(_components.Locator, null)
     );
 };
 
@@ -28486,7 +28475,7 @@ var Main = function Main(props) {
         'main',
         null,
         props.children,
-        props.locator === true && _react2.default.createElement(_Locator2.default, null)
+        props.locator === true && _react2.default.createElement(_components.Locator, null)
     );
 };
 

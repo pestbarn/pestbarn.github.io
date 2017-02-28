@@ -6,22 +6,8 @@ class StatsContainer extends Component {
         super(props);
         this.state = {
             isLoading: true,
-            playersInfo: []
         };
         this.handleInitiateBattle = this.handleInitiateBattle.bind(this);
-    }
-
-    componentDidMount() {
-        let query = this.props.location.query;
-    }
-
-    handleInitiateBattle() {
-        this.context.router.push({
-            pathname: '/results',
-            state: {
-                playersInfo: this.state.playersInfo
-            }
-        });
     }
 
     render() {

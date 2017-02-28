@@ -1,5 +1,5 @@
 import React from 'react';
-import Locator from '../components/Locator';
+import { Locator } from '../components/';
 
 const Experience = props => {
     return (
