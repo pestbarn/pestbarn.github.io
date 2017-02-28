@@ -8390,17 +8390,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.StatsContainer = exports.Main = exports.Header = exports.Experience = undefined;
 
-var _Experience = __webpack_require__(265);
-
-var _Experience2 = _interopRequireDefault(_Experience);
-
-var _Header = __webpack_require__(127);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Main = __webpack_require__(264);
-
-var _Main2 = _interopRequireDefault(_Main);
+var _DefaultContainer = __webpack_require__(266);
 
 var _StatsContainer = __webpack_require__(128);
 
@@ -8408,9 +8398,9 @@ var _StatsContainer2 = _interopRequireDefault(_StatsContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.Experience = _Experience2.default;
-exports.Header = _Header2.default;
-exports.Main = _Main2.default;
+exports.Experience = _DefaultContainer.Experience;
+exports.Header = _DefaultContainer.Header;
+exports.Main = _DefaultContainer.Main;
 exports.StatsContainer = _StatsContainer2.default;
 
 /***/ }),
@@ -12381,15 +12371,13 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Main = __webpack_require__(264);
-
-var _Main2 = _interopRequireDefault(_Main);
+var _DefaultContainer = __webpack_require__(266);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Contact = function Contact() {
     return _react2.default.createElement(
-        _Main2.default,
+        _DefaultContainer.Main,
         null,
         _react2.default.createElement(
             'div',
@@ -12851,38 +12839,7 @@ var Routes = function (_Component) {
 exports.default = _react2.default.createElement(Routes, null);
 
 /***/ }),
-/* 127 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Locator = __webpack_require__(73);
-
-var _Locator2 = _interopRequireDefault(_Locator);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Header = function Header(props) {
-    return _react2.default.createElement(
-        'header',
-        null,
-        props.children,
-        _react2.default.createElement(_Locator2.default, null)
-    );
-};
-
-exports.default = Header;
-
-/***/ }),
+/* 127 */,
 /* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28484,7 +28441,9 @@ module.exports = __webpack_require__(118);
 
 
 /***/ }),
-/* 264 */
+/* 264 */,
+/* 265 */,
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28493,6 +28452,7 @@ module.exports = __webpack_require__(118);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Main = exports.Header = exports.Experience = undefined;
 
 var _react = __webpack_require__(4);
 
@@ -28504,34 +28464,6 @@ var _Locator2 = _interopRequireDefault(_Locator);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Main = function Main(props) {
-    return _react2.default.createElement(
-        'main',
-        null,
-        props.children,
-        _react2.default.createElement(_Locator2.default, null)
-    );
-};
-
-exports.default = Main;
-
-/***/ }),
-/* 265 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var Experience = function Experience(props) {
     return _react2.default.createElement(
         'section',
@@ -28540,7 +28472,27 @@ var Experience = function Experience(props) {
     );
 };
 
-exports.default = Experience;
+var Header = function Header(props) {
+    return _react2.default.createElement(
+        'header',
+        null,
+        props.children,
+        props.locator === true && _react2.default.createElement(_Locator2.default, null)
+    );
+};
+
+var Main = function Main(props) {
+    return _react2.default.createElement(
+        'main',
+        null,
+        props.children,
+        props.locator === true && _react2.default.createElement(_Locator2.default, null)
+    );
+};
+
+exports.Experience = Experience;
+exports.Header = Header;
+exports.Main = Main;
 
 /***/ })
 /******/ ]);

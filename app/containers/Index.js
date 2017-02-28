@@ -1,6 +1,4 @@
-import Experience from './Experience';
-import Header from './Header';
-import Main from './Main';
+import { Experience, Header, Main } from './DefaultContainer';
 import StatsContainer from './StatsContainer';
 
 export {

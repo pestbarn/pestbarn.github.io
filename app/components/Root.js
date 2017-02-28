@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Experience } from '../containers/';
+import { Experience, Header } from '../containers/';
 import { Logo, Contact, Aside, Pendulum, ExperienceList } from './';
 
 class Root extends Component {
