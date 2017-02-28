@@ -44,7 +44,7 @@ module.exports = {
         "react/jsx-equals-spacing": [0, "always"],
         "react/prop-types": 0,
         "arrow-parens": [2, "as-needed"],
-        "camelcase": 0,
+        "camelcase": 1,
         "no-console": 0
     }
 };
