@@ -14693,69 +14693,47 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /* global sorttable, List */
 
-var Get = function Get() {
-    var gigs = '//spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json';
-
-    var callback = {
-        success: function success(data) {
-            var cells = data;
-            var title = cells.data.feed.entry;
-            var updated = cells.data.feed.updated.$t;
-            updated = 'Last updated: ' + updated.substr(0, 10);
-            document.querySelector('#gigs .mdl-spinner').remove();
-            document.querySelector('#gigs .mdl-tooltip').innerHTML = updated;
-            var sort = document.getElementById('gigslist');
-
-            for (var t in title) {
-                var _ref = [title[t].gsx$headline.$t, title[t].gsx$text.$t, title[t].gsx$startdate.$t],
-                    name = _ref[0],
-                    location = _ref[1],
-                    date = _ref[2];
-
-
-                if (t > 0) gigList(name, location, date);
-
-                if (t == title.length - 1) {
-                    sorttable.makeSortable(sort);
-                    var options = {
-                        valueNames: ['gig-name', 'gig-location', 'gig-date']
-                    };
-                    new List('gigs', options);
-                }
-            }
-        },
-        error: function error(data) {
-            throw new Error(data);
-        }
-    };
-
-    _axios2.default.get(gigs).then(callback.success).catch(callback.error);
-};
-
-var gigList = function gigList(name, location, date) {
-    var frag = document.createDocumentFragment();
-    var list = document.querySelector('#gigslist tbody');
-    var gig = '<td class="mdl-data-table__cell--non-numeric gig-name">\n            ' + name + '\n        </td>\n        <td class="mdl-data-table__cell--non-numeric gig-location">\n            ' + location + '\n        </td>\n        <td class="gig-date">' + date + '</td>';
-
-    var tr = document.createElement('tr');
-    tr.innerHTML = gig;
-    frag.appendChild(tr);
-    list.appendChild(frag);
-};
-
 var StatsGigs = function (_React$Component) {
     _inherits(StatsGigs, _React$Component);
 
     function StatsGigs(props) {
         _classCallCheck(this, StatsGigs);
 
-        return _possibleConstructorReturn(this, (StatsGigs.__proto__ || Object.getPrototypeOf(StatsGigs)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (StatsGigs.__proto__ || Object.getPrototypeOf(StatsGigs)).call(this, props));
+
+        _this.state = {
+            gigs: []
+        };
+        return _this;
     }
 
     _createClass(StatsGigs, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            Get();
+            var _this2 = this;
+
+            this.serverRequest = _axios2.default.get('https://spreadsheets.google.com/feeds/list/1Tf2vRy6me9F3knQSA5FpfvrTLuNetlkd0Mmb2P20Jqo/1/public/values?alt=json').then(function (result) {
+                _this2.setState({
+                    gigs: result.data.feed.entry
+                });
+
+                document.querySelector('#gigs .mdl-spinner').remove();
+
+                var options = {
+                    valueNames: ['gig-name', 'gig-location', 'gig-date']
+                };
+                new List('gigs', options);
+            }).catch(function (err) {
+                throw new Error(err);
+            });
+
+            var sort = document.getElementById('gigslist');
+            sorttable.makeSortable(sort);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            this.serverRequest.abort();
         }
     }, {
         key: 'render',
@@ -14785,6 +14763,37 @@ var StatsGigs = function (_React$Component) {
                             'Date'
                         )
                     )
+                ),
+                _react2.default.createElement(
+                    'tbody',
+                    { className: 'list' },
+                    this.state.gigs.filter(function (i) {
+                        return i.id.$t.slice(-5) != 'cokwr';
+                    }).map(function (gig) {
+                        var updated = gig.updated.$t;
+                        updated = 'Last updated: ' + updated.substr(0, 10);
+                        document.querySelector('#gigs .mdl-tooltip').innerHTML = updated;
+
+                        return _react2.default.createElement(
+                            'tr',
+                            { key: gig.id.$t },
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'mdl-data-table__cell--non-numeric gig-name' },
+                                gig.gsx$headline.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'mdl-data-table__cell--non-numeric gig-location' },
+                                gig.gsx$text.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'gig-date' },
+                                gig.gsx$startdate.$t
+                            )
+                        );
+                    })
                 )
             );
         }
