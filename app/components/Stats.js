@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 export default class Stats extends React.Component {
     constructor(props) {
@@ -8,33 +7,28 @@ export default class Stats extends React.Component {
 
     render() {
         return (
-            <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div className="page-content mdl-grid">
+                <div className="mdl-cell mdl-cell--12-col" id={this.props.subId}>
+                    <h1 className="mdl-typography--headline">
+                        {this.props.subHeader}
+                        <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                            <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor={'search-' + this.props.subId}>
+                                <i className="material-icons">search</i>
+                            </label>
 
-                <div className="mdl-layout__header">
+                            <div className="mdl-textfield__expandable-holder">
+                                <input className="mdl-textfield__input search" type="text" name="sample" id={'search-' + this.props.subId} />
+                            </div>
+                        </div>
+                        <div className="mdl-spinner mdl-js-spinner is-active"></div>
+                    </h1>
+                    <div className="mdl-tooltip" htmlFor={'search-' + this.props.subId}></div>
+                    <table className="mdl-data-table mdl-js-data-table" id={this.props.subId + 'list'}>
+                        {this.props.children}
 
-                    <div className="mdl-layout__header-row">
-                        <span className="mdl-layout-title">Stats of life</span>
-                    </div>
-
-                    <div className="mdl-layout__tab-bar mdl-js-ripple-effect">
-                        <Link to="/stats/gigs" id="gigs" className="mdl-layout__tab is-active">Attended gigs</Link>
-                        <Link to="/stats/beer" id="beer" className="mdl-layout__tab">Beer list</Link>
-                    </div>
-
+                        <tbody className="list" />
+                    </table>
                 </div>
-
-                <div className="mdl-layout__drawer">
-                    <span className="mdl-layout-title">Stats of life</span>
-
-                    <nav className="mdl-navigation">
-                        <Link className="mdl-navigation__link" to="/">Back to mattias.pw</Link>
-                    </nav>
-                </div>
-
-                <div className="mdl-layout__content">
-                    {this.props.children}
-                </div>
-
             </div>
         );
     }

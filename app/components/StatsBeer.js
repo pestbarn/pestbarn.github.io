@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Stats } from './';
 
 /* global sorttable, List */
 
@@ -12,9 +13,9 @@ const Get = () => {
             const title = cells.data.feed.entry;
             let updated = cells.data.feed.updated.$t;
             updated = `Last updated: ${updated.substr(0,10)}`;
-            document.querySelector('#untappd-stats .mdl-spinner').remove();
+            document.querySelector('#beers .mdl-spinner').remove();
             document.querySelector('#beers .mdl-tooltip').innerHTML = updated;
-            const sort = document.getElementById('beerlist');
+            const sort = document.getElementById('beerslist');
 
             for (let t in title) {
                 let [
@@ -46,7 +47,7 @@ const Get = () => {
                     const options = {
                         valueNames: ['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
                     };
-                    new List('untappd-stats', options);
+                    new List('beers', options);
                 }
             }
         },
@@ -62,7 +63,7 @@ const Get = () => {
 
 const beerList = (brewery, bName, bType, bAbv, bRating, bDate) => {
     const frag = document.createDocumentFragment();
-    const list = document.querySelector('#beerlist tbody');
+    const list = document.querySelector('#beerslist tbody');
     let brew = `<td class="mdl-data-table__cell--non-numeric brewery">
             ${brewery}
         </td>
@@ -93,39 +94,18 @@ export default class StatsBeer extends React.Component {
 
     render() {
         return (
-            <div className="mdl-layout__tab-panel" id="beers">
-                <div className="page-content mdl-grid">
-                    <div className="mdl-cell" id="untappd-stats">
-                        <h1 className="mdl-typography--headline">
-                            Untappd stats
-                            <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                                <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="search-beers">
-                                    <i className="material-icons">search</i>
-                                </label>
-
-                                <div className="mdl-textfield__expandable-holder">
-                                    <input className="mdl-textfield__input search" type="text" name="sample" id="search-beers" />
-                                </div>
-                            </div>
-                            <div className="mdl-spinner mdl-js-spinner is-active"></div>
-                        </h1>
-                        <div className="mdl-tooltip" htmlFor="search-beers"></div>
-                        <table className="mdl-data-table mdl-js-data-table" id="beerlist">
-                            <thead>
-                                <tr>
-                                    <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Brewery</th>
-                                    <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Beer name</th>
-                                    <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Beer type</th>
-                                    <th>ABV</th>
-                                    <th className="sorttable_numeric">Rating</th>
-                                    <th>Checkin date</th>
-                                </tr>
-                            </thead>
-                            <tbody className="list" />
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <Stats subHeader="Untappd stats" subId="beers">
+                <thead>
+                    <tr>
+                        <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Brewery</th>
+                        <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Beer name</th>
+                        <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Beer type</th>
+                        <th className="mdl-data-table__cell--non-numeric">ABV</th>
+                        <th className="mdl-data-table__cell--non-numeric sorttable_numeric">Rating</th>
+                        <th className="mdl-data-table__cell--non-numeric">Checkin date</th>
+                    </tr>
+                </thead>
+            </Stats>
         );
     }
 }

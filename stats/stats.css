@@ -10,10 +10,15 @@
 .mdl-layout h1,
 .mdl-layout h2 {
     font-family: 'Open Sans', sans-serif;
+    text-transform: initial;
 }
 
 .mdl-layout a::after {
     content: '';
+}
+
+.mdl-grid .mdl-cell {
+    overflow-x: scroll;
 }
 
 @media only screen and (max-width: 760px),

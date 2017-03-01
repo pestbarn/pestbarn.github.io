@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import { Root, StatsGigs, StatsBeer } from '../components';
 import { StatsContainer } from '../containers';
@@ -13,6 +13,7 @@ class Routes extends Component {
             <Router history={hashHistory}>
                 <Route path="/" component={Root} />
                 <Route path="/stats" header="Stats of Life" component={StatsContainer}>
+                    <IndexRoute component={StatsGigs} />
                     <Route path="/stats/gigs" subHeader="Attended Gigs" component={StatsGigs} />
                     <Route path="/stats/beer" subHeader="Beer List" component={StatsBeer} />
                 </Route>
