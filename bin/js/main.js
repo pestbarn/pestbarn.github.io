@@ -14476,8 +14476,7 @@ var Stats = function (_React$Component) {
                     _react2.default.createElement(
                         "table",
                         { className: "mdl-data-table mdl-js-data-table", id: this.props.subId + 'list' },
-                        this.props.children,
-                        _react2.default.createElement("tbody", { className: "list" })
+                        this.props.children
                     )
                 )
             );
@@ -14522,71 +14521,47 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /* global sorttable, List */
 
-var Get = function Get() {
-    var beer = '//spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json';
-
-    var callback = {
-        success: function success(data) {
-            var cells = data;
-            var title = cells.data.feed.entry;
-            var updated = cells.data.feed.updated.$t;
-            updated = 'Last updated: ' + updated.substr(0, 10);
-            document.querySelector('#beers .mdl-spinner').remove();
-            document.querySelector('#beers .mdl-tooltip').innerHTML = updated;
-            var sort = document.getElementById('beerslist');
-
-            for (var t in title) {
-                var _ref = [title[t].gsx$breweryname.$t, title[t].gsx$beername.$t, title[t].gsx$beertype.$t, title[t].gsx$beerabv.$t, title[t].gsx$ratingscore.$t, title[t].gsx$createdat.$t.substr(0, 10)],
-                    brewery = _ref[0],
-                    bName = _ref[1],
-                    bType = _ref[2],
-                    bAbv = _ref[3],
-                    bRating = _ref[4],
-                    dateTrim = _ref[5];
-
-
-                if (t > 0) beerList(brewery, bName, bType, bAbv, bRating, dateTrim);
-                if (t == title.length - 1) {
-                    sorttable.makeSortable(sort);
-                    var options = {
-                        valueNames: ['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
-                    };
-                    new List('beers', options);
-                }
-            }
-        },
-        error: function error(data) {
-            throw new Error(data);
-        }
-    };
-
-    _axios2.default.get(beer).then(callback.success).catch(callback.error);
-};
-
-var beerList = function beerList(brewery, bName, bType, bAbv, bRating, bDate) {
-    var frag = document.createDocumentFragment();
-    var list = document.querySelector('#beerslist tbody');
-    var brew = '<td class="mdl-data-table__cell--non-numeric brewery">\n            ' + brewery + '\n        </td>\n        <td class="mdl-data-table__cell--non-numeric beer-name">\n            ' + bName + '\n        </td>\n        <td class="mdl-data-table__cell--non-numeric beer-type">\n            ' + bType + '\n        </td>\n        <td class="beer-abv">' + bAbv + '</td>\n        <td class="beer-rating">' + bRating + '</td>\n        <td class="beer-date">' + bDate + '</td>';
-
-    var tr = document.createElement('tr');
-    tr.innerHTML = brew;
-    frag.appendChild(tr);
-    list.appendChild(frag);
-};
-
 var StatsBeer = function (_React$Component) {
     _inherits(StatsBeer, _React$Component);
 
     function StatsBeer(props) {
         _classCallCheck(this, StatsBeer);
 
-        return _possibleConstructorReturn(this, (StatsBeer.__proto__ || Object.getPrototypeOf(StatsBeer)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (StatsBeer.__proto__ || Object.getPrototypeOf(StatsBeer)).call(this, props));
+
+        _this.state = {
+            beers: []
+        };
+        return _this;
     }
 
     _createClass(StatsBeer, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            Get();
+            var _this2 = this;
+
+            this.serverRequest = _axios2.default.get('https://spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json').then(function (result) {
+                _this2.setState({
+                    beers: result.data.feed.entry
+                });
+
+                document.querySelector('#beers .mdl-spinner').remove();
+
+                var options = {
+                    valueNames: ['brewery', 'beer-name', 'beer-type', 'beer-abv', 'beer-rating', 'beer-date']
+                };
+                new List('beers', options);
+            }).catch(function (err) {
+                throw new Error(err);
+            });
+
+            var sort = document.getElementById('beerslist');
+            sorttable.makeSortable(sort);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            this.serverRequest.abort();
         }
     }, {
         key: 'render',
@@ -14631,6 +14606,50 @@ var StatsBeer = function (_React$Component) {
                             'Checkin date'
                         )
                     )
+                ),
+                _react2.default.createElement(
+                    'tbody',
+                    { className: 'list' },
+                    this.state.beers.map(function (beer) {
+                        var updated = beer.updated.$t;
+                        updated = 'Last updated: ' + updated.substr(0, 10);
+                        document.querySelector('#beers .mdl-tooltip').innerHTML = updated;
+
+                        return _react2.default.createElement(
+                            'tr',
+                            { key: beer.id.$t },
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'mdl-data-table__cell--non-numeric brewery' },
+                                beer.gsx$breweryname.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'mdl-data-table__cell--non-numeric beer-name' },
+                                beer.gsx$beername.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'mdl-data-table__cell--non-numeric beer-type' },
+                                beer.gsx$beertype.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'beer-abv' },
+                                beer.gsx$beerabv.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'beer-rating' },
+                                beer.gsx$ratingscore.$t
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                { className: 'beer-date' },
+                                beer.gsx$createdat.$t.substr(0, 10)
+                            )
+                        );
+                    })
                 )
             );
         }

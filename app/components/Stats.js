@@ -25,8 +25,6 @@ export default class Stats extends React.Component {
                     <div className="mdl-tooltip" htmlFor={'search-' + this.props.subId}></div>
                     <table className="mdl-data-table mdl-js-data-table" id={this.props.subId + 'list'}>
                         {this.props.children}
-
-                        <tbody className="list" />
                     </table>
                 </div>
             </div>
