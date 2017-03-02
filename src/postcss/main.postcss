@@ -1,0 +1,429 @@
+:root {
+    background: $color--secondary url(/src/img/paperbright_.5.jpg);
+    background-size: cover;
+    margin: 0;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 568px) {
+    :root {
+        background-size: 100vmax;
+        background-repeat: no-repeat;
+    }
+}
+
+a {
+    color: $color--dark_text;
+
+    &::after {
+        content: '>';
+    }
+}
+
+h1 {
+    font-size: 6em;
+    font-family: monospace;
+    text-transform: lowercase;
+}
+
+body {
+    transform: translateZ(0);
+}
+
+header,
+main {
+    width: 85vw;
+    height: 85vh;
+    top: 50vh;
+    left: 50vw;
+    overflow: hidden;
+    will-change: transform;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    border: 1px dotted $color--secondary;
+    box-shadow: 0 0 0 4px $color--primary;
+    animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45) !important;
+}
+
+header {
+    z-index: 1;
+    position: relative;
+    will-change: transform;
+    border-radius: 50px 5px;
+    background: $color--base;
+    transform: translate(-42.5vw, -42.5vh) rotateY(0deg);
+
+    svg g path,
+    svg g .pathed,
+    .locate {
+        transition: .2s all;
+        transition-delay: .8s;
+    }
+
+    img {
+        /* fallback from svg */
+        width: 70%;
+        transform: translate(-50%, -50%);
+        position: relative;
+        left: 50%;
+        top: 50%;
+    }
+
+    &::before {
+        background: url(/src/img/paper_.5.jpg);
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: .45;
+        content: "";
+        z-index: -1;
+        filter: saturate(0);
+        border-radius: 50px 5px;
+    }
+
+    &.clicked {
+        animation: 1s flip 1 forwards;
+
+        svg g path,
+        svg g .pathed,
+        .locate {
+            fill: transparent !important;
+            visibility: hidden;
+        }
+
+        + main {
+            animation: 1s flip--reverse 1 forwards;
+        }
+    }
+
+    &.reverse {
+        animation: 1s flip--reverse 1 forwards;
+
+        + main {
+            animation: 1s flip 1 forwards;
+        }
+    }
+}
+
+main {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    background: $color--primary;
+    border-radius: 5px 50px;
+    border: 9vw double salmon;
+    box-shadow: 0 0 4px 1px $color--base;
+    transform: translate(-42.5vw, -42.5vh) rotateY(180deg);
+
+    header:not(.clicked) + & .locate {
+        fill: transparent !important;
+        visibility: hidden;
+    }
+
+    .locate {
+        transition: .2s all;
+        transition-delay: .8s;
+    }
+
+    div {
+        flex-grow: 1;
+        color: $color--bright_text;
+        text-align: center;
+        align-self: center;
+
+        p {
+            max-width: 50%;
+            margin: 0 auto 1rem;
+
+            span {
+                background: $color--bright_text;
+                color: $color--primary;
+                box-sizing: border-box;
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 5px;
+                margin: 4px;
+
+                &.primary {
+                    font-weight: 600;
+                    box-shadow: inset 0 0 0 1px $color--bright_text, inset 0 0 0 2px $color--primary;
+                }
+            }
+
+            &:last-child {
+                cursor: default;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 568px) {
+    main div p {
+        max-width: 90%;
+    }
+}
+
+aside {
+    position: relative;
+    top: 16vh;
+    left: 0;
+    right: 0;
+    background: $color--primary;
+    color: $color--bright_text;
+    box-shadow: 0 0 0 4px $color--base;
+    display: flex;
+    align-items: center;
+
+    p {
+        text-align: right;
+        flex: 1;
+    }
+
+    a,
+    time {
+        color: $color--bright_text;
+
+        &::after {
+            content: '';
+        }
+    }
+}
+
+#app section {
+    display: flex;
+    margin-top: 16vh;
+    overflow-x: hidden;
+    min-height: 65vmin;
+
+    > div {
+        flex-basis: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .experience {
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 1em 1em 2em;
+
+            li {
+                -webkit-font-smoothing: antialiased;
+                font-weight: 600;
+                font-variant: small-caps;
+            }
+        }
+
+        h2 {
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            margin: -.25em 0 .25em;
+            text-transform: lowercase;
+        }
+
+        time {
+            margin: 0 .75em 0 0;
+            text-transform: uppercase;
+        }
+
+        span {
+            margin: 0 .75em 0 0;
+        }
+
+        a {
+            float: right;
+            text-transform: lowercase;
+        }
+    }
+}
+
+.pendula {
+    position: relative;
+    z-index: -1;
+    top: -1vmax;
+
+    div {
+        position: absolute;
+        border-radius: 50%;
+        box-shadow:
+            0 0 1px 2px $color--tertiary,
+            inset 0 0 1px 1px $color--tertiary;
+        backface-visibility: hidden;
+        animation: swing 1s infinite ease-in-out alternate;
+
+        &::after {
+            content: '';
+            border-radius: 50%;
+            width: .4em;
+            height: .4em;
+            background: $color--tertiary;
+            display: block;
+            position: relative;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    $init: 0;
+    $left: 0;
+    $center: 50%;
+
+    @for $i from 1 through 10 {
+        $inc: 2;
+        $cen: 0;
+
+        .pendulum-$(i) {
+            width: $(init) + $(inc)*1em;
+            height: $(init) + $(inc)*1em;
+            top: -($(init) + $(inc) - $(i) - 1vmax);
+            left: calc($(center) - $(i)em);
+            animation-duration: $(i) / 100 + 1s;
+        }
+        $init: $init + $inc;
+        $left: $left+1;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    #app section {
+        flex-direction: column;
+        margin-top: 14vh;
+        overflow: visible;
+
+        > div {
+            flex-basis: 40vw;
+        }
+    }
+
+    @for $i from 8 through 10 {
+        .pendulum-$(i) {
+            display: none;
+        }
+    }
+}
+
+header > span {
+    /* fix for Isvg */
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#logotype {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    display: block;
+    top: 0;
+    position: relative;
+    will-change: transform;
+    transform-origin: 50% 50% 0;
+    animation: 1.5s grow 1 forwards 3s cubic-bezier(.68, -.55, .26, 1.45);
+
+    .cls-1 {
+        fill: $color--primary; /* ∞ */
+    }
+
+    .cls-2 {
+        fill: $color--secondary; /* {  } */
+        opacity: 0;
+        animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45);
+    }
+
+    .st0 {
+        fill: none; /* text path */
+    }
+
+    #curly--open .cls-2 {
+        animation: 1s bounce-open 1 forwards .4s;
+    }
+
+    #curly--close .cls-2 {
+        animation: 1s bounce-close 1 forwards .4s;
+    }
+
+    .pathed {
+        fill: $color--bright_text; /* pathed text */
+        white-space: pre;
+
+        textpath {
+            opacity: 0;
+            letter-spacing: 1px;
+            font-weight: 800;
+            white-space: pre;
+            word-spacing: initial;
+            text-transform: uppercase;
+            animation: 2s expand 1 forwards;
+            text-rendering: optimizeLegibility;
+            animation-timing-function: cubic-bezier(.68, -.55, .26, 1.45);
+        }
+
+        &.textstar textpath {
+            dominant-baseline: middle;
+            font-weight: 400;
+            animation: .6s star 1 forwards;
+
+            span {
+                cursor: pointer;
+            }
+        }
+
+        &.textleft textpath {
+            animation-delay: .4s;
+        }
+
+        &.textright textpath {
+            font-weight: 400;
+            animation-delay: .8s;
+            text-rendering: geometricPrecision;
+        }
+
+        &.textleft,
+        &.textright {
+            textpath {
+                font-family: 'Anonymous Pro', monospace;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 732px) {
+    aside {
+        flex-direction: column;
+
+        img {
+            display: none;
+        }
+
+        p {
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 568px) {
+    #logotype {
+        transform: rotate(-90deg) scale(1.2) translate(-12.5vh);
+    }
+}
+
+.locate {
+    position: absolute;
+    right: 10%;
+    bottom: 15%;
+    animation: locate 2s infinite ease-out 5s;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
