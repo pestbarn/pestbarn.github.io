@@ -33,6 +33,8 @@ class StatsContainer extends Component {
                     <span className="mdl-layout-title">Stats of life</span>
 
                     <nav className="mdl-navigation">
+                        <Link to="/stats" className="mdl-navigation__link is-active">Attended gigs</Link>
+                        <Link to="/stats/beer" className="mdl-navigation__link">Beer list</Link>
                         <Link className="mdl-navigation__link" to="/">Back to mattias.pw</Link>
                     </nav>
                 </div>

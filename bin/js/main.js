@@ -13826,6 +13826,8 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouter = __webpack_require__(71);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -13900,6 +13902,12 @@ var Aside = function (_React$Component) {
                         'a',
                         { href: 'http://codepen.io/pestbarn/pens/public/' },
                         'things'
+                    ),
+                    ',',
+                    _react2.default.createElement(
+                        _reactRouter.Link,
+                        { to: '/stats' },
+                        'stats'
                     ),
                     _react2.default.createElement('br', null),
                     _react2.default.createElement(
@@ -14361,8 +14369,6 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(71);
-
 var _containers = __webpack_require__(46);
 
 var _ = __webpack_require__(29);
@@ -14394,11 +14400,6 @@ var Root = function (_Component) {
                     _containers.Header,
                     { locator: true },
                     _react2.default.createElement(_.Logo, null)
-                ),
-                _react2.default.createElement(
-                    _reactRouter.Link,
-                    { to: '/stats' },
-                    'Link'
                 ),
                 _react2.default.createElement(_.Contact, null),
                 _react2.default.createElement(_.Aside, null),
@@ -14571,11 +14572,6 @@ var StatsBeer = function (_React$Component) {
             sorttable.makeSortable(sort);
         }
     }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.serverRequest.abort();
-        }
-    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -14741,11 +14737,6 @@ var StatsGigs = function (_React$Component) {
 
             var sort = document.getElementById('gigslist');
             sorttable.makeSortable(sort);
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            this.serverRequest.abort();
         }
     }, {
         key: 'render',
@@ -15017,6 +15008,16 @@ var StatsContainer = function (_Component) {
                     _react2.default.createElement(
                         'nav',
                         { className: 'mdl-navigation' },
+                        _react2.default.createElement(
+                            _reactRouter.Link,
+                            { to: '/stats', className: 'mdl-navigation__link is-active' },
+                            'Attended gigs'
+                        ),
+                        _react2.default.createElement(
+                            _reactRouter.Link,
+                            { to: '/stats/beer', className: 'mdl-navigation__link' },
+                            'Beer list'
+                        ),
                         _react2.default.createElement(
                             _reactRouter.Link,
                             { className: 'mdl-navigation__link', to: '/' },

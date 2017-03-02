@@ -36,10 +36,6 @@ export default class StatsGigs extends React.Component {
         sorttable.makeSortable(sort);
     }
 
-    componentWillUnmount() {
-        this.serverRequest.abort();
-    }
-
     render() {
         return (
             <Stats subHeader="Attended gigs" subId="gigs">

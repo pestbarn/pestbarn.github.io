@@ -36,10 +36,6 @@ export default class StatsBeer extends React.Component {
         sorttable.makeSortable(sort);
     }
 
-    componentWillUnmount() {
-        this.serverRequest.abort();
-    }
-
     render() {
         return (
             <Stats subHeader="Untappd stats" subId="beers">

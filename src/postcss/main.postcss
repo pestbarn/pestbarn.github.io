@@ -1,7 +1,13 @@
 :root {
     background: $color--secondary url(/src/img/paperbright_.5.jpg);
+    background-attachment: fixed;
     background-size: cover;
     margin: 0;
+}
+
+:root,
+html,
+body {
     font-family: 'Anonymous Pro', monospace;
     font-size: 16px;
 }
@@ -21,10 +27,25 @@ a {
     }
 }
 
+h1,
+h2,
+h3 {
+    font-family: 'Anonymous Pro', monospace;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
 h1 {
     font-size: 6em;
-    font-family: monospace;
     text-transform: lowercase;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
 }
 
 body {
@@ -138,6 +159,7 @@ main {
         p {
             max-width: 50%;
             margin: 0 auto 1rem;
+            font-size: 16px;
 
             span {
                 background: $color--bright_text;
@@ -217,6 +239,7 @@ aside {
                 -webkit-font-smoothing: antialiased;
                 font-weight: 600;
                 font-variant: small-caps;
+                font-size: 16px;
             }
         }
 
@@ -241,6 +264,7 @@ aside {
 
         a {
             float: right;
+            font-weight: 600;
             text-transform: lowercase;
         }
     }

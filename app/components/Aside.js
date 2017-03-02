@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Aside extends React.Component {
     calcAge(date) {
@@ -38,6 +39,8 @@ export default class Aside extends React.Component {
                     <a href="http://www.mattias.pw/starburst.css">starburst.css</a>
                     ,
                     <a href="http://codepen.io/pestbarn/pens/public/">things</a>
+                    ,
+                    <Link to="/stats">stats</Link>
                     <br />
                     <a href="http://www.linkedin.com/in/pestbarn">linkedin</a>
                     ,

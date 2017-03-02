@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { Experience, Header } from '../containers/';
 import { Logo, Contact, Aside, Pendulum, ExperienceList } from './';
 
@@ -13,7 +12,6 @@ class Root extends Component {
                 <Header locator={true}>
                     <Logo />
                 </Header>
-                <Link to="/stats">Link</Link>
                 <Contact />
                 <Aside />
                 <Experience>
