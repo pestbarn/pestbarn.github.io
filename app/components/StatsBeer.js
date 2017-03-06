@@ -15,10 +15,10 @@ export default class StatsBeer extends React.Component {
 
     componentDidMount() {
         this.serverRequest = axios
-        .get('https://spreadsheets.google.com/feeds/list/1a056ruITWMr8oeJECb8QM6ePe00IqTTEIkrkhY-QeMI/1/public/values?alt=json')
+        .get('https://doc-0o-2k-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/pcb9mm1le955k9itr4menll9itegkl5j/1488794400000/10166180421145262528/*/0B9yDBByGfhzqV2luejZiN0hFUnc')
         .then(result => {
             this.setState({
-                beers: result.data.feed.entry
+                beers: result.data
             });
 
             document.querySelector('#beers .mdl-spinner').remove();
@@ -51,24 +51,23 @@ export default class StatsBeer extends React.Component {
                 </thead>
                 <tbody className="list">
                     {this.state.beers.map(beer => {
-                        let updated = beer.updated.$t;
-                        updated = `Last updated: ${updated.substr(0,10)}`;
+                        let updated = `Last updated: ${beer.created_at.substr(0,10)}`;
                         document.querySelector('#beers .mdl-tooltip').innerHTML = updated;
 
                         return (
-                            <tr key={beer.id.$t}>
+                            <tr key={beer.beer_url}>
                                 <td className="mdl-data-table__cell--non-numeric brewery">
-                                    {beer.gsx$breweryname.$t}
+                                    {beer.brewery_name}
                                 </td>
                                 <td className="mdl-data-table__cell--non-numeric beer-name">
-                                    {beer.gsx$beername.$t}
+                                    {beer.beer_name}
                                 </td>
                                 <td className="mdl-data-table__cell--non-numeric beer-type">
-                                    {beer.gsx$beertype.$t}
+                                    {beer.beer_type}
                                 </td>
-                                <td className="beer-abv">{beer.gsx$beerabv.$t}</td>
-                                <td className="beer-rating">{beer.gsx$ratingscore.$t}</td>
-                                <td className="beer-date">{beer.gsx$createdat.$t.substr(0,10)}</td>
+                                <td className="beer-abv">{beer.beer_abv}%</td>
+                                <td className="beer-rating">{beer.rating_score}</td>
+                                <td className="beer-date">{beer.created_at.substr(0,10)}</td>
                             </tr>
                         );
                     })}
