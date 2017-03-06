@@ -57,7 +57,7 @@ export default class StatsGigs extends React.Component {
                         let updated = gig.updated.$t;
                         updated = `Last updated: ${updated.substr(0,10)}`;
                         document.querySelector('#gigs .mdl-tooltip').innerHTML = updated;
-                        
+
                         const datePattern = /(\d{2})\/(\d{2})\/(\d{4})/;
                         let date = gig.gsx$startdate.$t;
                         date = date.replace(datePattern, '$3$2$1');
