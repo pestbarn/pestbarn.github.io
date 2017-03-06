@@ -27,6 +27,12 @@ export default class StatsGigs extends React.Component {
                 valueNames: ['gig-name', 'gig-location', 'gig-date']
             };
             new List('gigs', options);
+
+            const date = document.querySelectorAll('.gig-date');
+            date.forEach(date => {
+                date.setAttribute('sorttable_customkey', date.attributes['data-key'].nodeValue);
+                date.removeAttribute('data-key');
+            });
         })
         .catch(err => {
             throw new Error(err);
@@ -43,7 +49,7 @@ export default class StatsGigs extends React.Component {
                     <tr>
                         <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Artist/band</th>
                         <th className="mdl-data-table__cell--non-numeric sorttable_alpha">Location</th>
-                        <th>Date</th>
+                        <th className="mdl-data-table__cell sorttable_numeric">Date</th>
                     </tr>
                 </thead>
                 <tbody className="list">
@@ -51,6 +57,10 @@ export default class StatsGigs extends React.Component {
                         let updated = gig.updated.$t;
                         updated = `Last updated: ${updated.substr(0,10)}`;
                         document.querySelector('#gigs .mdl-tooltip').innerHTML = updated;
+                        
+                        const datePattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+                        let date = gig.gsx$startdate.$t;
+                        date = date.replace(datePattern, '$3$2$1');
 
                         return (
                             <tr key={gig.id.$t}>
@@ -60,7 +70,9 @@ export default class StatsGigs extends React.Component {
                                 <td className="mdl-data-table__cell--non-numeric gig-location">
                                     {gig.gsx$text.$t}
                                 </td>
-                                <td className="gig-date">{gig.gsx$startdate.$t}</td>
+                                <td className="mdl-data-table__cell gig-date" data-key={date}>
+                                    {gig.gsx$startdate.$t}
+                                </td>
                             </tr>
                         );
                     })}
