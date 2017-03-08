@@ -9,7 +9,6 @@ const Experience = props => {
     );
 };
 
-
 const Header = props => {
     return (
         <header>
@@ -28,4 +27,12 @@ const Main = props => {
     );
 };
 
-export { Experience, Header, Main };
+const ContactContainer = props => {
+    return (
+        <dialog className={props.className} style={props.style}>
+            {props.children}
+        </dialog>
+    );
+};
+
+export { ContactContainer, Experience, Header, Main };

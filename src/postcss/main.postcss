@@ -177,7 +177,7 @@ main {
             }
 
             &:last-child {
-                cursor: default;
+                cursor: pointer;
             }
         }
     }
@@ -450,4 +450,16 @@ header > span {
     border-radius: 50%;
     border: 1px solid transparent;
     cursor: pointer;
+}
+
+.mdl-dialog {
+    z-index: 2;
+    top: 50vh;
+    transform: translateY(-40vh);
+
+    input,
+    button,
+    textarea {
+        outline: none;
+    }
 }

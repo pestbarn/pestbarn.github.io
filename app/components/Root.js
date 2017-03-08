@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Experience, Header } from '../containers/';
-import { Logo, Contact, Aside, Pendulum, ExperienceList } from './';
+import { Logo, Contact, Aside, Pendulum, ExperienceList, ContactForm } from './';
 
 class Root extends Component {
     constructor(props) {
@@ -13,6 +13,7 @@ class Root extends Component {
                     <Logo />
                 </Header>
                 <Contact />
+                <ContactForm />
                 <Aside />
                 <Experience>
                     <Pendulum />

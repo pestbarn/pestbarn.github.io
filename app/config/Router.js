@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
-import { Root, StatsGigs, StatsBeer } from '../components';
+import { Root, StatsGigs, StatsBeer, ConfirmSent } from '../components';
 import { StatsContainer } from '../containers';
 
 class Routes extends Component {
@@ -12,6 +12,7 @@ class Routes extends Component {
         return (
             <Router history={hashHistory}>
                 <Route path="/" component={Root} />
+                <Route path="/sent" component={ConfirmSent} />
                 <Route path="/stats" header="Stats of Life" component={StatsContainer}>
                     <IndexRoute component={StatsGigs} />
                     <Route path="/stats/gigs" subHeader="Attended Gigs" component={StatsGigs} />

@@ -15,10 +15,13 @@ module.exports = {
         "__dirname": true,
         "require": true,
         "module": true,
-        "React": true
+        "React": true,
+        "ga": true,
+        "adsbygoogle": true
     },
     "plugins": [
-        "react"
+        "react",
+        "html"
     ],
     "rules": {
         "indent": [
@@ -45,6 +48,7 @@ module.exports = {
         "react/prop-types": 0,
         "arrow-parens": [2, "as-needed"],
         "camelcase": 1,
-        "no-console": 0
+        "no-console": 0,
+        "no-unexpected-multiline": 0
     }
 };

@@ -1,5 +1,7 @@
 import Aside from './Aside';
+import ConfirmSent from './ConfirmSent';
 import Contact from './Contact';
+import ContactForm from './ContactForm';
 import ExperienceList from './ExperienceList';
 import Locator from './Locator';
 import Logo from './Logo';
@@ -11,7 +13,9 @@ import StatsGigs from './StatsGigs';
 
 export {
     Aside,
+    ConfirmSent,
     Contact,
+    ContactForm,
     ExperienceList,
     Locator,
     Logo,
