@@ -1,6 +1,14 @@
 import React from 'react';
 import { Locator } from '../components/';
 
+const ContactContainer = props => {
+    return (
+        <dialog className={props.className} style={props.style}>
+            {props.children}
+        </dialog>
+    );
+};
+
 const Experience = props => {
     return (
         <section>
@@ -24,14 +32,6 @@ const Main = props => {
             {props.children}
             {props.locator === true && <Locator />}
         </main>
-    );
-};
-
-const ContactContainer = props => {
-    return (
-        <dialog className={props.className} style={props.style}>
-            {props.children}
-        </dialog>
     );
 };
 

@@ -1,3 +1,5 @@
+/* stylelint-disable function-whitespace-after */
+
 :root {
     background: $color--secondary url(/src/img/paperbright_.5.jpg);
     background-attachment: fixed;
@@ -83,12 +85,13 @@ header {
     }
 
     img {
-        /* fallback from svg */
         width: 70%;
         transform: translate(-50%, -50%);
         position: relative;
         left: 50%;
         top: 50%;
+
+        /* fallback from svg */
     }
 
     &::before {
@@ -337,10 +340,11 @@ aside {
 }
 
 header > span {
-    /* fix for Isvg */
     width: 100%;
     height: 100%;
     display: block;
+
+    /* fix for Isvg */
 }
 
 #logotype {
@@ -461,5 +465,24 @@ header > span {
     button,
     textarea {
         outline: none;
+    }
+
+    &.wide-dialog {
+        width: 50vw;
+    }
+
+    a {
+        display: block;
+        margin: 1em auto 0;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    a::after {
+        content: '';
     }
 }

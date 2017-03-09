@@ -15,7 +15,7 @@ export default class StatsBeer extends React.Component {
 
     componentDidMount() {
         this.serverRequest = axios
-        .get('https://doc-0o-2k-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/pcb9mm1le955k9itr4menll9itegkl5j/1488794400000/10166180421145262528/*/0B9yDBByGfhzqV2luejZiN0hFUnc')
+        .get('https://dl.dropboxusercontent.com/s/f7ustvn6xp1bo6h/Untappd.json')
         .then(result => {
             this.setState({
                 beers: result.data

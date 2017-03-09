@@ -5,6 +5,7 @@ const Logo = () => {
     function check() {
         let n = navigator.userAgent;
         // yeah yeah, shouldn't use browser sniffing, but whatever...
+        // ¯\_(ツ)_/¯
         const browser = (n.indexOf('Firefox') != -1 || n.indexOf('Safari') != -1);
         const chrome = n.indexOf('Chrome') != -1;
 

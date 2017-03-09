@@ -1,18 +1,15 @@
 import React from 'react';
 
 const Pendulum = () => {
+    const Pendulae = () => {
+        return Array.from(Array(10), (e, i) => {
+            return <div className={'pendulum-' + (i+1)} key={i+1}></div>;
+        });
+    };
+
     return (
         <div className="pendula">
-            <div className="pendulum-1"></div>
-            <div className="pendulum-2"></div>
-            <div className="pendulum-3"></div>
-            <div className="pendulum-4"></div>
-            <div className="pendulum-5"></div>
-            <div className="pendulum-6"></div>
-            <div className="pendulum-7"></div>
-            <div className="pendulum-8"></div>
-            <div className="pendulum-9"></div>
-            <div className="pendulum-10"></div>
+            {Pendulae()}
         </div>
     );
 };

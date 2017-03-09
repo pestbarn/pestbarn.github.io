@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { hashHistory, IndexRoute, Router, Route } from 'react-router';
 
-import { Root, StatsGigs, StatsBeer, ConfirmSent } from '../components';
+import { ConfirmSent, StatsBeer, StatsGigs, Root } from '../components';
 import { StatsContainer } from '../containers';
 
 class Routes extends Component {
