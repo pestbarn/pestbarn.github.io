@@ -58,11 +58,14 @@
 
     td {
         border-top: none !important;
-        padding-left: 50% !important;
         text-align: left !important;
         overflow-x: scroll;
 
         /* Behave like a "row" */
+    }
+
+    td:first-of-type {
+        padding: 12px 18px !important;
     }
 
     td::before {
