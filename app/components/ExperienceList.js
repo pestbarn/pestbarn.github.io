@@ -7,7 +7,7 @@ const ExperienceListItem = props => {
         <time>{props.dateFrom}</time>
         <span>—</span>
         <time>{props.dateTo}</time>
-        { props.url && <a href={'https://', props.url}>{props.url}</a> }
+        { props.url && <a href={'http://' + props.url}>{props.url}</a> }
     </li>;
 };
 
