@@ -7,13 +7,7 @@ export default class Aside extends React.Component {
         const month = ((today.getMonth() + 1) < 10 ? '0' : '') + (today.getMonth() + 1);
         const day = (today.getDate() < 10 ? '0' : '') + today.getDate();
 
-        let now = [
-            today.getFullYear(),
-            month,
-            day
-        ];
-
-        now = now.join('');
+        let now = `${today.getFullYear()}${month}${day}`;
 
         let age = (now - date).toString();
         return parseInt(age.slice(0,2));
