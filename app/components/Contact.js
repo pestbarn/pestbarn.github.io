@@ -1,10 +1,13 @@
 import React from 'react';
 import { Main } from '../containers/';
+let dialogPolyfill = require('dialog-polyfill');
 
 class Contact extends React.Component {
     componentDidMount() {
         let dialog = document.querySelector('dialog'),
             showDialogButton = document.querySelector('.show-dialog');
+
+        dialogPolyfill.registerDialog(dialog);
 
         showDialogButton.addEventListener('click', () => {
             dialog.showModal();
