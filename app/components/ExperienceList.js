@@ -17,10 +17,17 @@ export default class ExperienceList extends React.Component {
             <div className="experience">
                 <ul>
                     <ExperienceListItem
+                        title="iStone"
+                        position="Frontend developer"
+                        dateFrom="2017/04"
+                        dateTo="(current)"
+                        url="istone.com" />
+
+                    <ExperienceListItem
                         title="Magic by iStone"
                         position="Frontend developer"
                         dateFrom="2017/03"
-                        dateTo="(current)"
+                        dateTo="2017/04"
                         url="magicbyistone.se" />
 
                     <ExperienceListItem
@@ -34,7 +41,7 @@ export default class ExperienceList extends React.Component {
                         title="Rockbladet"
                         position="Writer, photographer"
                         dateFrom="2014/12"
-                        dateTo="(current)"
+                        dateTo="2017/04"
                         url="rockbladet.se" />
 
                     <ExperienceListItem
