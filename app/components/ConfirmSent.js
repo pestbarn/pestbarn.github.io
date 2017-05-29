@@ -22,10 +22,10 @@ export default class ConfirmSent extends React.Component {
             'puppy driving a car': 'ShEVc39.jpg'
         };
 
-        let animalArray  = Object.keys(animals);
-        let animalIndex  = Math.floor(Math.random() * animalArray.length);
-        let animalKey    = animalArray[animalIndex];
-        let animalValue  = 'http://i.imgur.com/' + animals[animalKey];
+        let animalArray = Object.keys(animals);
+        let animalIndex = Math.floor(Math.random() * animalArray.length);
+        let animalKey = animalArray[animalIndex];
+        let animalValue = 'http://i.imgur.com/' + animals[animalKey];
 
         return (
             <p>

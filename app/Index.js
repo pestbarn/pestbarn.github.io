@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import Routes from './config/Router.js';
+import Routes from './config/Router';
 
 const app = document.getElementById('app');
 

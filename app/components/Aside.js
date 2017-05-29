@@ -10,7 +10,7 @@ export default class Aside extends React.Component {
         let now = `${today.getFullYear()}${month}${day}`;
 
         let age = (now - date).toString();
-        return parseInt(age.slice(0,2));
+        return parseInt(age.slice(0, 2));
     }
 
     render() {

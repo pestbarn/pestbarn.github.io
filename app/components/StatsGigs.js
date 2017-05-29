@@ -55,7 +55,7 @@ export default class StatsGigs extends React.Component {
                 <tbody className="list">
                     {this.state.gigs.filter(i => i.id.$t.slice(-5) != 'cokwr').map(gig => {
                         let updated = gig.updated.$t;
-                        updated = `Last updated: ${updated.substr(0,10)}`;
+                        updated = `Last updated: ${updated.substr(0, 10)}`;
                         document.querySelector('#gigs .mdl-tooltip').innerHTML = updated;
 
                         const datePattern = /(\d{2})\/(\d{2})\/(\d{4})/;
