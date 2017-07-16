@@ -1,20 +1,52 @@
 @import "h5bp";
 @import "normalize";
 
+@media screen and (min-width: 768px) {
+    html {
+        font-size: calc(16px + 8 * ((100vw - 768px) / 768));
+    }
+}
+
 #logo {
     max-width: 616px;
-    min-height: 100vh;
+    min-height: 90vh;
     margin: 0 auto;
+
+    @media screen and (min-width: 768px) {
+        max-width: 65vw;
+    }
 
     svg {
         overflow: visible;
+        margin-top: 1em;
     }
 }
 
 canvas {
     width: 100vw;
-    height: 100vh;
-    position: fixed;
+    min-height: 768px;
+    max-height: 100vh;
+    position: absolute;
     top: 0;
     z-index: -1;
+    box-shadow: 0 3px .5em #322;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 20% 35% 35%;
+    justify-content: center;
+    align-content: space-around;
+    margin: 0 auto;
+    width: 65vw;
+}
+
+.box {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .25);
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .05);
+    color: #333;
+    padding: 1em;
+    margin: 1em 0;
 }

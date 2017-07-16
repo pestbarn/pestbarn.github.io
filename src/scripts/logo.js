@@ -168,6 +168,11 @@ function runLogo() {
 
     base
         .fill(color.base)
+        .stroke({
+            width: 5,
+            color: '#fff',
+            opacity: .075
+        })
         .scale(-.05)
         .rotate(-5)
         .addClass('base');
@@ -323,12 +328,12 @@ function runLogo() {
 
     const errorMsg = 'Wat' + window.innerWidth > screen.mobile;
     let isDesktop = window.innerWidth > screen.mobile;
+    let isLandscape = window.matchMedia('(orientation: landscape)').matches;
 
 /**
  * ANIMATE BASE
  */
-
-    switch(isDesktop) {
+    switch(isDesktop || isLandscape) {
     case true:
         base
             .animate(600, animationTiming.bounceOut, 200)
@@ -368,7 +373,7 @@ function runLogo() {
  * ANIMATE CURLIES AND SYMBOL
  */
 
-    switch(isDesktop) {
+    switch(isDesktop || isLandscape) {
     case true:
         curlyLeft
             .animate(1000, animationTiming.elastic, 1000)
@@ -416,7 +421,7 @@ function runLogo() {
  * FIRST NAME
  */
 
-    switch(isDesktop) {
+    switch(isDesktop || isLandscape) {
     case true:
         textFname
             .animate(400, animationTiming.swingTo, 1800)
@@ -440,7 +445,7 @@ function runLogo() {
  * LAST NAME
  */
 
-    switch(isDesktop) {
+    switch(isDesktop || isLandscape) {
     case true:
         textLname
             .animate(400, animationTiming.swingTo, 2100)
@@ -464,7 +469,7 @@ function runLogo() {
  * PREFIX
  */
 
-    switch(isDesktop) {
+    switch(isDesktop || isLandscape) {
     case true:
         textPrefix
             .animate(400, animationTiming.swingTo, 3000)
@@ -488,7 +493,7 @@ function runLogo() {
  * SUFFIX
  */
 
-    switch(isDesktop) {
+    switch(isDesktop || isLandscape) {
     case true:
         textSuffix
             .animate(400, animationTiming.swingTo, 3300)

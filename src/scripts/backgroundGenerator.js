@@ -13,25 +13,25 @@
         }
     };
 
+    const TrianglifyCfg = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        variance: '1',
+        x_colors: 'YlOrRd',
+        y_colors: 'random'
+    };
+
     const actualResizeHandler = () => {
-        let pattern = Trianglify({
-            width: window.innerWidth,
-            height: window.innerHeight
-        });
+        let pattern = Trianglify(TrianglifyCfg);
 
-        let list = document.getElementsByTagName('canvas');
+        let currentCanvas = document.getElementsByTagName('canvas');
 
-        for(var i = list.length - 1; 0 <= i; i--)
-            if(list[i] && list[i].parentElement)
-                list[i].parentElement.removeChild(list[i]);
+        for (let i = currentCanvas.length - 1; 0 <= i; i--) currentCanvas[i].remove();
 
         document.body.appendChild(pattern.canvas());
     };
 
-    document.body.appendChild(Trianglify({
-        width: window.innerWidth,
-        height: window.innerHeight
-    }).canvas());
+    document.body.appendChild(Trianglify(TrianglifyCfg).canvas());
 
     window.addEventListener('resize', resizeThrottler, false);
     window.addEventListener('orientationchange', resizeThrottler, false);
