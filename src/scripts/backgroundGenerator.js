@@ -22,9 +22,9 @@
     };
 
     const actualResizeHandler = () => {
-        let pattern = Trianglify(TrianglifyCfg);
+        const pattern = Trianglify(TrianglifyCfg);
 
-        let currentCanvas = document.getElementsByTagName('canvas');
+        const currentCanvas = document.getElementsByTagName('canvas');
 
         for (let i = currentCanvas.length - 1; 0 <= i; i--) currentCanvas[i].remove();
 

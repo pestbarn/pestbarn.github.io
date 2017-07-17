@@ -7,7 +7,7 @@ const animationTiming = {
     },
 
     swingTo: pos => {
-        var s = 1.70158;
+        const s = 1.70158;
         return (pos -= 1) * pos * ((s + 1) * pos + s) + 1;
     },
 
@@ -126,7 +126,7 @@ const logo = {
     };
 
     const actualResizeHandler = () => {
-        let reset = document.getElementById('logo');
+        const reset = document.getElementById('logo');
 
         while (reset.firstChild) {
             reset.removeChild(reset.firstChild);
@@ -144,11 +144,11 @@ const logo = {
 })();
 
 function runLogo() {
-    let svg = SVG('logo');
+    const svg = SVG('logo');
 
     svg.viewbox('0 0 616 374').size('100%', '100%');
 
-    let color = {
+    const color = {
         base: '#fe5f55',
         white: '#eef5db'
     };
@@ -157,14 +157,10 @@ function runLogo() {
  * LOGO DEFINITIONS AND BASE SETUP
  */
 
-    let base = svg.path(logo.base),
+    const base = svg.path(logo.base),
         curlyLeft = svg.path(logo.curlyLeft),
         curlyRight = svg.path(logo.curlyRight),
-        symbol = svg.path(logo.symbol),
-        textFname = svg.path(logo.textFname),
-        textLname = svg.path(logo.textLname),
-        textPrefix = svg.path(logo.textPrefix),
-        textSuffix = svg.path(logo.textSuffix);
+        symbol = svg.path(logo.symbol);
 
     base
         .fill(color.base)
@@ -191,25 +187,25 @@ function runLogo() {
         .scale(.1)
         .addClass('symbol');
 
-    textFname =
+    const textFname =
         svg
         .group()
         .dmove(52, 70)
         .addClass('text');
 
-    textLname =
+    const textLname =
         svg
         .group()
         .dmove(-52, -70)
         .addClass('text');
 
-    textPrefix =
+    const textPrefix =
         svg
         .group()
         .dmove(52, -70)
         .addClass('text');
 
-    textSuffix =
+    const textSuffix =
         svg
         .group()
         .dmove(-52, 70)
@@ -265,7 +261,7 @@ function runLogo() {
         }
     });
 
-    let
+    const
         fNameLetter = [
             logo.fNameLetter0,
             logo.fNameLetter1,
@@ -327,8 +323,8 @@ function runLogo() {
     });
 
     const errorMsg = 'Wat' + window.innerWidth > screen.mobile;
-    let isDesktop = window.innerWidth > screen.mobile;
-    let isLandscape = window.matchMedia('(orientation: landscape)').matches;
+    const isDesktop = window.innerWidth > screen.mobile;
+    const isLandscape = window.matchMedia('(orientation: landscape)').matches;
 
 /**
  * ANIMATE BASE
@@ -346,8 +342,8 @@ function runLogo() {
             .scale(.99)
             .scale(1.01)
             .rotate(.5)
-            .rotate(0)
             .scale(1)
+            .rotate(0)
             .loop();
         break;
     case false:

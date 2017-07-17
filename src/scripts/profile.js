@@ -11,11 +11,11 @@ const profile = {
 };
 
 (function() {
-    let svg = SVG('profile');
+    const svg = SVG('profile');
 
     svg.viewbox('0 0 567 757').size('260px', '400px');
 
-    let color = '#333745';
+    const color = '#333745';
 
 /**
  * LOGO DEFINITIONS AND BASE SETUP
@@ -52,8 +52,8 @@ const profile = {
 
     parts.map(n => {
         n.opacity(0).translate(400, -400);
-        n.animate(600, function(pos) {
-            var s = 1.70158;
+        n.animate(600, pos => {
+            const s = 1.70158;
             return (pos -= 1) * pos * ((s + 1) * pos + s) + 1;
         }, 1200).opacity(1).translate(0, 0);
     });

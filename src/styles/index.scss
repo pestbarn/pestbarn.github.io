@@ -2,10 +2,34 @@
 @import "normalize";
 @import "backgrounds";
 
+html {
+    font-size: 16px;
+    font-family: 'Forum';
+}
+
 @media screen and (min-width: 768px) {
     html {
         font-size: calc(16px + 8 * ((100vw - 768px) / 768));
     }
+}
+
+@font-face {
+    font-family: Forum;
+    font-style: normal;
+    font-weight: 400;
+    src: local(Forum), url(//fonts.gstatic.com/s/forum/v7/ZqpICanVEXplF5Afx-0HCw.eot?#) format('eot'), url(//fonts.gstatic.com/s/forum/v7/eMDvaUkVr_spjjcEeqYI5A.woff2) format('woff2'), url(//fonts.gstatic.com/s/forum/v7/KsJrhVlKA7udJPNqNdl2fA.woff) format('woff');
+}
+
+@font-face {
+    font-family: Megrim;
+    font-style: normal;
+    font-weight: 400;
+    src: local(Megrim), url(//fonts.gstatic.com/s/megrim/v7/1f5HoozKyYXswla7UhCq0A.eot?#) format('eot'), url(//fonts.gstatic.com/s/megrim/v7/3QlnWQVA-dQyEeamqiHm2g.woff2) format('woff2'), url(//fonts.gstatic.com/s/megrim/v7/wEAANqPdhC-qap-OX73FcA.woff) format('woff');
+}
+
+h1,
+h2 {
+    font-family: 'Megrim';
 }
 
 #logo {
@@ -58,4 +82,16 @@ canvas {
     padding: 1em;
     margin: 1em 0;
     overflow: hidden;
+}
+
+#friend {
+    height: 62px;
+    padding: 1em 0 .5em;
+    margin: 1em 0 .5em;
+    text-align: right;
+    align-self: flex-end;
+
+    svg {
+        width: 64px;
+    }
 }

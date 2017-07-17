@@ -49,9 +49,9 @@ gulp.task('default', ['styles', 'scripts']);
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch(`${dir.src}/styles/**/*.scss`, ['styles']).on('change', function(event) {
-        console.log('File ' + event.type + '...');
+        console.log('\t   File ' + event.type + '...');
     });
     gulp.watch(`${dir.src}/scripts/**/*.js`, ['scripts']).on('change', function(event) {
-        console.log('File ' + event.type + '...');
+        console.log('\t   File ' + event.type + '...');
     });
 });
