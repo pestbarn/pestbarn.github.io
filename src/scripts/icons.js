@@ -16,7 +16,7 @@ const renderFriends = () => {
             opacity: 0
         })
         .stroke({
-            color: '#5bbad5',
+            color: '#fe5f55',
             opacity: 1,
             width: 1
         });

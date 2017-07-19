@@ -150,7 +150,8 @@ function runLogo() {
 
     const color = {
         base: '#fe5f55',
-        white: '#eef5db'
+        white: '#eef5db',
+        complementary: '#f96'
     };
 
 /**
@@ -162,12 +163,20 @@ function runLogo() {
         curlyRight = svg.path(logo.curlyRight),
         symbol = svg.path(logo.symbol);
 
+    const patternX = 4,
+        patternY = 4,
+        pattern = svg.pattern(patternX, patternY, add => {
+            let d = 'M1 3h1v1H1V3zm2-2h1v1H3V1z';
+            add.rect(patternX, patternY).fill(color.base);
+            add.path(d).fill(color.complementary);
+        });
+
     base
-        .fill(color.base)
+        .fill(pattern)
         .stroke({
-            width: 5,
-            color: '#fff',
-            opacity: .075
+            width: 1,
+            color: color.white,
+            opacity: .9
         })
         .scale(-.05)
         .rotate(-5)
