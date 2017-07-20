@@ -44,6 +44,14 @@ h2 {
     svg {
         overflow: visible;
         margin-top: 1em;
+
+        @media screen and (max-width: 768px) and (orientation: portrait) {
+            margin-top: 20%;
+        }
+
+        @media screen and (max-width: 768px) and (orientation: landscape) {
+            margin-bottom: 1em;
+        }
     }
 }
 
@@ -66,12 +74,49 @@ canvas {
     position: relative;
     margin: 0;
     width: 100vw;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: calc(40vw - 1em) calc(60vw - 1em);
+    }
 }
 
 #profile {
     margin-top: -2.5em;
     padding: 0;
     text-align: right;
+
+    svg {
+        @media screen and (max-width: 768px) {
+            height: 445px;
+        }
+    }
+}
+
+#skills {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 1em;
+
+    ul {
+        order: 2;
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        @media screen and (max-width: 768px) {
+            order: 0;
+        }
+
+        li {
+            display: inline-block;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: initial;
+        grid-template-rows: 25% 50%;
+    }
 }
 
 .box {
