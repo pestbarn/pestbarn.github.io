@@ -36,22 +36,20 @@ h2 {
     max-width: 616px;
     min-height: 90vh;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 
     @media screen and (min-width: 768px) {
         max-width: 65vw;
+        margin: -1em auto 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        align-items: flex-start;
     }
 
     svg {
         overflow: visible;
-        margin-top: 1em;
-
-        @media screen and (max-width: 768px) and (orientation: portrait) {
-            margin-top: 20%;
-        }
-
-        @media screen and (max-width: 768px) and (orientation: landscape) {
-            margin-bottom: 1em;
-        }
     }
 }
 
@@ -102,6 +100,7 @@ canvas {
         list-style: none;
         padding: 0;
         display: grid;
+        align-content: space-around;
         grid-template-columns: repeat(2, 1fr);
 
         @media screen and (max-width: 768px) {
@@ -115,7 +114,14 @@ canvas {
 
     @media screen and (max-width: 768px) {
         grid-template-columns: initial;
-        grid-template-rows: 25% 50%;
+        grid-template-rows: 50% 50%;
+        text-align: center;
+
+        svg {
+            width: 50%;
+            align-self: center;
+            justify-self: center;
+        }
     }
 }
 

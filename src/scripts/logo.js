@@ -347,10 +347,10 @@ function runLogo() {
             .opacity(1)
             .delay(9000)
             .animate(3000, animationTiming.elastic, 3000)
-            .rotate(-.5)
+            .rotate(-.05)
             .scale(.99)
             .scale(1.01)
-            .rotate(.5)
+            .rotate(.05)
             .scale(1)
             .rotate(0)
             .loop();
