@@ -44,18 +44,34 @@
                 <li>Wordpress</li>
             </ul>
         </div>
-        <div class="box">
-            3
-        </div>
-        <div class="box">
-            4
-        </div>
-        <div class="box">
-            <h2>Send a message</h2>
-            <p>I'll get back to you ASAP. Promise.</p>
-        </div>
-
         <div id="friend"></div>
+        <div class="box" id="contact">
+            <h2>Send a message</h2>
+            <form action="https://formspree.io/hello@mattias.pw" method="POST">
+                <p>
+                    I'll get back to you ASAP. Promise.
+                </p>
+                <div class="group">
+                    <input type="text" name="name" required>
+                    <span class="bar"></span>
+                    <label for="name">Name</label>
+                </div>
+                <div class="group">
+                    <input type="email" name="_replyto" required>
+                    <span class="bar"></span>
+                    <label for="_replyto">E-mail</label>
+                </div>
+                <div class="group">
+                    <textarea type="text" name="message" required></textarea>
+                    <span class="bar"></span>
+                    <label for="message">Message...</label>
+                </div>
+                <input type="text" name="_gotcha" style="display: none">
+                <div class="group">
+                    <button type="submit">Send message</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script>

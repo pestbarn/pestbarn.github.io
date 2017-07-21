@@ -1,0 +1,90 @@
+.group {
+    position: relative;
+    margin: 2em 0;
+}
+
+input,
+textarea {
+    font-size: 1em;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: calc(100% - 1.9em);
+    border: none;
+    border-bottom: 1px solid #757575;
+    background: transparent;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+label {
+    color: #999;
+    font-size: 1em;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: .2s ease all;
+}
+
+input:focus,
+input:valid,
+textarea:focus,
+textarea:valid {
+    & ~ label {
+        top: -20px;
+        font-size: 1em;
+        color: #5264ae;
+    }
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: calc(100% - 1em);
+
+    &::before,
+    &::after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #5264ae;
+        transition: .2s ease all;
+    }
+
+    &::before {
+        left: 50%;
+    }
+
+    &::after {
+        right: 50%;
+    }
+}
+
+input:focus,
+textarea:focus {
+    & ~ .bar::before,
+    & ~ .bar::after {
+        width: 50%;
+    }
+}
+
+button {
+    box-shadow:
+        0 2px 2px 0 rgba(0, 0, 0, .14),
+        0 3px 1px -2px rgba(0, 0, 0, .2),
+        0 1px 5px 0 rgba(0, 0, 0, .12);
+    border: none;
+    border-radius: 2px;
+    position: relative;
+    height: 2em;
+    margin: 0;
+    min-width: 4em;
+    padding: 0 1em;
+    font-size: 1em;
+    outline: 0;
+    cursor: pointer;
+}
