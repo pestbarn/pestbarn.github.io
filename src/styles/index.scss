@@ -126,6 +126,16 @@ canvas {
     }
 }
 
+#message {
+    display: grid;
+    grid-gap: .25em;
+    grid-template-columns: 20% 80%;
+
+    svg {
+        order: -1;
+    }
+}
+
 .box {
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, .25);

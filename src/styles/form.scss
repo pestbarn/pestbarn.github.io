@@ -12,6 +12,7 @@ textarea {
     border: none;
     border-bottom: 1px solid #757575;
     background: transparent;
+    font-family: 'Forum';
 
     &:focus {
         outline: none;
@@ -35,7 +36,7 @@ textarea:valid {
     & ~ label {
         top: -20px;
         font-size: 1em;
-        color: #5264ae;
+        color: #fe5f55;
     }
 }
 
@@ -51,7 +52,7 @@ textarea:valid {
         width: 0;
         bottom: 1px;
         position: absolute;
-        background: #5264ae;
+        background: #fe5f55;
         transition: .2s ease all;
     }
 
@@ -72,6 +73,10 @@ textarea:focus {
     }
 }
 
+textarea {
+    min-height: 10em;
+}
+
 button {
     box-shadow:
         0 2px 2px 0 rgba(0, 0, 0, .14),
@@ -82,9 +87,11 @@ button {
     position: relative;
     height: 2em;
     margin: 0;
-    min-width: 4em;
+    min-width: 100%;
     padding: 0 1em;
     font-size: 1em;
     outline: 0;
     cursor: pointer;
+    background: #fe5f55;
+    color: #fff;
 }

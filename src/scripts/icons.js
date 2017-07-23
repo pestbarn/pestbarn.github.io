@@ -88,10 +88,18 @@ const renderSkills = () => {
     desktopScreenBackground
         .fill(skills.colors[4]);
 
-    desktopCode.forEach(n => {
+    desktopCode.forEach((n, i) => {
+        const nWidth = n.width();
         let range = [5, 2, 6, 7],
             r = Math.floor(Math.random() * range.length);
         n.fill(skills.colors[range[r]]);
+        n.width(range[r]).opacity(0);
+        n.animate(400, '>', (i + 1) * 100).opacity(1).width(nWidth).afterAll(() => {
+            i++;
+            if(i === 19) {
+                animateTablet();
+            }
+        });
     });
 
 
@@ -107,8 +115,10 @@ const renderSkills = () => {
         });
 
     tabletBase.fill(skills.colors[0]);
-    tabletScreen.fill(skills.colors[1]);
-    tabletCamera.fill(skills.colors[1]);
+    [tabletScreen, tabletCamera].map(n => {
+        n.fill(skills.colors[1]);
+    });
+    tabletScreen.opacity(.5);
 
 
     /**
@@ -121,13 +131,63 @@ const renderSkills = () => {
         articleTabletHeadline2 = svg.path(skills.articleTabletHeadline2),
         articleTabletHeader = svg.path(skills.articleTabletHeader);
 
-    articleTabletPanel1.fill(skills.colors[4]);
-    articleTabletHeadline1.fill(skills.colors[0]);
-    articleTabletPanel2.fill(skills.colors[4]);
-    articleTabletParagraph.fill(skills.colors[1]);
-    articleTabletHeadline2.fill(skills.colors[0]);
-    articleTabletHeader.fill(skills.colors[5]);
+    [articleTabletPanel1, articleTabletPanel2].map(n => {
+        n.fill(skills.colors[4]).opacity(0);
+    });
 
+    [articleTabletHeadline1, articleTabletHeadline2].map(n => {
+        n.fill(skills.colors[0]).opacity(0);
+    });
+
+    articleTabletParagraph.fill(skills.colors[1]).opacity(0);
+    articleTabletHeader.fill(skills.colors[5]).opacity(0);
+
+    const animateTablet = () => {
+        tabletScreen.animate(400, '>').opacity(1).after(() => {
+            const headerWidth = articleTabletHeader.width(),
+                panel1 = articleTabletPanel1.height(),
+                panel2 = articleTabletPanel2.height(),
+                headline1 = articleTabletHeadline1.width(),
+                headline2 = articleTabletHeadline2.width(),
+                paragraph = articleTabletParagraph.height();
+            articleTabletHeader
+                .width(1)
+                .animate(400, '<>')
+                .width(headerWidth)
+                .opacity(1)
+                .after(() => {
+                    animatePhone();
+                    articleTabletPanel2
+                        .height(1)
+                        .animate(400, '>', 400)
+                        .height(panel2)
+                        .opacity(1).after(() => {
+                            articleTabletHeadline2
+                                .width(1)
+                                .animate(400, '>')
+                                .width(headline2)
+                                .opacity(1);
+                            articleTabletPanel1
+                                .height(1)
+                                .animate(400, '>')
+                                .height(panel1)
+                                .opacity(1)
+                                .after(() => {
+                                    articleTabletParagraph
+                                        .height(1)
+                                        .animate(400, '>')
+                                        .height(paragraph)
+                                        .opacity(1);
+                                    articleTabletHeadline1
+                                        .width(1)
+                                        .animate(400, '>')
+                                        .width(headline1)
+                                        .opacity(1);
+                                });
+                        });
+                });
+        });
+    };
 
     /**
      * Phone
@@ -143,17 +203,17 @@ const renderSkills = () => {
         });
 
     phoneBase.fill(skills.colors[0]);
-    phoneScreen.fill(skills.colors[1]);
-    phoneSpeaker.fill(skills.colors[1]);
-    phoneHomeBtn.fill(skills.colors[1]);
-    phoneCamera.fill(skills.colors[1]);
+    [phoneScreen, phoneSpeaker, phoneHomeBtn, phoneCamera].map(n => {
+        n.fill(skills.colors[1]);
+    });
+    phoneScreen.opacity(.5);
 
 
     /**
      * Article (phone)
      */
 
-    let articlePhonePanel1 = svg.path(skills.articlePhonePanel1),
+    const articlePhonePanel1 = svg.path(skills.articlePhonePanel1),
         articlePhoneParagraph1 = svg.path(skills.articlePhoneParagraph1),
         articlePhoneHeadline1 = svg.path(skills.articlePhoneHeadline1),
         articlePhonePanel2 = svg.path(skills.articlePhonePanel2),
@@ -161,16 +221,105 @@ const renderSkills = () => {
         articlePhoneHeadline2 = svg.path(skills.articlePhoneHeadline2),
         articlePhoneHeader = svg.path(skills.articlePhoneHeader);
 
-    articlePhonePanel1.fill(skills.colors[4]);
-    articlePhoneParagraph1.fill(skills.colors[1]);
-    articlePhoneHeadline1.fill(skills.colors[0]);
-    articlePhonePanel2.fill(skills.colors[4]);
-    articlePhoneParagraph2.fill(skills.colors[1]);
-    articlePhoneHeadline2.fill(skills.colors[0]);
-    articlePhoneHeader.fill(skills.colors[5]);
+    [articlePhonePanel1, articlePhonePanel2].map(n => {
+        n.fill(skills.colors[4]).opacity(0);
+    });
+    [articlePhoneParagraph1, articlePhoneParagraph2].map(n => {
+        n.fill(skills.colors[1]).opacity(0);
+    });
+    [articlePhoneHeadline1, articlePhoneHeadline2].map(n => {
+        n.fill(skills.colors[0]).opacity(0);
+    });
+    articlePhoneHeader.fill(skills.colors[5]).opacity(0);
+
+    const animatePhone = () => {
+        phoneScreen.animate(400, '>').opacity(1).after(() => {
+            const headerWidth = articlePhoneHeader.width(),
+                panel1 = articlePhonePanel1.height(),
+                panel2 = articlePhonePanel2.height(),
+                headline1 = articlePhoneHeadline1.width(),
+                headline2 = articlePhoneHeadline2.width(),
+                paragraph1 = articlePhoneParagraph1.height(),
+                paragraph2 = articlePhoneParagraph2.height();
+            articlePhoneHeader
+                .width(1)
+                .animate(400, '<>')
+                .width(headerWidth)
+                .opacity(1)
+                .after(() => {
+                    articlePhonePanel2
+                        .height(1)
+                        .animate(400, '>', 400)
+                        .height(panel2)
+                        .opacity(1).after(() => {
+                            articlePhoneHeadline2
+                                .width(1)
+                                .animate(400, '>')
+                                .width(headline2)
+                                .opacity(1);
+                            articlePhonePanel1
+                                .height(1)
+                                .animate(400, '>')
+                                .height(panel1)
+                                .opacity(1)
+                                .after(() => {
+                                    articlePhoneParagraph2
+                                        .height(1)
+                                        .animate(400, '>')
+                                        .height(paragraph2)
+                                        .opacity(1);
+                                    articlePhoneHeadline1
+                                        .width(1)
+                                        .animate(400, '>')
+                                        .width(headline1)
+                                        .opacity(1);
+                                    articlePhoneParagraph1
+                                        .height(1)
+                                        .animate(400, '>')
+                                        .height(paragraph1)
+                                        .opacity(1);
+                                });
+                        });
+                });
+        });
+    };
+};
+
+const message = {
+    colors: ['#25b6d2', '#e04f5f', '#fff'],
+    poly0: '420.472,355.784 420.472,499.688 238.192,355.784',
+    path: 'M485.224,380.424H26.776C12.008,380.384,0.04,368.416,0,353.648V39.088 C0.04,24.32,12.008,12.352,26.776,12.312h458.448C499.992,12.352,511.96,24.32,512,39.088v314.56 C511.96,368.416,499.992,380.384,485.224,380.424z',
+    poly1: '420.472,380.424 267.808,380.424 295.512,401.032 420.472,401.032'
+};
+
+const renderContact = () => {
+    const svg = SVG('message');
+
+    svg.viewbox('0 0 512 512');
+
+    const poly0 = svg.polygon(message.poly0),
+        path = svg.path(message.path),
+        poly1 = svg.polygon(message.poly1);
+
+    poly0.fill(message.colors[0]);
+    path.fill(message.colors[1]),
+    poly1.fill(message.colors[0]);
+
+    let y = 75;
+
+    [0, 1, 2, 3, 4].forEach((n, i) => {
+        svg.rect().attr({
+            x: i % 2 ? 256 : 122,
+            y: i === 0 ? y : y = y + 50,
+            fill: message.colors[2],
+            width: i % 2 ? 133 : 266,
+            height: 16
+        });
+    });
 };
 
 (function() {
     renderFriends();
     renderSkills();
+    renderContact();
 })();

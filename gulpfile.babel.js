@@ -34,6 +34,10 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', () => {
     return gulp.src(`${dir.src}/scripts/**/*.js`)
+        .pipe(plumber(function(error) {
+            console.log(error.toString());
+            this.emit('end');
+        }))
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
