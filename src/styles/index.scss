@@ -82,7 +82,9 @@ canvas {
 #profile {
     margin-top: -2.5em;
     padding: 0;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 
     svg {
         @media screen and (max-width: 768px) {

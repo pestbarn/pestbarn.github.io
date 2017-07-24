@@ -15,7 +15,7 @@ const profile = {
 
     svg.viewbox('0 0 567 757').size('260px', '400px');
 
-    const color = '#333745';
+    const color = '#553E48';
 
 /**
  * LOGO DEFINITIONS AND BASE SETUP

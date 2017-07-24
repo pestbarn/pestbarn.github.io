@@ -25,6 +25,17 @@ const renderFriends = () => {
         type: 'delayed',
         duration: 1200
     });
+
+    const element = document.querySelector('#friend svg');
+    element.onclick = () => {
+        const reset = element;
+
+        while (reset.parentNode) {
+            reset.parentNode.removeChild(reset);
+        }
+
+        renderFriends();
+    };
 };
 
 const skills = {
@@ -283,6 +294,18 @@ const renderSkills = () => {
                 });
         });
     };
+
+
+    const element = document.querySelector('#skills svg');
+    element.onclick = () => {
+        const reset = element;
+
+        while (reset.parentNode) {
+            reset.parentNode.removeChild(reset);
+        }
+
+        renderSkills();
+    };
 };
 
 const message = {
@@ -316,6 +339,17 @@ const renderContact = () => {
             height: 16
         });
     });
+
+    const element = document.querySelector('#message svg');
+    element.onclick = () => {
+        const reset = element;
+
+        while (reset.parentNode) {
+            reset.parentNode.removeChild(reset);
+        }
+
+        renderContact();
+    };
 };
 
 (function() {
