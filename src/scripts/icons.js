@@ -295,7 +295,6 @@ const renderSkills = () => {
         });
     };
 
-
     const element = document.querySelector('#skills svg');
     element.onclick = () => {
         const reset = element;
@@ -306,6 +305,46 @@ const renderSkills = () => {
 
         renderSkills();
     };
+};
+
+const work = {
+    colors: ['#efefef', '#002833', '#c9c9c9', '#ff5f5f', '#fff'],
+    base: 'M64 0h384v512H64z',
+    headline: 'M106.64 370.24h298.64v10.64H106.64z',
+    paragraph: 'M106.64 412.88h298.64v10.64H106.64zm0 21.36h298.64v10.64H106.64zm0 21.36h298.64v10.64H106.64z',
+    redBg: 'M392 338.24H120c-8.8 0-16-7.2-16-16V124.88c0-8.8 7.2-16 16-16h272c8.8 0 16 7.2 16 16v197.36c0 8.8-7.2 16-16 16zM104 44.88h53.36v32H104z',
+    topHeadline: 'M189.36 44.88H408v32H189.36z',
+    body: 'M254.08 310.96l-39.04-84.64s-40.96.56-40.96 38.24v46.4h80zm3.84 0l39.04-84.64s40.96.56 40.96 38.24v46.4h-80zM256 226.32h-28.08L256 288.56l28.08-62.24'
+};
+
+const renderWork = () => {
+    const svg = SVG('jobs');
+
+    svg.viewbox('0 0 512 512');
+
+    const base = svg.path(work.base),
+        headline = svg.path(work.headline),
+        paragraph = svg.path(work.paragraph),
+        redBg = svg.path(work.redBg),
+        topHeadline = svg.path(work.topHeadline),
+        head = svg.circle().attr({
+            cx: 256,
+            cy: 176.64,
+            r: 40.4
+        }),
+        body = svg.path(work.body);
+
+    base.fill(work.colors[0]);
+    headline.fill(work.colors[1]);
+    redBg.fill(work.colors[3]);
+
+    [paragraph, topHeadline].map(n => {
+        n.fill(work.colors[2]);
+    });
+
+    [head, body].map(n => {
+        n.fill(work.colors[4]);
+    });
 };
 
 const message = {
@@ -356,4 +395,5 @@ const renderContact = () => {
     renderFriends();
     renderSkills();
     renderContact();
+    renderWork();
 })();

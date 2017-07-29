@@ -128,6 +128,11 @@ canvas {
     }
 }
 
+#work {
+    grid-column: 3 / 1;
+}
+
+#jobs,
 #message {
     display: grid;
     grid-gap: .25em;
@@ -135,6 +140,16 @@ canvas {
 
     svg {
         order: -1;
+    }
+}
+
+#jobs {
+    grid-template-columns: 10% 90%;
+
+    svg {
+        height: 2em;
+        width: 2em;
+        margin-top: -.5em;
     }
 }
 
