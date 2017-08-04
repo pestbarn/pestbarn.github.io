@@ -17,10 +17,6 @@ const profile = {
 
     const color = '#553E48';
 
-/**
- * LOGO DEFINITIONS AND BASE SETUP
- */
-
     const main = svg.path(profile.main),
         eyeLeft = svg.path(profile.eyeLeft),
         eyeRight = svg.path(profile.eyeRight),

@@ -402,11 +402,11 @@ const renderSocial = () => {
 
     untappd.viewbox('0 0 296 246');
 
-    const untappdPath0 = untappd.path(socialDefs.untappd[0]),
-        untappdPath1 = untappd.path(socialDefs.untappd[1]),
-        untappdPath2 = untappd.path(socialDefs.untappd[2]);
+    untappd.path(socialDefs.untappd[0]);
+    untappd.path(socialDefs.untappd[1]);
+    untappd.path(socialDefs.untappd[2]);
 
-    untappd.fill('#FB0');
+    untappd.fill('#fc0');
 };
 
 (function() {
