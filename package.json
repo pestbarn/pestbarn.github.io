@@ -8,7 +8,8 @@
     "last 2 versions"
   ],
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -42,5 +43,6 @@
     "serve-static": "^1.12.3",
     "stylelint": "^7.9.0",
     "stylelint-config-standard": "^16.0.0"
-  }
+  },
+  "dependencies": {}
 }
