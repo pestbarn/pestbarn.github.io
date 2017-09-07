@@ -308,17 +308,17 @@ const renderWork = promise => {
 
     svg.viewbox('0 0 512 512');
 
-    const base = svg.path(work.base),
-        headline = svg.path(work.headline),
-        paragraph = svg.path(work.paragraph),
-        redBg = svg.path(work.redBg),
-        topHeadline = svg.path(work.topHeadline),
+    const base = svg.path(work.base).opacity(0),
+        headline = svg.path(work.headline).opacity(0),
+        paragraph = svg.path(work.paragraph).opacity(0),
+        redBg = svg.path(work.redBg).opacity(0),
+        topHeadline = svg.path(work.topHeadline).opacity(0),
         head = svg.circle().attr({
             cx: 256,
             cy: 176.64,
             r: 40.4
-        }),
-        body = svg.path(work.body);
+        }).opacity(0),
+        body = svg.path(work.body).opacity(0);
 
     base.fill(work.colors[0]);
     headline.fill(work.colors[1]);
@@ -331,6 +331,75 @@ const renderWork = promise => {
     [head, body].map(n => {
         n.fill(work.colors[4]);
     });
+
+    const baseHeight = base.height(),
+        redWidth = redBg.width(),
+        topHeadWidth = topHeadline.width(),
+        headlineWidth = headline.width(),
+        paragraphHeight = paragraph.height(),
+        headR = head.attr('r'),
+        bodyHeight = body.height();
+
+    base
+        .height(1)
+        .animate(400, '<>')
+        .height(baseHeight)
+        .opacity(1)
+        .after(() => {
+            redBg
+                .width(1)
+                .animate(400, '<')
+                .width(redWidth)
+                .opacity(1)
+                .after(() => {
+                    topHeadline
+                        .width(1)
+                        .animate(200, '>')
+                        .width(topHeadWidth)
+                        .opacity(1)
+                        .after(() => {
+                            headline
+                                .width(1)
+                                .animate(400, '<>')
+                                .width(headlineWidth)
+                                .opacity(1);
+
+                            paragraph
+                                .height(1)
+                                .animate(400, '<>')
+                                .height(paragraphHeight)
+                                .opacity(1)
+                                .after(() => {
+                                    head
+                                        .attr('r', 0)
+                                        .animate(200, '<>')
+                                        .attr('r', headR + 10)
+                                        .opacity(1)
+                                        .after(() => {
+                                            body
+                                                .height(1)
+                                                .animate(200)
+                                                .height(bodyHeight)
+                                                .opacity(1);
+                                        })
+                                        .animate(200, '<>')
+                                        .attr('r', headR);
+                                });
+                        });
+                });
+        });
+
+    const element = document.querySelector('#work svg');
+
+    element.onclick = () => {
+        const reset = element;
+
+        while (reset.parentNode) {
+            reset.parentNode.removeChild(reset);
+        }
+
+        getObj('mattiasIcons') === null ? axios.get('/src/icons.json').then(promise => renderWork(promise)) : renderWork(getObj('mattiasIcons'));
+    };
 };
 
 const renderContact = promise => {
@@ -339,9 +408,8 @@ const renderContact = promise => {
 
     svg.viewbox('0 0 512 512');
 
-    svg.polygon(contact.poly0).fill(contact.colors[0]);
-    svg.path(contact.path).fill(contact.colors[1]);
-    svg.polygon(contact.poly1).fill(contact.colors[0]);
+    const poly = svg.polygon(contact.poly).fill(contact.colors[0]).opacity(0),
+        path = svg.path(contact.path).fill(contact.colors[1]).opacity(0);
 
     let y = 75;
 
@@ -352,8 +420,40 @@ const renderContact = promise => {
             fill: contact.colors[2],
             width: i % 2 ? 133 : 266,
             height: 16
-        });
+        })
+            .opacity(0)
+            .delay(800)
+            .animate(400, '<>')
+            .opacity(1);
     });
+
+    const polyHeight = poly.height(),
+        pathWidth = path.width();
+
+    path
+        .width(1)
+        .animate(400, '<>')
+        .width(pathWidth)
+        .opacity(1)
+        .after(() => {
+            poly
+                .height(1)
+                .animate(400, '>')
+                .height(polyHeight)
+                .opacity(1);
+        });
+
+    const element = document.querySelector('#contact svg');
+
+    element.onclick = () => {
+        const reset = element;
+
+        while (reset.parentNode) {
+            reset.parentNode.removeChild(reset);
+        }
+
+        getObj('mattiasIcons') === null ? axios.get('/src/icons.json').then(promise => renderContact(promise)) : renderContact(getObj('mattiasIcons'));
+    };
 };
 
 const renderSocial = promise => {

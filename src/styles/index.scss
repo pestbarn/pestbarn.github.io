@@ -112,6 +112,13 @@ canvas {
 
         li {
             display: inline-block;
+
+            &:nth-child(odd) {
+                text-align: right;
+                padding-right: .5em;
+                border-right: 3px double rgba(0, 0, 0, .15);
+                margin-right: .5em;
+            }
         }
     }
 
@@ -184,6 +191,15 @@ canvas {
         height: 2em;
         width: 2em;
         margin-top: -.5em;
+    }
+}
+
+#skills,
+#work,
+#contact,
+#friend {
+    svg:hover {
+        cursor: pointer;
     }
 }
 
