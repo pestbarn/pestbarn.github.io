@@ -1,0 +1,31 @@
+#untappd,
+#lastfm,
+#github {
+    grid-column: 1/3;
+    display: grid;
+    align-content: center;
+
+    svg {
+        width: 3em;
+        order: -1;
+        grid-column: 1;
+    }
+
+    #untappd-stats,
+    #lastfm-stats,
+    #github-stats {
+        line-height: 0;
+        font-size: .6em;
+        grid-column: 2;
+        display: inline-grid;
+        justify-items: right;
+
+        p {
+            &:first-child {
+                font-family: 'Anonymous Pro Bold';
+            }
+
+            font-family: 'Anonymous Pro';
+        }
+    }
+}
