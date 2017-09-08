@@ -62,12 +62,20 @@ const renderGithub = () => {
     let localGit = getObj('mattiasGit');
 
     localGit === null ? axios
-        .get('https://api.github.com/repos/pestbarn/pestbarn.github.io/commits')
+        .get('https://api.github.com/repos/pestbarn/pestbarn.github.io/stats/commit_activity')
         .then(result => {
             const commits = result.data;
-            const number = Object.keys(commits).length;
+            const n = commits.map(t => t.total);
+            const number = n.reduce((n, i) => n + i);
+            const total = Object.keys(commits).length;
 
-            getGit(number);
+            let average = number / total;
+
+            average = Math.round(average * 10) / 10;
+
+            setObj('mattiasGit', average);
+            getGit(average);
+            localGit = getObj('mattiasGit');
         }) : getGit(localGit);
 
     function getGit(commits) {
@@ -75,7 +83,7 @@ const renderGithub = () => {
 
         const element = document.querySelector('#github-commits');
 
-        element.innerText = `to this repo: ${number}`;
+        element.innerText = `commits per day: ${number}`;
     }
 };
 
