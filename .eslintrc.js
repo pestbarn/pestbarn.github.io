@@ -2,10 +2,15 @@ module.exports = {
     parser: 'babel-eslint',
     env: {
         browser: true,
-        "amd": true,
-        "es6": true,
-        "node": true,
-        "mocha": true
+        es6: true,
+        node: true
+    },
+    parserOptions: {
+        ecmaVersion: 6,
+        sourceType: "module",
+        ecmaFeatures: {
+            modules: true
+        }
     },
     extends: [
       'eslint:recommended',
@@ -16,7 +21,6 @@ module.exports = {
     },
     plugins: [
       'css-modules',
-      'react',
       'import'
     ],
     rules: {
