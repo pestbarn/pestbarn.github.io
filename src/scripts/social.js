@@ -25,7 +25,7 @@ const renderUntappd = () => {
             document.querySelector(el).innerText = i === 0 ? brewery : beerName;
         });
 
-        document.querySelector('#untappd-url').setAttribute('href', url);
+        document.getElementById('untappd-url').setAttribute('href', url);
     }
 };
 
@@ -54,7 +54,7 @@ const renderMusic = () => {
             document.querySelector(el).innerText = i === 0 ? trackArtist : trackName;
         });
 
-        document.querySelector('#lastfm-url').setAttribute('href', trackUrl);
+        document.getElementById('lastfm-url').setAttribute('href', trackUrl);
     }
 };
 
@@ -81,9 +81,9 @@ const renderGithub = () => {
     function getGit(commits) {
         const number = commits;
 
-        const element = document.querySelector('#github-commits');
+        const element = document.getElementById('github-commits');
 
-        element.innerText = `commits per day: ${number}`;
+        element.innerText = `this project: ${number}`;
     }
 };
 

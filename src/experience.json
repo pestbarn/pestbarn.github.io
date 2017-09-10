@@ -1,0 +1,52 @@
+{
+    "items": [
+        {
+            "title": "iStone",
+            "position": "Frontend developer",
+            "dateFrom": "2017\/10",
+            "dateTo": "(current)",
+            "url": "istone.com"
+        },
+        {
+            "title": "Magic by iStone",
+            "position": "Frontend developer",
+            "dateFrom": "2017\/03",
+            "dateTo": "2017\/10",
+            "url": "magicbyistone.se"
+        },
+        {
+            "title": "Sportamore",
+            "position": "Frontend developer",
+            "dateFrom": "2015\/06",
+            "dateTo": "2017\/03",
+            "url": "sportamore.se"
+        },
+        {
+            "title": "I:O:A",
+            "position": "Festival organizer, developer, designer",
+            "dateFrom": "2012\/09",
+            "dateTo": "2016\/05",
+            "url": "inbreed.se"
+        },
+        {
+            "title": "46elks",
+            "position": "Frontend developer & designer",
+            "dateFrom": "2011\/05",
+            "dateTo": "2011\/09",
+            "url": "46elks.com"
+        },
+        {
+            "title": "Freespee",
+            "position": "Frontend developer & designer",
+            "dateFrom": "2011\/01",
+            "dateTo": "2015\/05",
+            "url": "freespee.com"
+        },
+        {
+            "title": "SwedenMetal",
+            "position": "Webmaster, developer, writer",
+            "dateFrom": "2006\/05",
+            "dateTo": "2012\/01"
+        }
+    ]
+}
