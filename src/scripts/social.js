@@ -30,18 +30,14 @@ const renderUntappd = () => {
 };
 
 const renderMusic = () => {
-    let localTrack = getObj('mattiasMusic');
-
-    localTrack === null ? axios
+    axios
         .get('https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=pestbarn&api_key=9ab0d2d4d5ec7e287ea35022d52d09e4&limit=2&format=json')
         .then(result => {
             const tracks = result.data.recenttracks.track;
             const track = tracks.slice(-1)[0];
 
-            setObj('mattiasMusic', track);
             getTrack(track);
-            localTrack = getObj('mattiasMusic');
-        }) : getTrack(localTrack);
+        });
 
     function getTrack(track) {
         const trackArtist = track.artist['#text'],
@@ -59,9 +55,7 @@ const renderMusic = () => {
 };
 
 const renderGithub = () => {
-    let localGit = getObj('mattiasGit');
-
-    localGit === null ? axios
+    axios
         .get('https://api.github.com/repos/pestbarn/pestbarn.github.io/stats/commit_activity')
         .then(result => {
             const commits = result.data;
@@ -73,10 +67,8 @@ const renderGithub = () => {
 
             average = Math.round(average * 10) / 10;
 
-            setObj('mattiasGit', average);
             getGit(average);
-            localGit = getObj('mattiasGit');
-        }) : getGit(localGit);
+        });
 
     function getGit(commits) {
         const number = commits;
