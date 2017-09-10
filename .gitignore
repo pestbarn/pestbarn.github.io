@@ -17,4 +17,3 @@ jspm_packages
 .eslintcache
 .node_repl_history
 package-lock.json
-dist
