@@ -56,14 +56,18 @@ const screen = {
 };
 
 (function() {
-    let resizeTimeout;
+    let resizeTimeout,
+        horizontal = document.body.clientWidth;
 
     const resizeThrottler = () => {
       // ignore resize events as long as an actualResizeHandler execution is in the queue
         if (!resizeTimeout) {
             resizeTimeout = setTimeout(function() {
                 resizeTimeout = null;
-                actualResizeHandler();
+                if(document.body.clientWidth !== horizontal){
+                    actualResizeHandler();
+                    horizontal = document.body.clientWidth;
+                }
             }, 900);
         }
     };

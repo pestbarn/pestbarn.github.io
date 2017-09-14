@@ -58,7 +58,33 @@ const appStream = gulp.src(`${dir.src}/scripts/**/*.js`)
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dir.dest));
 
-gulp.task('minify', ['clean'], () => {
+gulp.task('vendor', () => {
+    gulp.src('./static/**/*.js')
+    .pipe(plumber(error => {
+        console.log(error.toString());
+        this.emit('end');
+    }))
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest(dir.dest));
+});
+
+gulp.task('scripts', ['vendor'], () => {
+    return gulp.src(`${dir.src}/scripts/**/*.js`)
+    .pipe(plumber(error => {
+        console.log(error.toString());
+        this.emit('end');
+    }))
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+        presets: ['es2015']
+    }))
+    .pipe(concat('index.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(dir.dest));
+});
+
+gulp.task('minify', () => {
     return gulp.src(`${dir.src}/*.html`)
     .pipe(plumber(error => {
         console.log(error.toString());
