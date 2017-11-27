@@ -56,7 +56,7 @@ const renderMusic = () => {
 
 const renderGithub = () => {
     axios
-        .get('https://api.github.com/repos/pestbarn/pestbarn.github.io/stats/commit_activity')
+        .get('https://api.github.com/repos/pestbarn/beertasting/stats/commit_activity')
         .then(result => {
             const commits = result.data;
             const n = commits.map(t => t.total);
@@ -75,7 +75,7 @@ const renderGithub = () => {
 
         const element = document.getElementById('github-commits');
 
-        element.innerText = `this project: ${number}`;
+        element.innerText = `latest project: ${number}`;
     }
 };
 
