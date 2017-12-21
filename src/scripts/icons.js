@@ -540,6 +540,12 @@ const renderSocial = promise => {
             work = document.getElementById('work'),
             contact = document.getElementById('contact');
 
+        if(!skillsN && verge.inViewport(skills, 10)) {
+            // Fix for desktop
+            renderSkills(promise);
+            skillsN = true;
+        }
+
         window.addEventListener('scroll', () => {
             if(!skillsN && verge.inViewport(skills, -200)) {
                 renderSkills(promise);
