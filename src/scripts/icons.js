@@ -1,4 +1,4 @@
-/* global SVG, Vivus, axios, setObj, getObj */
+/* global SVG, Vivus, axios, setObj, getObj, verge */
 
 const renderFriends = promise => {
     const teddyBear = promise.data.friend;
@@ -33,7 +33,9 @@ const renderFriends = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null ? axios.get('/src/icons.json').then(promise => renderFriends(promise)) : renderFriends(getObj('mattiasIcons'));
+        getObj('mattiasIcons') === null
+            ? axios.get('/src/icons.json').then(p => renderFriends(p))
+            : renderFriends(getObj('mattiasIcons'));
     };
 };
 
@@ -71,8 +73,10 @@ const renderSkills = promise => {
         const nWidth = n.width();
         let range = [5, 2, 6, 7],
             r = Math.floor(Math.random() * range.length);
-        n.fill(skills.colors[range[r]]);
-        n.width(range[r]).opacity(0);
+
+        n.fill(skills.colors[range[r]])
+            .width(range[r])
+            .opacity(0);
 
         n.animate(400, '>', (i + 1) * 100).opacity(1).width(nWidth).afterAll(() => {
             i++;
@@ -297,7 +301,9 @@ const renderSkills = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null ? axios.get('/src/icons.json').then(promise => renderSkills(promise)) : renderSkills(getObj('mattiasIcons'));
+        getObj('mattiasIcons') === null
+            ? axios.get('/src/icons.json').then(p => renderSkills(p))
+            : renderSkills(getObj('mattiasIcons'));
     };
 };
 
@@ -308,21 +314,40 @@ const renderWork = promise => {
 
     svg.viewbox('0 0 512 512');
 
-    const base = svg.path(work.base).opacity(0),
-        headline = svg.path(work.headline).opacity(0),
-        paragraph = svg.path(work.paragraph).opacity(0),
-        redBg = svg.path(work.redBg).opacity(0),
-        topHeadline = svg.path(work.topHeadline).opacity(0),
-        head = svg.circle().attr({
-            cx: 256,
-            cy: 176.64,
-            r: 40.4
-        }).opacity(0),
-        body = svg.path(work.body).opacity(0);
+    const base = svg
+            .path(work.base)
+            .opacity(0)
+            .fill(work.colors[0]),
 
-    base.fill(work.colors[0]);
-    headline.fill(work.colors[1]);
-    redBg.fill(work.colors[3]);
+        headline = svg
+            .path(work.headline)
+            .opacity(0)
+            .fill(work.colors[1]),
+
+        paragraph = svg
+            .path(work.paragraph)
+            .opacity(0),
+
+        redBg = svg
+            .path(work.redBg)
+            .opacity(0)
+            .fill(work.colors[3]),
+
+        topHeadline = svg
+            .path(work.topHeadline)
+            .opacity(0),
+
+        head = svg
+            .circle()
+            .attr({
+                cx: 256,
+                cy: 176.64,
+                r: 40.4
+            }).opacity(0),
+
+        body = svg
+            .path(work.body)
+            .opacity(0);
 
     [paragraph, topHeadline].map(n => {
         n.fill(work.colors[2]);
@@ -398,7 +423,9 @@ const renderWork = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null ? axios.get('/src/icons.json').then(promise => renderWork(promise)) : renderWork(getObj('mattiasIcons'));
+        getObj('mattiasIcons') === null
+            ? axios.get('/src/icons.json').then(p => renderWork(p))
+            : renderWork(getObj('mattiasIcons'));
     };
 };
 
@@ -452,7 +479,9 @@ const renderContact = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null ? axios.get('/src/icons.json').then(promise => renderContact(promise)) : renderContact(getObj('mattiasIcons'));
+        getObj('mattiasIcons') === null
+            ? axios.get('/src/icons.json').then(p => renderContact(p))
+            : renderContact(getObj('mattiasIcons'));
     };
 };
 
@@ -469,59 +498,66 @@ const renderSocial = promise => {
 
     const standardViewBox = '0 0 430 430';
 
-    untappd.viewbox('0 0 296 246');
+    untappd.viewbox('0 0 296 246')
+        .fill('#ffc000');
 
     untappd.path(social.untappd[0]);
     untappd.path(social.untappd[1]);
     untappd.path(social.untappd[2]);
 
-    untappd.fill('#ffc000');
+    dribbble.viewbox(standardViewBox)
+        .path(social.dribbble)
+        .fill('#ea4c89');
 
+    github.viewbox('0 0 90 90')
+        .path(social.github)
+        .fill('#171515');
 
-    dribbble.viewbox(standardViewBox);
+    lastfm.viewbox(standardViewBox)
+        .path(social.lastfm)
+        .fill('#b80610');
 
-    dribbble.path(social.dribbble);
-    dribbble.fill('#ea4c89');
+    linkedin.viewbox(standardViewBox)
+        .path(social.linkedin)
+        .fill('#007bb5');
 
+    quora.viewbox(standardViewBox)
+        .path(social.quora)
+        .fill('#a82400');
 
-    github.viewbox('0 0 90 90');
-
-    github.path(social.github);
-    github.fill('#171515');
-
-
-    lastfm.viewbox(standardViewBox);
-
-    lastfm.path(social.lastfm);
-    lastfm.fill('#b80610');
-
-
-    linkedin.viewbox(standardViewBox);
-
-    linkedin.path(social.linkedin);
-    linkedin.fill('#007bb5');
-
-
-    quora.viewbox(standardViewBox);
-
-    quora.path(social.quora);
-    quora.fill('#a82400');
-
-
-    twitter.viewbox(standardViewBox);
-
-    twitter.path(social.twitter);
-    twitter.fill('#55acee');
+    twitter.viewbox(standardViewBox)
+        .path(social.twitter)
+        .fill('#55acee');
 };
 
 (function() {
     axios.get('/src/icons.json').then(promise => {
         getObj('mattiasIcons') === null && setObj('mattiasIcons', promise);
         promise = getObj('mattiasIcons') === null ? promise : getObj('mattiasIcons');
-        renderSkills(promise);
+
+        let skillsN, workN, contactN;
+        const skills = document.getElementById('skills'),
+            work = document.getElementById('work'),
+            contact = document.getElementById('contact');
+
+        window.addEventListener('scroll', () => {
+            if(!skillsN && verge.inViewport(skills, -200)) {
+                renderSkills(promise);
+                skillsN = true;
+            }
+
+            if(!workN && verge.inViewport(work, 10)) {
+                renderWork(promise);
+                workN = true;
+            }
+
+            if(!contactN && verge.inViewport(contact, 10)) {
+                renderContact(promise);
+                contactN = true;
+            }
+        });
+
         renderFriends(promise);
-        renderContact(promise);
         renderSocial(promise);
-        renderWork(promise);
     });
 })();

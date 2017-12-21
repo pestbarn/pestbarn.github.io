@@ -1,7 +1,9 @@
 /* global axios, SVG, setObj, getObj */
 
 (function() {
-    getObj('mattiasProfile') === null ? axios.get('/src/profile.json').then(p => renderProfile(p)) : renderProfile(getObj('mattiasProfile'));
+    getObj('mattiasProfile') === null
+        ? axios.get('/src/profile.json').then(p => renderProfile(p))
+        : renderProfile(getObj('mattiasProfile'));
 
     function renderProfile(promise) {
         const profile = promise.data.profile;

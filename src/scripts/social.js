@@ -1,18 +1,14 @@
-/* global axios, setObj, getObj */
+/* global axios */
 
 const renderUntappd = () => {
-    let localBeer = getObj('mattiasBeers');
-
-    localBeer === null ? axios
+    axios
         .get('https://dl.dropboxusercontent.com/s/f7ustvn6xp1bo6h/Untappd.json')
         .then(result => {
             const beers = result.data;
             const beer = beers.slice(-1)[0];
 
-            setObj('mattiasBeers', beer);
             getBeer(beer);
-            localBeer = getObj('mattiasBeers');
-        }) : getBeer(localBeer);
+        });
 
     function getBeer(beer) {
         const brewery = beer.brewery_name,

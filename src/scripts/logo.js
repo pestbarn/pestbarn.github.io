@@ -79,7 +79,9 @@ const screen = {
             reset.removeChild(reset.firstChild);
         }
 
-        getObj('mattiasLogo') === null ? axios.get('/src/logo.json').then(p => runLogo(p)) : runLogo();
+        getObj('mattiasLogo') === null
+            ? axios.get('/src/logo.json').then(p => runLogo(p))
+            : runLogo();
     };
 
     document.onreadystatechange = () => {
@@ -283,7 +285,7 @@ function runLogo(promise) {
         textSuffix.add(n);
     });
 
-    const errorMsg = 'Wat' + window.innerWidth > screen.mobile;
+    const errorMsg = 'Wat ' + window.innerWidth > screen.mobile;
     const isDesktop = window.innerWidth > screen.mobile;
     const isLandscape = window.matchMedia('(orientation: landscape)').matches;
 
