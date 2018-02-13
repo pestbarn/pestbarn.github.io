@@ -51,7 +51,7 @@ const appStream = gulp.src(`${dir.src}/scripts/**/*.js`)
     }))
     .pipe(sourcemaps.init())
     .pipe(babel({
-        presets: ['es2015']
+        presets: ['env']
     }))
     .pipe(concat('index.js'))
     .pipe(uglify())
@@ -76,7 +76,7 @@ gulp.task('scripts', ['vendor'], () => {
     }))
     .pipe(sourcemaps.init())
     .pipe(babel({
-        presets: ['es2015']
+        presets: ['env']
     }))
     .pipe(concat('index.js'))
     .pipe(uglify())
