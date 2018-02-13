@@ -328,9 +328,9 @@ function runLogo(promise) {
     }
 
 
-/**
- * ANIMATE CURLIES AND SYMBOL
- */
+    /**
+     * ANIMATE CURLIES AND SYMBOL
+     */
 
     switch(isDesktop || isLandscape) {
     case true:
