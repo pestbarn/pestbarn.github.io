@@ -23,7 +23,7 @@
 
         const group =
             svg
-            .group();
+                .group();
 
         const parts = [ main, eyeLeft, eyeRight, shoulder ];
 

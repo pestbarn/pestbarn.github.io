@@ -79,9 +79,6 @@ module.exports = {
         'semi-spacing': 'error',
         'space-in-parens': 'error',
         'spaced-comment': 'error',
-        'import/no-extraneous-dependencies': 'off',
-        'react/jsx-filename-extension': 'off',
-        "react/jsx-uses-react": 1,
-        "react/jsx-uses-vars": 1
+        'import/no-extraneous-dependencies': 'off'
     }
 }

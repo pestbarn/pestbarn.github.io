@@ -4,7 +4,7 @@
     let resizeTimeout;
 
     const resizeThrottler = () => {
-      // ignore resize events as long as an actualResizeHandler execution is in the queue
+        // ignore resize events as long as an actualResizeHandler execution is in the queue
         if (!resizeTimeout) {
             resizeTimeout = setTimeout(function() {
                 resizeTimeout = null;

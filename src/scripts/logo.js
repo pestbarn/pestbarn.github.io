@@ -60,7 +60,7 @@ const screen = {
         horizontal = document.body.clientWidth;
 
     const resizeThrottler = () => {
-      // ignore resize events as long as an actualResizeHandler execution is in the queue
+        // ignore resize events as long as an actualResizeHandler execution is in the queue
         if (!resizeTimeout) {
             resizeTimeout = setTimeout(function() {
                 resizeTimeout = null;
@@ -108,9 +108,9 @@ function runLogo(promise) {
         complementary: '#f96'
     };
 
-/**
- * LOGO DEFINITIONS AND BASE SETUP
- */
+    /**
+     * LOGO DEFINITIONS AND BASE SETUP
+     */
 
     const base = svg.path(logo.base),
         curlyLeft = svg.path(logo.curlyLeft),
@@ -152,27 +152,27 @@ function runLogo(promise) {
 
     const textFname =
         svg
-        .group()
-        .dmove(52, 70)
-        .addClass('text');
+            .group()
+            .dmove(52, 70)
+            .addClass('text');
 
     const textLname =
         svg
-        .group()
-        .dmove(-52, -70)
-        .addClass('text');
+            .group()
+            .dmove(-52, -70)
+            .addClass('text');
 
     const textPrefix =
         svg
-        .group()
-        .dmove(52, -70)
-        .addClass('text');
+            .group()
+            .dmove(52, -70)
+            .addClass('text');
 
     const textSuffix =
         svg
-        .group()
-        .dmove(-52, 70)
-        .addClass('text');
+            .group()
+            .dmove(-52, 70)
+            .addClass('text');
 
     svg.each(function() {
         this.opacity(0);
@@ -289,9 +289,9 @@ function runLogo(promise) {
     const isDesktop = window.innerWidth > screen.mobile;
     const isLandscape = window.matchMedia('(orientation: landscape)').matches;
 
-/**
- * ANIMATE BASE
- */
+    /**
+     * ANIMATE BASE
+     */
     switch(isDesktop || isLandscape) {
     case true:
         base
@@ -376,9 +376,9 @@ function runLogo(promise) {
     }
 
 
-/**
- * FIRST NAME
- */
+    /**
+     * FIRST NAME
+     */
 
     switch(isDesktop || isLandscape) {
     case true:
@@ -400,9 +400,9 @@ function runLogo(promise) {
     }
 
 
-/**
- * LAST NAME
- */
+    /**
+     * LAST NAME
+     */
 
     switch(isDesktop || isLandscape) {
     case true:
@@ -424,9 +424,9 @@ function runLogo(promise) {
     }
 
 
-/**
- * PREFIX
- */
+    /**
+     * PREFIX
+     */
 
     switch(isDesktop || isLandscape) {
     case true:
@@ -448,9 +448,9 @@ function runLogo(promise) {
     }
 
 
-/**
- * SUFFIX
- */
+    /**
+     * SUFFIX
+     */
 
     switch(isDesktop || isLandscape) {
     case true:

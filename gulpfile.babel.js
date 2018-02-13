@@ -60,52 +60,52 @@ const appStream = gulp.src(`${dir.src}/scripts/**/*.js`)
 
 gulp.task('vendor', () => {
     gulp.src('./static/**/*.js')
-    .pipe(plumber(error => {
-        console.log(error.toString());
-        this.emit('end');
-    }))
-    .pipe(concat('vendor.js'))
-    .pipe(gulp.dest(dir.dest));
+        .pipe(plumber(error => {
+            console.log(error.toString());
+            this.emit('end');
+        }))
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest(dir.dest));
 });
 
 gulp.task('scripts', ['vendor'], () => {
     return gulp.src(`${dir.src}/scripts/**/*.js`)
-    .pipe(plumber(error => {
-        console.log(error.toString());
-        this.emit('end');
-    }))
-    .pipe(sourcemaps.init())
-    .pipe(babel({
-        presets: ['env']
-    }))
-    .pipe(concat('index.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(dir.dest));
+        .pipe(plumber(error => {
+            console.log(error.toString());
+            this.emit('end');
+        }))
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(concat('index.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(dir.dest));
 });
 
 gulp.task('minify', () => {
     return gulp.src(`${dir.src}/*.html`)
-    .pipe(plumber(error => {
-        console.log(error.toString());
-        this.emit('end');
-    }))
-    .pipe(htmlmin({
-        collapseWhitespace: true
-    }))
-    .pipe(inject(es.merge(vendorStream, appStream), {
-        removeTags: true
-    }))
-    .pipe(gulp.dest('./'));
+        .pipe(plumber(error => {
+            console.log(error.toString());
+            this.emit('end');
+        }))
+        .pipe(htmlmin({
+            collapseWhitespace: true
+        }))
+        .pipe(inject(es.merge(vendorStream, appStream), {
+            removeTags: true
+        }))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('clean', () => {
     return gulp.src(dir.dest, { read: false })
-    .pipe(plumber(error => {
-        console.log(error.toString());
-        this.emit('end');
-    }))
-    .pipe(clean());
+        .pipe(plumber(error => {
+            console.log(error.toString());
+            this.emit('end');
+        }))
+        .pipe(clean());
 });
 
 gulp.task('default', ['clean', 'styles', 'minify']);
