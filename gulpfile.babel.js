@@ -6,10 +6,10 @@ import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
 import concat from 'gulp-concat';
-import minifyCSS from 'gulp-minify-css';
+import cleanCSS from 'gulp-clean-css';
 import plumber from 'gulp-plumber';
 import uglify from 'gulp-uglify';
-import livereload from 'gulp-livereload';
+import refresh from 'gulp-refresh';
 import htmlmin from 'gulp-htmlmin';
 import clean from 'gulp-clean';
 import inject from 'gulp-inject';
@@ -30,10 +30,10 @@ gulp.task('styles', () => {
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(concat('main.css'))
-        .pipe(minifyCSS())
+        .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dir.dest))
-        .pipe(livereload());
+        .pipe(refresh());
 });
 
 const vendorStream = gulp.src('./static/**/*.js')
@@ -111,7 +111,7 @@ gulp.task('clean', () => {
 gulp.task('default', ['clean', 'styles', 'minify']);
 
 gulp.task('watch', () => {
-    livereload.listen();
+    refresh.listen();
     gulp.watch(`${dir.src}/styles/**/*.scss`, ['styles']).on('change', e => {
         console.log('\t   File ' + e.type + '...');
     });
