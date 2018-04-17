@@ -158,8 +158,7 @@ canvas {
 
     li {
         display: grid;
-        align-content: space-between;
-        margin-bottom: 2em;
+        align-content: start;
 
         h3 {
             margin: 0;
@@ -183,11 +182,10 @@ canvas {
         &:nth-child(odd) {
             justify-items: right;
             text-align: right;
-            margin-bottom: 10em;
         }
 
         &:nth-child(even) {
-            margin-top: 8em;
+            margin-top: 5em;
         }
 
         &:last-child {
