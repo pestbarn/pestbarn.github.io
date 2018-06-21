@@ -52,7 +52,7 @@ const renderMusic = () => {
 
 const renderGithub = () => {
     axios
-        .get('https://api.github.com/repos/pestbarn/beertasting/stats/commit_activity')
+        .get('https://api.github.com/repos/pestbarn/obsidian/stats/commit_activity')
         .then(result => {
             const commits = result.data;
             const n = commits.map(t => t.total);
