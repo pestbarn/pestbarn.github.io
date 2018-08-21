@@ -2,7 +2,7 @@
 
 const renderUntappd = () => {
     axios
-        .get('https://dl.dropboxusercontent.com/s/f7ustvn6xp1bo6h/Untappd.json')
+        .get('https://dl.dropboxusercontent.com/s/p5c05yrjhmpqel6/Untappd.json')
         .then(result => {
             const beers = result.data;
             const beer = beers.slice(-1)[0];
