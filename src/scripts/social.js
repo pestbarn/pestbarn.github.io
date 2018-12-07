@@ -50,33 +50,7 @@ const renderMusic = () => {
     }
 };
 
-const renderGithub = () => {
-    axios
-        .get('https://api.github.com/repos/pestbarn/obsidian/stats/commit_activity')
-        .then(result => {
-            const commits = result.data;
-            const n = commits.map(t => t.total);
-            const number = n.reduce((n, i) => n + i);
-            const total = Object.keys(commits).length;
-
-            let average = number / total;
-
-            average = Math.round(average * 10) / 10;
-
-            getGit(average);
-        });
-
-    function getGit(commits) {
-        const number = commits;
-
-        const element = document.getElementById('github-commits');
-
-        element.innerText = `latest project: ${number}`;
-    }
-};
-
 (function() {
     renderUntappd();
     renderMusic();
-    renderGithub();
 })();

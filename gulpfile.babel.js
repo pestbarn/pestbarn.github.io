@@ -20,7 +20,7 @@ const dir = {
     dest: './dist'
 };
 
-gulp.task('styles', () => {
+gulp.task('styles', done => {
     gulp.src(`${dir.src}/styles/**/*.scss`)
         .pipe(plumber(error => {
             console.log(error.toString());
@@ -34,6 +34,8 @@ gulp.task('styles', () => {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dir.dest))
         .pipe(refresh());
+
+    done();
 });
 
 const vendorStream = gulp.src('./static/**/*.js')
@@ -51,14 +53,14 @@ const appStream = gulp.src(`${dir.src}/scripts/**/*.js`)
     }))
     .pipe(sourcemaps.init())
     .pipe(babel({
-        presets: ['env']
+        presets: ['@babel/env']
     }))
     .pipe(concat('index.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dir.dest));
 
-gulp.task('vendor', () => {
+gulp.task('vendor', done => {
     gulp.src('./static/**/*.js')
         .pipe(plumber(error => {
             console.log(error.toString());
@@ -66,9 +68,11 @@ gulp.task('vendor', () => {
         }))
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(dir.dest));
+
+    done();
 });
 
-gulp.task('scripts', ['vendor'], () => {
+gulp.task('scripts', gulp.series('vendor'), () => {
     return gulp.src(`${dir.src}/scripts/**/*.js`)
         .pipe(plumber(error => {
             console.log(error.toString());
@@ -76,7 +80,7 @@ gulp.task('scripts', ['vendor'], () => {
         }))
         .pipe(sourcemaps.init())
         .pipe(babel({
-            presets: ['env']
+            presets: ['@babel/env']
         }))
         .pipe(concat('index.js'))
         .pipe(uglify())
@@ -108,17 +112,17 @@ gulp.task('clean', () => {
         .pipe(clean());
 });
 
-gulp.task('default', ['clean', 'styles', 'minify']);
+gulp.task('default', gulp.series('clean', 'styles', 'minify'));
 
 gulp.task('watch', () => {
     refresh.listen();
-    gulp.watch(`${dir.src}/styles/**/*.scss`, ['styles']).on('change', e => {
+    gulp.watch(`${dir.src}/styles/**/*.scss`, gulp.series('styles')).on('change', e => {
         console.log('\t   File ' + e.type + '...');
     });
-    gulp.watch(`${dir.src}/scripts/**/*.js`, ['scripts']).on('change', e => {
+    gulp.watch(`${dir.src}/scripts/**/*.js`, gulp.series('scripts')).on('change', e => {
         console.log('\t   File ' + e.type + '...');
     });
-    gulp.watch(`${dir.src}/*.html`, ['minify']).on('change', e => {
+    gulp.watch(`${dir.src}/*.html`, gulp.series('minify')).on('change', e => {
         console.log('\t   File ' + e.type + '...');
     });
 });

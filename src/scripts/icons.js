@@ -490,7 +490,6 @@ const renderSocial = promise => {
 
     const untappd = SVG('untappd'),
         dribbble = SVG('dribbble'),
-        github = SVG('github'),
         lastfm = SVG('lastfm'),
         linkedin = SVG('linkedin'),
         quora = SVG('quora'),
@@ -508,10 +507,6 @@ const renderSocial = promise => {
     dribbble.viewbox(standardViewBox)
         .path(social.dribbble)
         .fill('#ea4c89');
-
-    github.viewbox('0 0 90 90')
-        .path(social.github)
-        .fill('#171515');
 
     lastfm.viewbox(standardViewBox)
         .path(social.lastfm)
