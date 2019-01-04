@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - "node"
-  - "9.11.1"
-before_deploy: "gulp"
-deploy:
-  provider: firebase
-  token:
-    secure: mVSJTr8Pk6OKuAo+qdhJ/vTnuBGFEw+HUgiBwO/8ddkeqM5rQCwclmhHtj9VXs1QAlsC3T3x5WSskE7RijSxAIWMxa+JgKAfulMIrRnQcx2tsi1r9Frtb3tdcmS03jNWnzSxdOL/wc6KpoRdmS9PeXNNYDTmDSfir6t78QHxssJZFYiH9deBwhNUoQoEP+kKSF+D9gZg1JLbi95aPVSMt7OVvB6IAH8N9xxMfMQvBKzSBKPIDfupmZ9dkcccnfJaVlMyh1XKbcSGBxewwFwL/qHKAMBvUjIoB7IY4aKkL+ZUgpOyPHzvZmoe+sVJs0aZBEMNpqDxwDWqc6NqaOZ156tKig4DS+2L6ZxvLjTQd3cARUHvAhQQILfqYG+VHtVV6++qGAeffQRfStsVn6muZp5vgnCpWSLQOVn37dmhm0jHOxuPqUECq74/qkFkTPiifJUFnnOgmZD9Rs0ic9NQ8CpPWpUT24Xd7gnLuNyF3Rhv0vaGwY18TCw6t8gm0XLhzVOCbetYmwWdK0frV6VNZLlRU3QGB4lOvNvPCuSUBvpV+lIb3db0YNNRWnmakKNlgTIBkr3NrwIviDnSx8rRNOqkwk5XAzAZKvbwRG+YOVbNwGRmfBVibjoU/jXeSst3KJp3bozSCw76Vd+lepLRIj/OukeHs/+e1Y8JYFB/TYQ=
