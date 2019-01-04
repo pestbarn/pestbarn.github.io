@@ -14,6 +14,7 @@ import htmlmin from 'gulp-htmlmin';
 import clean from 'gulp-clean';
 import inject from 'gulp-inject';
 import es from 'event-stream';
+import colors from 'colors';
 
 const dir = {
     src: 'src',
@@ -117,12 +118,12 @@ gulp.task('default', gulp.series('clean', 'styles', 'minify'));
 gulp.task('watch', () => {
     refresh.listen();
     gulp.watch(`${dir.src}/styles/**/*.scss`, gulp.series('styles')).on('change', e => {
-        console.log('\t   File ' + e.type + '...');
+        console.log(`           File ${e} changed`.yellow);
     });
     gulp.watch(`${dir.src}/scripts/**/*.js`, gulp.series('scripts')).on('change', e => {
-        console.log('\t   File ' + e.type + '...');
+        console.log(`           File ${e} changed`.yellow);
     });
     gulp.watch(`${dir.src}/*.html`, gulp.series('minify')).on('change', e => {
-        console.log('\t   File ' + e.type + '...');
+        console.log(`           File ${e} changed`.yellow);
     });
 });

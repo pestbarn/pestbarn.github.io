@@ -1,5 +1,3 @@
-/* global Trianglify */
-
 (function() {
     let resizeTimeout;
 

@@ -1,5 +1,3 @@
-/* global SVG, Vivus, axios, setObj, getObj, verge */
-
 const renderFriends = promise => {
     const teddyBear = promise.data.friend;
 

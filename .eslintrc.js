@@ -13,15 +13,22 @@ module.exports = {
         }
     },
     extends: [
-      'eslint:recommended',
-      'plugin:css-modules/recommended',
+        'eslint:recommended',
+        'plugin:css-modules/recommended',
     ],
     globals: {
-      __DEV__: true,
+        __DEV__: true,
+        axios: true,
+        SVG: true,
+        setObj: true,
+        getObj: true,
+        Trianglify: true,
+        Vivus: true,
+        verge: true
     },
     plugins: [
-      'css-modules',
-      'import'
+        'css-modules',
+        'import'
     ],
     rules: {
         'indent': [
@@ -48,12 +55,12 @@ module.exports = {
             {int32Hint: true}
         ],
         'import/extensions': [
-          'error',
-          'never',
-          {
-            json: 'always',
-            css: 'always'
-          },
+            'error',
+            'never',
+            {
+                json: 'always',
+                css: 'always'
+            },
         ],
         'brace-style': 'warn',
         'no-multiple-empty-lines': 'warn',

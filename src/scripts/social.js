@@ -1,5 +1,3 @@
-/* global axios */
-
 const renderUntappd = () => {
     axios
         .get('https://dl.dropboxusercontent.com/s/p5c05yrjhmpqel6/Untappd.json')

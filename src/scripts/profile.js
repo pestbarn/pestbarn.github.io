@@ -1,5 +1,3 @@
-/* global axios, SVG, setObj, getObj */
-
 (function() {
     getObj('mattiasProfile') === null
         ? axios.get('/src/profile.json').then(p => renderProfile(p))

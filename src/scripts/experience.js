@@ -1,5 +1,3 @@
-/* global axios, getObj, setObj */
-
 const renderExperience = () => {
     let localExperience = getObj('mattiasExperience');
 
