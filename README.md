@@ -1,5 +1,3 @@
-[![bitHound Overall Score](https://www.bithound.io/github/pestbarn/pestbarn.github.io/badges/score.svg)](https://www.bithound.io/github/pestbarn/pestbarn.github.io) [![bitHound Dev Dependencies](https://www.bithound.io/github/pestbarn/pestbarn.github.io/badges/devDependencies.svg)](https://www.bithound.io/github/pestbarn/pestbarn.github.io/master/dependencies/npm) [![bitHound Code](https://www.bithound.io/github/pestbarn/pestbarn.github.io/badges/code.svg)](https://www.bithound.io/github/pestbarn/pestbarn.github.io)
-
 ## [mattias.pw](http://www.mattias.pw)
 This project is released under the **CC0 1.0 Universal** license - for more information, see the [license file](https://github.com/pestbarn/pestbarn.github.io/blob/master/LICENSE).
 
