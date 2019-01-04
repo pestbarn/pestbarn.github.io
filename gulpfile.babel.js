@@ -104,7 +104,7 @@ gulp.task('minify', () => {
 });
 
 gulp.task('clean', () => {
-    return gulp.src(dir.dest, { read: false })
+    return gulp.src(dir.dest, { read: false, allowEmpty: true })
         .pipe(plumber(error => {
             console.log(error.toString());
             this.emit('end');
