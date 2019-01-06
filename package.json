@@ -11,6 +11,7 @@
     "dev": "concurrently \"gulp watch\" \"node server.js\"",
     "test": "jest",
     "deploy": "eslint src/ && gulp && firebase deploy",
+    "lint": "eslint src/",
     "update:packages": "node wipe-dependencies.js && rm -rf node_modules && npm update --save && npm update --save-dev"
   },
   "repository": {
