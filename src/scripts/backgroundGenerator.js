@@ -1,4 +1,6 @@
-(function() {
+const Trianglify = require('trianglify');
+
+module.exports = (function() {
     let resizeTimeout;
 
     const resizeThrottler = () => {

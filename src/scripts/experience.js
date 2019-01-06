@@ -1,3 +1,7 @@
+const globals = require('./globals');
+const setObj = globals.setObj;
+const getObj = globals.getObj;
+
 const renderExperience = () => {
     let localExperience = getObj('mattiasExperience');
 

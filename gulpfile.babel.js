@@ -14,6 +14,7 @@ import htmlmin from 'gulp-htmlmin';
 import clean from 'gulp-clean';
 import inject from 'gulp-inject';
 import es from 'event-stream';
+import bro from 'gulp-bro';
 import colors from 'colors';
 
 const dir = {
@@ -47,46 +48,26 @@ const vendorStream = gulp.src('./static/**/*.js')
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(dir.dest));
 
-const appStream = gulp.src(`${dir.src}/scripts/**/*.js`)
+const appStream = gulp.src([`${dir.src}/scripts/**/*.js`, `!${dir.src}/scripts/**/*.test.js`])
+    .pipe(bro())
     .pipe(plumber(error => {
         console.log(error.toString());
         this.emit('end');
     }))
     .pipe(sourcemaps.init())
     .pipe(babel({
-        presets: ['@babel/env']
+        presets: ['@babel/preset-env']
     }))
     .pipe(concat('index.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dir.dest));
 
-gulp.task('vendor', done => {
-    gulp.src('./static/**/*.js')
-        .pipe(plumber(error => {
-            console.log(error.toString());
-            this.emit('end');
-        }))
-        .pipe(concat('vendor.js'))
-        .pipe(gulp.dest(dir.dest));
-
-    done();
-});
-
-gulp.task('scripts', gulp.series('vendor'), () => {
-    return gulp.src(`${dir.src}/scripts/**/*.js`)
-        .pipe(plumber(error => {
-            console.log(error.toString());
-            this.emit('end');
-        }))
-        .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
-        .pipe(concat('index.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(dir.dest));
+gulp.task('scripts', () => {
+    return new Promise((resolve, reject) => {
+        resolve();
+        return es.merge(vendorStream, appStream)
+    });
 });
 
 gulp.task('minify', () => {

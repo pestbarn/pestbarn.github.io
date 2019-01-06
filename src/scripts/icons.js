@@ -1,3 +1,7 @@
+const globals = require('./globals');
+const setObj = globals.setObj;
+const getObj = globals.getObj;
+
 const renderFriends = promise => {
     const teddyBear = promise.data.friend;
 
