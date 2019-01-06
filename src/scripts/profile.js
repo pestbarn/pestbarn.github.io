@@ -1,6 +1,7 @@
 const globals = require('./globals');
 const setObj = globals.setObj;
 const getObj = globals.getObj;
+const axios = require('axios');
 
 (function() {
     getObj('mattiasProfile') === null

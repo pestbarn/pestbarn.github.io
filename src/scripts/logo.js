@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 function setObj(key, value) {
     Storage.prototype.setObject = function(key, value) {
         this.setItem(key, JSON.stringify(value));
