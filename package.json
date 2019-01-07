@@ -75,7 +75,9 @@
     "stylelint": "*",
     "stylelint-config-standard": "*",
     "svg.js": "^2.7.1",
-    "trianglify": "^2.0.0"
+    "trianglify": "^2.0.0",
+    "verge": "^1.10.2",
+    "vivus": "^0.4.4"
   },
   "dependencies": {
     "concurrently": "^4.1.0"

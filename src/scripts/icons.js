@@ -3,6 +3,8 @@ const setObj = globals.setObj;
 const getObj = globals.getObj;
 const axios = require('axios');
 const SVG = require('svg.js');
+const Vivus = require('vivus');
+const verge = require('verge');
 
 const renderFriends = promise => {
     const teddyBear = promise.data.friend;

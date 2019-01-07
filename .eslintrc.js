@@ -18,9 +18,7 @@ module.exports = {
         'plugin:css-modules/recommended',
     ],
     globals: {
-        __DEV__: true,
-        Vivus: true,
-        verge: true
+        __DEV__: true
     },
     plugins: [
         'css-modules',

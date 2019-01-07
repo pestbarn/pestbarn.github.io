@@ -71,22 +71,25 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('minify', () => {
-    return gulp.src(`${dir.src}/*.html`)
-        .pipe(plumber(error => {
-            console.log(error.toString());
-            this.emit('end');
-        }))
-        .pipe(htmlmin({
-            collapseWhitespace: true
-        }))
-        .pipe(inject(es.merge(vendorStream, appStream), {
-            removeTags: true
-        }))
-        .pipe(gulp.dest('./'));
+    return new Promise((resolve, reject) => {
+        resolve();
+        return gulp.src(`${dir.src}/*.html`)
+            .pipe(plumber(error => {
+                console.log(error.toString());
+                this.emit('end');
+            }))
+            .pipe(htmlmin({
+                collapseWhitespace: true
+            }))
+            .pipe(inject(es.merge(vendorStream, appStream), {
+                removeTags: true
+            }))
+            .pipe(gulp.dest('./'));
+    });
 });
 
 gulp.task('clean', () => {
-    return gulp.src(dir.dest, { read: false })
+    return gulp.src(dir.dest, { read: false, allowEmpty: true })
         .pipe(plumber(error => {
             console.log(error.toString());
             this.emit('end');
