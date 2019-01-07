@@ -40,14 +40,6 @@ gulp.task('styles', done => {
     done();
 });
 
-const vendorStream = gulp.src('./static/**/*.js')
-    .pipe(plumber(error => {
-        console.log(error.toString());
-        this.emit('end');
-    }))
-    .pipe(concat('vendor.js'))
-    .pipe(gulp.dest(dir.dest));
-
 const appStream = gulp.src([`${dir.src}/scripts/**/*.js`, `!${dir.src}/scripts/**/*.test.js`])
     .pipe(bro())
     .pipe(plumber(error => {
@@ -66,7 +58,7 @@ const appStream = gulp.src([`${dir.src}/scripts/**/*.js`, `!${dir.src}/scripts/*
 gulp.task('scripts', () => {
     return new Promise((resolve, reject) => {
         resolve();
-        return es.merge(vendorStream, appStream)
+        return appStream;
     });
 });
 
@@ -81,7 +73,7 @@ gulp.task('minify', () => {
             .pipe(htmlmin({
                 collapseWhitespace: true
             }))
-            .pipe(inject(es.merge(vendorStream, appStream), {
+            .pipe(inject((appStream), {
                 removeTags: true
             }))
             .pipe(gulp.dest('./'));
