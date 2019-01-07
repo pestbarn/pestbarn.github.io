@@ -19,11 +19,7 @@ module.exports = {
     ],
     globals: {
         __DEV__: true,
-        axios: true,
         SVG: true,
-        setObj: true,
-        getObj: true,
-        Trianglify: true,
         Vivus: true,
         verge: true
     },

@@ -1,21 +1,9 @@
+const globals = require('./globals');
+const setObj = globals.setObj;
+const getObj = globals.getObj;
 const axios = require('axios');
 
-function setObj(key, value) {
-    Storage.prototype.setObject = function(key, value) {
-        this.setItem(key, JSON.stringify(value));
-    };
-    return localStorage.setObject(key, value);
-}
-
-function getObj(key) {
-    Storage.prototype.getObject = function(key) {
-        let value = this.getItem(key);
-        return value && JSON.parse(value);
-    };
-    return localStorage.getObject(key);
-}
-
-const animationTiming = {
+export const animationTiming = {
     elastic: pos => {
         if (pos == !!pos) return pos;
         return Math.pow(2, -10 * pos) * Math.sin((pos - 0.075) * (2 * Math.PI) / .3) + 1;
@@ -55,7 +43,7 @@ const screen = {
     mobile: 768,
 };
 
-(function() {
+function renderLogo() {
     let resizeTimeout,
         horizontal = document.body.clientWidth;
 
@@ -90,6 +78,10 @@ const screen = {
 
     window.addEventListener('resize', resizeThrottler, false);
     window.addEventListener('orientationchange', resizeThrottler, false);
+};
+
+(function() {
+    renderLogo();
 })();
 
 
