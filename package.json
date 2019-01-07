@@ -74,6 +74,7 @@
     "serve-static": "*",
     "stylelint": "*",
     "stylelint-config-standard": "*",
+    "svg.js": "^2.7.1",
     "trianglify": "^2.0.0"
   },
   "dependencies": {

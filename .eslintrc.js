@@ -19,7 +19,6 @@ module.exports = {
     ],
     globals: {
         __DEV__: true,
-        SVG: true,
         Vivus: true,
         verge: true
     },

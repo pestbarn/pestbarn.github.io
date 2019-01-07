@@ -2,6 +2,7 @@ const globals = require('./globals');
 const setObj = globals.setObj;
 const getObj = globals.getObj;
 const axios = require('axios');
+const SVG = require('svg.js');
 
 export const animationTiming = {
     elastic: pos => {
@@ -78,7 +79,7 @@ function renderLogo() {
 
     window.addEventListener('resize', resizeThrottler, false);
     window.addEventListener('orientationchange', resizeThrottler, false);
-};
+}
 
 (function() {
     renderLogo();

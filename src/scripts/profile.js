@@ -2,6 +2,7 @@ const globals = require('./globals');
 const setObj = globals.setObj;
 const getObj = globals.getObj;
 const axios = require('axios');
+const SVG = require('svg.js');
 
 (function() {
     getObj('mattiasProfile') === null
