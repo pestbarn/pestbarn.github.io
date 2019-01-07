@@ -73,7 +73,7 @@ gulp.task('minify', () => {
             .pipe(htmlmin({
                 collapseWhitespace: true
             }))
-            .pipe(inject((appStream), {
+            .pipe(inject(appStream, {
                 removeTags: true
             }))
             .pipe(gulp.dest('./'));
