@@ -1,5 +1,4 @@
 const axios = require('axios');
-// const logo = require('./profile');
 
 jest.mock('axios');
 
