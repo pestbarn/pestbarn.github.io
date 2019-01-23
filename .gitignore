@@ -19,4 +19,4 @@ jspm_packages
 dist
 lighthouse.report.html
 .firebase
-.env
+.env.js
