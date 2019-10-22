@@ -1,10 +1,12 @@
 #untappd,
-#lastfm {
+#lastfm,
+#github {
     grid-column: 1/3;
     display: grid;
     align-content: center;
 
     svg {
+        min-height: 3rem;
         width: 3em;
         order: -1;
         grid-column: 1;
@@ -12,7 +14,8 @@
 }
 
 #untappd-stats,
-#lastfm-stats {
+#lastfm-stats,
+#github-stats {
     line-height: 0;
     font-size: .6em;
     grid-column: 2;
@@ -29,7 +32,8 @@
 }
 
 #untappd-stats p,
-#lastfm-stats p {
+#lastfm-stats p,
+#github-stats p {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow-x: hidden;

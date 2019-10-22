@@ -499,7 +499,8 @@ const renderSocial = promise => {
         lastfm = SVG('lastfm'),
         linkedin = SVG('linkedin'),
         quora = SVG('quora'),
-        twitter = SVG('twitter');
+        twitter = SVG('twitter'),
+        github = SVG('github');
 
     const standardViewBox = '0 0 430 430';
 
@@ -529,6 +530,10 @@ const renderSocial = promise => {
     twitter.viewbox(standardViewBox)
         .path(social.twitter)
         .fill('#55acee');
+
+    github.viewbox('0 0 90 90')
+        .path(social.github)
+        .fill('#333');
 };
 
 (function() {
