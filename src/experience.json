@@ -1,10 +1,17 @@
 {
     "items": [
         {
+            "title": "Regent",
+            "position": "Frontend Developer",
+            "dateFrom": "2020\/09",
+            "dateTo": "(current)",
+            "url": "regent.se"
+        },
+        {
             "title": "Columbus",
             "position": "Frontend developer",
             "dateFrom": "2017\/10",
-            "dateTo": "(current)",
+            "dateTo": "2020\/08",
             "url": "columbusglobal.com/sv/"
         },
         {
