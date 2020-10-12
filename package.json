@@ -1,85 +1,21 @@
 {
   "name": "pestbarn.github.io",
-  "version": "2.5.1",
-  "description": "-",
-  "main": "index.html",
-  "browserslist": [
-    "> 5%",
-    "last 2 versions"
-  ],
-  "scripts": {
-    "dev": "concurrently \"gulp watch\" \"node server.js\"",
-    "test": "jest",
-    "deploy": "eslint src/ && gulp && firebase deploy",
-    "lint": "eslint src/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pestbarn/pestbarn.github.io.git"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "@babel/preset-env"
-          ]
-        }
-      ]
-    ]
-  },
-  "author": "Mattias Hagberg <pestbarn@gmail.com> (http://www.mattias.pw)",
-  "license": "CC0-1.0",
-  "homepage": "https://github.com/pestbarn/pestbarn.github.io#readme",
+  "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/register": "^7.11.5",
-    "axios": "^0.20.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.3.0",
-    "babel-plugin-root-import": "^6.5.0",
-    "babelify": "^10.0.0",
-    "colors": "^1.4.0",
-    "connect": "^3.7.0",
-    "eslint": "^7.10.0",
-    "eslint-plugin-css-modules": "^2.11.0",
-    "eslint-plugin-html": "^6.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.0.2",
-    "eslint-plugin-no-unused-vars-rest": "^1.0.6",
-    "eslint-plugin-react": "^7.21.2",
-    "event-stream": "^4.0.1",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-babel": "^8.0.0",
-    "gulp-bro": "^2.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-inject": "^5.0.5",
-    "gulp-plumber": "^1.2.1",
-    "gulp-refresh": "^1.1.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2",
-    "jest": "^26.4.2",
-    "normalize.css": "^8.0.1",
-    "postcss": "^8.1.1",
-    "serve-static": "^1.14.1",
-    "stylelint": "^13.7.2",
-    "stylelint-config-standard": "^20.0.0",
-    "svg.js": "^2.7.1",
-    "trianglify": "^3.0.0",
-    "verge": "^1.10.2",
-    "vivus": "^0.4.5"
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "concurrently": "^5.3.0"
+    "next": "9.5.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.8",
+    "@types/react": "^16.9.52",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "typescript": "^4.0.3"
   }
 }
