@@ -3,8 +3,18 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = '[Your Name]'
 export const siteTitle = 'Mattias Hagberg ∞ Frontend Developer'
+
+function ageFromDateOfBirth(dateOfBirth: string): number {
+    const today = new Date()
+    const birthDate = new Date(dateOfBirth)
+    const month = today.getMonth() - birthDate.getMonth()
+    let age = today.getFullYear() - birthDate.getFullYear()
+
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) age--;
+
+    return age;
+}
 
 export default function Layout({
     children
@@ -20,7 +30,7 @@ export default function Layout({
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta charSet="utf-8" />
                 <meta content="ie=edge" httpEquiv="x-ua-compatible" />
-                <meta content="Resume of 31 year old frontend developer from Sweden" name="description" />
+                <meta content={`Resume of ${ageFromDateOfBirth('1989-01-25')} year old frontend developer from Sweden`} name="description" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
                 <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
@@ -31,9 +41,9 @@ export default function Layout({
                 <meta content="mattias.pw" name="application-name" />
                 <meta content="#333745" name="theme-color" />
             </Head>
-            <header className={styles.header}>
-                <h1 className={utilStyles.heading2Xl}>{name}</h1>
-            </header>
+
+            <header id="logo"></header>
+
             <main>{children}</main>
         </div>
     )
