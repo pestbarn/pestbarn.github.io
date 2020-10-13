@@ -42,8 +42,6 @@ export default function Layout({
                 <meta content="#333745" name="theme-color" />
             </Head>
 
-            <header id="logo"></header>
-
             <main>{children}</main>
         </div>
     )
