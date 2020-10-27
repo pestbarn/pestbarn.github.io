@@ -1,0 +1,44 @@
+html {
+    font-size: 16px;
+    font-family: "Forum", "Fira Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: calc(16px + 8 * ((100vw - 768px) / 768));
+    }
+}
+
+@font-face {
+    font-family: Forum;
+    font-style: normal;
+    font-weight: 400;
+    src: local(Forum), url(//fonts.gstatic.com/s/forum/v7/ZqpICanVEXplF5Afx-0HCw.eot?#) format('eot'), url(//fonts.gstatic.com/s/forum/v7/eMDvaUkVr_spjjcEeqYI5A.woff2) format('woff2'), url(//fonts.gstatic.com/s/forum/v7/KsJrhVlKA7udJPNqNdl2fA.woff) format('woff');
+}
+
+@font-face {
+    font-family: Megrim;
+    font-style: normal;
+    font-weight: 400;
+    src: local(Megrim), url(//fonts.gstatic.com/s/megrim/v7/1f5HoozKyYXswla7UhCq0A.eot?#) format('eot'), url(//fonts.gstatic.com/s/megrim/v7/3QlnWQVA-dQyEeamqiHm2g.woff2) format('woff2'), url(//fonts.gstatic.com/s/megrim/v7/wEAANqPdhC-qap-OX73FcA.woff) format('woff');
+}
+
+@font-face {
+    font-family: "Anonymous Pro";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Anonymous Pro"), local(AnonymousPro), url(//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E3Xp_Gpx0-4m3wAn7HKLs74.eot?#) format("eot"), url(//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74ExEOS6Aq7hJAAidQNR3rgdU.woff2) format("woff2"), url(//fonts.gstatic.com/s/anonymouspro/v8/Zhfjj_gat3waL4JSju74E1tUcs43uvLUMv3hfHgzs3w.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Anonymous Pro Bold";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Anonymous Pro Bold"), local(AnonymousPro-Bold), url(//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud30lRvvQrNeWza1BnlT_HW4.eot?#) format("eot"), url(//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQud8GfYvzQ_DwqEC2arHsRzXk.woff2) format("woff2"), url(//fonts.gstatic.com/s/anonymouspro/v8/WDf5lZYgdmmKhO8E1AQudy_O50XgJwSsgBhwZ9pjuTs.woff) format("woff");
+}
+
+h1,
+h2 {
+    font-family: "Megrim";
+}
