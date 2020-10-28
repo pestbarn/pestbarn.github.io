@@ -2,11 +2,21 @@ import { useState } from 'react'
 import { SVG, extend as SVGextend, Element as SVGElement } from '@svgdotjs/svg.js'
 import { animationTiming, mouseOverSqueeze, mouseOutSqueeze } from './utils/animation.funcs'
 
+/**
+ * So, this is a pretty advanced construction of a pretty simple logo.
+ * It's built by using `d` paths, all located separately in ../json/logo.json
+ * There are two versions - a vertical (mobile) and a horizontal (desktop)
+ *
+ * It's built by fetching the JSON with each separate element, which is then
+ * fed to, rendered, and animated using SVG.js.
+ */
+
 const screen = {
     mobile: 768,
 }
 
 const fetchJson = async() => {
+    // Fetch logo file and parse defs
     const logoDefs = await import('./json/logo.json').then(p => JSON.stringify(p))
     const parse = JSON.parse(logoDefs)
     return parse
@@ -18,8 +28,8 @@ const Logo: React.FC = () => {
         logoDefs.then(obj => {
             const logo = obj.logo
             const svg = SVG().addTo('#logo')
+
             svg.viewbox('0 0 616 374').size('100%', '100%')
-            svg.fill('#f00')
 
             const color = {
                 base: '#fe5f55',
@@ -28,20 +38,33 @@ const Logo: React.FC = () => {
             }
 
             /**
-            * LOGO DEFINITIONS AND BASE SETUP
+            * SET UP LOGO BASE DEFINITIONS
             */
 
-            const base = svg.path(logo.base),
-            curlyLeft = svg.path(logo.curlyLeft),
-            curlyRight = svg.path(logo.curlyRight),
-            symbol = svg.path(logo.symbol)
+            const
+                base = svg.path(logo.base),
+                curlyLeft = svg.path(logo.curlyLeft),
+                curlyRight = svg.path(logo.curlyRight),
+                symbol = svg.path(logo.symbol)
 
-            const patternX = 4, patternY = 4,
+            /**
+             * GENERATE BACKGROUND PATTERN
+             */
+
+            const
+                patternX = 4, patternY = 4,
                 pattern = svg.pattern(patternX, patternY, add => {
                     let d = 'M1 3h1v1H1V3zm2-2h1v1H3V1z';
                     add.rect(patternX, patternY).fill(color.base)
                     add.path(d).fill(color.complementary)
                 })
+
+            /**
+             * DEFINE "BASE" SETUP AND ANIMATION, INCLUDING
+             * ∞ BASE GRAPHIC
+             * { CURLIES }
+             * ⊙ CENTRED SYMBOL
+             */
 
             base.addClass('base')
                 .fill(pattern)
@@ -85,6 +108,10 @@ const Logo: React.FC = () => {
                 .opacity(1)
                 .transform({ scale: 1 })
 
+            /**
+             * DEFINE TEXT ELEMENTS
+            */
+
             const textFname =
                 svg.addClass('text').group().dmove(52, 70);
 
@@ -97,29 +124,80 @@ const Logo: React.FC = () => {
             const textSuffix =
                 svg.addClass('text').group().dmove(-52, 70)
 
-            const
-                fName = logo.fName
+            /**
+             * DEFINE UNIQUE TEXT ELEMENTS FROM JSON
+             */
 
-            for (const key in fName) {
-                let word = svg.path(fName[key]);
-                textFname.add(word);
+            const texts = logo.texts
+
+            for (const key in texts) {
+                /**
+                 * TEXTS ARE DIVIDED INTO FOUR SEPARATE GROUPS:
+                 * FIRSTNAME - MATTIAS
+                 * LASTNAME  - HAGBERG
+                 * PREFIX    - FRONTEND
+                 * SUFFIX    - DEVELOPER
+                 * LOOP THROUGH EACH AND ADD TO ABOVE TEXT ELEMENTS
+                 */
+                switch (key) {
+                    case 'fName':
+                        let fName = texts['fName']
+                        for (const l in fName) {
+                            let word = svg.path(fName[l])
+                            textFname.add(word)
+                        }
+                    break
+                    case 'lName':
+                        let lName = texts['lName']
+                        for (const l in lName) {
+                            let word = svg.path(lName[l])
+                            textLname.add(word)
+                        }
+                    break
+                    case 'prefix':
+                        let prefix = texts['prefix']
+                        for (const l in prefix) {
+                            let word = svg.path(prefix[l])
+                            textPrefix.add(word)
+                        }
+                    break
+                    case 'suffix':
+                        let suffix = texts['suffix']
+                        for (const l in suffix) {
+                            let word = svg.path(suffix[l])
+                            textSuffix.add(word)
+                        }
+                    break
+                }
             }
+
+            /**
+             * ANIMATE EACH INDIVIDUAL TEXT ELEMENT
+             */
 
             textFname
                 //@ts-ignore ANIMATE:
-                .animate(400, 1800)
-                .ease(animationTiming.swingTo)
+                .animate(400, 1800).ease(animationTiming.swingTo)
                 //@ts-ignore
-                .dmove(-12, -12)
-                .opacity(1)
+                .dmove(-12, -12).opacity(1)
 
             textLname
                 //@ts-ignore
-                .animate(400, 2100)
-                .ease(animationTiming.swingTo)
+                .animate(400, 2100).ease(animationTiming.swingTo)
                 //@ts-ignore
-                .dmove(52, 70)
-                .opacity(1)
+                .dmove(12, 12).opacity(1)
+
+            textPrefix
+                //@ts-ignore
+                .animate(400, 3000).ease(animationTiming.swingTo)
+                //@ts-ignore
+                .dmove(-12, 15).opacity(1)
+
+            textSuffix
+                //@ts-ignore
+                .animate(400, 3300).ease(animationTiming.swingTo)
+                //@ts-ignore
+                .dmove(12, -15).opacity(1);
 
             svg.each(function() {
                 this.opacity(0);
