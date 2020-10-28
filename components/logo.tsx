@@ -29,7 +29,7 @@ const Logo: React.FC = () => {
             const logo = obj.logo
             const svg = SVG().addTo('#logo')
 
-            svg.viewbox('0 0 616 374').size('100%', '100%')
+            svg.viewbox('0 0 616 374')
 
             const color = {
                 base: '#fe5f55',
@@ -214,6 +214,8 @@ const Logo: React.FC = () => {
             const errorMsg = 'Wat ' + (window.innerWidth > screen.mobile);
             const isDesktop = window.innerWidth > screen.mobile;
             const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+
+            svg.css('max-height', '50vh')
         }).catch(e => e)
 
     })
