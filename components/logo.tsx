@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 import { SVG, extend as SVGextend, Element as SVGElement } from '@svgdotjs/svg.js'
 import { animationTiming, mouseOverSqueeze, mouseOutSqueeze } from './utils/animation.funcs'
 
@@ -13,7 +13,7 @@ const fetchJson = async() => {
 }
 
 const Logo: React.FC = () => {
-    useEffect(() => {
+    useState(() => {
         const logoDefs = fetchJson().then(r => r)
         logoDefs.then(obj => {
             const logo = obj.logo
@@ -36,15 +36,15 @@ const Logo: React.FC = () => {
             curlyRight = svg.path(logo.curlyRight),
             symbol = svg.path(logo.symbol)
 
-            const patternX = 4,
-            patternY = 4,
-            pattern = svg.pattern(patternX, patternY, add => {
-                let d = 'M1 3h1v1H1V3zm2-2h1v1H3V1z';
-                add.rect(patternX, patternY).fill(color.base)
-                add.path(d).fill(color.complementary)
-            })
+            const patternX = 4, patternY = 4,
+                pattern = svg.pattern(patternX, patternY, add => {
+                    let d = 'M1 3h1v1H1V3zm2-2h1v1H3V1z';
+                    add.rect(patternX, patternY).fill(color.base)
+                    add.path(d).fill(color.complementary)
+                })
 
-            base.fill(pattern)
+            base.addClass('base')
+                .fill(pattern)
                 .stroke({
                     width: 1,
                     color: color.white,
@@ -53,7 +53,8 @@ const Logo: React.FC = () => {
                 .transform({
                     rotate: -15,
                     scale: .1
-                }).opacity(0).addClass('base')
+                })
+                .opacity(0)
                 //@ts-ignore ANIMATE:
                 .animate(600, 400).ease(animationTiming.bounceOut).opacity(1)
                 .transform({
@@ -61,25 +62,22 @@ const Logo: React.FC = () => {
                     scale: 1
                 })
 
-            curlyLeft.back().dx(100).addClass('curly')
+            curlyLeft.addClass('curly')
+                .back().dx(100)
                 //@ts-ignore ANIMATE:
-                .animate(1000, 1000)
-                .ease(animationTiming.elastic)
-                .dx(-100)
+                .animate(1000, 1000).ease(animationTiming.elastic).dx(-100)
                 //@ts-ignore
                 .opacity(1)
 
-            curlyRight.back().dx(-100).addClass('curly')
+            curlyRight.addClass('curly')
+                .back().dx(-100)
                 //@ts-ignore ANIMATE:
-                .animate(1000, 1000)
-                .ease(animationTiming.elastic)
-                .dx(100)
+                .animate(1000, 1000).ease(animationTiming.elastic).dx(100)
                 //@ts-ignore
                 .opacity(1)
 
-            symbol
+            symbol.addClass('symbol')
                 .transform({ scale: 0 })
-                .addClass('symbol')
                 //@ts-ignore ANIMATE:
                 .animate(800, 1000)
                 .ease(animationTiming.elastic)
@@ -87,6 +85,41 @@ const Logo: React.FC = () => {
                 .opacity(1)
                 .transform({ scale: 1 })
 
+            const textFname =
+                svg.addClass('text').group().dmove(52, 70);
+
+            const textLname =
+                svg.addClass('text').group().dmove(-52, -70)
+
+            const textPrefix =
+                svg.addClass('text').group().dmove(52, -70)
+
+            const textSuffix =
+                svg.addClass('text').group().dmove(-52, 70)
+
+            const
+                fName = logo.fName
+
+            for (const key in fName) {
+                let word = svg.path(fName[key]);
+                textFname.add(word);
+            }
+
+            textFname
+                //@ts-ignore ANIMATE:
+                .animate(400, 1800)
+                .ease(animationTiming.swingTo)
+                //@ts-ignore
+                .dmove(-12, -12)
+                .opacity(1)
+
+            textLname
+                //@ts-ignore
+                .animate(400, 2100)
+                .ease(animationTiming.swingTo)
+                //@ts-ignore
+                .dmove(52, 70)
+                .opacity(1)
 
             svg.each(function() {
                 this.opacity(0);
@@ -99,12 +132,13 @@ const Logo: React.FC = () => {
                         .on('mouseout', mouseOutSqueeze);
                 }
             })
+
             const errorMsg = 'Wat ' + (window.innerWidth > screen.mobile);
             const isDesktop = window.innerWidth > screen.mobile;
             const isLandscape = window.matchMedia('(orientation: landscape)').matches;
         })
 
-    }, [])
+    })
 
     return <div id="logo"></div>
 }
