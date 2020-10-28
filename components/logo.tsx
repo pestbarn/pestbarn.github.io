@@ -214,7 +214,7 @@ const Logo: React.FC = () => {
             const errorMsg = 'Wat ' + (window.innerWidth > screen.mobile);
             const isDesktop = window.innerWidth > screen.mobile;
             const isLandscape = window.matchMedia('(orientation: landscape)').matches;
-        })
+        }).catch(e => e)
 
     })
 
