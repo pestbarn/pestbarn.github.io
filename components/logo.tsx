@@ -54,7 +54,7 @@ const Logo: React.FC = () => {
             const
                 patternX = 4, patternY = 4,
                 pattern = svg.pattern(patternX, patternY, add => {
-                    let d = 'M1 3h1v1H1V3zm2-2h1v1H3V1z';
+                    let d = 'M1 3h1v1H1V3zm2-2h1v1H3V1z'
                     add.rect(patternX, patternY).fill(color.base)
                     add.path(d).fill(color.complementary)
                 })
@@ -66,54 +66,14 @@ const Logo: React.FC = () => {
              * ⊙ CENTRED SYMBOL
              */
 
-            base.addClass('base')
-                .fill(pattern)
-                .stroke({
-                    width: 1,
-                    color: color.white,
-                    opacity: .9
-                })
-                .transform({
-                    rotate: -15,
-                    scale: .1
-                })
-                .opacity(0)
-                //@ts-ignore ANIMATE:
-                .animate(600, 400).ease(animationTiming.bounceOut).opacity(1)
-                .transform({
-                    rotate: 0,
-                    scale: 1
-                })
-
-            curlyLeft.addClass('curly')
-                .back().dx(100)
-                //@ts-ignore ANIMATE:
-                .animate(1000, 1000).ease(animationTiming.elastic).dx(-100)
-                //@ts-ignore
-                .opacity(1)
-
-            curlyRight.addClass('curly')
-                .back().dx(-100)
-                //@ts-ignore ANIMATE:
-                .animate(1000, 1000).ease(animationTiming.elastic).dx(100)
-                //@ts-ignore
-                .opacity(1)
-
-            symbol.addClass('symbol')
-                .transform({ scale: 0 })
-                //@ts-ignore ANIMATE:
-                .animate(800, 1000)
-                .ease(animationTiming.elastic)
-                //@ts-ignore
-                .opacity(1)
-                .transform({ scale: 1 })
+            generateBase(base, pattern, color, curlyLeft, curlyRight, symbol)
 
             /**
              * DEFINE TEXT ELEMENTS
             */
 
             const textFname =
-                svg.addClass('text').group().dmove(52, 70);
+                svg.addClass('text').group().dmove(52, 70)
 
             const textLname =
                 svg.addClass('text').group().dmove(-52, -70)
@@ -139,6 +99,7 @@ const Logo: React.FC = () => {
                  * SUFFIX    - DEVELOPER
                  * LOOP THROUGH EACH AND ADD TO ABOVE TEXT ELEMENTS
                  */
+
                 switch (key) {
                     case 'fName':
                         let fName = texts['fName']
@@ -197,10 +158,14 @@ const Logo: React.FC = () => {
                 //@ts-ignore
                 .animate(400, 3300).ease(animationTiming.swingTo)
                 //@ts-ignore
-                .dmove(12, -15).opacity(1);
+                .dmove(12, -15).opacity(1)
+
+            /**
+             * SET FILL COLORS AND SET MOUSEOVER ANIMATION FOR CURLIES
+             */
 
             svg.each(function() {
-                this.opacity(0);
+                this.opacity(0)
                 if((this.type === 'path' || this.type === 'g') && !this.hasClass('base')) {
                     this.fill(color.white)
                 }
@@ -211,16 +176,57 @@ const Logo: React.FC = () => {
                 }
             })
 
-            const errorMsg = 'Wat ' + (window.innerWidth > screen.mobile);
-            const isDesktop = window.innerWidth > screen.mobile;
-            const isLandscape = window.matchMedia('(orientation: landscape)').matches;
+            const isDesktop = window.innerWidth > screen.mobile
+            const isLandscape = window.matchMedia('(orientation: landscape)').matches
 
-            svg.css('max-height', '50vh')
-        }).catch(e => e)
-
+        }).catch(e => console.error(e))
     })
 
-    return <div id="logo"></div>
+    return <div id="logo" />
 }
 
 export default Logo
+
+function generateBase(base, pattern, color, curlyLeft, curlyRight, symbol) {
+    base.addClass('base')
+        .fill(pattern)
+        .stroke({
+            width: 1,
+            color: color.white,
+            opacity: .9
+        })
+        .transform({
+            rotate: -15,
+            scale: .1
+        })
+        .opacity(0)
+        //@ts-ignore ANIMATE:
+        .animate(600, 400).ease(animationTiming.bounceOut).opacity(1)
+        .transform({
+            rotate: 0,
+            scale: 1
+        })
+
+    curlyLeft.addClass('curly')
+        .back().dx(100)
+        //@ts-ignore ANIMATE:
+        .animate(1000, 1000).ease(animationTiming.elastic).dx(-100)
+        //@ts-ignore
+        .opacity(1)
+
+    curlyRight.addClass('curly')
+        .back().dx(-100)
+        //@ts-ignore ANIMATE:
+        .animate(1000, 1000).ease(animationTiming.elastic).dx(100)
+        //@ts-ignore
+        .opacity(1)
+
+    symbol.addClass('symbol')
+        .transform({ scale: 0 })
+        //@ts-ignore ANIMATE:
+        .animate(800, 1000)
+        .ease(animationTiming.elastic)
+        //@ts-ignore
+        .opacity(1)
+        .transform({ scale: 1 })
+}

@@ -10,7 +10,7 @@ function ageFromDateOfBirth(dateOfBirth: string): number {
     const month = today.getMonth() - birthDate.getMonth()
     let age = today.getFullYear() - birthDate.getFullYear()
 
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) age--;
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) age--
 
     return age;
 }
