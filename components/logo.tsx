@@ -29,7 +29,9 @@ const Logo: React.FC = () => {
             const logo = obj.logo
             const svg = SVG().addTo('#logo')
 
-            svg.viewbox('0 0 616 374')
+            svg.viewbox('0 0 616 374').transform({
+                translateX: -20
+            })
 
             const color = {
                 base: '#fe5f55',
