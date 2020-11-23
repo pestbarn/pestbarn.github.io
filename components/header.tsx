@@ -1,9 +1,10 @@
 import Logo from './logo'
+import styles from './header.module.css'
 
 export default function Header({}) {
     return (
-        <header>
-            <Logo></Logo>
+        <header className={styles.header}>
+            <Logo />
         </header>
     )
 }

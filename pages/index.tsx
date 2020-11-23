@@ -11,12 +11,12 @@ export default function Home() {
       </Head>
       <section className="wrapper">
         <Header />
-        <div>
+        <main className="main">
           <Content id="profile"></Content>
           <Content id="experience"></Content>
           <Content id="social"></Content>
           <Content id="contact"></Content>
-        </div>
+        </main>
       </section>
     </Layout>
   )

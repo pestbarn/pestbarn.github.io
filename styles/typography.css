@@ -41,4 +41,5 @@ html {
 h1,
 h2 {
     font-family: "Megrim";
+    margin: 0;
 }
