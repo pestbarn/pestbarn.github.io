@@ -20,3 +20,5 @@ dist
 lighthouse.report.html
 .firebase
 .env.js
+.next
+out
