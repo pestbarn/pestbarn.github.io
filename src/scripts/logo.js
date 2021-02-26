@@ -1,6 +1,3 @@
-const globals = require('./globals');
-const setObj = globals.setObj;
-const getObj = globals.getObj;
 const axios = require('axios');
 const SVG = require('svg.js');
 
@@ -68,9 +65,7 @@ function renderLogo() {
             reset.removeChild(reset.firstChild);
         }
 
-        getObj('mattiasLogo') === null
-            ? axios.get('/src/logo.json').then(p => runLogo(p))
-            : runLogo();
+        axios.get('/src/logo.json').then(p => runLogo(p));
     };
 
     document.onreadystatechange = () => {
@@ -87,10 +82,7 @@ function renderLogo() {
 
 
 function runLogo(promise) {
-    const logo = getObj('mattiasLogo') === null ? promise.data.logo : getObj('mattiasLogo');
-
-    getObj('mattiasLogo') === null && setObj('mattiasLogo', logo);
-
+    const logo = promise.data.logo;
     const svg = SVG('logo');
 
     svg.viewbox('0 0 616 374').size('100%', '100%');

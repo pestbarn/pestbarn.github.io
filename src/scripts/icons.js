@@ -1,6 +1,3 @@
-const globals = require('./globals');
-const setObj = globals.setObj;
-const getObj = globals.getObj;
 const axios = require('axios');
 const SVG = require('svg.js');
 const Vivus = require('vivus');
@@ -39,9 +36,7 @@ const renderFriends = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null
-            ? axios.get('/src/icons.json').then(p => renderFriends(p))
-            : renderFriends(getObj('mattiasIcons'));
+        axios.get('/src/icons.json').then(p => renderFriends(p));
     };
 };
 
@@ -307,9 +302,7 @@ const renderSkills = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null
-            ? axios.get('/src/icons.json').then(p => renderSkills(p))
-            : renderSkills(getObj('mattiasIcons'));
+        axios.get('/src/icons.json').then(p => renderSkills(p));
     };
 };
 
@@ -429,9 +422,7 @@ const renderWork = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null
-            ? axios.get('/src/icons.json').then(p => renderWork(p))
-            : renderWork(getObj('mattiasIcons'));
+        axios.get('/src/icons.json').then(p => renderWork(p));
     };
 };
 
@@ -485,9 +476,7 @@ const renderContact = promise => {
             reset.parentNode.removeChild(reset);
         }
 
-        getObj('mattiasIcons') === null
-            ? axios.get('/src/icons.json').then(p => renderContact(p))
-            : renderContact(getObj('mattiasIcons'));
+        axios.get('/src/icons.json').then(p => renderContact(p));
     };
 };
 
@@ -538,9 +527,6 @@ const renderSocial = promise => {
 
 (function() {
     axios.get('/src/icons.json').then(promise => {
-        getObj('mattiasIcons') === null && setObj('mattiasIcons', promise);
-        promise = getObj('mattiasIcons') === null ? promise : getObj('mattiasIcons');
-
         let skillsN, workN, contactN;
         const skills = document.getElementById('skills'),
             work = document.getElementById('work'),

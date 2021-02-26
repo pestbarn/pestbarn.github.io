@@ -1,13 +1,8 @@
-const globals = require('./globals');
-const setObj = globals.setObj;
-const getObj = globals.getObj;
 const axios = require('axios');
 const SVG = require('svg.js');
 
 export default function renderProfile(promise) {
     const profile = promise.data.profile;
-
-    getObj('mattiasProfile') === null && setObj('mattiasProfile', promise);
 
     const svg = SVG('profile');
 
@@ -54,7 +49,5 @@ export default function renderProfile(promise) {
 }
 
 (function() {
-    getObj('mattiasProfile') === null
-        ? axios.get('/src/profile.json').then(p => renderProfile(p))
-        : renderProfile(getObj('mattiasProfile'));
+    axios.get('/src/profile.json').then(p => renderProfile(p));
 })();

@@ -1,20 +1,10 @@
-const globals = require('./globals');
-const setObj = globals.setObj;
-const getObj = globals.getObj;
 const axios = require('axios');
 
 const renderExperience = () => {
-    let localExperience = getObj('mattiasExperience');
-
-    localExperience === null ? axios
-        .get('/src/experience.json')
-        .then(result => {
-            const exp = result.data.items;
-
-            setObj('mattiasExperience', exp);
-            getExperience(exp);
-            localExperience = getObj('mattiasExperience');
-        }) : getExperience(localExperience);
+    axios.get('/src/experience.json').then(result => {
+        const exp = result.data.items;
+        getExperience(exp);
+    });
 
     function getExperience(exp) {
         const element = document.getElementById('experience');
