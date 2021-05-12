@@ -70,7 +70,7 @@
     "gulp-uglify": "^3.0.2",
     "jest": "^26.4.2",
     "normalize.css": "^8.0.1",
-    "postcss": "^8.1.1",
+    "postcss": "^8.2.10",
     "serve-static": "^1.14.1",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
