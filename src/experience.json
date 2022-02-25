@@ -1,6 +1,13 @@
 {
     "items": [
         {
+            "title": "Ardea Brygghus",
+            "position": "Head Brewer",
+            "dateFrom": "2021\/05",
+            "dateTo": "(current)",
+            "url": "ardeabrygghus.se"
+        },
+        {
             "title": "Regent",
             "position": "Frontend Developer",
             "dateFrom": "2020\/09",

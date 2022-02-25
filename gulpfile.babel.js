@@ -13,9 +13,7 @@ import refresh from 'gulp-refresh';
 import htmlmin from 'gulp-htmlmin';
 import clean from 'gulp-clean';
 import inject from 'gulp-inject';
-import es from 'event-stream';
 import bro from 'gulp-bro';
-import colors from 'colors';
 
 const dir = {
     src: 'src',
@@ -56,14 +54,14 @@ const appStream = gulp.src([`${dir.src}/scripts/**/*.js`, `!${dir.src}/scripts/*
     .pipe(gulp.dest(dir.dest));
 
 gulp.task('scripts', () => {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         resolve();
         return appStream;
     });
 });
 
 gulp.task('minify', () => {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         resolve();
         return gulp.src(`${dir.src}/*.html`)
             .pipe(plumber(error => {

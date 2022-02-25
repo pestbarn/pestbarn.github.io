@@ -8,6 +8,7 @@
     "last 2 versions"
   ],
   "scripts": {
+    "build": "gulp",
     "dev": "concurrently \"gulp watch\" \"node server.js\"",
     "test": "jest",
     "deploy": "eslint src/ && gulp && firebase deploy",
