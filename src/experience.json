@@ -1,11 +1,11 @@
 {
     "items": [
         {
-            "title": "Ardea Brygghus",
+            "title": "The Royal Park Brewery",
             "position": "Head Brewer",
-            "dateFrom": "2021\/05",
+            "dateFrom": "2021\/11",
             "dateTo": "(current)",
-            "url": "ardeabrygghus.se"
+            "url": "instagram.com/theroyalparkbrewery"
         },
         {
             "title": "Regent",
@@ -15,18 +15,17 @@
             "url": "regent.se"
         },
         {
-            "title": "Columbus",
+            "title": "Columbus (iStone)",
             "position": "Frontend developer",
             "dateFrom": "2017\/10",
             "dateTo": "2020\/08",
-            "url": "columbusglobal.com/sv/"
+            "url": "columbusglobal.com"
         },
         {
             "title": "Magic by iStone",
             "position": "Frontend developer",
             "dateFrom": "2017\/03",
-            "dateTo": "2017\/10",
-            "url": "magicbyistone.se"
+            "dateTo": "2017\/10"
         },
         {
             "title": "Sportamore",
@@ -39,7 +38,8 @@
             "title": "I:O:A",
             "position": "Festival organizer, developer, designer",
             "dateFrom": "2012\/09",
-            "dateTo": "2016\/05"
+            "dateTo": "2016\/05",
+            "url": "facebook.com/inbreedopenair"
         },
         {
             "title": "46elks",
@@ -59,7 +59,8 @@
             "title": "SwedenMetal",
             "position": "Webmaster, developer, writer",
             "dateFrom": "2006\/05",
-            "dateTo": "2012\/01"
+            "dateTo": "2012\/01",
+            "url": "facebook.com/swedenmetal"
         }
     ]
 }
