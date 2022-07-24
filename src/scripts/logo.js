@@ -147,7 +147,7 @@ function runLogo(promise) {
             .dmove(-52, -70)
             .addClass('text');
 
-    const textPrefix =
+    /* const textPrefix =
         svg
             .group()
             .dmove(52, -70)
@@ -157,7 +157,7 @@ function runLogo(promise) {
         svg
             .group()
             .dmove(-52, 70)
-            .addClass('text');
+            .addClass('text'); */
 
     svg.each(function() {
         this.opacity(0);
@@ -181,13 +181,13 @@ function runLogo(promise) {
                         .animate(300, animationTiming.swingTo, 0)
                         .dmove(-7, -7);
 
-                    textPrefix
+                    /* textPrefix
                         .animate(300, animationTiming.swingTo, 0)
                         .dmove(3.5, -3.5);
 
                     textSuffix
                         .animate(300, animationTiming.swingTo, 0)
-                        .dmove(-3.5, 3.5);
+                        .dmove(-3.5, 3.5); */
                 })
                 .on('mouseup', function() {
                     textFname
@@ -198,13 +198,13 @@ function runLogo(promise) {
                         .animate(300, animationTiming.swingTo, 0)
                         .dmove(7, 7);
 
-                    textPrefix
+                    /* textPrefix
                         .animate(300, animationTiming.swingTo, 0)
                         .dmove(-3.5, 3.5);
 
                     textSuffix
                         .animate(300, animationTiming.swingTo, 0)
-                        .dmove(3.5, -3.5);
+                        .dmove(3.5, -3.5); */
                 });
         }
     });
@@ -227,7 +227,7 @@ function runLogo(promise) {
             logo.lNameLetter4,
             logo.lNameLetter5,
             logo.lNameLetter6
-        ],
+        ]; /* ,
         prefixLetter = [
             logo.prefixLetter0,
             logo.prefixLetter1,
@@ -248,7 +248,7 @@ function runLogo(promise) {
             logo.suffixLetter6,
             logo.suffixLetter7,
             logo.suffixLetter8,
-        ];
+        ]; */
 
     fNameLetter.map(n => {
         n = svg.path(n);
@@ -260,7 +260,7 @@ function runLogo(promise) {
         textLname.add(n);
     });
 
-    prefixLetter.map(n => {
+    /* prefixLetter.map(n => {
         n = svg.path(n);
         textPrefix.add(n);
     });
@@ -268,7 +268,7 @@ function runLogo(promise) {
     suffixLetter.map(n => {
         n = svg.path(n);
         textSuffix.add(n);
-    });
+    }); */
 
     const errorMsg = 'Wat ' + window.innerWidth > screen.mobile;
     const isDesktop = window.innerWidth > screen.mobile;
@@ -413,7 +413,7 @@ function runLogo(promise) {
      * PREFIX
      */
 
-    switch(isDesktop || isLandscape) {
+    /* switch(isDesktop || isLandscape) {
     case true:
         textPrefix
             .animate(400, animationTiming.swingTo, 3000)
@@ -430,14 +430,14 @@ function runLogo(promise) {
         break;
     default:
         console.error(errorMsg);
-    }
+    } */
 
 
     /**
      * SUFFIX
      */
 
-    switch(isDesktop || isLandscape) {
+    /* switch(isDesktop || isLandscape) {
     case true:
         textSuffix
             .animate(400, animationTiming.swingTo, 3300)
@@ -454,5 +454,5 @@ function runLogo(promise) {
         break;
     default:
         console.error(errorMsg);
-    }
+    } */
 }

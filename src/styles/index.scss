@@ -104,6 +104,10 @@ canvas {
     }
 }
 
+#notice {
+    align-self: end;
+}
+
 #skills {
     display: grid;
     grid-template-columns: 40% 60%;
