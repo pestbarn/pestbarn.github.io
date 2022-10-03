@@ -1,11 +1,11 @@
 {
     "items": [
         {
-            "title": "The Royal Park Brewery",
-            "position": "Head Brewer",
-            "dateFrom": "2021\/11",
+            "title": "Television Brewing Co.",
+            "position": "Brewer",
+            "dateFrom": "2022\/08",
             "dateTo": "(current)",
-            "url": "instagram.com/theroyalparkbrewery"
+            "url": "instagram.com/televisionbrewing"
         },
         {
             "title": "Pub Anchor",
@@ -13,6 +13,20 @@
             "dateFrom": "2022\/05",
             "dateTo": "(current)",
             "url": "instagram.com/pubanchor"
+        },
+        {
+            "title": "Lådan",
+            "position": "Bartender",
+            "dateFrom": "2022\/08",
+            "dateTo": "(current)",
+            "url": "instagram.com/ladansthlm"
+        },
+        {
+            "title": "The Royal Park Brewery",
+            "position": "Head Brewer",
+            "dateFrom": "2021\/11",
+            "dateTo": "(current)",
+            "url": "instagram.com/theroyalparkbrewery"
         },
         {
             "title": "CanMan",
